@@ -1,8 +1,10 @@
 ---
 title: Neural networks in time scale calculus
-date: 2018-12-01
+description: A term paper for a course in discrete linear operators.
+date: 2019-05-07
 completion_status: complete
-epistemic_stauts: confident
+epistemic_status: confident
+tags: [grad-school, term-paper, time-scales-calculus, neural-networks, machine-learning, 2019]
 ---
 
 _Neural networks_ are a popular technique for machine learning problems such as automated handwriting recognition, automated speech recognition, and time-series forecasting. On these tasks, so-called _deep neural networks_ [Schmidhuber 2015] and _convolutional neural networks_ [Ciresan et al. 2011] have performed at least as well as the best known non-neural-network statistical learning techniques. A typical neural network numerically solves an extremization problem using gradient descent in a high-dimensional Euclidean space using an algorithm known as _backpropagation_.
@@ -49,9 +51,7 @@ has a total of \\(28^2 = 784\\) pixels, each of which has an intensity
 between 0 (black) and 1 (white.) Thus it can be represented as an
 element of \\([0, 1]^{784}\\), and we expect the network to output its
 relative confidence that the image represents a 0, 1, ..., 9 as a
-probability.
-
-{{% sidenote %}} That is, an element of \([0, 1]^{10}\) whose sum is 1.{{% /sidenote %}}
+probability.{{% sidenote %}}That is, an element of \([0, 1]^{10}\) whose sum is 1.{{% /sidenote %}}
 
 Thus the network's job is to approximate an unknown function \\(f :
 \mathbb{R}^{784} \to \mathbb{R}^{10}\\) whose value at each image in the
@@ -77,8 +77,8 @@ right. The leftmost (first) layer is called the _input_ layer, the
 rightmost is called the _output_ layer, and all other layers are said to
 be _hidden_.
 
-At each node \\(k\\), the network computes a value \\[\begin{aligned} x\_k =
-\psi\_k\left(b\_k + \sum\_{i \to k} w\_ix\_i\right),\end{aligned}\\] where
+At each node \\(k\\), the network computes a value \\( \displaystyle x\_k =
+\psi\_k\left(b\_k + \sum\_{i \to k} w\_ix\_i\right),\\) where
 
 -   the sum runs over all nodes \\(i\\) that "feed into" (are direct
     predecessors of) \\(k\\);

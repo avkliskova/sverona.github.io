@@ -1,8 +1,10 @@
 ---
 title: Project Euler 1-100 in 49 hours
+description: The things I do for my inner child.
 date: 2021-01-20
 completion_status: complete
 epistemic_status: confident
+tags: [code, fun, challenge, project-euler, 2021]
 ---
 
 [Project Euler](https://projecteuler.net) is how I taught myself Python in high school, and so I find it incredibly nostalgic. It took 13-year-old me a lot of Googling and a few months to get through the first 100 problems.
@@ -50,16 +52,16 @@ def gcd(a, b):
 
 ### Primality testing {#primality-testing}
 
-\#+BEGIN\_SRC python
-def is\_prime(n):
+```python
+def is_prime(n):
     if n < 2:
         return False
-    max\_d = int(n \*\* 0.5)
-    for d in range(2, max\_d + 1):
+    max_d = int(n ** 0.5)
+    for d in range(2, max_d + 1):
         if n % d == 0:
             return False
     return True
-\#+END\_SRC python
+```
 
 
 ### Sieve of Eratosthenes {#sieve-of-eratosthenes}

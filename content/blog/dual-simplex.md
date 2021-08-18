@@ -1,8 +1,10 @@
 ---
 title: The dual simplex method, an introduction
+description: A term paper for an operations research class.
 date: 2019-04-01
 completion_status: complete
 epistemic_status: confident
+tags: [mathematics, grad-school, term-paper, 2019, operations-research, linear-operators]
 ---
 
 The primal _simplex method_ provides an algorithmic means for solving
@@ -15,11 +17,7 @@ by the simplex method.
 ## The primal simplex method {#the-primal-simplex-method}
 
 In this section, we review the three steps of the usual primal method,
-following [HL], section 5.2.
-
-(This assumes the LP has been augmented by adding slack variables and/or
-artificial variables as necessary so that its constraints are in the
-form \\(\mathbf{Ax} + \mathbf{Ix\_s} = \mathbf{b}\\).)
+following [Hillier-Lieberman],{{% sidenote %}}Frederick S. Hillier and Gerald J. Lieberman, *Introduction to operations research*, 10th ed., 2014.{{% /sidenote %}} section 5.2.{{% sidenote %}}This assumes the LP has been augmented by adding slack variables and/or artificial variables as necessary so that its constraints are in the form \\(\mathbf{Ax} + \mathbf{Ix\_s} = \mathbf{b}\\).){{% /sidenote %}}
 
 1.  _Initialization_: Obtain an initial feasible solution \\(\mathbf{x}\\).
 2.  _Test for optimality_: Check whether there are negative objective
@@ -47,8 +45,8 @@ form \\(\mathbf{Ax} + \mathbf{Ix\_s} = \mathbf{b}\\).)
 Consider the LP
 
 \\[\begin{aligned} \textrm{maximize} \qquad & z(\mathbf{x}) = 40x\_1 +
-70x\_2 \\ \textrm{subject to} \qquad & x\_1 + x\_2 \leq 100 \\ & 10x\_1 +
-50x\_2 \leq 4000 \\ \textrm{and} \qquad & x\_{1,2} \geq 0. \end{aligned}\\]
+70x\_2 \newline \textrm{subject to} \qquad & x\_1 + x\_2 \leq 100 \newline & 10x\_1 +
+50x\_2 \leq 4000 \newline \textrm{and} \qquad & x\_{1,2} \geq 0. \end{aligned}\\]
 
 This LP models the following toy problem:
 
@@ -72,16 +70,16 @@ augment the problem with slack variables \\(x\_3 = 100 - (x\_1 + x\_2)\\),
 \\(x\_4 = 4000 - (10x\_1 + 50x\_2)\\), giving the form
 
 \\[\begin{aligned} \textrm{maximize} \qquad & z(\mathbf{x}) = 40x\_1 +
-70x\_2 \\ \textrm{subject to} \qquad & x\_1 + x\_2 + x\_3 = 100 \\ & 10x\_1 +
-50x\_2 + x\_4 = 4000 \\ \textrm{and} \qquad & x\_{1,2,3,4} \geq 0.
+70x\_2 \newline \textrm{subject to} \qquad & x\_1 + x\_2 + x\_3 = 100 \newline & 10x\_1 +
+50x\_2 + x\_4 = 4000 \newline \textrm{and} \qquad & x\_{1,2,3,4} \geq 0.
 \end{aligned}\\]
 
 The initial simplex tableau is
 
 \\[\begin{array}{|c|c|rrrrr|r|} \hline \textbf{BV} & \textbf{Eq'n} &
 \mathbf{z} & \mathbf{x\_1} & \mathbf{x\_2} & \mathbf{x\_3} & \mathbf{x\_4} &
-\textbf{RHS} \\ \hline z & 0 & 1 & -40 & -70 & 0 & 0 & 0 \\ x\_3 & 1 & 0
-& 1 & 1 & 1 & 0 & 100 \\ x\_4 & 2 & 0 & 10 & 50 & 0 & 1 & 4000 \\ \hline
+\textbf{RHS} \newline \hline z & 0 & 1 & -40 & -70 & 0 & 0 & 0 \newline x\_3 & 1 & 0
+& 1 & 1 & 1 & 0 & 100 \newline x\_4 & 2 & 0 & 10 & 50 & 0 & 1 & 4000 \newline \hline
 \end{array}\\]
 
 
@@ -101,8 +99,8 @@ So we pivot on the \\(50\\) in \\(x\_2\\)'s column and \\(x\_4\\)'s row:
 
 \\[\begin{array}{|c|c|rrrrr|r|} \hline \textbf{BV} & \textbf{Eq'n} &
 \mathbf{z} & \mathbf{x\_1} & \mathbf{x\_2} & \mathbf{x\_3} & \mathbf{x\_4} &
-\textbf{RHS} \\ \hline z & 0 & 1 & -40 & -70 & 0 & 0 & 0 \\ x\_3 & 1 & 0
-& 1 & 1 & 1 & 0 & 100 \\ x\_4 & 2 & 0 & 10 & \fbox{$50$} & 0 & 1 & 4000\\\\\\
+\textbf{RHS} \newline \hline z & 0 & 1 & -40 & -70 & 0 & 0 & 0 \newline x\_3 & 1 & 0
+& 1 & 1 & 1 & 0 & 100 \newline x\_4 & 2 & 0 & 10 & \boxed{50} & 0 & 1 & 4000\newline
 \hline \end{array}\\]
 
 That is to say, we perform row operations to force the coefficients in
@@ -115,8 +113,8 @@ Doing this gives the new tableau
 
 \\[\begin{array}{|c|c|rrrrr|r|} \hline \textbf{BV} & \textbf{Eq'n} &
 \mathbf{z} & \mathbf{x\_1} & \mathbf{x\_2} & \mathbf{x\_3} & \mathbf{x\_4} &
-\textbf{RHS} \\ \hline z & 0 & 1 & -26 & 0 & 0 & 7/5 & 5600 \\ x\_3 & 1 &
-0 & 4/5 & 0 & 1 & -1/50 & 20 \\ x\_2 & 2 & 0 & 1/5 & 1 & 0 & 1/50 & 80\\\\\\
+\textbf{RHS} \newline \hline z & 0 & 1 & -26 & 0 & 0 & 7/5 & 5600 \newline x\_3 & 1 &
+0 & 4/5 & 0 & 1 & -1/50 & 20 \newline x\_2 & 2 & 0 & 1/5 & 1 & 0 & 1/50 & 80\newline
 \hline \end{array}\\]
 
 Note that we've updated the basic-variable list in the leftmost column
@@ -138,9 +136,9 @@ This gives the tableau
 
 \\[\begin{array}{|c|c|rrrrr|r|} \hline \textbf{BV} & \textbf{Eq'n} &
 \mathbf{z} & \mathbf{x\_1} & \mathbf{x\_2} & \mathbf{x\_3} & \mathbf{x\_4} &
-\textbf{RHS} \\ \hline z & 0 & 1 & 0 & 0 & 75/2 & 3/4 & 6250 \\ x\_1 & 1
-& 0 & 1 & 0 & 5/4 & -1/40 & 25 \\ x\_2 & 2 & 0 & 0 & 1 & -1/4 & 1/40 &
-75\\ \hline \end{array}\\]
+\textbf{RHS} \newline \hline z & 0 & 1 & 0 & 0 & 75/2 & 3/4 & 6250 \newline x\_1 & 1
+& 0 & 1 & 0 & 5/4 & -1/40 & 25 \newline x\_2 & 2 & 0 & 0 & 1 & -1/4 & 1/40 &
+75\newline \hline \end{array}\\]
 
 This solution is optimal.
 
@@ -148,16 +146,18 @@ This solution is optimal.
 ## Duality theory {#duality-theory}
 
 Recall that to any (primal) LP \\[\begin{aligned} \textrm{maximize}
-\qquad& z(\mathbf{x}) = \mathbf{c} \mathbf{x} \\ \textrm{subject to}
-\qquad& \mathbf{Ax} \leq \mathbf{b}\\ \textrm{and} \qquad& \mathbf{x}
+\qquad& z(\mathbf{x}) = \mathbf{c} \mathbf{x} \newline \textrm{subject to}
+\qquad& \mathbf{Ax} \leq \mathbf{b}\newline \textrm{and} \qquad& \mathbf{x}
 \geq \mathbf{0} \end{aligned} \\] we may associate a _dual_ LP
+
 \\[\begin{aligned} \textrm{minimize} \qquad& w(\mathbf{y}) = \mathbf{y}
-\mathbf{b} \\ \textrm{subject to} \qquad& \mathbf{yA} \geq \mathbf{c}\\\\\\
-\textrm{and} \qquad& \mathbf{y} \geq \mathbf{0} \end{aligned}\\] (where
-\\(\mathbf{y}\\) is a row vector,) or, equivalently, \\[\begin{aligned}
-\textrm{minimize} \qquad& w(\mathbf{y}) = \mathbf{b}^\top\mathbf{y} \\\\\\
+\mathbf{b} \newline \textrm{subject to} \qquad& \mathbf{yA} \geq \mathbf{c}\newline
+\textrm{and} \qquad& \mathbf{y} \geq \mathbf{0} \end{aligned}\\]
+(where \\(\mathbf{y}\\) is a row vector,)
+or, equivalently, \\[\begin{aligned}
+\textrm{minimize} \qquad& w(\mathbf{y}) = \mathbf{b}^\top\mathbf{y} \newline
 \textrm{subject to} \qquad& \mathbf{A}^\top\mathbf{y} \geq
-\mathbf{c}^\top\\ \textrm{and} \qquad& \mathbf{y} \geq \mathbf{0}
+\mathbf{c}^\top\newline \textrm{and} \qquad& \mathbf{y} \geq \mathbf{0}
 \end{aligned}\\] (where \\(\mathbf{y}\\) is a column vector.)
 
 
@@ -166,8 +166,8 @@ Recall that to any (primal) LP \\[\begin{aligned} \textrm{maximize}
 The foregoing (primal) LP has dual
 
 \\[\begin{aligned} \textrm{minimize} \qquad & w(\mathbf{y}) = 100y\_1 +
-4000y\_2 \\ \textrm{subject to} \qquad & y\_1 + 10y\_2 \geq 40 \\ & y\_1 +
-50y\_2 \geq 70 \\ \textrm{and} \qquad & y\_{1,2} \geq 0. \end{aligned}\\]
+4000y\_2 \newline \textrm{subject to} \qquad & y\_1 + 10y\_2 \geq 40 \newline & y\_1 +
+50y\_2 \geq 70 \newline \textrm{and} \qquad & y\_{1,2} \geq 0. \end{aligned}\\]
 
 This LP may be thought of as modeling the problem of finding an _upper
 bound_ for the primal LP as a linear combination of constraints, where
@@ -178,8 +178,8 @@ constraint.
 ## Motivating the dual simplex method {#motivating-the-dual-simplex-method}
 
 An important property of the primal simplex method is that the solution
-attained at each iteration is (primal) feasible.This is assured
-inductively by the minimum ratio test. Similarly, the dual simplex
+attained at each iteration is (primal) feasible.{{% sidenote %}}This is assured
+inductively by the minimum ratio test.{{% /sidenote %}} Similarly, the dual simplex
 method attains a _dual_-feasible solution at each iteration.
 
 Therefore, if perturbing a primal problem causes the new final solution
@@ -227,10 +227,10 @@ price of \\(6000\\) USD an acre. Then the right-hand sides in the primal
 LP (ref) are changed, giving the problem
 
 \\[\begin{aligned} \textrm{maximize} \qquad & z(\mathbf{x}) = 40x\_1 +
-70x\_2 \\ \textrm{subject to} \qquad & x\_1 + x\_2 \leq 75 \\ & 10x\_1 +
-50x\_2 \leq 4150 \\ \textrm{and} \qquad & x\_{1,2} \geq 0. \end{aligned}\\]
+70x\_2 \newline \textrm{subject to} \qquad & x\_1 + x\_2 \leq 75 \newline & 10x\_1 +
+50x\_2 \leq 4150 \newline \textrm{and} \qquad & x\_{1,2} \geq 0. \end{aligned}\\]
 
-That is, there are 25 fewer acres of land and \\(250,\!000\\) USD more
+That is, there are \\(25\\) fewer acres of land and \\(150000\\) USD more
 than in the original setup.
 
 The optimal solution we found in the original problem \\((25, 75)\\) is
@@ -245,15 +245,15 @@ So we start with the final tableau from the original problem, which was
 
 \\[\begin{array}{|c|c|rrrrr|r|} \hline \textbf{BV} & \textbf{Eq'n} &
 \mathbf{z} & \mathbf{x\_1} & \mathbf{x\_2} & \mathbf{x\_3} & \mathbf{x\_4} &
-\textbf{RHS} \\ \hline z & 0 & 1 & 0 & 0 & 75/2 & 3/4 & 6250 \\ x\_1 & 1
-& 0 & 1 & 0 & 5/4 & -1/40 & 25 \\ x\_2 & 2 & 0 & 0 & 1 & -1/4 & 1/40 &
-75\\ \hline \end{array}\\]
+\textbf{RHS} \newline \hline z & 0 & 1 & 0 & 0 & 75/2 & 3/4 & 6250 \newline x\_1 & 1
+& 0 & 1 & 0 & 5/4 & -1/40 & 25 \newline x\_2 & 2 & 0 & 0 & 1 & -1/4 & 1/40 &
+75\newline \hline \end{array}\\]
 
 This was arrived at after a series of row operations, the net effect of
 which was to transform the coefficients of the slack variables \\(x\_3\\)
 and \\(x\_4\\) from the identity matrix to
 
-\\[\mathbf{B}^{-1} = \begin{bmatrix} 5/4 & -1/40 \\ -1/4 & 1/40
+\\[\mathbf{B}^{-1} = \begin{bmatrix} 5/4 & -1/40 \newline -1/4 & 1/40
 \end{bmatrix}.\\]
 
 As can be verified, the entire rows 1 and 2 of the final tableau can be
@@ -266,17 +266,17 @@ operations. Then --- multiplying through by \\(\mathbf{B}^{-1}\\) --- we
 find that the variable coefficients will be the same, and the new
 right-hand sides will be given by
 
-\\[\begin{bmatrix} 5/4 & -1/40 \\ -1/4 & 1/40
-\end{bmatrix}\begin{bmatrix} 75 \\ 4150 \end{bmatrix} = \begin{bmatrix}
--10 \\ 85\end{bmatrix} .\\]
+\\[\begin{bmatrix} 5/4 & -1/40 \newline -1/4 & 1/40
+\end{bmatrix}\begin{bmatrix} 75 \newline 4150 \end{bmatrix} = \begin{bmatrix}
+-10 \newline 85\end{bmatrix} .\\]
 
 So the _initial_ tableau for the dual simplex method will be
 
 \\[\begin{array}{|c|c|rrrrr|r|} \hline \textbf{BV} & \textbf{Eq'n} &
 \mathbf{z} & \mathbf{x\_1} & \mathbf{x\_2} & \mathbf{x\_3} & \mathbf{x\_4} &
-\textbf{RHS} \\ \hline z & 0 & 1 & 0 & 0 & 75/2 & 3/4 & 5550 \\ x\_1 & 1
-& 0 & 1 & 0 & 5/4 & -1/40 & -10 \\ x\_2 & 2 & 0 & 0 & 1 & -1/4 & 1/40 &
-85 \\ \hline \end{array}\\]
+\textbf{RHS} \newline \hline z & 0 & 1 & 0 & 0 & 75/2 & 3/4 & 5550 \newline x\_1 & 1
+& 0 & 1 & 0 & 5/4 & -1/40 & -10 \newline x\_2 & 2 & 0 & 0 & 1 & -1/4 & 1/40 &
+85 \newline \hline \end{array}\\]
 
 
 ### Iteration 1 {#iteration-1-1}
@@ -287,23 +287,23 @@ will leave the basis.
 
 To select the entering basic variable, we examine the variables in
 \\(x\_1\\)'s row with negative coefficients. There is only one, the
-\\(-1/40\\) in \\(x\_4\\)'s column, so \\(x\_4\\) will enter the basis.Were
+\\(-1/40\\) in \\(x\_4\\)'s column, so \\(x\_4\\) will enter the basis.{{% sidenote %}}Were
 there more than one, we would compare \\(\vert(3/4)/(-1/40)\vert\\) to the
 corresponding ratios in the other columns, and choose the variable with
-the lowest ratio.
+the lowest ratio.{{% /sidenote %}}
 
 Thus we pivot on that \\(-1/40\\): \\[\begin{array}{|c|c|rrrrr|r|} \hline
 \textbf{BV} & \textbf{Eq'n} & \mathbf{z} & \mathbf{x\_1} & \mathbf{x\_2} &
-\mathbf{x\_3} & \mathbf{x\_4} & \textbf{RHS} \\ \hline z & 0 & 1 & 0 & 0 &
-75/2 & 3/4 & 5550 \\ x\_1 & 1 & 0 & 1 & 0 & 5/4 & \fbox{$-1/40$} & -10\\\\\\
-x\_2 & 2 & 0 & 0 & 1 & -1/4 & 1/40 & 85 \\ \hline \end{array}\\]
+\mathbf{x\_3} & \mathbf{x\_4} & \textbf{RHS} \newline \hline z & 0 & 1 & 0 & 0 &
+75/2 & 3/4 & 5550 \newline x\_1 & 1 & 0 & 1 & 0 & 5/4 & \boxed{-1/40} & -10\newline
+x\_2 & 2 & 0 & 0 & 1 & -1/4 & 1/40 & 85 \newline \hline \end{array}\\]
 
 This gives
 
 \\[\begin{array}{|c|c|rrrrr|r|} \hline \textbf{BV} & \textbf{Eq'n} &
 \mathbf{z} & \mathbf{x\_1} & \mathbf{x\_2} & \mathbf{x\_3} & \mathbf{x\_4} &
-\textbf{RHS} \\ \hline z & 0 & 1 & 30 & 0 & 0 & 0 & 5250 \\ x\_4 & 1 & 0
-& -40 & 0 & -50 & 1 & 400 \\ x\_2 & 2 & 0 & 1 & 1 & 1 & 0 & 75 \\ \hline
+\textbf{RHS} \newline \hline z & 0 & 1 & 30 & 0 & 0 & 0 & 5250 \newline x\_4 & 1 & 0
+& -40 & 0 & -50 & 1 & 400 \newline x\_2 & 2 & 0 & 1 & 1 & 1 & 0 & 75 \newline \hline
 \end{array}\\]
 
 Since there are no longer negative right-hand sides, the present
@@ -320,7 +320,7 @@ Were the starting point instead primal-feasible and dual-infeasible, we
 could simply apply the primal simplex method.
 
 The remaining case -- points that are infeasible both in the primal and
-the dual -- is a little more involved. We follow [Va], § 6.5.
+the dual -- is a little more involved. We follow [Vanderbei],{{% sidenote %}}Robert J. Vanderbei, *Linear programming: foundations and extensions,* 3rd ed., 2008{{% /sidenote %}} §6.5.
 
 We know a solution is primal-feasible (dual-feasible) only if it has no
 negative right-hand sides (no negative objective coefficients); so there

@@ -4,6 +4,7 @@ description: A quick exercise in probability.
 date: 2021-01-24
 epistemic_status: confident
 completion_status: complete
+tags: [mathematics, probability, combinatorics, asymptotics, fun, 2021]
 ---
 
 While doing some research for my Project Euler post, I found myself drawn to something else that blew my mind in high school --- the connection between the greatest common divisor and the Riemann zeta function.
@@ -121,6 +122,10 @@ E[\gcd(a, b) \mid a, b \leq N] &= \sum\_{n=1}^\infty P(\gcd(a, b) = n \mid a, b 
 which is nearly intractable. Passing to the asymptotic \\(\Phi(n) \approx 3n^2/\pi^2\\), we get
 
 \\[\begin{aligned}
-E[\gcd(a, b) \mid a, b \leq N] &\approx \sum\_{n=1}^N \frac{6n^2\lfloor N / n \rfloor^2 - 1}{\pi^2} \newline
-&= \frac{6}{\pi^2} \sum\_{n=1}^N n^2 \left\lfloor \frac{N}{n} \right\rfloor^2 - \frac{N}{\pi^2}
+E[\gcd(a, b) \mid a, b \leq N] &\approx \sum\_{n=1}^N \frac{6\lfloor N / n \rfloor^2 - 1}{n\pi^2} \newline
+&\approx \frac{6}{\pi^2} \sum\_{n=1}^N \frac1n \left\lfloor \frac{N}{n} \right\rfloor^2 - \frac{\ln N + \gamma}{\pi^2}.
 \end{aligned}\\]
+
+I don't think this can be further simplified. It looks kind of like Mobius inversion, but the summation is wrong. Maybe there's a fun trick to be found, but I don't see it.
+
+It's really fascinating how deeply the GCD and \\(\pi\\) are linked. I have absolutely no idea why.

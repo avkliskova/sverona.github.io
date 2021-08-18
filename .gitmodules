@@ -1,0 +1,3 @@
+[submodule "themes/semiotic"]
+	path = themes/semiotic
+	url = https://github.com/sverona/hugo-semiotic

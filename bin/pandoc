@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "$(dirname $0)"
+
+$PANDOC_OLD --filter pandoc-sidenote \
+	    --katex \
+	    -f org -t html
+            "$@"

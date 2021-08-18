@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PANDOC_OLD=$(which pandoc)
+export PANDOC_OLD
+
+PATH_OLD=$PATH
+PATH="$PATH_OLD"
+export PATH_OLD
+
+hugo "$@"

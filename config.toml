@@ -7,6 +7,8 @@ theme = "semiotic"
 math = false
 
 [markup]
+  [markup.highlight]
+    style = "github"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true

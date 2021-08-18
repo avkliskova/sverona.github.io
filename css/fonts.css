@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Source Serif 4";
+  src: url('fonts/Source Serif 4/SourceSerif4Variable-Roman.otf') format('opentype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Source Serif 4";
+  src: url('fonts/Source Serif 4/SourceSerif4Variable-Italic.otf') format('opentype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+}

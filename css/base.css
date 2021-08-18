@@ -1,0 +1,190 @@
+@import 'fonts.css';
+
+/* || Page layout */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 900px;
+  margin: auto;
+  padding: 2ch;
+}
+
+body > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4.8rem;
+}
+
+body > header > a {
+  color: #000 !important;
+  text-decoration: none;
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li:not(:last-child)::after {
+  content: '\00b7';
+  margin: 0 1ch;
+}
+
+body > header span#accent::before {
+  font-style: normal;
+  content: '\22EA ';
+  color: #f23074;
+  margin-right: 1ch;
+}
+
+/* Date and stuff */
+main > header div#metadata {
+  display: flex;
+  align-items: center;
+
+  padding: 1rem 0;
+  border-style: solid;
+  border-color: #ccc;
+  border-width: 1px 0;
+  
+}
+
+/* Sequential navigation */
+main > header nav div#next-prev{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+main > header #prev {
+  text-align: right;
+}
+
+main > header div#metadata ul {
+  margin: 0;
+  padding: 0;
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+/* || end Page layout */
+
+/* || Typography */
+
+html {
+  font-family: 'Source Serif 4', serif;
+  font-size: 16px;
+  line-height: 1.667;
+}
+
+/* ||| KaTeX specific styles */
+.katex {
+  /* Set math x-height to the same as body text. */
+  font-size: 110% !important;
+}
+
+a .katex .base {
+  text-decoration: underline;
+}
+/* ||| end KaTeX */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+
+main h1, main h2, main h3, main h4, main h5, main h6 {
+  font-variant: all-small-caps;
+  letter-spacing: 1px;
+
+  line-height: 1.3;
+}
+
+main h1 {
+  /* Article titles should not have space below them. */
+  margin: 0;
+  line-height: 1 !important;
+  letter-spacing: 0;
+}
+
+main h1 .katex {
+  line-height: 1;
+}
+
+main > header div#metadata ul {
+  font-size: smaller;
+  text-align: right;
+  list-style-type: none;
+}
+
+main > header nav h3 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+
+li p {
+  margin: 0;
+}
+
+pre, code {
+  font-size: 95%;
+}
+
+ul.blog-posts,
+ul.blog-posts ul,
+ul.blog-posts ol {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.blog-posts h1 {
+  font-size: 1.75rem;
+}
+
+ul.blog-posts li,
+ul.blog-posts ul li,
+ul.blog-posts ol li {
+  margin-top: 3.2rem;
+}
+
+ul.blog-posts a:not(:hover),
+ul.blog-posts a:not(:hover) .katex .base {
+  text-decoration: none;
+}
+
+#next::before {
+  content: "\2190\00A0\00A0";
+}
+
+#prev::after {
+  content: "\00A0\00A0\2192";
+}
+
+/* || end Typography */
+
+/* || Colors */
+
+main > header div ul {
+  color: #777;
+}
+
+a, a:visited {
+  color: #f23074;
+}
+
+hr {
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+}
+
+/* || end Colors */

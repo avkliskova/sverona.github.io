@@ -1,0 +1,120 @@
+{{ define "main" }}
+
+<style type="text/css">
+@font-face {
+  font-family: 'Parisienne';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Parisienne-Regular.ttf') format('truetype');
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  display: grid;
+  grid-template-rows: min-content auto;
+  grid-gap: 1.6rem;
+}
+
+body > header {
+  display: none;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-gap: 10px;
+
+  justify-content: center;
+  align-items: center;
+}
+
+header img {
+  max-height: 200px;
+
+  clip-path: polygon(50% 0%, 7.6% 25%, 7.6% 75%, 50% 100%, 93.3% 75%, 93.3% 25%);
+  /* border-radius: 50%;
+  border: 1px solid black; */
+}
+
+.about {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.name {
+  color: #f23074;
+}
+
+.name, .pronouns {
+  font-style: italic;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 16px);
+  grid-gap: 16px;
+  justify-content: center;
+  height: 16px;
+}
+
+nav img {
+  height: 100%;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
+  grid-gap: 1.6rem;
+}
+
+</style>
+<header>
+<img src="/images/sverona.png" />
+<div>
+  <span class="about"><span class="name">S. Verona Malone</span> <span class="pronouns">(they/them)</span> is a fullstack developer and recreational mathematician based in Louisville.</span>
+</div>
+</header>
+<nav>
+  <img src="/images/twitter-64.png" />
+  <img src="/images/github-64.png" />
+  <img src="/images/linkedin-64.png" />
+</nav>
+<section>
+  <div id="blogs">
+    <h2>Recent blogs</h2>
+    <div class="blog">
+      <time>January 1, 1970</time>
+      <h1>Blog post title</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adispicing elit. Blah blah blah blah blah this is text hello yes this is text et cetera et al and so forth.</p>
+    </div>
+    <div class="blog">
+      <time>January 1, 1970</time>
+      <h1>Blog post title</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adispicing elit. Blah blah blah blah blah this is text hello yes this is text et cetera et al and so forth.</p>
+    </div>
+    <div class="blog">
+      <time>January 1, 1970</time>
+      <h1>Blog post title</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adispicing elit. Blah blah blah blah blah this is text hello yes this is text et cetera et al and so forth.</p>
+    </div>
+  </div>
+  <div id="projects">
+    <h2>Selected projects</h2>
+    <div class="blog">
+      <h1>Project title</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adispicing elit. Blah blah blah blah blah this is text hello yes this is text et cetera et al and so forth.</p>
+    </div>
+  </div>
+</section>
+{{ end }}

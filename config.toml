@@ -1,4 +1,4 @@
-baseURL = "https://www.sverona.dev/"
+baseURL = "."
 languageCode = "en-us"
 title = "S. Verona Malone"
 
@@ -19,14 +19,10 @@ math = false
         url = "/blog"
         weight = 1
     [[menu.main]]
-        name = "projects"
-        url = "/projects"
-        weight = 2
-    [[menu.main]]
         name = "github"
         url = "https://github.com/sverona"
         weight = 3
     [[menu.main]]
-        name = "about"
-        url = "/about"
+        name = "MATH 117"
+        url = "/trig"
         weight = 4

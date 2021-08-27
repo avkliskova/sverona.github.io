@@ -1,0 +1,31 @@
+\documentclass{standalone}
+
+\usepackage{pstricks}
+\usepackage{pstricks-add}
+\usepackage{pst-plot}
+
+\begin{document}
+\begin{pspicture}(-4, -4)(4, 4)
+  \psaxes[labels=none](0, 0)(-3, -3)(3, 3)
+  \uput[0](3, 0){$x$}
+  \uput[0](0, 3){$iy$}
+
+  \psline[ArrowInside=->, ArrowInsidePos=0.5](-3, -3)(0, 0)
+  \uput[-45](-2, -2){$\gamma$}
+  \psdot(-0.5, -0.5)
+
+  \psline(1, -3)(1, 3)
+  \uput[270](1, -3){$a$}
+  \psline(2, -3)(2, 3)
+  \uput[270](2, -3){$b$}
+
+  \psline[linestyle=dashed](-3, 1)(3, 1)
+  \uput[0](3, 1){$a'$}
+  \psline[linestyle=dashed](-3, 2)(3, 2)
+  \uput[0](3, 2){$b'$}
+
+  \pscircle[ArrowInside=<-, ArrowInsidePos=0.3](0, 0){1}
+  \psline[arrows=->](-0.866, 0.5)(-0.866, 0.5)
+  \psdot(0.5, -0.866)
+\end{pspicture}
+\end{document}

@@ -1,0 +1,20 @@
+
+\documentclass{standalone}
+
+\usepackage{pstricks}
+\usepackage{pstricks-add}
+\usepackage{pst-plot}
+
+\begin{document}
+\begin{pspicture}(-4, -4)(4, 4)
+  \psaxes[labels=none](0, 0)(-3, -3)(3, 3)
+  \uput[0](3, 0){$u$}
+  \uput[0](0, 3){$iv$}
+
+  \psplot[plotstyle=curve]{-4}{1}{1 x sub sqrt 2 mul}
+  \psplot[plotstyle=curve]{-4}{1}{1 x sub sqrt -2 mul}
+
+  \psplot[linestyle=dashed,plotstyle=curve]{-1}{4}{1 x add sqrt 2 mul}
+  \psplot[linestyle=dashed,plotstyle=curve]{-1}{4}{1 x add sqrt -2 mul}
+\end{pspicture}
+\end{document}

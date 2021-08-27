@@ -31,15 +31,15 @@ body > header > a {
   font-size: 1.5rem;
 }
 
-nav ul {
+nav:not(#TableOfContents) ul {
   list-style-type: none;
   padding: 0;
 }
-nav ul li {
+nav:not(#TableOfContents) ul li {
   display: inline-block;
 }
 
-nav ul li:not(:last-child)::after,
+nav:not(#TableOfContents) ul li:not(:last-child)::after,
 main > header div#metadata ul li:not(:last-child)::after {
   content: '\00b7';
   margin: 0 1ch;
@@ -101,8 +101,12 @@ html {
   font-size: 110% !important;
 }
 
-a .katex .base {
-  text-decoration: underline;
+a:not(:hover) {
+  text-decoration: none;
+}
+
+a .katex-html {
+  line-height: 1;
 }
 /* ||| end KaTeX */
 

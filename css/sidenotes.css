@@ -7,6 +7,8 @@
   --gutter-proportion: calc(1 - var(--content-proportion) - var(--sidenote-proportion));
   --indent: 40px;
   --sidenote-font-size: 0.85rem;
+  --figures-per-fullwidth: 2;
+  --single-figure-width: calc(var(--desktop-article-width) / var(--figures-per-fullwidth));
 
   --marginnote-label-1: '*';
   --marginnote-label-2: '\2020';
@@ -93,7 +95,8 @@ figure img {
 }
 
 .flex {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--single-figure-width), 1fr));
   align-items: center;
 }
 

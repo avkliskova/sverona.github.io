@@ -23,9 +23,9 @@
 <meta itemprop=keywords content="mathematics,grad-school,term-paper,2019,operations-research,linear-operators,">
 <meta name=referrer content="no-referrer-when-downgrade">
 <link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/katex/katex.css type=text/css rel=stylesheet>
+<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
 <script defer src=https://sverona.dev/katex/katex.js></script>
 <script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
 <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}]})})</script>
@@ -36,9 +36,8 @@
 </a>
 <nav><ul>
 <li><a href=/blog>blog</a></li>
-<li><a href=/projects>projects</a></li>
 <li><a href=https://github.com/sverona>github</a></li>
-<li><a href=/about>about</a></li>
+<li><a href=/trig>MATH 117</a></li>
 </ul>
 </nav>
 </header>
@@ -66,6 +65,28 @@ April 1, 2019
 </ul>
 </div>
 </header>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#the-primal-simplex-method>The primal simplex method</a></li>
+<li><a href=#example>Example</a>
+<ul>
+<li><a href=#iteration-1>Iteration 1</a></li>
+<li><a href=#iteration-2>Iteration 2</a></li>
+</ul>
+</li>
+<li><a href=#duality-theory>Duality theory</a></li>
+<li><a href=#example-1>Example</a></li>
+<li><a href=#motivating-the-dual-simplex-method>Motivating the dual simplex method</a></li>
+<li><a href=#applying-the-dual-simplex-method>Applying the dual simplex method</a></li>
+<li><a href=#example-2>Example</a>
+<ul>
+<li><a href=#iteration-1-1>Iteration 1</a></li>
+</ul>
+</li>
+<li><a href=#primal-dual-method>Primal-dual method</a></li>
+<li><a href=#references>References</a></li>
+</ul>
+</nav>
 <article>
 <p>The primal <em>simplex method</em> provides an algorithmic means for solving
 linear programs (hereinafter <em>LPs</em>.) This document motivates, defines,
@@ -353,14 +374,6 @@ will require the dual simplex method.</p>
 <h2 id=references>References</h2>
 <p>[Va] Vanderbei [HL] Hillier/Lieberman</p>
 </article>
-<div class=page-tags>
-<a href=https://sverona.dev/tags/mathematics/>mathematics</a>,
-<a href=https://sverona.dev/tags/grad-school/>grad-school</a>,
-<a href=https://sverona.dev/tags/term-paper/>term-paper</a>,
-<a href=https://sverona.dev/tags/2019/>2019</a>,
-<a href=https://sverona.dev/tags/operations-research/>operations-research</a>,
-<a href=https://sverona.dev/tags/linear-operators/>linear-operators</a>,
-</div>
 <hr>
 </main>
 <footer> Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a>

@@ -23,9 +23,9 @@
 <meta itemprop=keywords content="mathematics,probability,combinatorics,asymptotics,fun,2021,">
 <meta name=referrer content="no-referrer-when-downgrade">
 <link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/katex/katex.css type=text/css rel=stylesheet>
+<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
 <script defer src=https://sverona.dev/katex/katex.js></script>
 <script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
 <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}]})})</script>
@@ -36,9 +36,8 @@
 </a>
 <nav><ul>
 <li><a href=/blog>blog</a></li>
-<li><a href=/projects>projects</a></li>
 <li><a href=https://github.com/sverona>github</a></li>
-<li><a href=/about>about</a></li>
+<li><a href=/trig>MATH 117</a></li>
 </ul>
 </nav>
 </header>
@@ -66,6 +65,13 @@ January 24, 2021
 </ul>
 </div>
 </header>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#the-gcd-and-pi>The GCD and \(\pi\)</a></li>
+<li><a href=#the-gcd-and-e>The GCD and \(e\)</a></li>
+<li><a href=#another-problem>Another problem</a></li>
+</ul>
+</nav>
 <article>
 <p>While doing some research for my Project Euler post, I found myself drawn to something else that blew my mind in high school &mdash; the connection between the greatest common divisor and the Riemann zeta function.</p>
 <p>For those of you just joining us:</p>
@@ -154,14 +160,6 @@ E[\gcd(a, b) \mid a, b \leq N] &\approx \sum_{n=1}^N \frac{6\lfloor N / n \rfloo
 <p>I don&rsquo;t think this can be further simplified. It looks kind of like Mobius inversion, but the summation is wrong. Maybe there&rsquo;s a fun trick to be found, but I don&rsquo;t see it.</p>
 <p>It&rsquo;s really fascinating how deeply the GCD and \(\pi\) are linked. I have absolutely no idea why.</p>
 </article>
-<div class=page-tags>
-<a href=https://sverona.dev/tags/mathematics/>mathematics</a>,
-<a href=https://sverona.dev/tags/probability/>probability</a>,
-<a href=https://sverona.dev/tags/combinatorics/>combinatorics</a>,
-<a href=https://sverona.dev/tags/asymptotics/>asymptotics</a>,
-<a href=https://sverona.dev/tags/fun/>fun</a>,
-<a href=https://sverona.dev/tags/2021/>2021</a>,
-</div>
 <hr>
 </main>
 <footer> Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a>

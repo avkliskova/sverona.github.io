@@ -140,12 +140,14 @@ figcaption p:first-child {
   article > ul,
   article > ol {
     padding-inline-start: var(--indent);
-    width: calc(var(--content-proportion) * 100% - var(--indent));
+    /* Uncomment if not using border-box */
+    /* width: calc(var(--content-proportion) * 100% - var(--indent)); */
   }
 
   article > blockquote {
     margin-inline: var(--indent);
-    width: calc(var(--content-proportion) * 100% - var(--indent));
+    /* Uncomment if not using border-box */
+    /* width: calc(var(--content-proportion) * 100% - var(--indent)); */
   }
 
   .sidenote,

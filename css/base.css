@@ -13,11 +13,16 @@ body {
 }
 
 body > header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 4.8rem;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  place-items: center;
+  margin-bottom: 3.2rem;
 }
+
+table {
+  border-spacing: 2rem 0;
+}
+
 
 body > header > a {
   color: #000 !important;
@@ -34,7 +39,8 @@ nav ul li {
   display: inline-block;
 }
 
-nav ul li:not(:last-child)::after {
+nav ul li:not(:last-child)::after,
+main > header div#metadata ul li:not(:last-child)::after {
   content: '\00b7';
   margin: 0 1ch;
 }
@@ -48,8 +54,7 @@ body > header span#accent::before {
 
 /* Date and stuff */
 main > header div#metadata {
-  display: flex;
-  align-items: center;
+  text-align: center;
 
   padding: 1rem 0;
   border-style: solid;
@@ -71,10 +76,14 @@ main > header #prev {
 main > header div#metadata ul {
   margin: 0;
   padding: 0;
-  flex-basis: auto;
-  flex-grow: 1;
-  flex-shrink: 0;
 }
+
+main > header div#metadata ul li {
+  display: inline-block;
+}
+
+/*
+*/
 
 /* || end Page layout */
 
@@ -121,7 +130,7 @@ main h1 .katex {
 
 main > header div#metadata ul {
   font-size: smaller;
-  text-align: right;
+  /* text-align: right; */
   list-style-type: none;
 }
 
@@ -188,3 +197,43 @@ hr {
 }
 
 /* || end Colors */
+
+/* || Desktop layout */
+
+@media screen and (min-width: 900px) {
+  body > header {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    place-items: center normal;
+  }
+
+  body > header nav {
+    place-self: self-end;
+  }
+
+  main > header div#metadata{
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+
+  main > header div#metadata ul {
+    margin: 0;
+    padding: 0;
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+
+  main > header div#metadata ul li {
+    display: block;
+    text-align: right;
+  }
+
+  main > header div#metadata ul li:not(:last-child)::after {
+    content: '';
+    margin: 0;
+  }
+}
+
+/* || end Desktop layout */

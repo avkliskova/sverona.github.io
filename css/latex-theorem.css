@@ -4,8 +4,11 @@ article {
   counter-reset: sidenote conjecture definition theorem lemma proposition example corollary section !important;
 }
 
+article h2 { counter-increment: section; }
+article h3 { counter-increment: subsection; }
+article h4 { counter-increment: subsubsection; }
+
 article h2:before {
-  counter-increment: section;
   counter-reset: subsection;
   content: counter(section);
   padding-right: 1ch;
@@ -14,14 +17,12 @@ article h2:before {
 
 article h3:before {
   counter-reset: subsubsection;
-  counter-increment: subsection;
   content: counter(section) '.' counter(subsection);
   padding-right: 1ch;
   color: #aaa;
 }
 
 article h4:before {
-  counter-increment: subsubsection;
   content: counter(section) '.' counter(subsection) '.' counter(subsubsection);
   padding-right: 1ch;
   color: #aaa;

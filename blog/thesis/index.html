@@ -19,9 +19,9 @@
 <meta name=referrer content="no-referrer-when-downgrade">
 <link rel=alternate type=application/rss+xml href=https://sverona.dev/blog/thesis/index.xml title="S. Verona Malone">
 <link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/katex/katex.css type=text/css rel=stylesheet>
+<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
 <script defer src=https://sverona.dev/katex/katex.js></script>
 <script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
 <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}]})})</script>
@@ -32,14 +32,49 @@
 </a>
 <nav><ul>
 <li><a href=/blog>blog</a></li>
-<li><a href=/projects>projects</a></li>
 <li><a href=https://github.com/sverona>github</a></li>
-<li><a href=/about>about</a></li>
+<li><a href=/trig>MATH 117</a></li>
 </ul>
 </nav>
 </header>
 <main>
+<header id=front-matter>
+<nav id=sequence-nav>
+<div id=next-prev>
+<div></div>
+<div></div>
+</div>
+</nav>
+<div id=metadata>
+<div>
 <h1>Generalized Integer Sequences</h1>
+<em id=page-description></em>
+</div>
+<ul id=page-metadata-block>
+<li id=publish-date>
+<time datetime=2020-11-01 pubdate>
+November 1, 2020
+</time>
+</li>
+<li id=completion-status>completion status: <em></em></li>
+<li id=epistemic-status>epistemic status: <em></em></li>
+</ul>
+</div>
+</header>
+<article>
+<h2 id=abstract>Abstract</h2>
+<p>There exists a natural correspondence between the bases for a given finite-dimensional representation of a complex semisimple Lie algebra and a certain collection of finite edge-colored ranked posets, laid out by Donnelly, et al. in, for instance, \cite{donnelly-extremal}. In this correspondence, the Serre relations on the Chevalley generators of the given Lie algebra are realized as conditions on coefficients assigned to poset edges. These conditions are the so-called <em>diamond, crossing, and structure relations</em> (hereinafter <em>DCS relations</em>.) New representation constructions of Lie algebras may thus be obtained by utilizing edge-colored ranked posets. Of particular combinatorial interest are those representations whose corresponding posets are distributive lattices.</p>
+<p>We study two families of such lattices, which we dub the <em>generalized Fibonaccian lattices</em> \(L_A^{Fib}(n + 1, k)\) and <em>generalized Catalanian lattices</em> \(L_C^{Cat}(n, k)\). These respectively generalize known families of lattices which are DCS-correspondent to some special families of representations of the classical Lie algebras \(A_{n + 1}\) and \(C_n\). We state and prove explicit formulae for the vertex cardinalities of these lattices; show existence and uniqueness of DCS-satisfactory edge coefficients for certain values of \(n\) and \(k\); and report on the efficacy of various computational and algorithmic approaches to this problem. A Python library for computationally modeling and &ldquo;solving&rdquo; these lattices appears as an appendix.</p>
+<h2 id=contents>Contents</h2>
+<p>The abstract describes our overall motivation, direction, and goals.
+Here we describe the organization of this thesis.</p>
+<p>Chapter 2 provides the necessary background for the sequel, assuming an undergraduate-level knowledge of group theory, graph theory, and linear algebra. In particular, we introduce the basics of lattice theory, of representation theory, and of the theory of Lie algebras.</p>
+<p>In Chapter 3, we present Donnelly&rsquo;s notion of a <em>supporting graph</em>, which makes explicit the aforementioned correspondence between posets and representations, following [@donnelly-extremal]. We furnish several examples of such poset-representation correspondences. In particular, we define the <em>generalized Fibonaccian lattices</em> \(L_A^{Fib}(n+1, k) = \mathscr F(n + 1, k)\) and illustrate some examples. We also reproduce an explicit formula for \(|\mathscr F(n + 1, k)|\) from [@donnelly-fibonaccian] which specializes to the result that \(|\mathscr F(3, k)|\) is the Fibonacci number \(F_{2n + 2}.\)</p>
+<p>In Chapter 4, we introduce the <em>generalized Catalanian lattices</em> \(L_C^{Cat}(n, k) = \mathscr C(n, k)\) and illustrate some examples. We also prove a nice, explicit, and apparently new formula for \(\vert L_C^{Cat}(n, k)\vert = \mathscr C(n, k)\). Finally, we demonstrate uniqueness of DCS-satisfactory edge coefficients for lattices in this family.</p>
+<p>Chapter 5 introduces two well-known combinatorial constructs and
+proposes a bijection between them. The <em>topside peakless Motzkin paths</em> (TPMPs) are lattice paths obeying some simple constraints; we show that the number of TPMPs of length \(n\) is given by the \(n\)th peakless Motzkin number. <em>Littlewood-Richardson tableaux</em> are generalizations of Young tableaux which appear prominently in enumerative combinatorics. We conjecture that Littlewood-Richardson tableaux of a certain shape \(P_n/Q_n\) are equinumerous with length-\(n\) TPMPs, and provide some empirical evidence to support this claim.</p>
+<p>Chapter 6 gives an overview of the algorithms and Python code used to produce the illustrations and some of the foregoing results.</p>
+</article>
 <ul class=blog-posts>
 <li class=blog-post>
 <time datetime=2020-11-01 pubdate>
@@ -98,30 +133,6 @@ November 1, 2020
 <em>An overview of the `dc-lattices` library.</em>
 </li>
 </ul>
-<small>
-<div>
-<a href=https://sverona.dev/tags/2019/>#2019</a>&nbsp;
-<a href=https://sverona.dev/tags/2021/>#2021</a>&nbsp;
-<a href=https://sverona.dev/tags/asymptotics/>#asymptotics</a>&nbsp;
-<a href=https://sverona.dev/tags/challenge/>#challenge</a>&nbsp;
-<a href=https://sverona.dev/tags/code/>#code</a>&nbsp;
-<a href=https://sverona.dev/tags/combinatorics/>#combinatorics</a>&nbsp;
-<a href=https://sverona.dev/tags/css/>#css</a>&nbsp;
-<a href=https://sverona.dev/tags/fun/>#fun</a>&nbsp;
-<a href=https://sverona.dev/tags/grad-school/>#grad-school</a>&nbsp;
-<a href=https://sverona.dev/tags/in-progress/>#in-progress</a>&nbsp;
-<a href=https://sverona.dev/tags/latex/>#latex</a>&nbsp;
-<a href=https://sverona.dev/tags/linear-operators/>#linear-operators</a>&nbsp;
-<a href=https://sverona.dev/tags/machine-learning/>#machine-learning</a>&nbsp;
-<a href=https://sverona.dev/tags/mathematics/>#mathematics</a>&nbsp;
-<a href=https://sverona.dev/tags/neural-networks/>#neural-networks</a>&nbsp;
-<a href=https://sverona.dev/tags/operations-research/>#operations-research</a>&nbsp;
-<a href=https://sverona.dev/tags/probability/>#probability</a>&nbsp;
-<a href=https://sverona.dev/tags/project-euler/>#project-euler</a>&nbsp;
-<a href=https://sverona.dev/tags/term-paper/>#term-paper</a>&nbsp;
-<a href=https://sverona.dev/tags/time-scales-calculus/>#time-scales-calculus</a>&nbsp;
-</div>
-</small>
 </main>
 <footer> Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a>
 </footer>

@@ -23,9 +23,9 @@
 <meta itemprop=keywords content="grad-school,term-paper,time-scales-calculus,neural-networks,machine-learning,2019,">
 <meta name=referrer content="no-referrer-when-downgrade">
 <link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/katex/katex.css type=text/css rel=stylesheet>
+<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
 <script defer src=https://sverona.dev/katex/katex.js></script>
 <script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
 <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}]})})</script>
@@ -36,9 +36,8 @@
 </a>
 <nav><ul>
 <li><a href=/blog>blog</a></li>
-<li><a href=/projects>projects</a></li>
 <li><a href=https://github.com/sverona>github</a></li>
-<li><a href=/about>about</a></li>
+<li><a href=/trig>MATH 117</a></li>
 </ul>
 </nav>
 </header>
@@ -66,6 +65,38 @@ May 7, 2019
 </ul>
 </div>
 </header>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#introduction>Introduction</a>
+<ul>
+<li><a href=#example-digit-recognition>Example: digit recognition</a></li>
+<li><a href=#how-neural-networks-work>How neural networks work</a></li>
+<li><a href=#how-neural-networks-learn>How neural networks &ldquo;learn&rdquo;</a></li>
+</ul>
+</li>
+<li><a href=#preliminaries>Preliminaries</a>
+<ul>
+<li><a href=#backpropagation-on-mathbbr>Backpropagation on \(\mathbb{R}\)</a></li>
+<li><a href=#ordered-derivatives>Ordered derivatives</a></li>
+<li><a href=#univariate-time-scales-calculus>Univariate time scales calculus</a></li>
+<li><a href=#multivariate-time-scales-calculus>Multivariate time scales calculus</a></li>
+</ul>
+</li>
+<li><a href=#main-results>Main results</a>
+<ul>
+<li><a href=#linear-regression-on-time-scales>Linear regression on time scales</a></li>
+</ul>
+</li>
+<li><a href=#directions-for-future-research>Directions for future research</a>
+<ul>
+<li><a href=#clearer-exposition>Clearer exposition</a></li>
+<li><a href=#universal-approximation>Universal approximation</a></li>
+<li><a href=#recurrent-neural-networks>Recurrent neural networks</a></li>
+</ul>
+</li>
+<li><a href=#references>References</a></li>
+</ul>
+</nav>
 <article>
 <p><em>Neural networks</em> are a popular technique for machine learning problems such as automated handwriting recognition, automated speech recognition, and time-series forecasting. On these tasks, so-called <em>deep neural networks</em> [Schmidhuber 2015] and <em>convolutional neural networks</em> [Ciresan et al. 2011] have performed at least as well as the best known non-neural-network statistical learning techniques. A typical neural network numerically solves an extremization problem using gradient descent in a high-dimensional Euclidean space using an algorithm known as <em>backpropagation</em>.</p>
 <p>We provide an exposition of (feedforward) neural networks and backpropagation on \(\mathbb{R}^n\), analogous to that found in [Nielsen 2015]. We further generalize these concepts from \(\mathbb{R}^n\) to a product of <em>time scales</em>, or closed subsets of \(\mathbb{R}\) which may be partially discrete and partially continuous.</p>
@@ -548,14 +579,6 @@ theorems of advanced calculus.</em> W. A. Benjamin, Inc., 1965.</p>
 <p>Werbos, Paul J. &ldquo;Backpropagation through time: what it does and how to
 do it.&rdquo; <em>Proceedings of the IEEE</em> 78, no. 10 (1990): 1550-1560.</p>
 </article>
-<div class=page-tags>
-<a href=https://sverona.dev/tags/grad-school/>grad-school</a>,
-<a href=https://sverona.dev/tags/term-paper/>term-paper</a>,
-<a href=https://sverona.dev/tags/time-scales-calculus/>time-scales-calculus</a>,
-<a href=https://sverona.dev/tags/neural-networks/>neural-networks</a>,
-<a href=https://sverona.dev/tags/machine-learning/>machine-learning</a>,
-<a href=https://sverona.dev/tags/2019/>2019</a>,
-</div>
 <hr>
 </main>
 <footer> Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a>

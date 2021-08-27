@@ -20,9 +20,9 @@
 <meta name=referrer content="no-referrer-when-downgrade">
 <link rel=alternate type=application/rss+xml href=https://sverona.dev/index.xml title="S. Verona Malone">
 <link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/katex/katex.css type=text/css rel=stylesheet>
+<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
 <script defer src=https://sverona.dev/katex/katex.js></script>
 <script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
 <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}]})})</script>
@@ -33,13 +33,24 @@
 </a>
 <nav><ul>
 <li><a href=/blog>blog</a></li>
-<li><a href=/projects>projects</a></li>
 <li><a href=https://github.com/sverona>github</a></li>
-<li><a href=/about>about</a></li>
+<li><a href=/trig>MATH 117</a></li>
 </ul>
 </nav>
 </header>
 <main>
+<style type=text/css>@font-face{font-family:parisienne;font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/Parisienne-Regular.ttf)format('truetype')}html,body{width:100%;height:100%}main{display:grid;grid-template-rows:min-content auto;grid-gap:1.6rem}body>header,footer{display:none}header{display:grid;grid-template-columns:200px auto;grid-gap:10px;justify-content:center;align-items:center}header img{max-height:200px;clip-path:polygon(50% 0%,7.6% 25%,7.6% 75%,50% 100%,93.3% 75%,93.3% 25%)}.about{font-size:2rem;line-height:1.2}.name{color:#f23074}.name,.pronouns{font-style:italic}nav{display:grid;grid-template-columns:repeat(auto-fit,16px);grid-gap:16px;justify-content:center;height:16px}nav img{height:100%}nav ul{margin:0;padding:0}section{display:grid;justify-content:center;grid-template-columns:repeat(auto-fit,minmax(30ch,1fr));grid-gap:1.6rem}</style>
+<header>
+<img src=/images/sverona.png>
+<div>
+<span class=about><span class=name>S. Verona Malone</span> <span class=pronouns>(they/them)</span> is a fullstack developer and recreational mathematician based in Louisville.</span>
+</div>
+</header>
+<nav>
+<img src=/images/twitter-64.png>
+<img src=/images/github-64.png>
+<img src=/images/linkedin-64.png>
+</nav>
 </main>
 <footer> Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a>
 </footer>

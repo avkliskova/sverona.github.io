@@ -1,5 +1,6 @@
 ---
 title: Series
+date: 1946-10-07
 weight: 2
 ---
 
@@ -59,7 +60,7 @@ By taking enough terms we can obtain any desired accuracy. If the series
 is slow to converge it is sometimes possible to replace the higher terms
 by an integral:
 
-#+caption: Figure 1: The Basel plot: approximating \(\pi^2/6\) by \(\int 1/x^2^ \~dx\\) ![](figs/baselplot.png)
+{{% figure class="marginfigure" src="/images/baselplot.png" caption="Approximating \\(\pi^2/6\\) by \\( \int 1/x^2 ~\mathrm dx\\)" %}}
 
 Examination of the above diagram shows that
 

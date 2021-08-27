@@ -20,12 +20,12 @@ Methods 3 to 7 are applicable particularly to definite integrals.
 
 ## Complex Variable in Substitution 
 
-Find \\(\int_0^\infty e^{-ax} \cos bx ~dx.\\)
+Find \\(\int_0^\infty e^{-ax} \cos bx ~\mathrm dx.\\)
 
 Since \\(\cos bx = (e^{ibx} + e^{-ibx})/2\\), we have
 
 \\[\begin{aligned} \int_0^\infty e^{-ax} \cos bx &= \frac12 \int_0^\infty
-e^{-(a - ib)x} ~dx + \frac12 \int_0^\infty e^{-(a + ib)x} ~dx \newline &=
+e^{-(a - ib)x} ~\mathrm dx + \frac12 \int_0^\infty e^{-(a + ib)x} ~\mathrm dx \newline &=
 \frac12 \left( \frac1{a - ib} + \frac1{a + ib} \right) \newline &=
 \frac{a}{a^2 + b^2} \end{aligned}\\]
 
@@ -34,24 +34,26 @@ e^{-(a - ib)x} ~dx + \frac12 \int_0^\infty e^{-(a + ib)x} ~dx \newline &=
 ## Differentiation of a Parameter 
 
 Find
-\\(\displaystyle \int_0^\infty xe^{-ax} \cos bx ~dx.\\)
+\\(\displaystyle \int_0^\infty xe^{-ax} \cos bx ~\mathrm dx.\\)
 
-Define \\(\displaystyle S(a) = \int_0^\infty e^{-ax} \cos bx ~dx = \frac{a}{a^2 + b^2}.\\)
+Define \\(\displaystyle S(a) = \int_0^\infty e^{-ax} \cos bx ~\mathrm dx = \frac{a}{a^2 + b^2}.\\)
 
 Differentiate with respect to \\(a\\):
 
 \\[ S'(a) = -\int_0^\infty xe^{-ax} \cos bx = \frac{b^2 - a^2}{(a^2 +
 b^2)^2} \\]
 
+{{% figure class="marginfigure" src="/images/diffunderintplot.png" %}}
 The general rule for differentiation with respect to a parameter is
 \\[\begin{aligned}\frac{d}{d\alpha} \left[
-\int_{x_1(\alpha)}^{x_2(\alpha)} f(x, \alpha) ~dx\right] &=
-\int_{x_1}^{x_2} \frac{\partial}{\partial\alpha} f(x, \alpha) ~dx \newline &+
+\int_{x_1(\alpha)}^{x_2(\alpha)} f(x, \alpha) ~\mathrm dx\right] &=
+\int_{x_1}^{x_2} \frac{\partial}{\partial\alpha} f(x, \alpha) ~\mathrm dx \newline &+
 \left[\frac{d}{d\alpha} x_2(\alpha)\right]\cdot f(x_2, \alpha) -
 \left[\frac{d}{d\alpha} x_1(\alpha)\right]\cdot f(x_1, \alpha)\end{aligned}\\]
 
-\\[\begin{aligned} \Delta \int_{x_1}^{x_2} f(x, \alpha) ~dx &=
-\int_{x_1}^{x_2} \Delta f(x, \alpha) ~dx \newline &+ \Delta x_2(\alpha) f(x_2,
+
+\\[\begin{aligned} \Delta \int_{x_1}^{x_2} f(x, \alpha) ~\mathrm dx &=
+\int_{x_1}^{x_2} \Delta f(x, \alpha) ~\mathrm dx \newline &+ \Delta x_2(\alpha) f(x_2,
 \alpha) - \Delta x_1(\alpha) f(x, \alpha) \end{aligned} \\]
 
 
@@ -59,10 +61,10 @@ The general rule for differentiation with respect to a parameter is
 ## Multiplication by a Factor 
 
 Find
-\\(\displaystyle \int_0^\infty \frac{\sin x}x ~dx.\\)
+\\(\displaystyle \int_0^\infty \frac{\sin x}x ~\mathrm dx.\\)
 
-\\[\begin{aligned} S(\alpha) &= \int_0^\infty e^{-ax} \frac{\sin x}x ~dx
-\newline S'(\alpha) &= -\int_0^\infty e^{-ax} \sin x ~dx = \frac{-1}{1 +
+\\[\begin{aligned} S(\alpha) &= \int_0^\infty e^{-ax} \frac{\sin x}x ~\mathrm dx
+\newline S'(\alpha) &= -\int_0^\infty e^{-ax} \sin x ~\mathrm dx = \frac{-1}{1 +
 \alpha^2} \newline S(\alpha) &= -\arctan \alpha + C \newline \lim_{\alpha \to
 \infty} S(\alpha) &= 0 = -\frac\pi{2} + C \newline S(\alpha) &= \frac\pi{2} -
 \arctan \alpha \newline S(0) &= \frac\pi{2} \end{aligned}\\]
@@ -72,11 +74,11 @@ Find
 ## Differentiation under an Integral Sign 
 
 
-\\[\begin{aligned} \int_0^\infty e^{-ax} (1 + x^2)^{-1} ~dx &= S(a) \newline
-\int_0^\infty x^2 e^{-ax} (1 + x^2)^{-1} ~dx &= S''(a) \end{aligned}\\]
+\\[\begin{aligned} \int_0^\infty e^{-ax} (1 + x^2)^{-1} ~\mathrm dx &= S(a) \newline
+\int_0^\infty x^2 e^{-ax} (1 + x^2)^{-1} ~\mathrm dx &= S''(a) \end{aligned}\\]
 
 \\[\begin{aligned} S(a) + S''(a) &= \int_0^\infty \left(\frac1{1 + x^2} +
-\frac{x^2}{1 + x^2}\right) e^{-ax} ~dx \newline \frac{d^2S}{da^2} + S &=
+\frac{x^2}{1 + x^2}\right) e^{-ax} ~\mathrm dx \newline \frac{d^2S}{da^2} + S &=
 \frac1a \end{aligned}\\]
 
 This differential equation may be solved for \\(S(a)\\).
@@ -87,9 +89,9 @@ This differential equation may be solved for \\(S(a)\\).
 
 
 \\[\begin{aligned} S(\alpha, \beta) &= \int_0^\infty e^{-\alpha x} \sin
-\beta x ~dx \newline \frac{\partial^2 S}{\partial \beta^2} &= -\int_0^\infty
-x^2 e^{-\alpha x} \sin \beta x ~dx \newline \frac{\partial^2 S}{\partial
-\alpha^2} &= \int_0^\infty x^2 e^{-\alpha x} \sin \beta x ~dx \newline
+\beta x ~\mathrm dx \newline \frac{\partial^2 S}{\partial \beta^2} &= -\int_0^\infty
+x^2 e^{-\alpha x} \sin \beta x ~\mathrm dx \newline \frac{\partial^2 S}{\partial
+\alpha^2} &= \int_0^\infty x^2 e^{-\alpha x} \sin \beta x ~\mathrm dx \newline
 \frac{\partial^2 S}{\partial \beta^2} &= - \frac{\partial^2 S}{\partial
 \alpha^2} \end{aligned}\\]
 
@@ -97,7 +99,7 @@ The form of \\(S\\) may be partly determined by making the substitution
 \\(y = \beta x\\).
 
 \\[\begin{aligned} S(\alpha, \beta) &= \frac1\beta \int_0^\infty
-e^{-\frac\alpha\beta y} \sin y ~dy = \frac1\beta
+e^{-\frac\alpha\beta y} \sin y ~\mathrm dy = \frac1\beta
 F\left(\frac\alpha\beta\right)\newline \frac\partial{\partial\beta} \left[
 \frac1\beta F\left(\alpha\beta\right) \right] &= \frac1\beta
 F'\left(-\frac\alpha{\beta^2}\right) -
@@ -135,7 +137,7 @@ To evaluate \\(c_0\\) and \\(c_1\\), we observe:
 For small \\(\beta\\), \\(\sin \beta x \sim \beta x\\). This is a good
 approximation since \\(e^{-\alpha x}\\) kills the integrand for large \\(x\\).
 
-\\[\begin{aligned} \int_0^\infty e^{-\alpha x} \beta x ~dx &=
+\\[\begin{aligned} \int_0^\infty e^{-\alpha x} \beta x ~\mathrm dx &=
 \frac\beta{\alpha^2} \newline \frac{C_0\beta}{\alpha^2 + \beta^2} &\cong
 \frac{C_0\beta}{\alpha^2} \quad\therefore C_0 = 1 \end{aligned}\\]
 
@@ -148,26 +150,26 @@ approximation since \\(e^{-\alpha x}\\) kills the integrand for large \\(x\\).
 \\(\delta(x) = 0\\), \\(x \not= 0\\), and is in some way
 infinite for \\(x = 0\\).{{% sidenote %}} The reference for this section is *The Principles of Quantum Mechanics*, P. M. Dirac.{{% /sidenote %}}
 
-\\[\begin{gathered} \int_{-\infty}^\infty \delta(x) ~dx \vcentcolon=
-\int_{-\epsilon}^{\epsilon} \delta(x) ~dx \vcentcolon= 1 \newline
-\int_{-\infty}^\infty f(x) \delta(x) ~dx = f(0) \end{gathered}\\]
+\\[\begin{gathered} \int_{-\infty}^\infty \delta(x) ~\mathrm dx \vcentcolon=
+\int_{-\epsilon}^{\epsilon} \delta(x) ~\mathrm dx \vcentcolon= 1 \newline
+\int_{-\infty}^\infty f(x) \delta(x) ~\mathrm dx = f(0) \end{gathered}\\]
 
 Proof:
 
-Write \\[\displaystyle \int_{-\infty}^\infty f(x) \delta(x) ~dx =
-\int_{-\infty}^{-\epsilon} f(x) \delta(x) ~dx +
-\int_{-\epsilon}^\epsilon f(x) \delta(x) ~dx + \int_\epsilon^\infty f(x)
-\delta(x) ~dx. \\]
+Write \\[\displaystyle \int_{-\infty}^\infty f(x) \delta(x) ~\mathrm dx =
+\int_{-\infty}^{-\epsilon} f(x) \delta(x) ~\mathrm dx +
+\int_{-\epsilon}^\epsilon f(x) \delta(x) ~\mathrm dx + \int_\epsilon^\infty f(x)
+\delta(x) ~\mathrm dx. \\]
 
 If \\(f(x)\\) varies relatively slowly in the range \\([-\varepsilon,
 \varepsilon]\\), we can replace it by an average of \\(f(x)\\) over that
 interval.
 
-\\[\begin{aligned} \int_{-\infty}^\infty f(x) \delta(x) ~dx &=
-\int_{-\epsilon}^\epsilon f(x) \delta(x) ~dx \newline &=
-\int_{-\epsilon}^\epsilon \overline{f(x)} \delta(x) ~dx \newline &=
+\\[\begin{aligned} \int_{-\infty}^\infty f(x) \delta(x) ~\mathrm dx &=
+\int_{-\epsilon}^\epsilon f(x) \delta(x) ~\mathrm dx \newline &=
+\int_{-\epsilon}^\epsilon \overline{f(x)} \delta(x) ~\mathrm dx \newline &=
 \overline{f(x)} \cdot \mathbf{1}_{x = 0} \cdot \int_{-\epsilon}^\epsilon
-\delta(x) ~dx \newline \left(\lim_{\epsilon \to 0}\right) \quad &= f(0).
+\delta(x) ~\mathrm dx \newline \left(\lim_{\epsilon \to 0}\right) \quad &= f(0).
 \end{aligned}\\]
 
 The delta function is useful since it may be operated on as though it
@@ -175,8 +177,8 @@ were a real function. The only justification we give for this is that it
 gives the correct answer.
 
 \\[\begin{aligned} f'(t) &= -\int_{-\infty}^\infty f(x) \delta'(x - t)
-~dx \newline &= \left. f(x) \delta(x - t) \right\vert_{x=-\infty}^{x=\infty} -
-\int_{-\infty}^\infty f'(x) \delta(x - t) ~dx \newline &= f'(t).
+~\mathrm dx \newline &= \left. f(x) \delta(x - t) \right\vert_{x=-\infty}^{x=\infty} -
+\int_{-\infty}^\infty f'(x) \delta(x - t) ~\mathrm dx \newline &= f'(t).
 \end{aligned}\\]
 
 The following useful relations may be easily proved:
@@ -191,33 +193,39 @@ The following useful relations may be easily proved:
 The following figures are approximate representations of \\(\delta(x)\\) and
 \\(\delta'(x)\\).
 
+{{% div class="fullwidth flex" %}}
+{{% figure src="/images/diracdeltaplot.png" caption="Approximate representation of \\(\delta(x)\\) (actually \\(e^{-400x^2}\\))" %}}
+{{% figure src="/images/diracdeltaprimeplot.png" caption="Approximate representation of \\(\delta'(x)\\) (actually \\(-800xe^{-400x^2}\\))" %}}
+{{% /div %}}
+
 Define the *step function*{{%sidenote%}}
 There are differing definitions of the value at \\(x = 0\\). The definition of \\(\delta(x)\\) as the limit \\(\sigma \to 0\\) of the normal distribution suggests the value should be \\(1/2\\), but some authors define it as \\(1\\).
-{{%/sidenote %}} \\(\displaystyle H(x) = \int_{-\infty}^x
-\delta(x) ~dx = \begin{cases} 0, &x < 0,\newline 1, &x >0.\end{cases}\\)
+{{%/sidenote %}} \\(\displaystyle H(x) = \int\_{-\infty}^x
+\delta(x) ~\mathrm dx = \begin{cases} 0, &x < 0,\newline 1, &x >0.\end{cases}\\)
+
+{{% figure src="/images/piecewisesmooth.png" caption="Example of a curve whose derivative may be expressed using \\(\delta(x)\\)" %}}
 
 Consider the piecewise smooth curve above. Its derivative may be
-expressed in terms of the delta function as \\(f'(x)_{x \not= a} +
+expressed in terms of the delta function as \\(f'(x)\_{x \not= a} +
 c\delta(x - a).\\)
 
-Consider the integral \\(\int_{-\infty}^\infty \cos \beta x ~dx\\). We shall
+Consider the integral \\(\int_{-\infty}^\infty \cos \beta x ~\mathrm dx\\). We shall
 show that it is equal to \\(2\pi \delta(\beta)\\) by showing
-\\[\int_0^\infty \cos \beta x ~dx = \pi \delta(\beta). \\]
+\\[\int_0^\infty \cos \beta x ~\mathrm dx = \pi \delta(\beta). \\]
 
-Note{{% sidenote %}} You may argue here that we haven\'t shown that this limit is actually equal to some multiple of \\(\delta(\beta)\\). You\'d be correct to do so. The fact Feynman is implicitly using here is that the Dirac delta is the limit of a Cauchy distribution as the scale parameter goes to \\(0\\). In fact, Cauchy defined the delta this way 100 years before Dirac!{{%/sidenote%}} \\(\displaystyle\lim_{\alpha \to 0} e^{-\alpha x} \cos \beta x ~dx =
+Note{{% sidenote %}} You may argue here that we haven\'t shown that this limit is actually equal to some multiple of \\(\delta(\beta)\\). You\'d be correct to do so. The fact Feynman is implicitly using here is that the Dirac delta is the limit of a Cauchy distribution as the scale parameter goes to \\(0\\). In fact, Cauchy defined the delta this way 100 years before Dirac!{{%/sidenote%}} \\(\displaystyle\lim_{\alpha \to 0} e^{-\alpha x} \cos \beta x ~\mathrm dx =
 \lim_{\alpha \to 0} \frac\alpha{\alpha^2 + \beta^2}.\\)
 
-![Figure 5: The Cauchy distribution for small
-\\(\gamma\\).](figs/cauchydist.png)
+
+{{% figure src="/images/cauchydist.png" caption="The Cauchy distribution for small \\(\gamma.\\)" %}}
 
 For small \\(\alpha\\) this integral looks approximately as above. The area
-under the curve is $A = \int_{-\infty}^\infty
-\frac\alpha{\alpha^2+\beta^2} ~d\beta.$
+under the curve is \\(A = \int\_{-\infty}^\infty \frac\alpha{\alpha^2+\beta^2} ~\mathrm d\beta.\\)
 
 Making the change of variables \\(\beta = \alpha z\\), we obtain
 
 \\[\begin{aligned} A &= \int_{-\infty}^\infty \frac{\alpha^2}{\alpha^2 +
-\alpha^2 z^2} ~dz \newline &= \int_{-\infty}^\infty \frac{dz}{1 + z^2} \newline &=
+\alpha^2 z^2} ~\mathrm dz \newline &= \int_{-\infty}^\infty \frac{dz}{1 + z^2} \newline &=
 \arctan z \vert_{-\infty}^\infty \newline &= \pi. \end{aligned}\\]
 
 Note that the area is independent of the value of \\(\alpha.\\){{%sidenote%}}
@@ -228,7 +236,7 @@ And thus \\(A\\) is equal to the multiple of \\(\delta(\beta)\\) whose integral 
 
 ### Example: Use of the delta function in evaluating a definite integral 
 
-\\[\int_0^{\pi/2} \cos(m \tan\theta) ~d\theta \\]
+\\[\int_0^{\pi/2} \cos(m \tan\theta) ~\mathrm d\theta \\]
 
 Substitute \\(\tan \theta = x\\).
 
@@ -236,7 +244,7 @@ Substitute \\(\tan \theta = x\\).
 -\int_0^\infty x^2 \cos mx ~\frac{dx}{1 + x^2} &= S''(m) \newline
 \end{aligned}\\]
 
-\\[S(m) - S''(m) = \int_0^\infty \cos mx ~dx = \pi \delta(m)\\]
+\\[S(m) - S''(m) = \int_0^\infty \cos mx ~\mathrm dx = \pi \delta(m)\\]
 
 ### Aside: Variation of parameters
 
@@ -286,8 +294,8 @@ e^{-m} s_2'(m) &= -\pi\delta(m),\end{aligned} \\]
 which gives \\(2e^m s_1'(m) = -\pi \delta(m)\\), $2e^{-m}s_2'(m) =
 \pi\delta(m)$, so we have
 
-\\[\begin{aligned} s_1(m) &= -\frac\pi2 \int e^{-m} \delta(m) ~dm \newline &=
--\frac\pi2 e^{-0}H(m) + A, \newline s_2(m) &= \frac\pi2 \int e^m \delta(m) ~dm
+\\[\begin{aligned} s_1(m) &= -\frac\pi2 \int e^{-m} \delta(m) ~\mathrm dm \newline &=
+-\frac\pi2 e^{-0}H(m) + A, \newline s_2(m) &= \frac\pi2 \int e^m \delta(m) ~\mathrm dm
 \newline &= \frac\pi2 e^0H(m) + B. \end{aligned}\\]
 
 Thus the solution is given by
@@ -304,8 +312,8 @@ The general solution of such a differential equation is{{% sidenote %}}
 Obtained by variation of parameters.
 {{% /sidenote %}}
 
-\\[\displaystyle S(m) = \frac{e^m}2 \int_{-\infty}^m e^{-t} f(t) ~dt -
-\frac{e^{-m}}2\int_{-\infty}^m e^t f(t) ~dt + Ae^m + Be^{-m}\\]
+\\[\displaystyle S(m) = \frac{e^m}2 \int_{-\infty}^m e^{-t} f(t) ~\mathrm dt -
+\frac{e^{-m}}2\int_{-\infty}^m e^t f(t) ~\mathrm dt + Ae^m + Be^{-m}\\]
 
 where \\(f(t) = \pi \delta(t)\\).
 
@@ -316,7 +324,7 @@ Therefore the solution has the form
 
 where the constants \\(A\\), \\(B\\) still have to be determined. Note
 \\(S(0) = \pi/2 = A + B\\). Also note that \\(S(m)\\) is an even function,{{% sidenote %}}
-Note that \\(T(\theta) = \int \cos(m \tan \theta) ~dm\\) would be odd.
+Note that \\(T(\theta) = \int \cos(m \tan \theta) ~\mathrm dm\\) would be odd.
 {{%/sidenote%}} so we have{{% sidenote %}}
 After assuming without loss of generality that \\(m > 0\\).
 {{% /sidenote %}}
@@ -344,11 +352,11 @@ S(\beta) &= \begin{cases} 2\pi + c, &\beta > 0, \newline c, &\beta < 0.\end{case
 \[Figure goes here\]
 
 Consider now the integral{{% sidenote %}}
-Evaluating this is a nice, quick exercise, given previous results.
+Evaluating this is a nice, quick exercise, given previous results. Note that a little work and the right choice of domain shows \\[\frac{\pi}2 - \arctan \frac\alpha\beta = \arctan \frac\beta\alpha.\\]
 {{% /sidenote %}}
 
 
-\\[\int_0^\infty e^{-\alpha x} \frac{\sin \beta x}x ~dx = \frac{\pi}{2} - \arctan \frac{\alpha}{\beta}\\]
+\\[\int_0^\infty e^{-\alpha x} \frac{\sin \beta x}x ~\mathrm dx = \frac{\pi}{2} - \arctan \frac{\alpha}{\beta}\\]
 
 A graph of this integral looks as follows:
 
@@ -362,18 +370,18 @@ previous to it. (There is a factor of 2 to be considered.)
 ## Investigation of the Existence of Integrals 
 
 Consider
-\\(\displaystyle \int_0^\infty \frac{e^{-ax}}x ~dx.\\)
+\\(\displaystyle \int_0^\infty \frac{e^{-ax}}x ~\mathrm dx.\\)
 
-Near \\(0\\), this integral is approximately \\(\int_0^\infty \frac1x ~dx =
+Near \\(0\\), this integral is approximately \\(\int_0^\infty \frac1x ~\mathrm dx =
 -\ln 0 + \dots.\\) The integral is infinite.
 
-Consider \\(\displaystyle \int_0^\infty \frac{1 - e^{-ax}}x ~dx.\\)
+Consider \\(\displaystyle \int_0^\infty \frac{1 - e^{-ax}}x ~\mathrm dx.\\)
 
 As \\(x \to 0\\), the integral is approximately
-\\(\int_0^\infty a ~dx = 0 + \dots\\).
+\\(\int_0^\infty a ~\mathrm dx = 0 + \dots\\).
 
 As \\(x \to \infty\\), the integral is approximately \\(\int_0^\infty
-\frac1x ~dx = \ln\infty + \dots.\\) Again, the integral is infinite.
+\frac1x ~\mathrm dx = \ln\infty + \dots.\\) Again, the integral is infinite.
 
 The following table of functions may prove useful in determining whether
 or not a given integral exists.
@@ -391,26 +399,26 @@ or not a given integral exists.
 ## Special Method of Evaluating a Definite Integral 
 
 Let
-\\(\displaystyle A = \int\_{-\infty}^\infty e^{-x^2} ~dx\\).{{%sidenote%}}
+\\(\displaystyle A = \int\_{-\infty}^\infty e^{-x^2} ~\mathrm dx\\).{{%sidenote%}}
 This is the *probability integral*, so named because it\'s the (scaled) pdf of the normal distribution.
 {{% /sidenote %}}
 
 This integral exists,{{% sidenote %}}
-Because \\(e^{-x^2} < e^{-\vert x\vert}\\) if \\(\vert x \vert > 1\\) and \\(\int\_{-\infty}^\infty e^{-\vert x \vert} ~dx = 2\\).
+Because \\(e^{-x^2} < e^{-\vert x\vert}\\) if \\(\vert x \vert > 1\\) and \\(\int\_{-\infty}^\infty e^{-\vert x \vert} ~\mathrm dx = 2\\).
 {{% /sidenote %}} so its square exists:{{% sidenote %}}
 The last line works because the second integral is in a different variable than, and thus constant with respect to, the first.
 {{% /sidenote %}}
 
-\\[\begin{aligned} A^2 &= \int_{-\infty}^\infty e^{-x^2} ~dx \cdot
-\int_{-\infty}^\infty e^{-y^2} ~dy \newline &= \int_{-\infty}^\infty
-\int_{-\infty}^\infty e^{-(x^2 + y^2)} ~dx ~dy. \end{aligned}\\]
+\\[\begin{aligned} A^2 &= \int_{-\infty}^\infty e^{-x^2} ~\mathrm dx \cdot
+\int_{-\infty}^\infty e^{-y^2} ~\mathrm dy \newline &= \int_{-\infty}^\infty
+\int_{-\infty}^\infty e^{-(x^2 + y^2)} ~\mathrm dx ~\mathrm dy. \end{aligned}\\]
 
 Now we convert the double integral to polar coordinates. Make the change
 of variables \\(x = r \cos \theta\\), \\(y = r \sin \theta\\):
 \\[\begin{aligned} &= \int_0^\infty \int_0^{2\pi} e^{-r^2} \cdot r
-~d\theta ~dr \newline &= \int_0^\infty re^{-r^2}
-\theta\vert_{\theta=0}^{\theta=2\pi} ~dr \newline &= \int_0^\infty 2\pi
-re^{-r^2} ~dr \newline &= 2\pi \lim_{c \to \infty} \left. -\frac12 e^{-r^2}
+~\mathrm d\theta ~\mathrm dr \newline &= \int_0^\infty re^{-r^2}
+\theta\vert_{\theta=0}^{\theta=2\pi} ~\mathrm dr \newline &= \int_0^\infty 2\pi
+re^{-r^2} ~\mathrm dr \newline &= 2\pi \lim_{c \to \infty} \left. -\frac12 e^{-r^2}
 \right\vert_0^c \newline &= -\pi \lim_{c \to \infty} e^{-c^2} - e^0 \newline &= \pi,
 \end{aligned}\\] whereupon we obtain \\(A = \sqrt\pi.\\)
 
@@ -423,12 +431,12 @@ Differential Equations,\" but that doesn\'t fit.)
 
 Let\'s compute
 \\(\displaystyle \int_0^\infty \frac{dx}{e^{nx} +
-e^{-nx}}.\\){{% sidenote %}}\\(= \int_0^\infty \frac12 \operatorname{sech} nx ~dx.\\){{% /sidenote %}}
+e^{-nx}}.\\){{% sidenote %}}\\(= \int_0^\infty \frac12 \operatorname{sech} nx ~\mathrm dx.\\){{% /sidenote %}}
 
 We have
 
 \\[\begin{aligned} \int_0^\infty \frac{dx}{e^{nx} + e^{-nx}} &=
-\int_0^\infty \frac{e^{nx}}{e^{2nx} + 1} ~dx\newline \end{aligned}\\]
+\int_0^\infty \frac{e^{nx}}{e^{2nx} + 1} ~\mathrm dx\newline \end{aligned}\\]
 
 This integral can now be evaluated immediately with the substitution $u
 = e^{nx}$, but let\'s do it another way by changing it to a series:
@@ -438,11 +446,11 @@ This integral can now be evaluated immediately with the substitution $u
 
 Since \\(e^{-2nx} < 1\\) if \\(x > 0\\), we have \\[\begin{aligned} &=
 \int\_0^\infty e^{nx} \left(\sum_{k = 0}^\infty (-1)^k e^{-2knx}\right)
-~dx \newline &= \int_0^\infty e^{nx} \left(\sum\_{k = 0}^\infty (-1)^k
-e^{-2knx}\right) ~dx, \end{aligned}\\] and since the series converges
+~\mathrm dx \newline &= \int_0^\infty e^{nx} \left(\sum\_{k = 0}^\infty (-1)^k
+e^{-2knx}\right) ~\mathrm dx, \end{aligned}\\] and since the series converges
 uniformly, we can switch the integral and summation, giving
 \\[\begin{aligned} &= \sum_{k = 0}^\infty \int_0^\infty (-1)^k e^{(-2k +
-1)nx} ~dx \newline &= \sum_{k = 0}^\infty (-1)^k \left. \frac{1}{(-2k + 1)n}
+1)nx} ~\mathrm dx \newline &= \sum_{k = 0}^\infty (-1)^k \left. \frac{1}{(-2k + 1)n}
 \cdot e^{(-2k + 1)nx} \right\vert_0^\infty \newline &= \sum_{k = 0}^\infty
 \frac{(-1)^k}{(-2k + 1)n} \newline &= \frac1n \sum_{k = 0}^\infty
 \frac{(-1)^k}{(-2k + 1)}. \end{aligned}\\] Then, if we observe that the
@@ -461,18 +469,18 @@ discuss some of them later.
 
 
 
-1.  Given \\(\displaystyle\int_0^\infty e^{-a^2x^2} ~dx =
+1.  Given \\(\displaystyle\int_0^\infty e^{-a^2x^2} ~\mathrm dx =
        \frac{\sqrt\pi}{2a},\\) prove that \\[\int_0^\infty
-       e^{-a^2x^2} \cos bx ~dx = \frac{\sqrt\pi}{2a} e^{-\frac{b^2}{4a^2}}.\\]
+       e^{-a^2x^2} \cos bx ~\mathrm dx = \frac{\sqrt\pi}{2a} e^{-\frac{b^2}{4a^2}}.\\]
 
-2.  Given \\(\displaystyle\int_0^\infty e^{-x^2} ~dx = \sqrt\pi/2\\), find
-    \\[\displaystyle\int_0^\infty x^4e^{-x^2} ~dx.\\]
+2.  Given \\(\displaystyle\int_0^\infty e^{-x^2} ~\mathrm dx = \sqrt\pi/2\\), find
+    \\[\displaystyle\int_0^\infty x^4e^{-x^2} ~\mathrm dx.\\]
 
-3.  Find \\[ \int_0^\infty \frac{e^{-ay} - e^{-by}}y ~dy.\\]
+3.  Find \\[ \int_0^\infty \frac{e^{-ay} - e^{-by}}y ~\mathrm dy.\\]
 
-4.  Find \\[\int_{-\infty}^\infty e^{-\beta x^2 - \frac\alpha{x^2}} ~dx.\\]
+4.  Find \\[\int_{-\infty}^\infty e^{-\beta x^2 - \frac\alpha{x^2}} ~\mathrm dx.\\]
 
-5.  Find \\[\int_0^\infty \frac{\sin^2 x}{x^2} ~dx.\\]
+5.  Find \\[\int_0^\infty \frac{\sin^2 x}{x^2} ~\mathrm dx.\\]
 
 6.  Prove \\(\delta(ax) = \frac1a \delta(x)\\) for \\(a > 0\\), in the sense
     that they have equal integrals over any interval.
@@ -480,15 +488,15 @@ discuss some of them later.
 7.  Find another form for \\(x\delta''(x)\\).
 
 8.  Find{{% sidenote %}}Hint: Use the previous derivation to obtain \\[\int_0^\infty
-       \frac{\cos mx}{k^2 + x^2} ~dx.\\] Then differentiate with respect to \\(k\\).{{% /sidenote %}}
+       \frac{\cos mx}{k^2 + x^2} ~\mathrm dx.\\] Then differentiate with respect to \\(k\\).{{% /sidenote %}}
 \\[\displaystyle \int_0^\infty \frac{\cos mx}{(1 + x^2)^2}
-       ~dx.\\]
+       ~\mathrm dx.\\]
 
-9.  Show that{{% sidenote %}} These are called the *Fresnel integrals*, and they are demonstrated beautifully in the Cornu spiral.{{% /sidenote %}} \\[\displaystyle \int_0^\infty \cos(x^2) ~dx = \int_0^\infty \sin(x^2) ~dx = \frac12 \sqrt{\frac\pi2}.\\]
+9.  Show that{{% sidenote %}} These are called the *Fresnel integrals*, and they are demonstrated beautifully in the Cornu spiral.{{% /sidenote %}} \\[\displaystyle \int_0^\infty \cos(x^2) ~\mathrm dx = \int_0^\infty \sin(x^2) ~\mathrm dx = \frac12 \sqrt{\frac\pi2}.\\]
 
-10. Find \\[\int_0^\infty \frac{x}{e^{mx} - e^{-mx}} ~dx.\\]
+10. Find \\[\int_0^\infty \frac{x}{e^{mx} - e^{-mx}} ~\mathrm dx.\\]
 
-11. Let \\(\displaystyle\int_0^\infty \frac{\sin x}{\sinh ax} ~dx = S(a).\\)
+11. Let \\(\displaystyle\int_0^\infty \frac{\sin x}{\sinh ax} ~\mathrm dx = S(a).\\)
 
     1.  Find \\(S(1)\\) to 3 significant figures.
     2.  Find approximate expressions for \\(S(a)\\) for large and small \\(a\\).

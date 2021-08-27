@@ -9,8 +9,7 @@ Let \\(A = a + bi\\) and \\(B = c + di.\\) Then the *rule
 of addition* states \\[A + B = (a + c) + i(b + d),\\] and the *rule of
 multiplication* states \\[AB = (ac - bd) + i(ad + bc).\\]
 
-![An Argand diagram showing the complex number \\(a + ib\\) as a
-vector.](figs/argand.png)
+{{% figure class="marginfigure" src="/images/argand.png" caption="An Argand diagram showing the complex number \\(a + ib\\) as a vector." %}}
 
 A complex number may also be represented as follows.
 
@@ -61,6 +60,7 @@ e^{i\theta} = \cos \theta + i \sin \theta \tag{3}
 
 This equation may be used as the defining equation for \\(e.\\) Note that
 \\(e^{i\theta}\\) has period \\(2\pi.\\)
+
 
 From equation (3), we learn:
 
@@ -125,7 +125,10 @@ Consider the function:
 This corresponds to an inversion and reflection on the axis of reals. A
 pure inversion is represented by \\(W = 1/\bar{Z}.\\)
 
-\[Figures here.\]
+{{% div class="fullwidth flex" %}}
+{{% figure src="/images/inversion.png" caption="\\(Z\\) depicted with the unit circle and some lines." %}}
+{{% figure src="/images/inversion2.png" caption="\\(W = 1/Z.\\)" %}}
+{{% /div %}}
 
 The function \\(1/Z\\) is said to have a \"simple pole\" at the origin.
 
@@ -136,7 +139,10 @@ Consider the function \\(W = Z^2.\\)
    Z^2 &= r^2 e^{2i\theta}
   \end{aligned}\\]
 
-\[Figures.\]
+{{% div class="fullwidth flex" %}}
+{{% figure src="/images/pre-parabola.png" caption="\\(Z.\\)" %}}
+{{% figure src="/images/parabola.png" caption="\\(W = Z^2.\\)" %}}
+{{% /div %}}
 
 ### Analytic Treatment
 

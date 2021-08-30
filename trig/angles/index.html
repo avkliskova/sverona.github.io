@@ -19,7 +19,7 @@
 <meta itemprop=name content="Angles">
 <meta itemprop=description content="Content from section 7.1 in OpenSTAX."><meta itemprop=datePublished content="2021-08-27T00:00:00+00:00">
 <meta itemprop=dateModified content="2021-08-27T00:00:00+00:00">
-<meta itemprop=wordCount content="656">
+<meta itemprop=wordCount content="975">
 <meta itemprop=keywords content>
 <meta name=referrer content="no-referrer-when-downgrade">
 <link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
@@ -72,6 +72,7 @@ August 27, 2021
 <nav id=TableOfContents>
 <ul>
 <li><a href=#some-basic-terms>Some basic terms</a></li>
+<li><a href=#triangles>Triangles</a></li>
 <li><a href=#degrees-and-radians>Degrees and radians</a></li>
 </ul>
 </nav>
@@ -129,7 +130,7 @@ August 27, 2021
 </ol>
 </div>
 <div class=example>
-<p>Two angles are supplementary. One has measure \(26^\circ\) and the other has measure \(x^2.\) Find \(x.\)</p>
+<p>Two angles are complementary. One has measure \(26^\circ\) and the other has measure \(x^2.\) Find \(x.\)</p>
 </div>
 <div class=definition>
 <p>An angle in a Cartesian plane is in <em>standard position</em> if its initial side coincides with the positive x-axis. (See diagrams in class.)</p>
@@ -160,6 +161,59 @@ August 27, 2021
 <li>Find the reference angle for an angle of \(965^\circ.\)</li>
 </ol>
 </div>
+<h2 id=triangles>Triangles</h2>
+<div class=definition>
+<p>Classifying triangles by sides:</p>
+<ol>
+<li><em>equilateral</em> &mdash; all sides equal;</li>
+<li><em>isosceles</em> &mdash; two sides equal;</li>
+<li><em>scalene</em> &mdash; no sides equal.</li>
+</ol>
+<p>See diagrams in class.</p>
+</div>
+<div class=proposition>
+<p>The sum of the angles in any triangle is \(180^\circ.\) (See proof by diagram in class.)</p>
+</div>
+<div class=definition>
+<p>Classifying triangles by angles:</p>
+<ol>
+<li><em>acute</em> &mdash; all acute angles;</li>
+<li><em>right</em> &mdash; one right angle;</li>
+<li><em>obtuse</em> &mdash; one obtuse angle.</li>
+</ol>
+<p>See diagrams in class. Are these all the possible classifications?</p>
+</div>
+<div class=definition>
+<p>Congruent and similar triangles:</p>
+<ol>
+<li>
+<p>Two triangles are <em>congruent</em> if they are the same size and shape; equivalently, if all their sides and all their angles are equivalent.</p>
+</li>
+<li>
+<p>Two triangles are <em>similar</em> if they are the same shape; equivalently, if all the angles, but not necessarily all the sides, are equivalent.</p>
+</li>
+</ol>
+<p>See diagrams in class.</p>
+</div>
+<div class=definition>
+<p>Types of equal angles:</p>
+<ol>
+<li><em>Corresponding</em> angles;</li>
+<li><em>Alternate interior</em> angles;</li>
+<li><em>Alternate exterior</em> angles;</li>
+<li><em>Vertical</em> angles.</li>
+</ol>
+<p>See diagrams in class.</p>
+</div>
+<div class=example>
+<p>Find all the equal angles and similar triangles in the &ldquo;hourglass&rdquo; diagram given in class. The outer lines are parallel.</p>
+</div>
+<div class=example>
+<p>Solve for \(x\) in the labelled &ldquo;hourglass&rdquo; diagram.</p>
+</div>
+<div class=example>
+<p>Find all the equal angles and similar triangles in the &ldquo;stack&rdquo; diagram given in class. The lower triangle&rsquo;s legs are parallel with the x- and y-axes.</p>
+</div>
 <h2 id=degrees-and-radians>Degrees and radians</h2>
 <p>Remember that we can think of angles as fractions of a circle. Let&rsquo;s say we want to measure an angle via the <em>arc length</em>, or the actual distance along the circle. The circumference of a (unit) circle is \(2\pi,\) so we have the conversion \[360^\circ = 1 \text{ circle} = 2\pi \text{ units of arc length}.\] We call these units of arc length <em>radians.</em></p>
 <div class=definition>
@@ -167,7 +221,31 @@ August 27, 2021
 <p>360 degrees equals \(2 \pi\) radians. 180 degrees equals \(\pi\) radians. 90 degrees equals \(\pi/2\) radians.</p>
 </div>
 <div class=example>
+<p>How many radians are in one degree? How many degrees are in one radian?</p>
+</div>
+<div class=example>
 <p>Convert all angles, measured in degrees, on the unit circle shown in class to radians.</p>
+</div>
+<div class=definition>
+<p>The length of a circular arc (a fraction of the circumference) subtended by an angle \(\theta\) is
+\[\begin{aligned}
+2\pi r \cdot \frac{\theta}{360} = \boxed{\frac{\theta r \pi}{180}} & \quad \text{(in degrees)} \newline
+2\pi r \cdot \frac{\theta}{2\pi} = \boxed{\theta r } & \quad \text{(in radians)}
+\end{aligned}\]</p>
+</div>
+<div class=definition>
+<p>The area of a circular sector (a fraction of the total area) subtended by an angle \(\theta\) is
+\[\begin{aligned}
+\pi r^2 \cdot \frac{\theta}{360} = \boxed{\frac{\theta r^2 \cdot \pi}{360}}& \quad \text{(in degrees)} \newline
+\pi r^2 \cdot \frac{\theta}{2\pi} = \boxed{\frac{\theta r^2}{2}}& \quad \text{(in radians)}
+\end{aligned}\]</p>
+</div>
+<div class=example>
+<p>Find the length of a circular arc and the area of a circular sector subtended by an angle of</p>
+<ol>
+<li>120 degrees;</li>
+<li>\(\pi/6\) radians.</li>
+</ol>
 </div>
 </article>
 <hr>

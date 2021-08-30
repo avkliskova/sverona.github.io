@@ -28,12 +28,12 @@ article h4:before {
   color: #aaa;
 }
 
-.definition:before,
-.theorem:before,
-.lemma:before,
-.example:before,
-.proposition:before,
-.corollary:before {
+article > div {
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+article > div:not(.proof):before {
   font-weight: 600;
   font-feature-settings: "smcp" 1, "c2sc" 1;
   font-style: all-small-caps;

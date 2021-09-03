@@ -95,6 +95,8 @@ These triangles are important because they allow us to use the aforementioned sp
 {{% div class="example" %}}
 1. A right triangle has a side of 5 opposite an angle of 30 degrees. Find the other angles and sides.
 2. A 45-45-90 right triangle has a hypotenuse of 20. Find the other two sides.
+
+Write out the sine and cosine of the angles in these triangles.
 {{% /div %}}
 
 ## Modelling with right triangles
@@ -115,3 +117,6 @@ How high is the mountain if:
 What if you know the height of the mountain and want to measure the distance? Suppose you know that the mountain is 6 miles tall, and you measure an angle of inclination of 45 degrees. How far is it on the ground in feet?
 {{% /div %}}
 
+## Other trigonometric functions
+
+There are four other possible ratios that we can construct from a given right triangle. What are they?

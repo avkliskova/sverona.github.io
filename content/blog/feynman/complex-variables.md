@@ -155,7 +155,10 @@ u &= 1 - \frac{v^2}4
 
 Let\'s see what happens as we circle the origin.
 
-\[Figures.\]
+{{% div class="fullwidth flex" %}}
+{{% figure src="/images/circle.png" caption="\\(Z.\\)" %}}
+{{% figure src="/images/circle-squared.png" caption="\\(W = Z^2.\\)" %}}
+{{% /div %}}
 
 We observe that in circling the origin of the \\(Z\\) plane once, we circle
 the origin of the \\(W\\) plane twice.

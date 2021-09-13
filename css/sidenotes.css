@@ -30,7 +30,6 @@ article {
   display: none;
 
   /* Need these for sidenotes inside b, em, headings... */
-  font-weight: normal;
   font-size: var(--sidenote-font-size);
 }
 
@@ -81,6 +80,10 @@ article {
   content: var(--marginnote-label-3);
 }
 
+figure {
+  border: 0;
+}
+
 .fullwidth {
   width: 100%;
 }
@@ -95,9 +98,8 @@ figure img {
 }
 
 .flex {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--single-figure-width), 1fr));
-  align-items: center;
+  display: flex;
+  grid-gap: 1rem;
 }
 
 input[type="checkbox"].margin-toggle {
@@ -169,6 +171,7 @@ figcaption p:first-child {
 
   .marginfigure {
     float: right;
+    clear: right;
     width: calc(var(--sidenote-proportion) * var(--article-width));
   }
 

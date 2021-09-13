@@ -43,13 +43,6 @@
 </header>
 <main>
 <header id=front-matter>
-<nav id=sequence-nav>
-<div id=next-prev>
-<div></div>
-<div id=prev><a href=https://sverona.dev/blog/gcd-ln/>\(\pi\) and \(e\) and the GCD</a></div>
-</div>
-</nav>
-<div id=metadata>
 <div>
 <h1>Mimicking LaTeX theorem environments with CSS</h1>
 <em id=page-description>An attempt at professionally typeset math, with mixed success.</em>
@@ -63,16 +56,27 @@ August 8, 2021
 <li id=completion-status>completion status: <em>in progress</em></li>
 <li id=epistemic-status>epistemic status: <em>my best guess</em></li>
 </ul>
+<nav>
+<p>
+This page belongs to the sequence <a href=https://sverona.dev/blog/>Blogs</a>.
+<br>
+The previous page in this sequence is <a href=https://sverona.dev/blog/gcd-ln/>\(\pi\) and \(e\) and the GCD</a>.
+<br>
+This is the final page in its sequence.
+</p>
+</nav>
 </div>
 </header>
-<h2>Contents</h2>
+<article>
+<div id=toc>
+<h5 style=margin:0>Contents</h5>
 <nav id=TableOfContents>
 <ul>
 <li><a href=#proofs-the-easy-way>Proofs, the easy way</a></li>
 <li><a href=#handling-katex>Handling KaTeX</a></li>
 </ul>
 </nav>
-<article>
+</div>
 <p>LaTeX supports &ldquo;theorem environments,&rdquo; like this:</p>
 <p>(Image)</p>
 <p>These aren&rsquo;t hard to mimic with <code>:before</code> and <code>:after</code>:</p>

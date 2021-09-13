@@ -28,15 +28,17 @@ article h4:before {
   color: #aaa;
 }
 
-article > div {
-  border: 1px solid black;
-  padding: 1rem;
-}
-
 article > div:not(.proof):before {
   font-weight: 600;
+  letter-spacing: .1rem;
   font-feature-settings: "smcp" 1, "c2sc" 1;
   font-style: all-small-caps;
+}
+
+article > div:not(.proof):not(#toc):not(.figure) {
+  padding: 1rem;
+  background-color: #eee;
+  margin-block: 2rem;
 }
 
 .definition:before {

@@ -19,7 +19,7 @@
 <meta itemprop=name content="The unit circle">
 <meta itemprop=description content="Content from section 7.3 in OpenSTAX."><meta itemprop=datePublished content="2021-09-08T00:00:00+00:00">
 <meta itemprop=dateModified content="2021-09-08T00:00:00+00:00">
-<meta itemprop=wordCount content="342">
+<meta itemprop=wordCount content="707">
 <meta itemprop=keywords content>
 <meta name=referrer content="no-referrer-when-downgrade">
 <link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
@@ -43,17 +43,7 @@
 </header>
 <main>
 <header id=front-matter>
-<nav id=sequence-nav>
-<div id=next-prev>
-<div></div>
-<div id=prev><a href=https://sverona.dev/trig/right-triangle-trig/>Right triangle trigonometry</a></div>
-</div>
-</nav>
-<div id=metadata>
 <div>
-<h3 style=margin:0>
-MATH 117: Trigonometry
-</h3>
 <h1>The unit circle</h1>
 <em id=page-description>Content from section 7.3 in OpenSTAX.</em>
 </div>
@@ -66,20 +56,34 @@ September 8, 2021
 <li id=completion-status>completion status: <em></em></li>
 <li id=epistemic-status>epistemic status: <em></em></li>
 </ul>
+<nav>
+<p>
+This page belongs to the sequence <a href=https://sverona.dev/trig/>MATH 117: Trigonometry</a>.
+<br>
+The previous page in this sequence is <a href=https://sverona.dev/trig/right-triangle-trig/>Right triangle trigonometry</a>.
+<br>
+This is the final page in its sequence.
+</p>
+</nav>
 </div>
 </header>
-<h2>Contents</h2>
+<article>
+<div id=toc>
+<h5 style=margin:0>Contents</h5>
 <nav id=TableOfContents>
 <ul>
 <li><a href=#problem-set-2>Problem Set 2</a></li>
-<li><a href=#the-unit-circle>The Unit Circle</a></li>
+<li><a href=#the-unit-circle>The unit circle</a></li>
+<li><a href=#the-other-four-trig-functions>The other four trig functions</a></li>
+<li><a href=#geometric-meaning-of-trig-functions>Geometric meaning of trig functions</a></li>
+<li><a href=#pythagorean-identities>Pythagorean identities</a></li>
 </ul>
 </nav>
-<article>
+</div>
 <p><a href=#>Here&rsquo;s a link to section 7.3, which these notes cover.</a></p>
 <h2 id=problem-set-2>Problem Set 2</h2>
 <p>From the <a href=https://openstax.org/books/algebra-and-trigonometry/pages/7-review-exercises>Review Exercises</a> for chapter 7, do 18-48 even, except for 34.</p>
-<h2 id=the-unit-circle>The Unit Circle</h2>
+<h2 id=the-unit-circle>The unit circle</h2>
 <p>It&rsquo;s time to connect the circle with the angles on it with what we learned in the previous section.</p>
 <div class=example>
 <p>Consider a circle of radius 1. Using two radii, form an angle in standard position (see diagram in class.) What happens as the angle increases from zero to \(90^\circ\) or \(\pi/2\) radians?</p>
@@ -89,9 +93,6 @@ September 8, 2021
 <div class=definition>
 <p>The <em>sine</em> and <em>cosine</em> of an angle \(\theta\) are defined as the y- and x- coordinates of the point where an angle \(\theta\) in standard position intersects the unit circle.</p>
 <p>(See diagram in class.)</p>
-</div>
-<div class=example>
-<p>Consider one of the triangles with hypotenuse 1 that we&rsquo;ve been studying. What does the Pythagorean theorem and the new definition of sine and cosine tell us?</p>
 </div>
 <div class=example>
 <p>Using special right triangles, verify the values for sine and cosine of \(0, \pi/6, \pi/4, \pi/3,\) and \(\pi/2\) that were given previously.</p>
@@ -104,7 +105,48 @@ September 8, 2021
 <p>Using the &lsquo;X&rsquo; method, find the sine and cosine of \(210^\circ\), \(300^\circ\), and \(7\pi/4\).</p>
 </div>
 <div class=example>
-<p>Complete the unit circle with values for sine and cosine of all indicated angles.</p>
+<p>Complete the unit circle with values for sine and cosine of all indicated angles. Which functions are positive in which quadrants?</p>
+</div>
+<h2 id=the-other-four-trig-functions>The other four trig functions</h2>
+<p>There are four other trigonometric functions that we need to study. Here they are:</p>
+<p>\[\begin{aligned}
+\tan \theta &= \frac{\text{opposite}}{\text{adjacent}} = \frac{\sin \theta}{\cos \theta} \newline
+\cot \theta &= \frac{\text{adjacent}}{\text{opposite}} = \frac{\cos \theta}{\sin \theta} = \frac{1}{\tan \theta}\newline
+\sec \theta &= \frac{\text{hypotenuse}}{\text{adjacent}} = \frac{1}{\cos \theta}\newline
+\csc \theta &= \frac{\text{hypotenuse}}{\text{opposite}} = \frac{1}{\sin \theta}
+\end{aligned}\]</p>
+<p>In which quadrants are these functions positive?</p>
+<h2 id=geometric-meaning-of-trig-functions>Geometric meaning of trig functions</h2>
+<p>Sine and cosine are coordinates, as we have discussed. But we can also think of them as <em>distances</em> &mdash; the length of the legs of a right triangle with hypotenuse 1.</p>
+<p>From this viewpoint, what does tangent become?</p>
+<p>\[
+\tan \theta = \frac{\sin \theta}{\cos \theta} = \frac{\text{length of vertical side}}{\text{length of horizontal side}} = \frac{\text{rise}}{\text{run}}
+\]</p>
+<p>So the tangent tells us the slope of the hypotenuse! (See diagram in class.)</p>
+<p>What about secant? Well, we can use the definition to set up a proportion: \[ \frac{\sec \theta}1 = \frac1{\cos \theta}.\]</p>
+<p>This gives us a triangle similar to the sine-cosine-1 triangle. What if we do the same for cosecant? Where do these triangles fit on the unit circle?</p>
+<p>So the secant is how far we have to extend the hypotenuse to get to \(x = 1.\) The cosecant is how far we have to extend it to get to \(y = 1.\)</p>
+<p>In summary:</p>
+<ol>
+<li>The sine and cosine of an angle are <em>coordinates</em> &mdash; the y- and x- coordinates where the hypotenuse meets the unit circle.</li>
+<li>The tangent of an angle is a <em>slope</em> &mdash; the slope of the hypotenuse. The cotangent is the reciprocal of that slope.</li>
+<li>The secant and cosecant of an angle are <em>distances</em> &mdash; the length to which the hypotenuse must be extended to reach \(x = 1\) and \(y = 1\) respectively.</li>
+</ol>
+<p>These will not be tested, but they may serve as a helpful memory aid.</p>
+<div class=example>
+<p>What are the domain and range of the six trig functions?</p>
+</div>
+<iframe src=https://www.desmos.com/calculator/f4pr0vbsjy?embed width=500 height=500 style="border:1px solid #ccc" frameborder=0></iframe>
+<h2 id=pythagorean-identities>Pythagorean identities</h2>
+<div class=example>
+<p>Consider one of the triangles with hypotenuse 1 that we&rsquo;ve been studying. What does the Pythagorean theorem and the new definition of sine and cosine tell us?</p>
+</div>
+<div class=theorem>
+<p>If \(\theta\) is any angle, we have</p>
+<p>\[ \boxed{\sin^2 \theta + \cos^2 \theta = 1.} \]</p>
+</div>
+<div class=example>
+<p>Suppose that \(\sin \theta = 3/5 \) and \(\theta\) is in the first quadrant. Use the Pythagorean identity to find \(\cos \theta.\)</p>
 </div>
 </article>
 <hr>

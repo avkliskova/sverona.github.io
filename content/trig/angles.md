@@ -4,13 +4,6 @@ description: Content from section 7.1 in OpenSTAX.
 date: 2021-08-27
 ---
 
-<style type="text/css">
-article div {
-  border: 1px solid black;
-  padding: 1rem;
-}
-</style>
-
 [Here's textbook section 7.1, which these notes cover.](https://openstax.org/books/algebra-and-trigonometry/pages/7-1-angles)
 
 ## Some basic terms

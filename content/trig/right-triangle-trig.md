@@ -4,21 +4,12 @@ description: Content from section 7.2 in OpenSTAX.
 date: 2021-09-01
 ---
 
-<style type="text/css">
-article div {
-  border: 1px solid black;
-  padding: 1rem;
-}
-
-table {
-border-spacing: 0.5em;
-border: 1px solid #ccc;
-}
-</style>
-
 [Here's textbook section 7.2, which these notes cover.](https://openstax.org/books/algebra-and-trigonometry/pages/7-2-right-triangle-trigonometry)
 
-# Right triangles
+<style type="text/css">
+article div {
+}
+</style>
 
 In this section, we'll focus on obtaining angles from distances in *right triangles.*
 

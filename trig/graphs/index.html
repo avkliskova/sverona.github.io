@@ -1,0 +1,182 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>The sine and cosine curves | S. Verona Malone</title>
+<meta name=title content="The sine and cosine curves">
+<meta name=description content="Content from section 8.1 in OpenSTAX.">
+<meta name=keywords content>
+<meta property="og:title" content="The sine and cosine curves">
+<meta property="og:description" content="Content from section 8.1 in OpenSTAX.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sverona.dev/trig/graphs/"><meta property="article:section" content="trig">
+<meta property="article:published_time" content="2021-09-15T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-09-15T00:00:00+00:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="The sine and cosine curves">
+<meta name=twitter:description content="Content from section 8.1 in OpenSTAX.">
+<meta itemprop=name content="The sine and cosine curves">
+<meta itemprop=description content="Content from section 8.1 in OpenSTAX."><meta itemprop=datePublished content="2021-09-15T00:00:00+00:00">
+<meta itemprop=dateModified content="2021-09-15T00:00:00+00:00">
+<meta itemprop=wordCount content="517">
+<meta itemprop=keywords content>
+<meta name=referrer content="no-referrer-when-downgrade">
+<link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
+<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<script defer src=https://sverona.dev/katex/katex.js></script>
+<script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}]})})</script>
+</head>
+<body>
+<header id=header><a href=/ class=title id=brand>
+<span id=accent></span>S. Verona Malone
+</a>
+<nav><ul>
+<li><a href=/blog>blog</a></li>
+<li><a href=https://github.com/sverona>github</a></li>
+<li><a href=/trig>MATH 117</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<header id=front-matter>
+<div>
+<h1>The sine and cosine curves</h1>
+<em id=page-description>Content from section 8.1 in OpenSTAX.</em>
+</div>
+<ul id=page-metadata-block>
+<li id=publish-date>
+<time datetime=2021-09-15 pubdate>
+September 15, 2021
+</time>
+</li>
+<li id=completion-status>completion status: <em></em></li>
+<li id=epistemic-status>epistemic status: <em></em></li>
+</ul>
+<nav>
+<p>
+This page belongs to the sequence <a href=https://sverona.dev/trig/>MATH 117: Trigonometry</a>.
+<br>
+The previous page in this sequence is <a href=https://sverona.dev/trig/unit-circle/>The unit circle</a>.
+<br>
+This is the final page in its sequence.
+</p>
+</nav>
+</div>
+</header>
+<article>
+<div id=toc>
+<h5 style=margin:0>Contents</h5>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#even-and-odd-functions-revisited>Even and odd functions revisited</a></li>
+<li><a href=#transformations-of-sine-and-cosine>Transformations of sine and cosine</a></li>
+</ul>
+</nav>
+</div>
+<p>Let&rsquo;s graph sine and cosine using the special values we know. (See diagram on board.)</p>
+<p>\[
+\begin{array}{r|ll}
+\theta & \mathbf \sin \theta & \mathbf \cos \theta \newline
+\hline
+0^\circ = 0 \text{ rad} & 0 & 1 \newline
+30^\circ = \pi/6 \text{ rad} & 1/2 & \sqrt3/2 \newline
+45^\circ = \pi/4 \text{ rad} & \sqrt2/2 & \sqrt2/2 \newline
+60^\circ = \pi/3 \text{ rad} & \sqrt3/2 & 1/2 \newline
+90^\circ = \pi/2 \text{ rad} & 1 & 0 \newline
+\hline
+120^\circ = 2\pi/3 \text{ rad} & \sqrt3/2 & -1/2 \newline
+135^\circ = 3\pi/4 \text{ rad} & \sqrt2/2 & -\sqrt2/2 \newline
+150^\circ = 5\pi/6 \text{ rad} & 1/2 & -\sqrt3/2 \newline
+180^\circ = \pi \text{ rad} & 0 & -1 \newline
+\hline
+210^\circ = 7\pi/6 \text{ rad} & \dots & \dots
+\end{array}
+\]</p>
+<p>(Sasha open Desmos and graph these.)</p>
+<p><a href=https://www.desmos.com/calculator/6yuhmbdlbo>Here&rsquo;s a link that demonstrates, geometrically, the connection between this graph and the unit circle.</a></p>
+<h2 id=even-and-odd-functions-revisited>Even and odd functions revisited</h2>
+<div class=definition>
+<p>A function \(f\) is <em>even</em> if \(f(-x) = f(x).\) A function \(f\) is <em>odd</em> if \(f(-x) = -f(x).\)</p>
+</div>
+<p>Are sine and cosine even or odd? What about tangent? What about their reciprocals?</p>
+<p><a href=https://www.desmos.com/calculator/kbdctpadi4>Here&rsquo;s a link that demonstrates even symmetry &ldquo;about the y-axis."</a></p>
+<p><a href=https://www.desmos.com/calculator/wergo8mexm>Here&rsquo;s a link that demonstrates odd symmetry &ldquo;about the origin."</a></p>
+<h2 id=transformations-of-sine-and-cosine>Transformations of sine and cosine</h2>
+<p>Let&rsquo;s take a moment to review transformations of ordinary functions.</p>
+<p>We always start with a <em>base</em> function, like \(f(x) = x^2.\)</p>
+<p>Then we think about what steps we have to do in what order to compute \(f(x).\) These steps are reflected, in that same order, in the basic transformations applied to the base function to obtain \(f(x).\)</p>
+<p>The following table tells how computational steps match up with transformations.</p>
+<div class=fullwidth>
+<table>
+<thead>
+<tr>
+<th>Computation</th>
+<th>Applied before base</th>
+<th>Applied after base</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add \(c\)</td>
+<td>Shift \(c\) units left</td>
+<td>Shift \(c\) units up</td>
+</tr>
+<tr>
+<td>Subtract \(c\)</td>
+<td>Shift \(c\) units right</td>
+<td>Shift \(c\) units down</td>
+</tr>
+<tr>
+<td>Multiply by \(c\)</td>
+<td>Compress horizontally, factor \(c\)</td>
+<td>Stretch vertically, factor \(c\)</td>
+</tr>
+<tr>
+<td>Divide by \(c\)</td>
+<td>Stretch horizontally, factor \(c\)</td>
+<td>Compress vertically, factor \(c\)</td>
+</tr>
+<tr>
+<td>Negate</td>
+<td>Flip over y-axis</td>
+<td>Flip over x-axis</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If the computational step occurs <em>before</em> the effect of the base function, then the corresponding transformation acts on the horizontal axis. If it occurs <em>after</em> the effect of the base function, then the transformation acts on the vertical axis.</p>
+<p>For instance, if 3 is added <em>before</em> \(x\) is squared, then the function is shifted left. If instead 3 is added <em>after</em> \(x\) is squared, then the function is shifted upward.</p>
+<div class=example>
+<p>Graph \(f(x) = 3(2x - 4)^2 + 2.\)</p>
+</div>
+<p>To get from \(x\) to \(f(x)\) in this example, we have to:</p>
+<ol>
+<li>Multiply by 2;</li>
+<li>Subtract 4;</li>
+<li>Square;</li>
+<li>Multiply by 3;</li>
+<li>Add 2.</li>
+</ol>
+<p>These are reflected in the transformations of the function as follows.</p>
+<ol>
+<li>Compress the base parabola by a factor of 2 horizontally.</li>
+<li>Shift the parabola 4 units right.</li>
+<li>(We don&rsquo;t do anything for this step because it&rsquo;s the base function.)</li>
+<li>Stretch the base parabola by a factor of 3 vertically.</li>
+<li>Shift the parabola 2 units upward.</li>
+</ol>
+<p>These rules aren&rsquo;t different for sine and cosine; they operate in exactly the same way.</p>
+<div class=example>
+<p>Graph \(f(x) = 3\sin\left(2x - \dfrac\pi{4}\right) + 2.\)</p>
+</div>
+</article>
+<hr>
+</main>
+<footer> Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a>
+</footer>
+</body>
+</html>

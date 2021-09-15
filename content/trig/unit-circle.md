@@ -105,5 +105,26 @@ If \\(\theta\\) is any angle, we have
 {{% /div %}}
 
 {{% div class="example" %}}
-Suppose that \\(\sin \theta = 3/5 \\) and \\(\theta\\) is in the first quadrant. Use the Pythagorean identity to find \\(\cos \theta.\\)
+Suppose that \\(\sin \theta = 3/5 \\) and \\(\theta\\) is in the first quadrant. Use the identity to find \\(\cos \theta.\\)
 {{% /div %}}
+
+{{% div class="example" %}}
+Suppose that \\(\cos \theta = 5/13 \\) and \\(\theta\\) is in the fourth quadrant. Use the identity to find \\(\sin \theta.\\)
+{{% /div %}}
+
+{{% div class="example" %}}
+Suppose that \\(\cos \theta = 5/13 \\) and \\(\theta\\) is in the second quadrant. Find \\(\cot \theta, \sec \theta, \\csc \theta, \\) and \\(\tan \theta.\\)
+{{% /div %}}
+
+We can use similar triangles to obtain the identities
+
+\\[\begin{aligned}
+\boxed{\tan^2 \theta + 1 = \sec^2 \theta} \\
+\boxed{1 + \cot^2 \theta = \csc^2 \theta} \\
+\end{aligned}\\]
+
+These are collectively known as the *Pythagorean identities.*
+
+## Even and odd functions
+
+

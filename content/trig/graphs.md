@@ -29,7 +29,7 @@ Let's graph sine and cosine using the special values we know. (See diagram on bo
 
 [Here's a link that demonstrates, geometrically, the connection between this graph and the unit circle.](https://www.desmos.com/calculator/6yuhmbdlbo)
 
-## Even and odd functions revisited
+## Even and odd functions
 
 {{% div class="definition" %}}
 A function \\(f\\) is *even* if \\(f(-x) = f(x).\\) A function \\(f\\) is *odd* if \\(f(-x) = -f(x).\\)

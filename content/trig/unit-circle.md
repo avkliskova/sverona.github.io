@@ -113,18 +113,19 @@ Suppose that \\(\cos \theta = 5/13 \\) and \\(\theta\\) is in the fourth quadran
 {{% /div %}}
 
 {{% div class="example" %}}
-Suppose that \\(\cos \theta = 5/13 \\) and \\(\theta\\) is in the second quadrant. Find \\(\cot \theta, \sec \theta, \\csc \theta, \\) and \\(\tan \theta.\\)
+Suppose that \\(\cos \theta = 5/13 \\) and \\(\theta\\) is in the fourth quadrant. Find \\(\cot \theta, \sec \theta, \\csc \theta, \\) and \\(\tan \theta.\\)
 {{% /div %}}
 
 We can use similar triangles to obtain the identities
 
 \\[\begin{aligned}
-\boxed{\tan^2 \theta + 1 = \sec^2 \theta} \\
-\boxed{1 + \cot^2 \theta = \csc^2 \theta} \\
+\boxed{\tan^2 \theta + 1 = \sec^2 \theta} \newline
+\boxed{1 + \cot^2 \theta = \csc^2 \theta} \newline
 \end{aligned}\\]
 
 These are collectively known as the *Pythagorean identities.*
 
-## Even and odd functions
-
+{{% div class="example" %}}
+Suppose that an angle \\(\theta\\) in the second quadrant has a secant of \\(-13/5.\\) Find \\(\tan \theta.\\)
+{{% /div %}}
 

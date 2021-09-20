@@ -6,6 +6,8 @@ date: 2021-09-15
 
 Let's graph sine and cosine using the special values we know. (See diagram on board.)
 
+One special note: we always graph these functions in *radians.* Whenever we graph trig functions, we think of radian measure.
+
 \\[
 \begin{array}{r|ll}
 \theta & \mathbf \sin \theta & \mathbf \cos \theta \newline
@@ -28,6 +30,13 @@ Let's graph sine and cosine using the special values we know. (See diagram on bo
 (Sasha open Desmos and graph these.)
 
 [Here's a link that demonstrates, geometrically, the connection between this graph and the unit circle.](https://www.desmos.com/calculator/6yuhmbdlbo)
+
+## Periodic functions
+{{% div class="definition" %}}
+A function is *periodic* if its values repeat at regular intervals. Mathematically, this means that \\(f(x) = f(x + p)\\) for some number \\(p\\), called the *period.*
+{{% /div %}}
+
+Is there a number \\(p\\) for which \\(\sin(x) = \sin(x + p)\\)? What is it?
 
 ## Even and odd functions
 
@@ -53,16 +62,16 @@ Then we think about what steps we have to do in what order to compute \\(f(x).\\
 The following table tells how computational steps match up with transformations.
 
 {{% div class="fullwidth" %}}
-| Computation | Applied before base | Applied after base |
+| Computation | Applied before base/"inside ()" | Applied after base/"outside ()" |
 |-|-|-|
-| Add \\(c\\) | Shift \\(c\\) units left | Shift \\(c\\) units up |
-| Subtract \\(c\\) | Shift \\(c\\) units right | Shift \\(c\\) units down |
-| Multiply by \\(c\\) | Compress horizontally, factor \\(c\\) | Stretch vertically, factor \\(c\\) |
-| Divide by \\(c\\) | Stretch horizontally, factor \\(c\\) | Compress vertically, factor \\(c\\) |
-| Negate | Flip over y-axis | Flip over x-axis |
+| Add \\(c > 0\\) | Shift \\(c\\) units left | Shift \\(c\\) units up |
+| Subtract \\(c > 0\\) | Shift \\(c\\) units right | Shift \\(c\\) units down |
+| Multiply by \\(c > 0\\) | Compress horizontally, factor \\(c\\) | Stretch vertically, factor \\(c\\) |
+| Divide by \\(c > 0\\) | Stretch horizontally, factor \\(c\\) | Compress vertically, factor \\(c\\) |
+| Negate/multiply by \\(-1\\) | Flip over y-axis | Flip over x-axis |
 {{% /div %}}
 
-If the computational step occurs *before* the effect of the base function, then the corresponding transformation acts on the horizontal axis. If it occurs *after* the effect of the base function, then the transformation acts on the vertical axis.
+If the computational step occurs *before* the effect of the base function, or "inside the parentheses," then the corresponding transformation acts on the horizontal axis. If it occurs *after* the effect of the base function, or "outside the parentheses," then the transformation acts on the vertical axis.
 
 For instance, if 3 is added *before* \\(x\\) is squared, then the function is shifted left. If instead 3 is added *after* \\(x\\) is squared, then the function is shifted upward.
 
@@ -91,4 +100,8 @@ These rules aren't different for sine and cosine; they operate in exactly the sa
 Graph \\(f(x) = 3\sin\left(2x - \dfrac\pi{4}\right) + 2.\\)
 {{% /div %}}
 
+(Sasha use Desmos to do this.)
 
+{{% div class="example" %}}
+Write down the transformations applied to \\(f(x) = A \sin(Bx + C) + D.\\)
+{{% /div %}}

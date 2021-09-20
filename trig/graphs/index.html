@@ -19,7 +19,7 @@
 <meta itemprop=name content="The sine and cosine curves">
 <meta itemprop=description content="Content from section 8.1 in OpenSTAX."><meta itemprop=datePublished content="2021-09-15T00:00:00+00:00">
 <meta itemprop=dateModified content="2021-09-15T00:00:00+00:00">
-<meta itemprop=wordCount content="516">
+<meta itemprop=wordCount content="620">
 <meta itemprop=keywords content>
 <meta name=referrer content="no-referrer-when-downgrade">
 <link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
@@ -72,12 +72,14 @@ This is the final page in its sequence.
 <h5 style=margin:0>Contents</h5>
 <nav id=TableOfContents>
 <ul>
+<li><a href=#periodic-functions>Periodic functions</a></li>
 <li><a href=#even-and-odd-functions>Even and odd functions</a></li>
 <li><a href=#transformations-of-sine-and-cosine>Transformations of sine and cosine</a></li>
 </ul>
 </nav>
 </div>
 <p>Let&rsquo;s graph sine and cosine using the special values we know. (See diagram on board.)</p>
+<p>One special note: we always graph these functions in <em>radians.</em> Whenever we graph trig functions, we think of radian measure.</p>
 <p>\[
 \begin{array}{r|ll}
 \theta & \mathbf \sin \theta & \mathbf \cos \theta \newline
@@ -98,6 +100,11 @@ This is the final page in its sequence.
 \]</p>
 <p>(Sasha open Desmos and graph these.)</p>
 <p><a href=https://www.desmos.com/calculator/6yuhmbdlbo>Here&rsquo;s a link that demonstrates, geometrically, the connection between this graph and the unit circle.</a></p>
+<h2 id=periodic-functions>Periodic functions</h2>
+<div class=definition>
+<p>A function is <em>periodic</em> if its values repeat at regular intervals. Mathematically, this means that \(f(x) = f(x + p)\) for some number \(p\), called the <em>period.</em></p>
+</div>
+<p>Is there a number \(p\) for which \(\sin(x) = \sin(x + p)\)? What is it?</p>
 <h2 id=even-and-odd-functions>Even and odd functions</h2>
 <div class=definition>
 <p>A function \(f\) is <em>even</em> if \(f(-x) = f(x).\) A function \(f\) is <em>odd</em> if \(f(-x) = -f(x).\)</p>
@@ -115,40 +122,40 @@ This is the final page in its sequence.
 <thead>
 <tr>
 <th>Computation</th>
-<th>Applied before base</th>
-<th>Applied after base</th>
+<th>Applied before base/&ldquo;inside ()&rdquo;</th>
+<th>Applied after base/&ldquo;outside ()&rdquo;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Add \(c\)</td>
+<td>Add \(c > 0\)</td>
 <td>Shift \(c\) units left</td>
 <td>Shift \(c\) units up</td>
 </tr>
 <tr>
-<td>Subtract \(c\)</td>
+<td>Subtract \(c > 0\)</td>
 <td>Shift \(c\) units right</td>
 <td>Shift \(c\) units down</td>
 </tr>
 <tr>
-<td>Multiply by \(c\)</td>
+<td>Multiply by \(c > 0\)</td>
 <td>Compress horizontally, factor \(c\)</td>
 <td>Stretch vertically, factor \(c\)</td>
 </tr>
 <tr>
-<td>Divide by \(c\)</td>
+<td>Divide by \(c > 0\)</td>
 <td>Stretch horizontally, factor \(c\)</td>
 <td>Compress vertically, factor \(c\)</td>
 </tr>
 <tr>
-<td>Negate</td>
+<td>Negate/multiply by \(-1\)</td>
 <td>Flip over y-axis</td>
 <td>Flip over x-axis</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>If the computational step occurs <em>before</em> the effect of the base function, then the corresponding transformation acts on the horizontal axis. If it occurs <em>after</em> the effect of the base function, then the transformation acts on the vertical axis.</p>
+<p>If the computational step occurs <em>before</em> the effect of the base function, or &ldquo;inside the parentheses,&rdquo; then the corresponding transformation acts on the horizontal axis. If it occurs <em>after</em> the effect of the base function, or &ldquo;outside the parentheses,&rdquo; then the transformation acts on the vertical axis.</p>
 <p>For instance, if 3 is added <em>before</em> \(x\) is squared, then the function is shifted left. If instead 3 is added <em>after</em> \(x\) is squared, then the function is shifted upward.</p>
 <div class=example>
 <p>Graph \(f(x) = 3(2x - 4)^2 + 2.\)</p>
@@ -172,6 +179,10 @@ This is the final page in its sequence.
 <p>These rules aren&rsquo;t different for sine and cosine; they operate in exactly the same way.</p>
 <div class=example>
 <p>Graph \(f(x) = 3\sin\left(2x - \dfrac\pi{4}\right) + 2.\)</p>
+</div>
+<p>(Sasha use Desmos to do this.)</p>
+<div class=example>
+<p>Write down the transformations applied to \(f(x) = A \sin(Bx + C) + D.\)</p>
 </div>
 </article>
 <hr>

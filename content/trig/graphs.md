@@ -80,8 +80,8 @@ Graph \\(f(x) = 3(2x - 4)^2 + 2.\\)
 {{% /div %}}
 
 To get from \\(x\\) to \\(f(x)\\) in this example, we have to:
-1. Multiply by 2;
-2. Subtract 4;
+1. Subtract 2;
+2. Multiply by 2;
 3. Square;
 4. Multiply by 3;
 5. Add 2.
@@ -89,7 +89,7 @@ To get from \\(x\\) to \\(f(x)\\) in this example, we have to:
 These are reflected in the transformations of the function as follows.
 
 1. Compress the base parabola by a factor of 2 horizontally.
-2. Shift the parabola 4 units right.
+2. Shift the parabola 2 units right. (The 2 comes from solving \\(2x - 4 = 0.\\))
 3. (We don't do anything for this step because it's the base function.)
 4. Stretch the base parabola by a factor of 3 vertically.
 5. Shift the parabola 2 units upward.
@@ -102,6 +102,29 @@ Graph \\(f(x) = 3\sin\left(2x - \dfrac\pi{4}\right) + 2.\\)
 
 (Sasha use Desmos to do this.)
 
+1. Compress the sine wave by a factor of 2 horizontally.
+2. Shift the sine wave \\(\pi/8\\) units right. (The \\(\pi/8\\) comes from solving \\(2x - \dfrac{pi}4 = 0.\\))
+3. (Base function.)
+4. Stretch the sine wave by a factor of 3 vertically.
+5. Shift the sine wave \\(2\\) units up.
+
 {{% div class="example" %}}
-Write down the transformations applied to \\(f(x) = A \sin(Bx + C) + D.\\)
+What's the period of this function? How much is it stretched vertically? What's its minimum? What's its maximum? How far is it shifted right?
+{{% /div %}}
+
+{{% div class="definition" %}}
+The *period* of a given sine wave is the frequency at which it repeats its values. The *phase shift* of a sine wave is the total amount it shifts right. The *amplitude* of a sine wave is the factor it is stretched vertically.
+{{% /div %}}
+
+{{% div class="example" %}}
+Write down the transformations applied to \\(f(x) = A \sin(Bx + C) + D.\\) What is the period? The phase shift? The amplitude?
+{{% /div %}}
+
+{{% div class="example" %}}
+Compute the amplitude, period, phase shift, maximum, and minimum of the following functions.
+
+1. \\(2 \sin(4x + \pi) + 3\\)
+2. \\(3 \cos(x - \pi/3) + 7\\)
+3. \\(-\sin(2x - \pi/3) + 5\\)
+
 {{% /div %}}

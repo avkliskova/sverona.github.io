@@ -8,7 +8,7 @@ math = false
 
 [markup]
   [markup.highlight]
-    style = "github"
+    style = "vim"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true

@@ -86,93 +86,93 @@ The next page in this sequence is <a href=https://sverona.dev/blog/mern/frontend
 <p>This post continues our look at <a href=https://github.com/jmsv>James Vickery</a>&rsquo;s <a href=https://github.com/jmsv/simple-mern>simple-mern</a> repository. Today we&rsquo;ll look at the backend, which is built in Express and Mongo and located under the <code>client/</code> folder.</p>
 <h2 id=indexjs>index.js</h2>
 <p>This is the root Express server and router. Here are the libraries.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#000;font-weight:700>const</span> express <span style=color:#000;font-weight:700>=</span> require(<span style=color:#d14>&#39;express&#39;</span>);
-<span style=color:#000;font-weight:700>const</span> path <span style=color:#000;font-weight:700>=</span> require(<span style=color:#d14>&#39;path&#39;</span>);
-<span style=color:#000;font-weight:700>const</span> bodyParser <span style=color:#000;font-weight:700>=</span> require(<span style=color:#d14>&#39;body-parser&#39;</span>);
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#cdcd00>const</span> express <span style=color:#39c>=</span> require(<span style=color:#cd0000>&#39;express&#39;</span>);
+<span style=color:#cdcd00>const</span> path <span style=color:#39c>=</span> require(<span style=color:#cd0000>&#39;path&#39;</span>);
+<span style=color:#cdcd00>const</span> bodyParser <span style=color:#39c>=</span> require(<span style=color:#cd0000>&#39;body-parser&#39;</span>);
 </code></pre></div><p>First we load the Express server and any routes we may need. There&rsquo;s just the one.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#000;font-weight:700>const</span> app <span style=color:#000;font-weight:700>=</span> express();
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#cdcd00>const</span> app <span style=color:#39c>=</span> express();
 
-<span style=color:#000;font-weight:700>const</span> routeTasks <span style=color:#000;font-weight:700>=</span> require(<span style=color:#d14>&#39;./src/routes/tasks&#39;</span>);
+<span style=color:#cdcd00>const</span> routeTasks <span style=color:#39c>=</span> require(<span style=color:#cd0000>&#39;./src/routes/tasks&#39;</span>);
 </code></pre></div><p>The next section specifies the different routes and middleware. This is where Flask would use decorators.</p>
 <p>These two are <em>middleware layers.</em> The path <code>./client/build</code> will be served statically, and request bodies containing JSON will be parsed into proper JSON, as would happen with <code>JSON.parse()</code>.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>app.use(express.<span style=color:#000;font-weight:700>static</span>(path.join(<span style=color:#099>__</span>dirname, <span style=color:#d14>&#39;client/build&#39;</span>)));
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>app.use(express.<span style=color:#cdcd00>static</span>(path.join(<span style=color:#cd00cd>__</span>dirname, <span style=color:#cd0000>&#39;client/build&#39;</span>)));
 app.use(bodyParser.json());
 </code></pre></div><p>This is a dedicated <em>router.</em> We&rsquo;ll get into what it does below, but it&rsquo;s like a submodule that handles routes beginning with <code>/api/tasks</code>. When we get to it, we&rsquo;ll see that it implements CRUD operations, which will be routed under <code>/api/tasks/add</code>, <code>/api/tasks/delete/</code>, etc.</p>
 <p>The third argument is a callback that returns a 401 error; it will be executed if nothing matches under <code>routeTasks</code>.</p>
 <p>The callbacks take two arguments <code>req</code> and <code>res</code>, for &ldquo;request&rdquo; and &ldquo;response&rdquo; respectively. To return a response, you call a method of <code>res</code>.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>app.use(<span style=color:#d14>&#39;/api/tasks&#39;</span>, routeTasks, (req, res) =&gt; res.sendStatus(<span style=color:#099>401</span>));
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>app.use(<span style=color:#cd0000>&#39;/api/tasks&#39;</span>, routeTasks, (req, res) =&gt; res.sendStatus(<span style=color:#cd00cd>401</span>));
 </code></pre></div><p>This last one is a catchall router for things that match none of the previous &mdash; it just routes the user back to <code>index.html</code>, the root page.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>app.get(<span style=color:#d14>&#39;*&#39;</span>, (req, res) =&gt; {
-  res.sendFile(path.join(<span style=color:#099>__</span>dirname <span style=color:#000;font-weight:700>+</span> <span style=color:#d14>&#39;/client/build/index.html&#39;</span>));
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>app.get(<span style=color:#cd0000>&#39;*&#39;</span>, (req, res) =&gt; {
+  res.sendFile(path.join(<span style=color:#cd00cd>__</span>dirname <span style=color:#39c>+</span> <span style=color:#cd0000>&#39;/client/build/index.html&#39;</span>));
 });
 </code></pre></div><p>Finally, we start the server. <code>process.env.PORT</code> resolves to the environment variable <code>$PORT</code> if it is set.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#000;font-weight:700>const</span> port <span style=color:#000;font-weight:700>=</span> process.env.PORT <span style=color:#000;font-weight:700>||</span> <span style=color:#099>5000</span>;
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#cdcd00>const</span> port <span style=color:#39c>=</span> process.env.PORT <span style=color:#39c>||</span> <span style=color:#cd00cd>5000</span>;
 app.listen(port);
 
-console.log(<span style=color:#d14>`listening on </span><span style=color:#d14>${</span>port<span style=color:#d14>}</span><span style=color:#d14>`</span>);
+console.log(<span style=color:#cd0000>`listening on </span><span style=color:#cd0000>${</span>port<span style=color:#cd0000>}</span><span style=color:#cd0000>`</span>);
 </code></pre></div><h2 id=src>src/</h2>
 <p>This folder contains two subfolders, <code>models/</code> and <code>routes/</code>. Each of these contains a Mongoose model/Express router for each application datatype. As it happens, there&rsquo;s only one, so we have only two files (plus the one that establishes the database connection) to discuss.</p>
 <h3 id=srcdbjs>src/db.js</h3>
 <p>This file is very simple; it does nothing but establish a connection to MongoDB through Mongoose.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#000;font-weight:700>const</span> mongoose <span style=color:#000;font-weight:700>=</span> require(<span style=color:#d14>&#39;mongoose&#39;</span>);
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#cdcd00>const</span> mongoose <span style=color:#39c>=</span> require(<span style=color:#cd0000>&#39;mongoose&#39;</span>);
 
-mongoose.connect(<span style=color:#d14>&#39;mongodb://localhost/simple-mern&#39;</span>)
+mongoose.connect(<span style=color:#cd0000>&#39;mongodb://localhost/simple-mern&#39;</span>)
 
-module.exports <span style=color:#000;font-weight:700>=</span> mongoose;
+module.exports <span style=color:#39c>=</span> mongoose;
 </code></pre></div><p>Note that the structure of this file means that calling <code>require('db')</code> establishes a database connection. Nice.</p>
 <h3 id=srcmodelstaskjs>src/models/task.js</h3>
 <p>This is a simple object model using Mongoose. There are two fields.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#000;font-weight:700>const</span> mongoose <span style=color:#000;font-weight:700>=</span> require(<span style=color:#d14>&#39;../db&#39;</span>);
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#cdcd00>const</span> mongoose <span style=color:#39c>=</span> require(<span style=color:#cd0000>&#39;../db&#39;</span>);
 
-<span style=color:#000;font-weight:700>const</span> task <span style=color:#000;font-weight:700>=</span> <span style=color:#000;font-weight:700>new</span> mongoose.Schema({
-  title<span style=color:#000;font-weight:700>:</span> { type<span style=color:#000;font-weight:700>:</span> <span style=color:#0086b3>String</span>, required<span style=color:#000;font-weight:700>:</span> <span style=color:#000;font-weight:700>true</span> },
-  done<span style=color:#000;font-weight:700>:</span> { type<span style=color:#000;font-weight:700>:</span> <span style=color:#0086b3>Boolean</span>, <span style=color:#000;font-weight:700>default</span><span style=color:#000;font-weight:700>:</span> <span style=color:#000;font-weight:700>false</span> }
+<span style=color:#cdcd00>const</span> task <span style=color:#39c>=</span> <span style=color:#cdcd00>new</span> mongoose.Schema({
+  title<span style=color:#39c>:</span> { type<span style=color:#39c>:</span> <span style=color:#cd00cd>String</span>, required<span style=color:#39c>:</span> <span style=color:#cdcd00>true</span> },
+  done<span style=color:#39c>:</span> { type<span style=color:#39c>:</span> <span style=color:#cd00cd>Boolean</span>, <span style=color:#cdcd00>default</span><span style=color:#39c>:</span> <span style=color:#cdcd00>false</span> }
 });
 
-<span style=color:#000;font-weight:700>const</span> Task <span style=color:#000;font-weight:700>=</span> mongoose.model(<span style=color:#d14>&#39;Task&#39;</span>, task);
-module.exports <span style=color:#000;font-weight:700>=</span> Task;
+<span style=color:#cdcd00>const</span> Task <span style=color:#39c>=</span> mongoose.model(<span style=color:#cd0000>&#39;Task&#39;</span>, task);
+module.exports <span style=color:#39c>=</span> Task;
 </code></pre></div><h3 id=srcroutestasksjs>src/routes/tasks.js</h3>
 <p>Here we find the CRUD routes for the Task model. Note the plural filename, since these routes act on a <em>collection of tasks.</em> First we import Express and our model.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#000;font-weight:700>const</span> express <span style=color:#000;font-weight:700>=</span> require(<span style=color:#d14>&#39;express&#39;</span>);
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#cdcd00>const</span> express <span style=color:#39c>=</span> require(<span style=color:#cd0000>&#39;express&#39;</span>);
 
-<span style=color:#000;font-weight:700>const</span> Task <span style=color:#000;font-weight:700>=</span> require(<span style=color:#d14>&#39;../models/task&#39;</span>);
+<span style=color:#cdcd00>const</span> Task <span style=color:#39c>=</span> require(<span style=color:#cd0000>&#39;../models/task&#39;</span>);
 </code></pre></div><p>Next we set up a <code>Router</code> object. This catches the requests that come from the root Express router.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#000;font-weight:700>const</span> router <span style=color:#000;font-weight:700>=</span> express.Router();
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#cdcd00>const</span> router <span style=color:#39c>=</span> express.Router();
 </code></pre></div><p>Now we have the actual routes. These have the same form as the ones we saw previously.</p>
 <p>This one does a search of all <code>Tasks</code> with an empty filter, which returns them all, then returns that as the JSON response.</p>
 <p>Errors are caught and returned as a <code>500</code> response.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>router.get(<span style=color:#d14>&#39;/&#39;</span>, (req, res) =&gt; {
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>router.get(<span style=color:#cd0000>&#39;/&#39;</span>, (req, res) =&gt; {
   Task.find({})
     .then(tasks =&gt; res.json(tasks))
-    .<span style=color:#000;font-weight:700>catch</span>(err =&gt; res.status(<span style=color:#099>500</span>).json({ error<span style=color:#000;font-weight:700>:</span> err }));
+    .<span style=color:#cdcd00>catch</span>(err =&gt; res.status(<span style=color:#cd00cd>500</span>).json({ error<span style=color:#39c>:</span> err }));
 });
 </code></pre></div><p>The other three routes are very similar. The only thing that changes is which <code>mongoose</code> method is called; the names are self-explanatory, as is the mapping of CRUD to HTTP verbs.</p>
 <p>Note the destructuring assignment used on <code>req.body</code>; this builds on the <code>body-parser</code> middleware used in <code>index.js</code>.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>router.post(<span style=color:#d14>&#39;/add&#39;</span>, (req, res) =&gt; {
-  <span style=color:#000;font-weight:700>const</span> { title } <span style=color:#000;font-weight:700>=</span> req.body;
-  <span style=color:#000;font-weight:700>const</span> newTask <span style=color:#000;font-weight:700>=</span> <span style=color:#000;font-weight:700>new</span> Task({ title });
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>router.post(<span style=color:#cd0000>&#39;/add&#39;</span>, (req, res) =&gt; {
+  <span style=color:#cdcd00>const</span> { title } <span style=color:#39c>=</span> req.body;
+  <span style=color:#cdcd00>const</span> newTask <span style=color:#39c>=</span> <span style=color:#cdcd00>new</span> Task({ title });
 
   newTask.save()
     .then(task =&gt; res.json(task))
-    .<span style=color:#000;font-weight:700>catch</span>(err =&gt; res.json(<span style=color:#099>500</span>, err));
+    .<span style=color:#cdcd00>catch</span>(err =&gt; res.json(<span style=color:#cd00cd>500</span>, err));
 });
 
-router.<span style=color:#000;font-weight:700>delete</span>(<span style=color:#d14>&#39;/delete/:id&#39;</span>, (req, res) =&gt; {
-  <span style=color:#000;font-weight:700>const</span> id <span style=color:#000;font-weight:700>=</span> req.params.id;
+router.<span style=color:#cdcd00>delete</span>(<span style=color:#cd0000>&#39;/delete/:id&#39;</span>, (req, res) =&gt; {
+  <span style=color:#cdcd00>const</span> id <span style=color:#39c>=</span> req.params.id;
 
   Task.findByIdAndDelete(id)
     .then(task =&gt; res.json(task))
-    .<span style=color:#000;font-weight:700>catch</span>(err =&gt; res.json(<span style=color:#099>500</span>, err));
+    .<span style=color:#cdcd00>catch</span>(err =&gt; res.json(<span style=color:#cd00cd>500</span>, err));
 });
 
-router.post(<span style=color:#d14>&#39;/update/:id&#39;</span>, (req, res) =&gt; {
-  <span style=color:#000;font-weight:700>const</span> { done } <span style=color:#000;font-weight:700>=</span> req.body;
+router.post(<span style=color:#cd0000>&#39;/update/:id&#39;</span>, (req, res) =&gt; {
+  <span style=color:#cdcd00>const</span> { done } <span style=color:#39c>=</span> req.body;
   Task.findByIdAndUpdate(req.params.id, { done })
     .then(task =&gt; res.json(task))
-    .<span style=color:#000;font-weight:700>catch</span>(err =&gt; res.json(<span style=color:#099>500</span>, err));
+    .<span style=color:#cdcd00>catch</span>(err =&gt; res.json(<span style=color:#cd00cd>500</span>, err));
 });
 </code></pre></div><p>Finally, we set this as the default export.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>module.exports <span style=color:#000;font-weight:700>=</span> router;
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>module.exports <span style=color:#39c>=</span> router;
 </code></pre></div><p>In the next post, we&rsquo;ll discuss the React frontend.</p>
 </article>
 <hr>

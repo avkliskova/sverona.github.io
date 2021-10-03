@@ -87,35 +87,35 @@ The next page in this sequence is <a href=https://sverona.dev/blog/mern/backend/
 <h2 id=packagejson>./package.json</h2>
 <p>This is similar to the <code>package.json</code> generated automatically by <code>create-react-app</code>.</p>
 <p>I&rsquo;ll split it up into three sections. The first section contains metadata for <code>npm</code>.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-  <span style=color:navy>&#34;name&#34;</span>: <span style=color:#d14>&#34;simple-mern&#34;</span>,
-  <span style=color:navy>&#34;version&#34;</span>: <span style=color:#d14>&#34;0.2.0&#34;</span>,
-  <span style=color:navy>&#34;description&#34;</span>: <span style=color:#d14>&#34;the simplest MERN (MongoDB, Express, React and Node) setup&#34;</span>,
-  <span style=color:navy>&#34;main&#34;</span>: <span style=color:#d14>&#34;index.js&#34;</span>,
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  &#34;name&#34;: <span style=color:#cd0000>&#34;simple-mern&#34;</span>,
+  &#34;version&#34;: <span style=color:#cd0000>&#34;0.2.0&#34;</span>,
+  &#34;description&#34;: <span style=color:#cd0000>&#34;the simplest MERN (MongoDB, Express, React and Node) setup&#34;</span>,
+  &#34;main&#34;: <span style=color:#cd0000>&#34;index.js&#34;</span>,
 
-  <span style=color:navy>&#34;author&#34;</span>: <span style=color:#d14>&#34;James Vickery&#34;</span>,
-  <span style=color:navy>&#34;license&#34;</span>: <span style=color:#d14>&#34;MIT&#34;</span>,
+  &#34;author&#34;: <span style=color:#cd0000>&#34;James Vickery&#34;</span>,
+  &#34;license&#34;: <span style=color:#cd0000>&#34;MIT&#34;</span>,
 } 
 </code></pre></div><p>The next section specifies custom shell commands to run with <code>npm</code>. For instance, <code>npm start</code> is an alias for <code>nodemon index.js</code>.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-  <span style=color:navy>&#34;scripts&#34;</span>: {
-    <span style=color:navy>&#34;test&#34;</span>: <span style=color:#d14>&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>,
-    <span style=color:navy>&#34;start&#34;</span>: <span style=color:#d14>&#34;nodemon index.js&#34;</span>,
-    <span style=color:navy>&#34;start:prod&#34;</span>: <span style=color:#d14>&#34;node index.js&#34;</span>,
-    <span style=color:navy>&#34;build&#34;</span>: <span style=color:#d14>&#34;cd client &amp;&amp; npm install &amp;&amp; npm run build&#34;</span>
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  &#34;scripts&#34;: {
+    &#34;test&#34;: <span style=color:#cd0000>&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>,
+    &#34;start&#34;: <span style=color:#cd0000>&#34;nodemon index.js&#34;</span>,
+    &#34;start:prod&#34;: <span style=color:#cd0000>&#34;node index.js&#34;</span>,
+    &#34;build&#34;: <span style=color:#cd0000>&#34;cd client &amp;&amp; npm install &amp;&amp; npm run build&#34;</span>
   }
 }
 </code></pre></div><p>The final section specifies production and development dependencies.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-  <span style=color:navy>&#34;dependencies&#34;</span>: {
-    <span style=color:navy>&#34;body-parser&#34;</span>: <span style=color:#d14>&#34;^1.18.3&#34;</span>,
-    <span style=color:navy>&#34;express&#34;</span>: <span style=color:#d14>&#34;^4.16.4&#34;</span>,
-    <span style=color:navy>&#34;mongoose&#34;</span>: <span style=color:#d14>&#34;^5.13.9&#34;</span>,
-    <span style=color:navy>&#34;password-generator&#34;</span>: <span style=color:#d14>&#34;^2.3.2&#34;</span>
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  &#34;dependencies&#34;: {
+    &#34;body-parser&#34;: <span style=color:#cd0000>&#34;^1.18.3&#34;</span>,
+    &#34;express&#34;: <span style=color:#cd0000>&#34;^4.16.4&#34;</span>,
+    &#34;mongoose&#34;: <span style=color:#cd0000>&#34;^5.13.9&#34;</span>,
+    &#34;password-generator&#34;: <span style=color:#cd0000>&#34;^2.3.2&#34;</span>
   },
-  <span style=color:navy>&#34;devDependencies&#34;</span>: {
-    <span style=color:navy>&#34;nodemon&#34;</span>: <span style=color:#d14>&#34;^2.0.13&#34;</span>,
-    <span style=color:navy>&#34;prettier&#34;</span>: <span style=color:#d14>&#34;^1.19.1&#34;</span>
+  &#34;devDependencies&#34;: {
+    &#34;nodemon&#34;: <span style=color:#cd0000>&#34;^2.0.13&#34;</span>,
+    &#34;prettier&#34;: <span style=color:#cd0000>&#34;^1.19.1&#34;</span>
   }
 }
 </code></pre></div><p>Production dependencies are the libraries actually called in by production code; they&rsquo;re necessary to run the app at all. Development dependencies are needed to run things like the test harness. <a href=https://stackoverflow.com/questions/18875674/whats-the-difference-between-dependencies-devdependencies-and-peerdependencies>This StackOverflow</a> explains this and the other types of dependencies it&rsquo;s possible to specify.</p>
@@ -128,19 +128,19 @@ The next page in this sequence is <a href=https://sverona.dev/blog/mern/backend/
 <p><a href><code>prettier</code></a> is a code formatter, similar to Black.</p>
 <h3 id=package-lockjson>package-lock.json</h3>
 <p>This is an autogenerated file containing the entire dependency tree of the project. It&rsquo;s too large to show in its entirety, but part of it looks like:</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-  <span style=color:navy>&#34;name&#34;</span>: <span style=color:#d14>&#34;simple-mern&#34;</span>,
-  <span style=color:navy>&#34;version&#34;</span>: <span style=color:#d14>&#34;0.2.0&#34;</span>,
-  <span style=color:navy>&#34;lockfileVersion&#34;</span>: <span style=color:#099>1</span>,
-  <span style=color:navy>&#34;requires&#34;</span>: <span style=color:#000;font-weight:700>true</span>,
-  <span style=color:navy>&#34;dependencies&#34;</span>: {
-    <span style=color:navy>&#34;@sindresorhus/is&#34;</span>: {
-      <span style=color:navy>&#34;version&#34;</span>: <span style=color:#d14>&#34;0.14.0&#34;</span>,
-      <span style=color:navy>&#34;resolved&#34;</span>: <span style=color:#d14>&#34;https://registry.npmjs.org/@sindresorhus/is/-/is-0.14.0.tgz&#34;</span>,
-      <span style=color:navy>&#34;integrity&#34;</span>: <span style=color:#d14>&#34;sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==&#34;</span>,
-      <span style=color:navy>&#34;dev&#34;</span>: <span style=color:#000;font-weight:700>true</span>
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  &#34;name&#34;: <span style=color:#cd0000>&#34;simple-mern&#34;</span>,
+  &#34;version&#34;: <span style=color:#cd0000>&#34;0.2.0&#34;</span>,
+  &#34;lockfileVersion&#34;: <span style=color:#cd00cd>1</span>,
+  &#34;requires&#34;: <span style=color:#cdcd00>true</span>,
+  &#34;dependencies&#34;: {
+    &#34;@sindresorhus/is&#34;: {
+      &#34;version&#34;: <span style=color:#cd0000>&#34;0.14.0&#34;</span>,
+      &#34;resolved&#34;: <span style=color:#cd0000>&#34;https://registry.npmjs.org/@sindresorhus/is/-/is-0.14.0.tgz&#34;</span>,
+      &#34;integrity&#34;: <span style=color:#cd0000>&#34;sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==&#34;</span>,
+      &#34;dev&#34;: <span style=color:#cdcd00>true</span>
     },
-    <span style=color:#a61717;background-color:#e3d2d2>...</span>
+    <span>...</span>
   }
 }
 </code></pre></div><p>In the next post we&rsquo;ll discuss the Express and Mongo backend.</p>

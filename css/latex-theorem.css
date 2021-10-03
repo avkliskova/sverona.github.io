@@ -1,31 +1,7 @@
 @import 'sidenotes.css';
 
 article {
-  counter-reset: sidenote conjecture definition theorem lemma proposition example corollary section !important;
-}
-
-article h2 { counter-increment: section; }
-article h3 { counter-increment: subsection; }
-article h4 { counter-increment: subsubsection; }
-
-article h2:before {
-  counter-reset: subsection;
-  content: counter(section);
-  padding-right: 1ch;
-  color: #aaa;
-}
-
-article h3:before {
-  counter-reset: subsubsection;
-  content: counter(section) '.' counter(subsection);
-  padding-right: 1ch;
-  color: #aaa;
-}
-
-article h4:before {
-  content: counter(section) '.' counter(subsection) '.' counter(subsubsection);
-  padding-right: 1ch;
-  color: #aaa;
+  counter-reset: sidenote lemma proposition example corollary section !important;
 }
 
 article > div:not(.proof):before {
@@ -35,7 +11,7 @@ article > div:not(.proof):before {
   font-style: all-small-caps;
 }
 
-article > div:not(.proof):not(#toc):not(.figure) {
+article > div:not(.proof):not(#toc):not(.figure):not(.highlight) {
   padding: 1rem;
   background-color: #eee;
   margin-block: 2rem;

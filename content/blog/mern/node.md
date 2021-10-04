@@ -12,9 +12,7 @@ These are pretty self-explanatory, so I'll ignore them.
 
 ## ./package.json
 
-This is similar to the `package.json` generated automatically by `create-react-app`. 
-
-I'll split it up into three sections. The first section contains metadata for `npm`.
+This is similar to the `package.json` generated automatically by `create-react-app`.  I'll split it up into three sections. The first section contains metadata for `npm`.
 
 ```json
 {

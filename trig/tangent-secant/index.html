@@ -19,7 +19,7 @@
 <meta itemprop=name content="The tangent and secant curves">
 <meta itemprop=description content="Content from section 8.2 in OpenSTAX."><meta itemprop=datePublished content="2021-10-05T00:00:00+00:00">
 <meta itemprop=dateModified content="2021-10-05T00:00:00+00:00">
-<meta itemprop=wordCount content="300">
+<meta itemprop=wordCount content="596">
 <meta itemprop=keywords content>
 <meta name=referrer content="no-referrer-when-downgrade">
 <link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
@@ -77,9 +77,11 @@ This is the final page in its sequence.
 <li><a href=#tangent-curves>Tangent curves</a></li>
 <li><a href=#secant-curves>Secant curves</a></li>
 <li><a href=#examples>Examples</a></li>
+<li><a href=#summary>Summary</a></li>
 </ul>
 </nav>
 </div>
+<style type=text/css>.small{font-size:smaller}</style>
 <h2 id=what-we-know-already>What we know already</h2>
 <p>The graphs of sine or cosine make <em>waves</em>, like this:</p>
 <p>[Desmos]</p>
@@ -90,11 +92,11 @@ This is the final page in its sequence.
 <p>Let&rsquo;s plot these.</p>
 <p>Where is tangent undefined? Where is tangent zero? What about cotangent?</p>
 <p>Where is secant undefined? Does it ever reach zero? What about cosecant?</p>
-<p>Let&rsquo;s look at a graph. Where do tangent and secant have <em>asymptotes</em>?</p>
+<p>Let&rsquo;s look at a graph. Where do tangent and secant and cotangent and cosecant have <em>asymptotes</em>?</p>
 <p>What do you notice about the values of sine, tangent, and secant in the first quadrant versus the values of cosine, cotangent, and cosecant in the second quadrant?</p>
 <h2 id=tangent-curves>Tangent curves</h2>
 <p>What period does the tangent have?</p>
-<p>Tangents and cotangents don&rsquo;t have amplitudes. Other than that, all the rules are exactly the same.</p>
+<p>Tangents and cotangents don&rsquo;t have amplitudes. We call the relevant bit the <em>stretch factor.</em> Other than that, all the rules are exactly the same.</p>
 <p>To wit, if I have \(f(x) = A \tan(Bx + C) + D\), I can determine the period as \(\dfrac{\pi}{|B|},\) the phase shift as \(\dfrac{-C}{B}\), and the <em>vertical stretch factor</em> as \(|A|\).</p>
 <p>Where does this transformed function have asymptotes?</p>
 <h2 id=secant-curves>Secant curves</h2>
@@ -103,11 +105,149 @@ This is the final page in its sequence.
 <p>To wit, if I have \(f(x) = A \sec(Bx + C) + D\), I can determine the period as \(\dfrac{2\pi}{|B|},\) the phase shift as \(\dfrac{-C}{B}\), and the <em>vertical stretch factor</em> as \(|A|\).</p>
 <p>Where does this transformed function have asymptotes?</p>
 <h2 id=examples>Examples</h2>
-<p>Find the period, stretch factor, and phase shift.</p>
+<p>Find the period, stretch factor, the phase shift, the midline, the range, and the asymptotes over one period.</p>
 <ol>
 <li>\(2 \tan(3x + \pi) - 2\)</li>
 <li>\(2 \sec(x/4 - \pi/4) + 1\)</li>
 </ol>
+<h2 id=summary>Summary</h2>
+<p>Here is everything you&rsquo;ll need to know about the six trig functions.</p>
+<p>Untransformed:</p>
+<div class=fullwidth>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Period</th>
+<th>Phase shift</th>
+<th>Amplitude or<br>stretch factor</th>
+<th>Midline</th>
+<th>Range</th>
+<th>Asymptotes<br>(over one period)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\(\sin x\)</td>
+<td>\(2\pi\)</td>
+<td>\(0\)</td>
+<td>\(1\)</td>
+<td>\(y = 0\)</td>
+<td>\(-1 \leq y \leq 1\)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>\(\cos x\)</td>
+<td>\(2\pi\)</td>
+<td>\(0\)</td>
+<td>\(1\)</td>
+<td>\(y = 0\)</td>
+<td>\(-1 \leq y \leq 1\)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>\(\tan x\)</td>
+<td>\(\pi\)</td>
+<td>\(0\)</td>
+<td>\(1\)</td>
+<td>\(y = 0\)</td>
+<td>all real numbers</td>
+<td>\(x = \pi/2\)</td>
+</tr>
+<tr>
+<td>\(\cot x\)</td>
+<td>\(\pi\)</td>
+<td>\(0\)</td>
+<td>\(1\)</td>
+<td>\(y = 0\)</td>
+<td>all real numbers</td>
+<td>\(x = 0\)</td>
+</tr>
+<tr>
+<td>\(\sec x\)</td>
+<td>\(2\pi\)</td>
+<td>\(0\)</td>
+<td>\(1\)</td>
+<td>\(y = 0\)</td>
+<td>\(y \leq -1, y \geq 1\)</td>
+<td>\(x = \pi/2\newline x = 3\pi/2\)</td>
+</tr>
+<tr>
+<td>\(\csc x\)</td>
+<td>\(2\pi\)</td>
+<td>\(0\)</td>
+<td>\(1\)</td>
+<td>\(y = 0\)</td>
+<td>\(y \leq -1, y \geq 1\)</td>
+<td>\(x = 0\newline x = \pi\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Transformed:</p>
+<div class="fullwidth small">
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Period</th>
+<th>Phase shift</th>
+<th>Amplitude or<br>stretch factor</th>
+<th>Midline</th>
+<th>Range</th>
+<th>Asymptotes<br>(over one period)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\(A \sin(Bx + C) + D,\newline A\cos(Bx + C) + D\)</td>
+<td>\(\dfrac{2\pi}{|B|}\)</td>
+<td>\(\dfrac{-C}{B}\)</td>
+<td>\(|A|\)</td>
+<td>\(y = D\)</td>
+<td>\(D - |A| \leq y \leq D + |A|\)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>\(A \tan(Bx + C) + D\)</td>
+<td>\(\dfrac{\pi}{|B|}\)</td>
+<td>\(\dfrac{-C}{B}\)</td>
+<td>\(|A|\)</td>
+<td>\(y = D\)</td>
+<td>all real numbers</td>
+<td>\(x = \dfrac{\pi/2 - C}{B}\)</td>
+</tr>
+<tr>
+<td>\(A \cot(Bx + C) + D\)</td>
+<td>\(\dfrac{\pi}{|B|}\)</td>
+<td>\(\dfrac{-C}{B}\)</td>
+<td>\(|A|\)</td>
+<td>\(y = D\)</td>
+<td>all real numbers</td>
+<td>\(x = \dfrac{-C}{B}\)</td>
+</tr>
+<tr>
+<td>\(A \sec(Bx + C) + D\)</td>
+<td>\(\dfrac{2\pi}{|B|}\)</td>
+<td>\(\dfrac{-C}{B}\)</td>
+<td>\(|A|\)</td>
+<td>\(y = D\)</td>
+<td>\(y \leq D - |A|,\newline y\geq D + |A|\)</td>
+<td>\(x = \dfrac{\pi/2-C}{B},\newline x=\dfrac{3\pi/2 - C}{B}\)</td>
+</tr>
+<tr>
+<td>\(A \csc(Bx + C) + D\)</td>
+<td>\(\dfrac{2\pi}{|B|}\)</td>
+<td>\(\dfrac{-C}{B}\)</td>
+<td>\(|A|\)</td>
+<td>\(y = D\)</td>
+<td>\(y \leq D - |A|,\newline y\geq D + |A|\)</td>
+<td>\(x = \dfrac{-C}{B},\newline x=\dfrac{\pi - C}{B}\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>How can we get to the other asymptotes from these two?</p>
 </article>
 <hr>
 </main>

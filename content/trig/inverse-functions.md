@@ -1,7 +1,7 @@
 ---
 title: Inverse trigonometric functions
 description: Content from section 8.3 in OpenSTAX.
-date: 2020-10-11
+date: 2020-10-10
 ---
 
 We've been studying *trigonometric functions* that take an angle (usually measured in radians) and that output a number (a coordinate, a slope, ...) Now we're going to look at those functions' inverses.

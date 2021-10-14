@@ -44,14 +44,11 @@ body > header > nav ul li:not(:last-child)::after {
 }
 
 #toc {
-<<<<<<< HEAD
-=======
   float: right;
   min-width: 20ch;
   max-width: 30%;
   margin: 0 0 1rem 2rem;
   padding: 1rem;
->>>>>>> 2b5ee45
 }
 
 /* || Typography */
@@ -243,20 +240,8 @@ a:hover {
 
 /* || Colors */
 
-main > header div ul {
-
-<<<<<<< HEAD
-  color: #777;
-}
-
-hr {
-  border-color: #ccc;
-  border-style: solid;
-  border-width: 1px 0 0 0;
-=======
 a, a:visited {
   color: #d91e36;
->>>>>>> 2b5ee45
 }
 
 /* || end Colors */

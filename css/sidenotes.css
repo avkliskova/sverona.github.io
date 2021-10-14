@@ -1,7 +1,7 @@
 :root {
   /* Modify these */
   --mobile-article-width: 95%;
-  --desktop-article-width: 900px; /* Mobile breakpoint. If you modify this, also change the @media directive below. */
+  --desktop-article-width: 120ch; /* Mobile breakpoint. If you modify this, also change the @media directive below. */
   --content-proportion: .65;
   --sidenote-proportion: .3;
   --gutter-proportion: calc(1 - var(--content-proportion) - var(--sidenote-proportion));
@@ -127,7 +127,7 @@ figcaption p:first-child {
     margin-inline: 1rem;
 }
 
-@media screen and (min-width: 900px) { /* Modify this directive to change the mobile breakpoint. Also change --desktop-article-width. */
+@media screen and (min-width: 120ch) { /* Modify this directive to change the mobile breakpoint. Also change --desktop-article-width. */
   :root {
     --article-width: var(--desktop-article-width);
   }
@@ -146,13 +146,13 @@ figcaption p:first-child {
   article > ol {
     padding-inline-start: var(--indent);
     /* Uncomment if not using border-box */
-    /* width: calc(var(--content-proportion) * 100% - var(--indent)); */
+    width: calc(var(--content-proportion) * 100% - var(--indent));
   }
 
   article > blockquote {
     margin-inline: var(--indent);
     /* Uncomment if not using border-box */
-    /* width: calc(var(--content-proportion) * 100% - var(--indent)); */
+    width: calc(var(--content-proportion) * 100% - var(--indent));
   }
 
   .sidenote,

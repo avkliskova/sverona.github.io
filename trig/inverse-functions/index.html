@@ -19,7 +19,7 @@
 <meta itemprop=name content="Inverse trigonometric functions">
 <meta itemprop=description content="Content from section 8.3 in OpenSTAX."><meta itemprop=datePublished content="2021-10-10T00:00:00+00:00">
 <meta itemprop=dateModified content="2021-10-10T00:00:00+00:00">
-<meta itemprop=wordCount content="169">
+<meta itemprop=wordCount content="634">
 <meta itemprop=keywords content>
 <meta name=referrer content="no-referrer-when-downgrade">
 <link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
@@ -72,29 +72,83 @@ This is the final page in its sequence.
 <h5 style=margin:0>Contents</h5>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#inverses-review>Inverses review</a></li>
-<li><a href=#ranges-of-inverse-functions>Ranges of inverse functions</a></li>
+<li><a href=#inverse-functions-review>Inverse functions review</a></li>
+<li><a href=#finding-inverse-functions>Finding inverse functions</a></li>
+<li><a href=#inverse-trigonometric-functions>Inverse trigonometric functions</a>
+<ul>
+<li><a href=#arcsin-x>\(\arcsin x\)</a></li>
+<li><a href=#arccos-x>\(\arccos x\)</a></li>
+<li><a href=#arctan-x>\(\arctan x\)</a></li>
+</ul>
+</li>
 </ul>
 </nav>
 </div>
 <p>We&rsquo;ve been studying <em>trigonometric functions</em> that take an angle (usually measured in radians) and that output a number (a coordinate, a slope, &mldr;) Now we&rsquo;re going to look at those functions' inverses.</p>
-<h2 id=inverses-review>Inverses review</h2>
-<p>Remember, an <em>inverse</em> function undoes the function it&rsquo;s an inverse of. So if I have \(f(x) = y,\) the inverse function has \(g(y) = x.\) The original function turns \(x\) into \(y\); its inverse turns \(y\) back into \(x.\)</p>
-<p>To take a simple example, we know that \(\sin(\pi/2) = 1.\) We call the inverse function of sine \(\arcsin.\) So \(\arcsin(1) = \pi/2.\)</p>
-<p>In general, to find \(\arcsin(y),\) we need to find the number \(x\) such that \(\sin(x) = y.\)</p>
-<p>Let&rsquo;s do some examples with these.</p>
-<div class=example>
-<p>Compute the following.</p>
+<p><em>The presentation of this material was adapted from Dr. Molly Dunkum&rsquo;s course notes.</em></p>
+<h2 id=inverse-functions-review>Inverse functions review</h2>
+<p>Before we can talk about inverse <em>trig</em> functions, we need to talk more generally about functions.</p>
+<p>What does it mean to say that \(f(x)\) is a function? If \((a, b)\) is a point on the graph, then no other point has \(a\) as an x-coordinate. Graphically, this is called the <em>vertical line test.</em> (Desmos: show an example of pass and fail.)</p>
+<p>Other points on the graph may have \(b\) as a y-coordinate. If \(f(x)\) is a function and no other points have \(b\) as a y-coordinate, then \(f\) is called <em>one-to-one</em> or <em>1-1</em> . Graphically, \(f\) is 1-1 if it passes the <em>horizontal line test.</em> (Desmos: show an example of pass and fail.)</p>
+<p>If \(f\) is 1-1, then its <em>inverse function</em> \(f^{-1}\) exists. Note: \(f^{-1}(x) \not= (f(x))^{-1}. \)</p>
+<p>Some facts about inverse functions:</p>
 <ol>
-<li>\(\arcsin(\sqrt{3}/2)\)</li>
-<li>\(\arccos(\sqrt{2}/2)\)</li>
-<li>\(\arctan(\sqrt{3})\)</li>
+<li>The inverse function \(f^{-1}\) undoes the function \(f\) . That is to say, \(f^{-1}(f(x)) = x,\) and \(f(f^{-1}(x)) = x.\)</li>
+<li>The graphs of \(f\) and \(f^{-1}(x)\) are mirror-images over the line \(y = x.\)</li>
+<li>If \((x, y)\) is on the graph of \(f,\) then \((y, x)\) is on the graph of \(f^{-1}.\)</li>
+<li>The domain of \(f\) is the range of \(f^{-1}.\) The range of \(f\) is the domain of \(f^{-1}.\)</li>
+</ol>
+<h2 id=finding-inverse-functions>Finding inverse functions</h2>
+<div class=example>
+<p>Find the inverse of \(y = x^3 + 2.\)</p>
+</div>
+<ol>
+<li>Switch \(x\) and \(y\) : \(x = y^3 + 2.\)</li>
+<li>Now solve for \(x\) &mldr; \(x - 2 = y^3\) , \(\boxed{\sqrt[3]{x - 2} = y}.\)</li>
+<li>So if \(f(x) = x^3 + 2,\) then \(f^{-1}(x) = \sqrt[3]{x - 2}.\)</li>
+</ol>
+<div class=example>
+<p>Find the inverse of \(f(x) = 3x - 2.\)</p>
+</div>
+<ol>
+<li>Write \(y = f(x)\) : \(y = 3x - 2.\)</li>
+<li>Switch \(x\) and \(y\) : \(x = 3y - 2.\)</li>
+<li>Solve for \(y\) &mldr; \(y = \dfrac{x+2}{3}.\)</li>
+<li>Write \(f^{-1}(x) = y\) : \(f^{-1}(x) = \dfrac{x +2}{3}.\)</li>
+</ol>
+<h2 id=inverse-trigonometric-functions>Inverse trigonometric functions</h2>
+<p>The functions we just inverted were 1-1. None of the six trigonometric functions are. (Show!) However, <em>parts</em> of them are 1-1, and we can use these parts for the inverse.</p>
+<h3 id=arcsin-x>\(\arcsin x\)</h3>
+<p>The inverse function of \(\sin x\) is called \(\sin^{-1}(x)\) or \(\arcsin x.\) The part of \(\sin x\) we use is over \(-\dfrac\pi2 \leq x \leq \dfrac\pi2\) &mdash; quadrants 1 and 4. So the range of \(\arcsin x\) is \(-\dfrac\pi2 \leq y \leq \dfrac\pi2.\) The domain of \(\arcsin x\) is the range of \(\sin\) , which is \(-1 \leq x \leq 1.\)</p>
+<p>To find \(\arcsin x\), we ask: What angle \(\theta\) <em>within the range of</em> \( \arcsin \) has \(\sin \theta = x\)? That angle, expressed in radians, is \(\arcsin x.\)</p>
+<div class=example>
+<p>Find \(\arcsin \frac12.\)</p>
+</div>
+<p>There are two angles with a sine of \(\frac12\) : \(\pi/6\) and \(5\pi/6.\)</p>
+<p>However, \(5\pi/6\) is out of range. So \(\arcsin \frac12 = \pi/6.\)</p>
+<h3 id=arccos-x>\(\arccos x\)</h3>
+<p>For \(\arccos x,\) we use the part of \(\cos x\) from \(0 \leq x \leq \pi\) &mdash; quadrants 1 and 2. So the range of \(\arccos x\) is \(0 \leq y \leq \pi.\) What&rsquo;s the domain?</p>
+<div class=example>
+<p>Find \(\arccos 0.\)</p>
+</div>
+<p>There are two angles with a cosine of \(0\) : \(\pi/2\) and \(3\pi/2.\)</p>
+<p>However, \(3\pi/2\) is out of range. So \(\arccos 0 = \pi/2.\)</p>
+<h3 id=arctan-x>\(\arctan x\)</h3>
+<p>For \(\arctan x\), we use the part of \(\tan x\) from \(-\pi/2 \leq x \leq \pi/2.\)</p>
+<p>What are the domain and range of \(\arctan x\)?</p>
+<div class=example>
+<p>Find \(\arctan \sqrt3.\)</p>
+</div>
+<p>There are two angles with a tangent of \(\sqrt3:\) \(\pi/3\) and \(4\pi/3\) .</p>
+<p>But \(4\pi/3\) is out of range. So \(\arctan \sqrt{3} = \pi/3.\)</p>
+<p>Let&rsquo;s do a couple more complex problems&mldr;</p>
+<div class=example>
+<p>Find</p>
+<ol>
+<li>\(\sin \arccos 3/4.\)</li>
+<li>\(\sin(\arccos 0 - \arcsin 1/2)\)</li>
 </ol>
 </div>
-<h2 id=ranges-of-inverse-functions>Ranges of inverse functions</h2>
-<p>There&rsquo;s a problem here, of course. There are many angles that produce the same sine, because sine is periodic! So \(\arcsin\) defined as it was is not a function.</p>
-<p>We can get around this easily, though.</p>
-<p>Pick up here Wednesday.</p>
 </article>
 <hr>
 </main>

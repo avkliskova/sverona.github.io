@@ -1,0 +1,116 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Trigonometric identities | S. Verona Malone</title>
+<meta name=title content="Trigonometric identities">
+<meta name=description content="Content from OpenSTAX 9.1 and 9.2.">
+<meta name=keywords content>
+<meta property="og:title" content="Trigonometric identities">
+<meta property="og:description" content="Content from OpenSTAX 9.1 and 9.2.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sverona.dev/trig/identities/"><meta property="article:section" content="trig">
+<meta property="article:published_time" content="2021-10-22T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-10-22T00:00:00+00:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Trigonometric identities">
+<meta name=twitter:description content="Content from OpenSTAX 9.1 and 9.2.">
+<meta itemprop=name content="Trigonometric identities">
+<meta itemprop=description content="Content from OpenSTAX 9.1 and 9.2."><meta itemprop=datePublished content="2021-10-22T00:00:00+00:00">
+<meta itemprop=dateModified content="2021-10-22T00:00:00+00:00">
+<meta itemprop=wordCount content="230">
+<meta itemprop=keywords content>
+<meta name=referrer content="no-referrer-when-downgrade">
+<link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
+<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
+<script defer src=https://sverona.dev/katex/katex.js></script>
+<script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}]})})</script>
+</head>
+<body>
+<header id=header><a href=/ class=title id=brand>
+<span id=accent></span>S. Verona Malone
+</a>
+<nav><ul>
+<li><a href=/blog>blog</a></li>
+<li><a href=https://github.com/sverona>github</a></li>
+<li><a href=/trig>MATH 117</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<header id=front-matter>
+<div>
+<h1>Trigonometric identities</h1>
+<em id=page-description>Content from OpenSTAX 9.1 and 9.2.</em>
+</div>
+<ul id=page-metadata-block>
+<li id=publish-date>
+<time datetime=2021-10-22 pubdate>
+October 22, 2021
+</time>
+</li>
+<li id=completion-status>completion status: <em></em></li>
+<li id=epistemic-status>epistemic status: <em></em></li>
+</ul>
+<nav>
+<p>
+This page belongs to the sequence <a href=https://sverona.dev/trig/>MATH 117: Trigonometry</a>.
+<br>
+The previous page in this sequence is <a href=https://sverona.dev/trig/inverse-functions/>Inverse trigonometric functions</a>.
+<br>
+This is the final page in its sequence.
+</p>
+</nav>
+</div>
+</header>
+<article>
+<div id=toc>
+<h5 style=margin:0>Contents</h5>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#verifying-trigonometric-identities>Verifying trigonometric identities</a></li>
+</ul>
+</nav>
+</div>
+<p>A <em>identity</em> is an equation that is always true. A <em>trigonometric</em> identity involves trig functions.
+For instance:</p>
+<ol>
+<li><em>Pythagorean identities:</em> \(\sin^2 \theta + \cos^2 \theta = 1.\)
+Also: \(\tan^2 \theta + 1 = \sec^2 \theta; 1 + \cot^2 \theta = \csc^2 \theta.\)</li>
+<li><em>Even/odd identities:</em> \(\sin(-\theta) = -\sin \theta.\)
+Other odd functions: \(\tan(-\theta) = \tan \theta; \cot(-\theta) = -\cot \theta; \csc(-\theta) = -\csc \theta.\)
+Even functions: \(\cos(-\theta) = \cos \theta ; \sec(-\theta) = \sec \theta.\)</li>
+<li>\(\cot \theta = \frac{1}{\tan \theta}.\) (Reciprocal identities.)
+Also: \(\sec \theta = 1/\cos \theta; \csc \theta = 1/\sin \theta.\)</li>
+<li>\(\tan \theta = \frac{\sin\theta}{\cos\theta}.\) (Quotient identities.)
+Also: \(\cot \theta = \cos \theta / \sin \theta.\)</li>
+</ol>
+<h2 id=verifying-trigonometric-identities>Verifying trigonometric identities</h2>
+<p>To <em>verify</em> an identity means to show that it is always true.</p>
+<p>For instance: \(\sec \theta (\sin \theta + \cos \theta) = 1 + \tan \theta.\)
+How could you show this is always true?</p>
+<p>Some tricks:</p>
+<ul>
+<li>Start at the more complicated side and try to simplify it.</li>
+<li>Try converting to sines and cosines.</li>
+<li>Try cross-multiplying.</li>
+<li>When you see one side of an identity, try using it.</li>
+<li>If something looks familiar, try to make it into an identity you already know.</li>
+<li>Work with both sides independently until you get the same thing on both sides. <strong>Never cross the equal sign.</strong></li>
+</ul>
+<p>Some more identities to try:</p>
+<ol>
+<li>\(\csc \theta \cos \theta \tan \theta = 1.\)</li>
+<li>\((1 + \sin x)(1 + \sin(-x)) = \cos^2 x.\)</li>
+</ol>
+</article>
+<hr>
+</main>
+<footer> Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a>
+</footer>
+</body>
+</html>

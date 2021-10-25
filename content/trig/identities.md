@@ -24,13 +24,17 @@ For instance: \\(\sec \theta (\sin \theta + \cos \theta) = 1 + \tan \theta.\\)
 How could you show this is always true?
 
 Some tricks:
-- Start at the more complicated side and try to simplify it.
-- Try converting to sines and cosines.
-- Try cross-multiplying.
-- When you see one side of an identity, try using it.
-- If something looks familiar, try to make it into an identity you already know.
-- Work with both sides independently until you get the same thing on both sides. **Never cross the equal sign.**
+1. Start at the more complicated side and try to simplify it.
+2. Try converting to sines and cosines.
+3. Try cross-multiplying.
+4. When you see one side of an identity, try using it.
+5. If something looks familiar, try to make it into an identity you already know.
+6. Work with both sides independently until you get the same thing on both sides. **Never cross the equal sign.**
 
 Some more identities to try:
 1. \\(\csc \theta \cos \theta \tan \theta = 1.\\)
 2. \\((1 + \sin x)(1 + \sin(-x)) = \cos^2 x.\\)  
+3. \\(\cos x - \cos^3 x = \cos x \sin^2 x\\)
+4. \\((\sin x + \cos x)^2 = 1 + 2 \sin x \cos x\\)
+
+

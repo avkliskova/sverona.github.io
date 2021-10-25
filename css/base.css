@@ -46,6 +46,7 @@ a, a:visited {
 
   text-decoration-thickness: 1px;
   text-decoration-style: dotted;
+  text-underline-offset: 2px;
 }
 
 body > header {

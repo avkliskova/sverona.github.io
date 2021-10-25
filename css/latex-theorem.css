@@ -11,12 +11,6 @@ article > div:not(.proof):before {
   font-style: all-small-caps;
 }
 
-article > div:not(.proof):not(#toc):not(.figure):not(.highlight) {
-  padding: 1rem;
-  background-color: #fbdbdb;
-  box-shadow: 4px 4px #d91e36;
-  margin-block: 2rem;
-}
 
 .definition:before {
   counter-increment: definition;

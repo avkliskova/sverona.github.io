@@ -37,4 +37,23 @@ Some more identities to try:
 3. \\(\cos x - \cos^3 x = \cos x \sin^2 x\\)
 4. \\((\sin x + \cos x)^2 = 1 + 2 \sin x \cos x\\)
 
+## Sum and difference identities
+How can we write \\(\sin(\alpha + \beta)\\) in terms of functions of \\(\alpha\\) and \\(\beta\\) only?
 
+Does \\(\sin(\alpha + \beta) = \sin \alpha + \sin \beta\\)?
+
+Sasha: prove \\(\sin(\alpha + \beta) = \sin \alpha \cos \beta + \cos \alpha \sin \beta;\\) also \\(\cos(\alpha + \beta.)\\)
+
+How can we get forms for \\(\sin(\alpha - \beta)\\) and \\(\cos(\alpha - \beta)\\) ?
+
+Find an exact form for \\(\sin (5\pi/12).\\)
+
+Find the exact value of \\(\sin 7\pi/12 \cos \pi/4 - \sin \pi/4 \cos 7\pi/12.\\)
+
+## Double-angle identities
+
+How can we write \\(\sin(2\alpha)\\) in terms of only \\(\sin \alpha\\) and \\(\cos \alpha\\) ?
+
+What about \\(\cos 2\alpha\\) ? (Sasha; talk about alternative forms.)
+
+What about \\(\tan 2\alpha\\) ?

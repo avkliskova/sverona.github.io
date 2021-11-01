@@ -46,9 +46,13 @@ Sasha: prove \\(\sin(\alpha + \beta) = \sin \alpha \cos \beta + \cos \alpha \sin
 
 How can we get forms for \\(\sin(\alpha - \beta)\\) and \\(\cos(\alpha - \beta)\\) ?
 
-Find an exact form for \\(\sin (5\pi/12).\\)
+Find forms for \\(\tan (\alpha \pm \beta).\\)
 
-Find the exact value of \\(\sin 7\pi/12 \cos \pi/4 - \sin \pi/4 \cos 7\pi/12.\\)
+Exercises:
+
+1.  Find an exact form for \\(\sin (5\pi/12).\\)
+2.  Find the exact value of \\(\sin 7\pi/12 \cos \pi/4 - \sin \pi/4 \cos 7\pi/12.\\)
+3.  Find the exact value of \\(\tan(\arcsin 0 + \arcsin(1/2)).\\)
 
 ## Double-angle identities
 
@@ -57,3 +61,11 @@ How can we write \\(\sin(2\alpha)\\) in terms of only \\(\sin \alpha\\) and \\(\
 What about \\(\cos 2\alpha\\) ? (Sasha; talk about alternative forms.)
 
 What about \\(\tan 2\alpha\\) ?
+
+Find \\(\sin(2\theta), \cos(2\theta), \tan(2\theta)\\) if \\(\sec \theta = -5/3\\) and \\(\theta\\) is in the second quadrant.
+
+## Half-angle and power-reduction identities
+
+Sasha: show how to invert the double-angle identities to get half-angle identities.
+
+Find \\(\sin(\pi/12), \cos(\pi/12), \tan(\pi/12).\\)

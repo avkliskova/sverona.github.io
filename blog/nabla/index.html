@@ -246,7 +246,7 @@ network until we reach the layer that directly depends on \(w_{ij}\), at
 which point the terms corresponding to weight partials are no longer all
 zero, and we can compute directly</p>
 <p>\[\begin{aligned}
-\frac{\partial x_{(i + 1),k}}{\partial w_{ij}} &= \frac{\partial}{\partial w_{ij}} \left[\psi_{(i+1),k}\left(b_{(i + 1),k} + \sum_l w_{il}x_{il}\right)\right] \\\<br>
+\frac{\partial x_{(i + 1),k}}{\partial w_{ij}} &= \frac{\partial}{\partial w_{ij}} \left[\psi_{(i+1),k}\left(b_{(i + 1),k} + \sum_l w_{il}x_{il}\right)\right] \\\
 &= \psi'_{(i+1),k}\left(b_{(i + 1),k} + \sum_l w_{il}x_{il}\right) \cdot x_{ij}.
 \end{aligned}\]</p>
 <p>The weight can now be adjusted according to</p>

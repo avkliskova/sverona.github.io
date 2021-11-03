@@ -94,7 +94,7 @@ October 2, 2021
 <span style=color:#cdcd00>const</span> routeTasks <span style=color:#39c>=</span> require(<span style=color:#cd0000>&#39;./src/routes/tasks&#39;</span>);
 </code></pre></div><p>The next section specifies the different routes and middleware. This is where Flask would use decorators.</p>
 <p>These two are <em>middleware layers.</em> The path <code>./client/build</code> will be served statically, and request bodies containing JSON will be parsed into proper JSON, as would happen with <code>JSON.parse()</code>.</p>
-<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>app.use(express.<span style=color:#cdcd00>static</span>(path.join(<span style=color:#cd00cd>__</span>dirname, <span style=color:#cd0000>&#39;client/build&#39;</span>)));
+<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>app.use(express.<span style=color:#cdcd00>static</span>(path.join(__dirname, <span style=color:#cd0000>&#39;client/build&#39;</span>)));
 app.use(bodyParser.json());
 </code></pre></div><p>This is a dedicated <em>router.</em> We&rsquo;ll get into what it does below, but it&rsquo;s like a submodule that handles routes beginning with <code>/api/tasks</code>. When we get to it, we&rsquo;ll see that it implements CRUD operations, which will be routed under <code>/api/tasks/add</code>, <code>/api/tasks/delete/</code>, etc.</p>
 <p>The third argument is a callback that returns a 401 error; it will be executed if nothing matches under <code>routeTasks</code>.</p>
@@ -102,7 +102,7 @@ app.use(bodyParser.json());
 <div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>app.use(<span style=color:#cd0000>&#39;/api/tasks&#39;</span>, routeTasks, (req, res) =&gt; res.sendStatus(<span style=color:#cd00cd>401</span>));
 </code></pre></div><p>This last one is a catchall router for things that match none of the previous &mdash; it just routes the user back to <code>index.html</code>, the root page.</p>
 <div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>app.get(<span style=color:#cd0000>&#39;*&#39;</span>, (req, res) =&gt; {
-  res.sendFile(path.join(<span style=color:#cd00cd>__</span>dirname <span style=color:#39c>+</span> <span style=color:#cd0000>&#39;/client/build/index.html&#39;</span>));
+  res.sendFile(path.join(__dirname <span style=color:#39c>+</span> <span style=color:#cd0000>&#39;/client/build/index.html&#39;</span>));
 });
 </code></pre></div><p>Finally, we start the server. <code>process.env.PORT</code> resolves to the environment variable <code>$PORT</code> if it is set.</p>
 <div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#cdcd00>const</span> port <span style=color:#39c>=</span> process.env.PORT <span style=color:#39c>||</span> <span style=color:#cd00cd>5000</span>;

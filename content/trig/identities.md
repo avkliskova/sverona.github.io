@@ -69,3 +69,7 @@ Find \\(\sin(2\theta), \cos(2\theta), \tan(2\theta)\\) if \\(\sec \theta = -5/3\
 Sasha: show how to invert the double-angle identities to get half-angle identities.
 
 Find \\(\sin(\pi/12), \cos(\pi/12), \tan(\pi/12).\\)
+
+Sasha: show how the half-angle identities can be used to reduce powers.
+
+Write \\(\sin^4(x)\\) without any powers.

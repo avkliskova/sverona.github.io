@@ -23,3 +23,12 @@ Let's solve \\(4 \sin^2 x - 3 = 0.\\)
 All of our usual methods to solve quadratic equations are available to use here. We can either factor, or use the quadratic formula with \\(\sin x\\) as the variable instead of \\(x\\): \\[\sin x = \frac{0 \pm \sqrt{0^2 - 4 \cdot 4 \cdot (-3)}{2 \cdot 4}.\\]
 
 We end up with \\(\sin x = \pm \sqrt{3}/2.\\) So \\( \sin x = \pi/3, 2\pi/3, 4\pi/3, 5\pi/3. \\)
+
+## Factoring
+
+Let's solve \\(\sin(2x) - 2 \cos^2(x) = 0\\) on \\(0 \leq x < 2\pi.\\)
+
+First, write \\(\sin(2x) = 2 \sin x \cos x.\\) Then we can factor the equation as
+
+\\[2 (\cos x)(\sin x - \cos x) = 0.\\]
+This gives \\(\cos x = 0\\), \\(\sin x - \cos x = 0.\\)

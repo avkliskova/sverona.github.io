@@ -20,7 +20,9 @@ Then we look up the right value on the unit circle to finish: \\(x = 4\pi/3, 5\p
 
 Let's solve \\(4 \sin^2 x - 3 = 0.\\)
 
-All of our usual methods to solve quadratic equations are available to use here. We can either factor, or use the quadratic formula with \\(\sin x\\) as the variable instead of \\(x\\): \\[\sin x = \frac{0 \pm \sqrt{0^2 - 4 \cdot 4 \cdot (-3)}{2 \cdot 4}.\\]
+All of our usual methods to solve quadratic equations are available to use here. We can either factor, or use the quadratic formula with \\(\sin x\\) as the variable instead of \\(x\\):
+
+\\[\sin x = \frac{0 \pm \sqrt{0^2 - 4 \cdot 4 \cdot (-3)}}{2 \cdot 4}.\\]
 
 We end up with \\(\sin x = \pm \sqrt{3}/2.\\) So \\( \sin x = \pi/3, 2\pi/3, 4\pi/3, 5\pi/3. \\)
 

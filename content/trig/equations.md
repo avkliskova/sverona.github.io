@@ -34,3 +34,17 @@ First, write \\(\sin(2x) = 2 \sin x \cos x.\\) Then we can factor the equation a
 
 \\[2 (\cos x)(\sin x - \cos x) = 0.\\]
 This gives \\(\cos x = 0\\), \\(\sin x - \cos x = 0.\\)
+
+## Using identities
+
+Let's solve \\(\tan x = 2 \sin x\\) on \\(0 \leq x < 2\pi.\\)
+
+First, write \\(\tan x - 2 \sin x = 0.\\)
+
+Then write \\(\tan x = \dfrac{\sin x}{\cos x}\\): \\(\dfrac{\sin x}{\cos x} - 2 \sin x = 0.\\)
+
+Factor out a \\(\sin x\\): \\((\sin x)\left(\dfrac{1}{\cos x} - 2\right) = 0.\\) Note that we do NOT divide out the \\(\sin x.\\)
+
+Set factors to zero: \\(\sin x = 0\\) or \\(\dfrac{1}{\cos x} - 2 = 0.\\)
+
+This gives \\(x = 0, \pi, \pi/6, 11\pi/6.\\)

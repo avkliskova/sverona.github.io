@@ -1,5 +1,5 @@
 ---
-title: Neural networks in time scale calculus
+title: The backpropagation algorithm for nabla derivatives
 description: A term paper for a course in discrete linear operators.
 date: 2019-05-07
 completion_status: complete
@@ -7,12 +7,18 @@ epistemic_status: confident
 tags: [grad-school, term-paper, time-scales-calculus, neural-networks, machine-learning, 2019]
 ---
 
-_Neural networks_ are a popular technique for machine learning problems such as automated handwriting recognition, automated speech recognition, and time-series forecasting. On these tasks, so-called _deep neural networks_ [Schmidhuber 2015] and _convolutional neural networks_ [Ciresan et al. 2011] have performed at least as well as the best known non-neural-network statistical learning techniques. A typical neural network numerically solves an extremization problem using gradient descent in a high-dimensional Euclidean space using an algorithm known as _backpropagation_.
+_Neural networks_ are a popular technique for machine learning problems such as automated handwriting recognition, automated speech recognition, and time-series forecasting. On these tasks, so-called _deep neural networks_ [Schmidhuber 2015]{{% sidenote %}} Schmidhuber, Jürgen. "Deep learning in neural networks: An overview." _Neural networks_ 61 (2015): 85-117. {{% /sidenote %}} and _convolutional neural networks_ [Ciresan et al. 2011]
+{{% sidenote %}}
+Ciresan, Dan Claudiu, Ueli Meier, Jonathan Masci, Luca Maria Gambardella, and Jürgen Schmidhuber. "Flexible, high performance convolutional neural networks for image classification." In _Twenty-Second International Joint Conference on Artificial
+Intelligence_. 2011.
+{{% /sidenote %}} have performed at least as well as the best known non-neural-network statistical learning techniques. A typical neural network numerically solves an extremization problem using gradient descent in a high-dimensional Euclidean space using an algorithm known as _backpropagation_.
 
-We provide an exposition of (feedforward) neural networks and backpropagation on \\(\mathbb{R}^n\\), analogous to that found in [Nielsen 2015]. We further generalize these concepts from \\(\mathbb{R}^n\\) to a product of _time scales_, or closed subsets of \\(\mathbb{R}\\) which may be partially discrete and partially continuous.
+We provide an exposition of (feedforward) neural networks and backpropagation on \\(\mathbb{R}^n\\), analogous to that found in [Nielsen 2015].{{% sidenote %}} Nielsen, Michael A. _Neural networks and deep learning._ Determination Press, 2015. {{% /sidenote %}} We further generalize these concepts from \\(\mathbb{R}^n\\) to a product of _time scales_, or closed subsets of \\(\mathbb{R}\\) which may be partially discrete and partially continuous.
 
 Most of the main results were already derived in [Seiffert & Wunsch
-2010] for delta derivatives; we present what are mostly the dual cases
+2010]{{% sidenote %}}
+Seiffertt, John, and Donald C. Wunsch. "Backpropagation and ordered
+derivatives in the time scales calculus." _IEEE transactions on neural networks_ 21, no. 8 (2010): 1262-1269. {{% /sidenote %}} for delta derivatives; we present what are mostly the dual cases
 for nabla derivatives.
 
 
@@ -136,7 +142,11 @@ In this section we present the necessary prerequisites for appreciating
 the main results: the backpropagation algorithm on Euclidean domains
 (\\(\mathbb{R}^n\\)), following chapter 2 of [Nielsen 2015], and the
 generalization to time scales calculus of the necessary concepts from
-multivariable differential calculus, following [Bohner & Guseinov 2004].
+multivariable differential calculus, following [Bohner & Guseinov 2004].{{% sidenote %}}
+Bohner, Martin, and Gusein Sh. Guseinov. "Partial differentiation on
+time scales." _Dynamic systems and applications_ 13, no. 3-4 (2004):
+351-379.
+{{% /sidenote %}}
 
 
 ### Backpropagation on \\(\mathbb{R}\\) {#backpropagation-on-mathbbr}
@@ -215,11 +225,15 @@ backpropagation update all the parameters simultaneously. Hence this
 assumption is no longer valid; in particular, the change in the weight
 (and bias) of a given node affects all of its successors.
 
-To remedy this, [Werbos 1990] introduced an "ordered chain rule" that
+To remedy this, [Werbos 1990]{{% sidenote %}}
+Werbos, Paul J. "Backpropagation through time: what it does and how to
+do it." _Proceedings of the IEEE_ 78, no. 10 (1990): 1550-1560.
+{{% /sidenote %}} introduced an "ordered chain rule" that
 accounts for these indirect effects. We present it below without proof.
 A time scales version (for delta derivatives) is proven and rigorously
 exposited in [Seifertt & Wunsch 2010] as Theorem 2.
 
+{{% div class="theorem" %}}
 Define the variables \\(x\_i = f(x\_1, \dots, x\_{i - 1})\\) recursively.
 Then the "ordered derivative" of \\(x\_j\\) with respect to \\(x\_i\\) is
 given by
@@ -227,6 +241,7 @@ given by
 \\[\begin{aligned} \frac{\partial^+ x\_j}{\partial x\_i} = \frac{\partial
 x\_j}{\partial x\_i} + \sum\_{k = i, \dots, j} \frac{\partial^+
 x\_j}{\partial x\_k} \frac{\partial x\_k}{x\_i}. \end{aligned}\\]
+{{% /div %}}
 
 The sum in the definition of the ordered derivative accounts for the
 indirect effects incurred by updates in the variables computed "after"
@@ -239,13 +254,19 @@ indirect effects incurred by updates in the variables computed "after"
 This section consists of a number of standard definitions which will be
 immediately generalized. For a more complete treatment of
 single-variable time scales calculus in which these results appear, see
-[Bohner & Peterson 2012].
+[Bohner & Peterson 2012].{{% sidenote %}}
+Bohner, Martin, and Allan Peterson. _Dynamic equations on time scales:
+an introduction with applications._ Springer Science & Business Media, 2012.
+{{% /sidenote %}}
 
+{{% div class="definition" %}}
 A _time scale_ is a nonempty closed subset of \\(\mathbb{R}\\).
+{{% /div %}}
 
 In the sequel, we use \\(\mathbb{T}\\) to refer to an arbitrary time
 scale.
 
+{{% div class="definition" %}}
 We define the _backward jump function_ \\(\rho : \mathbb{T} \to
 \mathbb{T}\\) by
 
@@ -255,27 +276,34 @@ and the _backward graininess function_ \\(\nu : \mathbb{T} \to [0,
 \infty)\\) by
 
 \\[\nu(t) \coloneqq t - \rho(t).\\]
+{{% /div %}}
 
+{{% div class="definition" %}}
 Let \\(t \in \mathbb{T}\\). If \\(\nu(t) \> 0\\), we say \\(t\\) is _(left)
 scattered_. Otherwise we say \\(t\\) is _(left) dense_.
+{{% /div %}}
 
+{{% div class="definition" %}}
 Let \\(t \in \mathbb{T}\\) and let \\(f : \mathbb{T} \to \mathbb{R}\\). If
 the limit \\[\begin{aligned} \lim\_{s \to t, s \not = \rho(t)}
 \frac{f(\rho(t)) - f(s)}{\rho(t) - s} = f^\nabla(t) \end{aligned}\\]
 exists as a finite number, we say that \\(f\\) is _nabla differentiable at
 \\(t\\)_ and call \\(f^\nabla(t)\\) the _nabla derivative of \\(f\\) at
 \\(t\\)_.
+{{% /div %}}
 
 The following generalization of the univariate chain rule will be
 necessary later. It appears for delta derivatives in [Bohner & Peterson
 2012] as Theorem 1.90.
 
+{{% div class="theorem" %}}
 Suppose \\(f : \mathbb{R} \to \mathbb{R}\\) is \\(C^1\\). Suppose \\(g :
 \mathbb{T} \to \mathbb{R}\\) is nabla differentiable. Then \\(f \circ g :
 \mathbb{T} \to \mathbb{R}\\) is nabla differentiable and
 
 \\[\begin{aligned} (f \circ g)^\nabla(t) = \int\_0^1 f'(g(t) +
 h\nu(t)g^\nabla(t)) ~dh. \end{aligned}\\]
+{{% /div %}}
 
 The definitions of the dual concepts (_e.g._, forward jump function,
 right scattered point, delta derivative) may be easily inferred. We will
@@ -294,18 +322,19 @@ Suppose \\(f\\) is defined on \\(\Lambda^n\\) and \\(\mathbf{t} = [t\_1,
 \\(\Lambda^n\\) as follows.
 
 \\[\begin{aligned} \rho(\mathbf{t}) &= [\rho\_1(t\_1), \dots, \rho\_i(t\_i),
-\dots, \rho\_n(t\_n)]^T, \\ f^{\rho}(\mathbf{t}) &= f(\rho\_1(t\_1), \dots,
+\dots, \rho\_n(t\_n)]^T, \newline f^{\rho}(\mathbf{t}) &= f(\rho\_1(t\_1), \dots,
 \rho\_i(t\_i), \dots, \rho\_n(t\_n)). \end{aligned}\\]
 
 For compactness, we also make use of the following abuse of notation:
 
 \\[\begin{aligned} \rho\_i(\mathbf{t}) &= [t\_1, \dots, \rho\_i(t\_i), \dots,
-t\_n]^T, \\ f^{\rho\_i}(\mathbf{t}) &= f(t\_1, \dots, \rho\_i(t\_i), \dots,
+t\_n]^T, \newline f^{\rho\_i}(\mathbf{t}) &= f(t\_1, \dots, \rho\_i(t\_i), \dots,
 t\_n). \end{aligned}\\]
 
 The following definitions are given (for delta derivatives) in [Bohner &
 Guseinov 2004].
 
+{{% div class="definition" %}}
 Let \\(f : \Lambda^n \to \mathbb{R}\\). Let \\(\mathbf{t} = [t\_1, \dots,
 t\_n]^T \in \Lambda^n\\). If the limit
 
@@ -318,6 +347,7 @@ exists as a finite number, we say that \\(f\\) is _nabla differentiable in
 the \\(i\\)th variable at \\(\mathbf{t}\\)_ and call
 \\(\displaystyle\frac{\partial f}{\nabla\_i t\_i}(\mathbf{t})\\) the _nabla
 derivative of \\(f\\) with respect to \\(t\_i\\) at \\(\mathbf{t}\\)_.
+{{% /div %}}
 
 To generalize the backpropagation algorithm, we will require the total
 derivative of some functions to be well-defined. The following two
@@ -325,6 +355,7 @@ definitions provide an appropriate sufficient condition; a more explicit
 (and lengthier) version that does not rely on vectors appears as
 Definitions 2.1 and 2.3 in [Bohner & Guseinov 2004].
 
+{{% div class="definition" %}}
 Let \\(f : \Lambda^n \to \mathbb{R}\\). Let \\(\mathbf{t} \in \Lambda^n\\).
 Fix a positive \\(\varepsilon\\). If there exists a vector
 \\(\mathbf{A}(\mathbf{t}) = \mathbf{A} \in \mathbb{R}^n\\) such that for
@@ -343,11 +374,13 @@ and for \\(j = 1, \dots, n\\)
 and further \\(\lim\_{\mathbf{s} \to \mathbf{t}} \mathbf{a} =
 \lim\_{\mathbf{s} \to \mathbf{t}} \mathbf{b}\_j = \mathbf{0}\\), we say
 \\(f\\) is _completely nabla differentiable at \\(\mathbf{t}\\)_.
+{{% /div %}}
 
 In this definition the vector \\(\mathbf{A}\\) plays the role of the
 gradient of \\(f\\); that is, if it exists, its \\(i\\)th component is equal
 to \\(\frac{\partial f}{\nabla\_i t\_i}(\mathbf{t})\\).
 
+{{% div class="definition" %}}
 Suppose \\(f : \Lambda^n \to \mathbb{R}\\) is completely nabla
 differentiable at \\(\mathbf{t} \in \Lambda^n\\). Fix a positive
 \\(\varepsilon\\). If there exists a vector \\(\mathbf{B}(\mathbf{t}) =
@@ -366,6 +399,7 @@ f}{\nabla\_i t\_i}(\mathbf{t}), \end{aligned}\\] and for any \\(\mathbf{s}
 
 then we say \\(f\\) is _\\(\rho\_i\\)-completely nabla differentiable at
 \\(\mathbf{t}\\)_.
+{{% /div %}}
 
 If this condition holds, the components of \\(\mathbf{B}\\) other than the
 \\(i\\)th are given by
@@ -376,9 +410,11 @@ t\_j}(\rho\_i(\mathbf{t})).\end{aligned}\\]
 The final definition we need will be used in the proof of the main
 theorem.
 
+{{% div class="definition" %}}
 Let \\(f : \Lambda^n \to \mathbb{T}\\). If
 \\(f^{\rho\_{\Lambda^n}}(\mathbf{t}) = \rho\_{\mathbb{T}}(f(\mathbf{t}))\\),
 we say that \\(f\\) is _backward jump commutative_ or _\\(ρ\\)-commutative_.
+{{% /div %}}
 
 
 ## Main results {#main-results}
@@ -397,6 +433,7 @@ assume throughout this discussion that the image of \\(u\_i\\),
 and is more specifically (a subset of) the \\(i\\)th component of
 \\(\Lambda^n\\), so that the composite function \\(F\\) is well-defined.
 
+{{% div class="theorem" %}}
 Suppose \\(f : \Lambda^n \to \mathbb{R}\\) is \\(\rho\_1\\)-completely nabla
 differentiable. Suppose \\(u\_i : \Lambda^n \to \mathbb{R}\\) is nabla
 differentiable and \\(\rho\_i\\)-commutative for \\(i = 1, \dots, n\\).
@@ -409,7 +446,10 @@ u\_n(\mathbf{t})).\\] The nabla derivative of \\(F\\) exists and is given by
 u\_1}(\mathbf{t}) \cdot u\_1^\nabla(\mathbf{t}) + \sum\_{k = 2}^n
 \frac{\partial F}{\nabla\_k u\_k}(\rho\_1(\mathbf{t})) \cdot
 u\_k^\nabla(\mathbf{t}). \end{aligned}\\]
+{{% /div %}}
 
+
+{{% div class="proof" %}}
 Let \\(\varepsilon > 0\\). Let \\(\mathbf{t} \in \Lambda^n\\) be given. A bit
 loosely, we write \\[\begin{aligned} F^\nabla(\mathbf{t}) &=
 \lim\_{\Vert\mathbf{s} - \mathbf{t}\Vert \to 0, \mathbf{s} \not =
@@ -424,7 +464,7 @@ than \\(\varepsilon\\). Since the \\(u\_i\\) are \\(ρ\\)-commutative, we have
 
 \\[\begin{aligned} F(\rho(\mathbf{t})) - F(\mathbf{s}) &=
 f(\rho\_1(u\_1(\mathbf{t})), \dots, \rho\_n(u\_n(\mathbf{t}))) -
-f(u\_1(\mathbf{s}), \dots, u\_n(\mathbf{s})) \\ &= F^\rho(\mathbf{t}) -
+f(u\_1(\mathbf{s}), \dots, u\_n(\mathbf{s})) \newline &= F^\rho(\mathbf{t}) -
 F(\mathbf{s}). \end{aligned}\\]
 
 Since \\(F\\) is \\(\rho\_1\\)-completely nabla differentiable, there exist \\(\mathbf{B}, \mathbf{v} \in \mathbb{R}^n\\)
@@ -433,28 +473,28 @@ and
 
 \\[\begin{aligned} F^\rho(\mathbf{t}) - F(\mathbf{s}) &= (\mathbf{B} +
 \mathbf{v}) \cdot (\rho(\mathbf{u}(\mathbf{t})) -
-\mathbf{u}(\mathbf{s})) \\ &= \sum\_{k = 1}^n
-B\_k(\rho\_k(u\_k(\mathbf{t})) - u\_k(\mathbf{s})) \\ &\qquad+ \mathbf{v}
+\mathbf{u}(\mathbf{s})) \newline &= \sum\_{k = 1}^n
+B\_k(\rho\_k(u\_k(\mathbf{t})) - u\_k(\mathbf{s})) + \mathbf{v}
 \cdot (\rho(\mathbf{u}(\mathbf{t})) - \mathbf{u}(\mathbf{s})).
 \end{aligned}\\]
 
 By (\ref{bi}) and (\ref{bj}), this is
 
 \\[\begin{aligned} &= \left(\frac{\partial F}{\nabla\_1 u\_1}(\mathbf{t})
-\right) (\rho\_1(u\_1(\mathbf{t})) - \mathbf{s}) \\ &\qquad+ \sum\_{k=2}^n
+\right) (\rho\_1(u\_1(\mathbf{t})) - \mathbf{s}) \newline &\qquad+ \sum\_{k=2}^n
 \left(\frac{\partial F}{\nabla\_k
 u\_k}(\rho\_1(\mathbf{t}))\right)(\rho\_k(u\_k(\mathbf{t})) -
-u\_k(\mathbf{s})) \\ &\qquad+ \mathbf{v} \cdot
+u\_k(\mathbf{s})) + \mathbf{v} \cdot
 (\rho(\mathbf{u}(\mathbf{t})) - \mathbf{u}(\mathbf{s})). \end{aligned}\\]
 
 Now applying the \\(ρ\\)-commutativity condition in the other direction
 gives
 
 \\[\begin{aligned} &= \left(\frac{\partial F}{\nabla\_1 u\_1}(\mathbf{t})
-\right) (u\_1(\rho(\mathbf{t})) - \mathbf{s}) \\ &\qquad+ \sum\_{k=2}^n
+\right) (u\_1(\rho(\mathbf{t})) - \mathbf{s}) \newline &\qquad+ \sum\_{k=2}^n
 \left(\frac{\partial F}{\nabla\_k
 u\_k}(\rho\_1(\mathbf{t}))\right)(u\_k(\rho(\mathbf{t})) - u\_k(\mathbf{s}))
-\\ &\qquad+ \mathbf{v} \cdot (\mathbf{u}(\rho(\mathbf{t})) -
+\newline &\qquad \qquad+ \mathbf{v} \cdot (\mathbf{u}(\rho(\mathbf{t})) -
 \mathbf{u}(\mathbf{s})). \end{aligned}\\]
 
 As earlier discussed, we divide throughout by \\(\Vert\rho(\mathbf{t}) -
@@ -464,6 +504,7 @@ F^\nabla(\mathbf{t}) &= \frac{\partial F}{\nabla\_1 u\_1}(\mathbf{t})
 \cdot u\_1^\nabla(\mathbf{t}) + \sum\_{k = 2}^n \frac{\partial F}{\nabla\_k
 u\_k}(\rho\_1(\mathbf{t})) \cdot u\_k^\nabla(\mathbf{t}), \end{aligned}\\]
 which was to be shown.
+{{% /div %}}
 
 Now we generalize the earlier exposition of the backpropagation
 algorithm, viz. -
@@ -518,17 +559,17 @@ _logit regression_.)
 The network equation becomes
 
 \\[\begin{aligned} x\_{o1} = y &= b\_y + \sum\_{k = 1}^M w\_{\alpha
-k}x\_{\alpha k} \\ &= b\_y + \sum\_{k = 1}^M w\_kx\_k. \end{aligned}\\]
+k}x\_{\alpha k} \newline &= b\_y + \sum\_{k = 1}^M w\_kx\_k. \end{aligned}\\]
 
 Suppose we use the loss function and observe an error \\(L(\hat{f}(I)) =
 L = (y - \hat{y})^2/2\\). To update the parameters, we need to compute
 
 \\[\begin{aligned} \frac{\partial L}{\nabla w\_k}(I) &= \frac{\partial
-L}{\nabla y}(I) \frac{\partial y}{\nabla w\_k}(I) \\ &= -\frac{y -
+L}{\nabla y}(I) \frac{\partial y}{\nabla w\_k}(I) \newline &= -\frac{y -
 \hat{y} + \nu(y - \hat{y})}{2} \cdot \frac{\partial y}{\nabla w\_k}(I)
 \end{aligned}\\] Since \\(\psi\_k' = 1\\), we have
 
-\\[\begin{aligned} \frac{\partial y}{\nabla w\_k} &= x\_k, \frac{\partial
+\\[\begin{aligned} \frac{\partial y}{\nabla w\_k} &= x\_k, \newline \frac{\partial
 L}{\nabla w\_k} &= \frac{y - \hat{y} + \nu(y - \hat{y})}{2}
 x\_k.\end{aligned}\\]
 
@@ -551,8 +592,10 @@ well-definedness of the composite function \\(F\\). In this paper, I have
 tried to clean up their exposition in hopes of greater readability
 
 The standard treatment of the total derivative in \\(\mathbb{R}^n\\) is as
-a certain linear mapping (see for instance [Spivak 1965].) This allows
-full "vectorization" of the appropriate definitions, which eliminates
+a certain linear mapping.{{% sidenote %}} See for instance:
+Spivak, Michael. _Calculus on manifolds: a modern approach to classical
+theorems of advanced calculus._ W. A. Benjamin, Inc., 1965.
+{{% /sidenote %}} This allows full "vectorization" of the appropriate definitions, which eliminates
 complex indicial notation. An equivalent treatment for products of time
 scales \\(\Lambda^n\\) would be highly desirable, but is outside the scope
 of this paper.
@@ -565,13 +608,18 @@ demonstrated by the following result, which implies that neural networks
 can (theoretically) be used to model any continuous function in
 Euclidean space. This result was presented in various slightly different
 forms by several papers in the late 1980s and early 1990s; we follow the
-exposition in [Hornik 1991] here.
+exposition in [Hornik 1991]{{% sidenote %}}
+Hornik, Kurt. "Approximation capabilities of multilayer feedforward
+networks." _Neural networks_ 4, no. 2 (1991): 251-257.
+{{% /sidenote %}} here.
 
+{{% div class="theorem" %}}
 Suppose \\(\psi : \mathbb{R} \to \mathbb{R}\\) is continuous, bounded, and
 nonconstant. Let \\(X \subset \mathbb{R}^N\\) be compact. Then a
 feedforward neural network with a single hidden layer, all of whose
 nodes have activation function \\(\psi\\), can represent a dense subset of
 \\(C(X)\\).
+{{% /div %}}
 
 Note the conditions on \\(\psi\\) force it to be nonlinear. Additionally,
 the number of nodes in the hidden layer increases rapidly as the
@@ -582,8 +630,10 @@ well-behaved functions at which neural network modeling breaks down.
 
 The proof of this theorem requires tools from functional analysis such
 as the Riesz representation theorem and the Hahn-Banach theorem. While
-analogs of these results have been shown for time scales (see [Huseynov
-2012],) generalizing the Universal Approximation Theorem to time scales
+analogs of these results have been shown{{% sidenote %}}
+Huseynov, Adil. "The Riesz representation theorem on time scales."
+_Mathematical and Computer Modelling_ 55, no. 3-4 (2012): 1570-1579.
+{{%/sidenote %}} for time scales, generalizing the Universal Approximation Theorem to time scales
 is beyond the scope of this paper.
 
 
@@ -605,43 +655,3 @@ produces a dynamic equation specialized to the approriate time scale
 The present paper applies backpropagation to non-uniform _spatial_
 domains; an interesting application of time scales calculus would be to
 generalize backpropagation through time to non-uniform time domains.
-
-
-## References {#references}
-
-Bohner, Martin, and Gusein Sh. Guseinov. "Partial differentiation on
-time scales." _Dynamic systems and applications_ 13, no. 3-4 (2004):
-351-379.
-
-Bohner, Martin, and Allan Peterson. _Dynamic equations on time scales:
-an introduction with applications._ Springer Science & Business Media,
-
-1.
-
-Ciresan, Dan Claudiu, Ueli Meier, Jonathan Masci, Luca Maria
-Gambardella, and Jürgen Schmidhuber. "Flexible, high performance
-convolutional neural networks for image classification." In
-_Twenty-Second International Joint Conference on Artificial
-Intelligence_. 2011.
-
-Hornik, Kurt. "Approximation capabilities of multilayer feedforward
-networks." _Neural networks_ 4, no. 2 (1991): 251-257.
-
-Huseynov, Adil. "The Riesz representation theorem on time scales."
-_Mathematical and Computer Modelling_ 55, no. 3-4 (2012): 1570-1579.
-
-Nielsen, Michael A. _Neural networks and deep learning._ Determination
-Press, 2015.
-
-Schmidhuber, Jürgen. "Deep learning in neural networks: An overview."
-_Neural networks_ 61 (2015): 85-117.
-
-Seiffertt, John, and Donald C. Wunsch. "Backpropagation and ordered
-derivatives in the time scales calculus." _IEEE transactions on neural
-networks_ 21, no. 8 (2010): 1262-1269.
-
-Spivak, Michael. _Calculus on manifolds: a modern approach to classical
-theorems of advanced calculus._ W. A. Benjamin, Inc., 1965.
-
-Werbos, Paul J. "Backpropagation through time: what it does and how to
-do it." _Proceedings of the IEEE_ 78, no. 10 (1990): 1550-1560.

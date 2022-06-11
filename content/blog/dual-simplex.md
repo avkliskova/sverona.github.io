@@ -343,8 +343,3 @@ restoring these will give a primal-feasible initial solution, suitable
 for initializing the primal simplex method. Similarly, if the
 intermediate was solved with the primal simplex method, the real problem
 will require the dual simplex method.
-
-
-## References {#references}
-
-[Va] Vanderbei [HL] Hillier/Lieberman

@@ -96,15 +96,11 @@ E[\gcd(a, b) \mid \gcd(a, b) \leq N] &= \frac{\sum\_{n=1}^N 6/\pi^2 \cdot 1/n}{\
 As \\(N\\) becomes large, we then have the approximation
 
 \\[ \boxed{E[\gcd(a, b) \mid \gcd(a, b) \leq N] \approx \frac{\ln N + \gamma}{\pi^2/6},} \\]
-where \\(\gamma\\) is the Euler-Mascheroni constant.
-
-Now you may say that this is a false attempt at beauty constructed by someone who should write better blog posts. You may be right, but I will point out that should you actually want to compute this, the definition is computable only in linear time, whereas the approximation is constant-time.
+where \\(\gamma\\) is the Euler-Mascheroni constant.{{% sidenote %}}I can hear you say that this is a false attempt at beauty constructed by someone who should write better blog posts. You may be right, but I will point out that should you actually want to compute this, the definition is computable only in linear time, whereas the approximation is constant-time.{{% /sidenote %}}
 
 ## Another problem
 
-While I was explaining this to my boyfriend, I realized that I should try to compute the expected GCD of two numbers given that _the numbers_, rather than their GCD, are below a specific limit. Let's see.
-
-(Exposit this a little bit)
+While I was explaining this to my boyfriend, I realized that I should try to compute the expected GCD of two numbers given that _the numbers_, rather than their GCD, are below a specific limit.
 
 For a given upper limit \\(N\\) and required GCD \\(n\\), there are \\(2 \Phi(\lfloor N / n \rfloor) - 1\\) satisfactory pairs, so we have
 \\[\begin{aligned}
@@ -126,6 +122,6 @@ E[\gcd(a, b) \mid a, b \leq N] &\approx \sum\_{n=1}^N \frac{6\lfloor N / n \rflo
 &\approx \frac{6}{\pi^2} \sum\_{n=1}^N \frac1n \left\lfloor \frac{N}{n} \right\rfloor^2 - \frac{\ln N + \gamma}{\pi^2}.
 \end{aligned}\\]
 
-I don't think this can be further simplified. It looks kind of like Mobius inversion, but the summation is wrong. Maybe there's a fun trick to be found, but I don't see it.
+I don't think this can be further simplified.{{% sidenote %}}It looks kind of like Mobius inversion, but the summation is wrong. Maybe there's a fun trick to be found, but I don't see it.{{% /sidenote %}}
 
 It's really fascinating how deeply the GCD and \\(\pi\\) are linked. I have absolutely no idea why.

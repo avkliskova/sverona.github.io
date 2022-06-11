@@ -7,11 +7,10 @@ epistemic_status: confident
 tags: [code, fun, challenge, project-euler, 2021]
 ---
 
-[Project Euler](https://projecteuler.net) is how I taught myself Python in high school, and so I find it incredibly nostalgic. It took 13-year-old me a lot of Googling and a few months to get through the first 100 problems.
+[Project Euler](https://projecteuler.net) is how I taught myself Python in high school, and so I find it incredibly nostalgic. It took 13-year-old me a lot of Googling and a few months to get through the first 100 problems.{{% sidenote %}} Why 100 specifically? Because I wanted to write this post honestly and those are the ones I'm allowed to talk about without them locking my account or something.{{% /sidenote %}}
 
 10-odd years and a graduate degree later, I decided to come back and solve them as fast as I could. I'm no competitive programmer, but 24 hours seemed reasonable. Fortunately, I lack the stamina to code for that long, so I did it over a few days instead. I started on 19 January a little after 1400 and finished two days later at 1500, and probably spent less than half of that time coding, but who knows.
 
-(Why 100 specifically? Because I wanted to write this post honestly and those are the ones I'm allowed to talk about without them locking my account or something.)
 
 
 ## How this was possible in the first place {#how-this-was-possible-in-the-first-place}

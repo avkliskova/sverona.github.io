@@ -6,11 +6,9 @@ description: Annotations for the React part of the repo.
 
 This post continues our look at [James Vickery](https://github.com/jmsv)'s [simple-mern](https://github.com/jmsv/simple-mern) repository. Today we'll look at the React frontend, under the `client/` folder.
 
-## package-lock.json
+## package.json
 
 We'll ignore `package-lock.json`, since it was covered [previously](../node).
-
-## package.json
 
 `package.json` looks very similar to what `create-react-app` spits out. There are some new options, though, so let's look at them.
 

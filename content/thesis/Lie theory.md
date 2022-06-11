@@ -8,9 +8,9 @@ epistemic_status: confident
 weight: 4
 ---
 
-A full exposition of the theory of Lie algebras and their representations is well beyond the scope of this paper. We provide here only the necessary definitions and theorems to read §3.
+A full exposition of the theory of Lie algebras and their representations is well beyond the scope of this paper. We provide here only the necessary definitions and theorems to read [Chapter 3](../supporting-graphs).
  
-We loosely follow [Humphreys 1972]{{% sidenote %}}James E. Humphreys. *Introduction to Lie algebras and representation theory.* Springer-Verlag, 1972.{{% /sidenote %}} An introduction to the subject more suitable for advanced undergraduates is [@erdmann-wildon].
+We loosely follow [Humphreys 1972].{{% sidenote %}}James E. Humphreys. *Introduction to Lie algebras and representation theory.* Springer-Verlag, 1972.{{% /sidenote %}} An introduction to the subject more suitable for advanced undergraduates is [EW 2006].{{% sidenote %}}Karin Erdmann and Mark J. Wildon. *Introduction to Lie algebras.* Springer-Verlag, 2006.{{% /sidenote %}}
 
 
 {{% div class="definition" %}}
@@ -759,7 +759,7 @@ Furthermore, we have \\(E = \operatorname{span}\_{\mathbb R} \Phi.\\) Also:
 
 So, from a semisimple Lie algebra (and a choice of Cartan subalgebra,)
 we have obtained a root system. It turns out that the root system so
-obtained depends only on the choice of Lie algebra. See [Humphreys 1972]{{% sidenote %}}James E. Humphreys. *Introduction to Lie algebras and representation theory.* Springer-Verlag, 1972.{{% /sidenote %}}.
+obtained depends only on the choice of Lie algebra. See [Humphreys 1972].
 
 The next sections explore further the correspondence between semisimple
 Lie algebras and root systems.
@@ -899,7 +899,7 @@ respect to its diagonal subalgebra) using the above proposition.
 For any element of \\(\operatorname{diag} A\_1,\\) say
 \\(h = \operatorname{diag}(d, -d),\\) \\(\operatorname{ad} h\\) is the linear
 map that sends
-\\[ x = \begin{bmatrix} a & b \\ c & -a\end{bmatrix} \mapsto [hx] = \begin{bmatrix} 0 & -2db \\ 2dc & 0 \end{bmatrix}.\\]
+\\[ x = \begin{bmatrix} a & b \newline c & -a\end{bmatrix} \mapsto [hx] = \begin{bmatrix} 0 & -2db \newline 2dc & 0 \end{bmatrix}.\\]
 So \\(\operatorname{ad} h = \operatorname{diag}(0, -2d, d),\\) and the
 nonzero functionals that annihilate the characteristic polynomial of
 \\(\operatorname{ad} h\\) are exactly \\(\phi\_1(h) = -2d,\\) \\(\phi\_2(h) = 2d.\\)
@@ -933,7 +933,7 @@ they are as follows:
 
 
 {{% div class="marginfigure" %}}
-{{% figure src="/images/fake-a2.png" caption="The not-quite-a-root-system given by the roots of \\(A\_2\\) with respect to \\(\operatorname{diag} A\_2.\\) " %}}
+{{% figure src="/images/fake-a2.png" caption="Figure 2.3: The not-quite-a-root-system given by the roots of \\(A\_2\\) with respect to \\(\operatorname{diag} A\_2.\\) " %}}
 {{% /div %}}
 
 
@@ -979,7 +979,10 @@ generators*.
 ## Combinatorial structure of semisimple Lie algebra representations\*
 
 *This section may be skipped on a first reading. It bridges the
-preceding material with papers such as [@donnelly-extremal.]*
+preceding material with papers such as [Donnelly 2003].*{{% sidenote %}}
+Robert G. Donnelly. Extremal properties of bases for representations of
+semisimple Lie algebras. *Journal of Algebraic Combinatorics*, 17, 2003.
+{{% /sidenote %}}
 
 Let \\(\mathfrak g\\) be semisimple over an algebraically closed field
 \\(\mathbb F\\) of characteristic zero. Fix a Cartan subalgebra
@@ -1008,7 +1011,7 @@ integral linear combination of \\(\varepsilon\_i.\\)
 
 {{% div class="definition" %}}
  Make a finite-dimensional vector space \\(V\\) over
-\\(\mathbb F\\) into a \\(\mathfrak g\\)-module as stated in Definition 2.2.18.
+\\(\mathbb F\\) into a \\(\mathfrak g\\)-module as stated in Definition 18.
 A subspace \\(W \leq V\\) is called \\(\mathfrak g\\)-*stable* (sometimes
 *\\(\mathfrak g\\)-invariant* if \\(gW \subseteq W\\) for any
 \\(g \in \mathfrak g.\\) If \\(v \in V\\) is nonzero, \\(\mathfrak g . v\\) denotes
@@ -1097,8 +1100,5 @@ isomorphism, by the weight-generating function of its supporting graph
 {{% /div %}}
  
 {{% div class="proof" %}}
- See [Donnelly 2003]{{% sidenote %}}Robert G. Donnelly. Extremal properties of bases for representations of semisimple Lie algebras. *Journal of Algebraic Combinatorics,* 17, 2003.{{% /sidenote %}} and [Donnelly 2018].
+ See [Donnelly 2003] and [Donnelly 2018].{{% sidenote %}}Robert G. Donnelly. [Poset models for Weyl group analogs of symmetric functions and Schur functions](http://arxiv-export-lb.library.cornell.edu/abs/1811.10643?context=math.CO), 2018.{{% /sidenote %}}
 {{% /div %}}
-
-
-

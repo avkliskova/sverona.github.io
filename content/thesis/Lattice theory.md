@@ -7,7 +7,7 @@ epistemic_status: confident
 weight: 3
 ---
 
-This section and the next introduce the mathematics necessary to read [Chapter 3](/blog/thesis/supporting-graphs). The
+This section and the next introduce the mathematics necessary to read [Chapter 3](../supporting-graphs). The
 main results draw from combinatorial lattice theory and the
 representation theory of Lie algebras.
 
@@ -506,4 +506,4 @@ image of \\(\phi\_k\\) in \\(\mathbb Z.\\) Then
 {{% /div %}}
 
 Faces of chain-factorizable lattices (specifically, chain-factorizable
-*monochromatic components*) play an important role in [Chapter 3](/blog/thesis/supporting-graphs/).
+*monochromatic components*) play an important role in [Chapter 3](../supporting-graphs/).

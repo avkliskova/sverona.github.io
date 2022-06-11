@@ -1,11 +1,7 @@
 ---
 title: Catalanian lattices
-description: Main results of my thesis.
-sequence: thesis
+description: Main results. 
 date: 2020-11-01
-completion_status: complete
-epistemic_status: confident
-weight: 6
 ---
 
 This section introduces and proves the author\'s main results.

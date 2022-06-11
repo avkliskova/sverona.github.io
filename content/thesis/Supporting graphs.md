@@ -253,8 +253,9 @@ of coefficients.
     enumeration in (2) above. 
 {{% /div %}}
 
-The ZPS lattices were used in [@proctor] (in which \\(\mathscr Z\_n\\) is
-called \\(M(n)\\)) to prove a conjecture of Erdős concerning subset sums.
+The ZPS lattices were used in [Proctor 1982],{{% sidenote %}}Robert A. Proctor. Solution of two diﬀicult combinatorial problems with
+linear algebra. *American Mathematical Monthly,* 89(10), 1982.{{% /sidenote %}} in which \\(\mathscr Z\_n\\) is
+called \\(M(n)\\), to prove a conjecture of Erdős concerning subset sums.
 
 {{% div class="proposition" %}}
  The join-irreducible elements of \\(\mathscr Z\_n\\)

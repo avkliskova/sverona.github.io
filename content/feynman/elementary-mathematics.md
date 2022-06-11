@@ -4,25 +4,6 @@ date: 1945-01-01
 weight: 1
 ---
 
-## Table of Contents
-
-
-
--   [Equations](#org7dae15c)
-
-    -   [Example: Interpolation](#org7c76af9)
-    -   [Example: Iteration](#org0da5157)
-    -   [Example: Newton\'s method](#org7b60e6f)
-
--   [Problems](#orga98dfd8)
-
--   [Power Series](#orgfa696fa)
-
-    -   [Summation by Integration and Differentiation](#org3ecc862)
-    -   [Convergence: Ratio Test](#orgda02e58)
-
-
-
 ## Equations {#org7dae15c}
 
 The simplest way to solve any equation - except

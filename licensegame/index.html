@@ -1,0 +1,102 @@
+<!doctype html>
+
+<style type="text/css">
+  html {
+    background-color: #444;
+    color: #eee;
+    font: 16px monospace;
+  }
+
+  main {
+    max-width: 38rem;
+    padding: 2rem;
+    margin: auto;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 2ch 2ch 20ch auto;
+    grid-gap: 0 1ch;
+  }
+
+  i {
+    color: #aaa;
+  }
+
+  a {
+    color: inherit;
+  }
+</style>
+
+
+<main>
+  <p>Should anyone else stumble across this &mdash; my partner (&lt;3) and I play a game on long drives with Kentucky license plates, most of which contain three letters and three numbers. The object is to find a word which contains the letters on the plate as a subsequence. For instance, the plate <strong>270XLP</strong> admits the solution <strong>X</strong>Y<strong>L</strong>O<strong>P</strong>HONE.</p>
+
+  <p>I eventually got tired of pulling out my laptop to grep for solutions, so I sat down to write a solver.</p>
+<form id="solver">
+  <label for="plate">Letters:</label>
+  <input id="plate" name="plate" minlength="3" size="6" required />
+  <input type="submit" />
+</form>
+<div id="results">
+</div>
+</main>
+
+<script>
+  let words;
+  fetch("./words.txt")
+    .then(response => response.text())
+    .then(text => {words = text.split("\n")});
+
+  function solve(ev) {
+      ev.preventDefault();
+
+      const plate = document.getElementById("plate").value;
+
+      const letters = [...plate.matchAll(/[A-Z]/gi)];
+      const regex = new RegExp(letters.join(".*"), "gi");
+
+      const solutions = words.filter(word => word.match(regex));
+
+      const results = document.getElementById("results");
+      const map = new Map();
+
+      for (const sol of solutions) {
+          let matched = false;
+          for (let key of map.keys()) {
+              if (sol.startsWith(key)) {
+                  map.get(key).push(sol);
+                  matched = true;
+              }
+          }
+          if (!matched) {
+              map.set(sol, []);
+          }
+      }
+
+      results.innerHTML = '';
+      const count = results.appendChild(document.createElement("h2"));
+      count.textContent = `Showing ${solutions.length} solution${solutions.length == 1 ? "" : "s"} from ${map.size} stem${map.size == 1 ? "" : "s"}:`;
+      const solutionsList = results.appendChild(document.createElement("ol"));
+      for (const [key, list] of map) {
+          let li = solutionsList.appendChild(document.createElement("li"));
+
+          let etymA = li.appendChild(document.createElement("a"));
+          etymA.setAttribute("href", `https://etymonline.com/word/${key}`); 
+          etymA.textContent = "EO";
+
+          let merriamA = li.appendChild(document.createElement("a"));
+          merriamA.setAttribute("href", `https://merriam-webster.com/dictionary/${key}`); 
+          merriamA.textContent = "MW";
+
+          let b = li.appendChild(document.createElement("b"));
+          b.textContent = key;
+
+          let i = li.appendChild(document.createElement("i"));
+          i.textContent = list.join(" ");
+      }
+  }
+
+  const form = document.getElementById("solver");
+  form.addEventListener("submit", solve);
+</script>

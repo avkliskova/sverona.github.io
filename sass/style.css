@@ -1,0 +1,323 @@
+@font-face {
+  font-family: "Piazzolla";
+  src: url("fonts/Piazzolla/static/woff2/Piazzolla-Text.woff2") format("woff2"), url("fonts/Piazzolla/static/ttf/Piazzolla-Text.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; }
+
+@font-face {
+  font-family: "Piazzolla";
+  src: url("fonts/Piazzolla/static/woff2/Piazzolla-TextItalic.woff2") format("woff2"), url("fonts/Piazzolla/static/ttf/Piazzolla-TextItalic.ttf") format("ttf");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap; }
+
+@font-face {
+  font-family: "Piazzolla";
+  src: url("fonts/Piazzolla/static/woff2/Piazzolla-SemiBold.woff2") format("woff2"), url("fonts/Piazzolla/static/ttf/Piazzolla-SemiBold.ttf") format("ttf");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap; }
+
+/* $sidebar-width: $side-width * $side-size/100%; */
+/* $mobile-breakpoint: calc(min($body-width, 100vw)); */
+html {
+  font-family: 'Source Serif 4';
+  font-size: 20px; }
+
+body {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 2ch;
+  line-height: 1.6; }
+
+main {
+  max-width: 750px;
+  margin: auto; }
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.4;
+  font-weight: 600; }
+
+h2, h3, h4, h5, h6 {
+  margin-block-end: -0.75rem; }
+
+h1 {
+  margin-block: 0; }
+
+h2 {
+  font-size: 1.3rem; }
+
+h3 {
+  font-size: 1.1rem; }
+
+main {
+  margin-top: 6rem; }
+
+a, a:visited {
+  color: initial;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px; }
+
+body > header {
+  overflow: auto; }
+  body > header ul {
+    margin: 0;
+    float: right;
+    display: flex;
+    grid-gap: 2ch; }
+
+#brand {
+  font-weight: 600;
+  color: #f23074;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+  font-style: italic;
+  float: left;
+  text-decoration: none; }
+
+ul {
+  list-style-type: "\2014    "; }
+
+nav ul {
+  list-style-type: none; }
+
+#toc ol, #toc ul {
+  font-weight: 600; }
+  #toc ol ol, #toc ol ul, #toc ul ol, #toc ul ul {
+    font-weight: initial;
+    padding: 0.5ch 3ch;
+    font-size: 90%; }
+  #toc ol ul, #toc ul ul {
+    list-style-type: none; }
+  #toc ol ol, #toc ul ol {
+    list-style-type: lower-roman; }
+
+pre {
+  font-size: calc(12px / .95); }
+
+.katex {
+  font-size: 110% !important; }
+
+#toc {
+  margin-block-end: 2rem; }
+  #toc nav > ol, #toc nav > ul {
+    padding: 0; }
+  #toc h2 {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.07rem;
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0; }
+
+@media (min-width: 1494px) {
+  #toc {
+    width: 280px;
+    font-size: 83.3333%;
+    margin-left: -340px;
+    float: left;
+    clear: left;
+    position: sticky;
+    top: 32px; } }
+
+.blog-posts {
+  list-style-type: none;
+  padding: 0; }
+
+.blog-post {
+  margin-block: 2rem; }
+  .blog-post time {
+    float: right; }
+
+code {
+  font-family: 'IBM Plex Mono';
+  font-size: 95%;
+  font-weight: 400; }
+
+pre {
+  white-space: pre-wrap;
+  padding: 0.5rem;
+  border: 1px solid #aaa; }
+
+time {
+  font-variant: all-small-caps;
+  font-variant-numeric: oldstyle-nums; }
+
+#front-matter nav {
+  margin-block: 3.2rem; }
+
+#current-section {
+  font-variant: all-small-caps;
+  letter-spacing: 0.04rem;
+  text-align: center; }
+  #current-section a {
+    display: block;
+    text-decoration: none;
+    line-height: 1.2;
+    margin-bottom: 1rem; }
+
+#next-prev {
+  display: flex;
+  justify-content: space-between; }
+
+footer {
+  font-variant: all-small-caps;
+  font-size: 75%;
+  color: #777;
+  text-align: center; }
+
+figcaption {
+  font-size: smaller;
+  text-align: center; }
+  figcaption p:first-child {
+    display: inline; }
+
+figure img {
+  width: 100%; }
+
+.flex {
+  display: flex;
+  grid-gap: 1rem; }
+
+article {
+  counter-reset: conjecture definition theorem lemma proposition proposition example corollary; }
+
+.conjecture {
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px #444;
+  padding: 1ch;
+  counter-increment: conjecture;
+  margin-block: 1rem;
+  margin-inline: -1ch; }
+  .conjecture::before {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.07rem;
+    margin-left: -0.07rem;
+    content: "Conjecture " counter(conjecture) "."; }
+  .conjecture p:first-child {
+    display: inline; }
+
+.definition {
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px #444;
+  padding: 1ch;
+  counter-increment: definition;
+  margin-block: 1rem;
+  margin-inline: -1ch; }
+  .definition::before {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.07rem;
+    margin-left: -0.07rem;
+    content: "Definition " counter(definition) "."; }
+  .definition p:first-child {
+    display: inline; }
+
+.theorem {
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px #444;
+  padding: 1ch;
+  counter-increment: theorem;
+  margin-block: 1rem;
+  margin-inline: -1ch; }
+  .theorem::before {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.07rem;
+    margin-left: -0.07rem;
+    content: "Theorem " counter(theorem) "."; }
+  .theorem p:first-child {
+    display: inline; }
+
+.lemma {
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px #444;
+  padding: 1ch;
+  counter-increment: lemma;
+  margin-block: 1rem;
+  margin-inline: -1ch; }
+  .lemma::before {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.07rem;
+    margin-left: -0.07rem;
+    content: "Lemma " counter(lemma) "."; }
+  .lemma p:first-child {
+    display: inline; }
+
+.proposition {
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px #444;
+  padding: 1ch;
+  counter-increment: proposition;
+  margin-block: 1rem;
+  margin-inline: -1ch; }
+  .proposition::before {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.07rem;
+    margin-left: -0.07rem;
+    content: "Proposition " counter(proposition) "."; }
+  .proposition p:first-child {
+    display: inline; }
+
+.proposition {
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px #444;
+  padding: 1ch;
+  counter-increment: proposition;
+  margin-block: 1rem;
+  margin-inline: -1ch; }
+  .proposition::before {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.07rem;
+    margin-left: -0.07rem;
+    content: "Proposition " counter(proposition) "."; }
+  .proposition p:first-child {
+    display: inline; }
+
+.example {
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px #444;
+  padding: 1ch;
+  counter-increment: example;
+  margin-block: 1rem;
+  margin-inline: -1ch; }
+  .example::before {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.07rem;
+    margin-left: -0.07rem;
+    content: "Example " counter(example) "."; }
+  .example p:first-child {
+    display: inline; }
+
+.corollary {
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px #444;
+  padding: 1ch;
+  counter-increment: corollary;
+  margin-block: 1rem;
+  margin-inline: -1ch; }
+  .corollary::before {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.07rem;
+    margin-left: -0.07rem;
+    content: "Corollary " counter(corollary) "."; }
+  .corollary p:first-child {
+    display: inline; }
+
+.proof {
+  display: table;
+  margin-block: 1rem;
+  table-layout: fixed;
+  width: 100%; }
+  .proof::before {
+    content: "Proof. ";
+    font-style: italic; }
+  .proof::after {
+    content: "\25FB";
+    float: right; }
+  .proof > p:first-child {
+    display: inline; }
+  .proof > p:last-child:not(:nth-child(2)) {
+    display: inline; }
+  .proof > p:last-child:nth-child(2) {
+    display: inline-block;
+    margin-block-end: 0; }
+  .proof > p:last-child > span:last-child .katex-display {
+    margin: 1em 0 calc(-1.6em * 1.1); }

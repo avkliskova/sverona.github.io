@@ -1,0 +1,188 @@
+<!doctype html><html lang=en-us><head><meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Supporting graphs | S. Verona Malone</title><meta name=title content="Supporting graphs"><meta name=description content="Introduction to Donnelly's setup for Lie algebra representations."><meta name=keywords content><meta property="og:title" content="Supporting graphs"><meta property="og:description" content="Introduction to Donnelly's setup for Lie algebra representations."><meta property="og:type" content="article"><meta property="og:url" content="https://sverona.dev/thesis/supporting-graphs/"><meta property="article:section" content="thesis"><meta property="article:published_time" content="2020-11-01T00:00:00+00:00"><meta property="article:modified_time" content="2020-11-01T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Supporting graphs"><meta name=twitter:description content="Introduction to Donnelly's setup for Lie algebra representations."><meta itemprop=name content="Supporting graphs"><meta itemprop=description content="Introduction to Donnelly's setup for Lie algebra representations."><meta itemprop=datePublished content="2020-11-01T00:00:00+00:00"><meta itemprop=dateModified content="2020-11-01T00:00:00+00:00"><meta itemprop=wordCount content="2699"><meta itemprop=keywords content><meta name=referrer content="no-referrer-when-downgrade"><link href=https://sverona.dev/sass/style.css type=text/css rel=stylesheet><link href=https://sverona.dev/sass/sidenotes.css type=text/css rel=stylesheet><link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'"><script defer src=https://sverona.dev/katex/katex.js></script>
+<script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}]})})</script></head><body><header id=header><a href=/ class=title id=brand><span id=accent></span>S. Verona Malone</a><nav><ul><li><a href=/blog>blog</a></li><li><a href=https://github.com/sverona>github</a></li><li><a href=/about>about</a></li></ul></nav></header><main><header id=front-matter><nav><div id=current-section><a href=https://sverona.dev/thesis/>Some Generalizations of Classical Integer Sequences Arising in Combinatorial Representation Theory</a></div><div id=next-prev><span>&Larr; <a href=https://sverona.dev/thesis/motzkin-paths/>Paths and tableaux</a></span>
+<span><a href=https://sverona.dev/thesis/lie-theory/>Lie theory</a> &Rarr;</span></div></nav><div><time datetime=2020-11-01 pubdate>November 1, 2020</time><h1>Supporting graphs</h1><em id=page-description>Introduction to Donnelly's setup for Lie algebra representations.</em><br></div></div></header><article><div id=toc class=margin-toggle><h2>Table of Contents</h2><nav id=TableOfContents><ul><li><a href=#the-dcs-relations>The DCS relations</a></li><li><a href=#example-chains>Example: chains</a></li><li><a href=#example-boolean-lattices>Example: Boolean lattices</a></li><li><a href=#example-zero-padded-subset-lattices>Example: zero-padded subset lattices</a></li><li><a href=#example-fibonaccian-lattices>Example: Fibonaccian lattices</a><ul><li><a href=#product-solitarity-of-mathscr-fn-3>Product solitarity of \(\mathscr F(n, 3)\)</a></li></ul></li></ul></nav></div><p>We now present the centerpiece of the work. Throughout, write
+\([n] = \mathbb N \cap [1, n].\)</p><h2 id=the-dcs-relations>The DCS relations</h2><div class=definition><p>Let \(L\) be a diamond-colored distributive lattice
+with edges colored by \([n]\), and let \(x \in L\). For each
+\(i \in \mathbb N\), let \(\top_i(x) \in L\) be the maximum element of the
+\(i\)-component in which \(x\) lies.</p><p>Define a weight function<label for=sidenote-0-0 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-0-0 class=margin-toggle><span class=sidenote>The quantity \(\rho_i(\top_i(x)) - \rho_i(x))\) is the distance of \(x\) “from the top” of its \(i\)-component, whereas \(\rho_i(x)\) is the distance of \(x\) “from the bottom.” Thus we sometimes call the former quantity the <em>depth</em> of \(x\), whereupon the color-\(i\) weight of \(x\) is “rank minus depth.”</span>
+\(\omega(x) = [\omega_i(x)]_{i=1}^n\) by
+\[\omega_i(x) = \rho_i(x) - (\rho_i(\top_i(x)) - \rho_i(x)) = 2\rho_i(x) - \rho_i(\top_i(x)).\]</p></div><div class=definition><p>Let \(\Phi\) be a rank-\(n\) root system with base
+\(\Delta\), and let \(\mathfrak g\) be the corresponding semisimple Lie
+algebra with Chevalley generators \({x_i, y_i, h_i}_{i=1}^n.\) Let \(M\)
+be the Cartan matrix of \(\mathfrak g\). Let \(L\) be a diamond-colored
+distributive lattice with edge colors corresponding to \(\Delta.\)</p><p>Then \(L\) is said to be \(\mathfrak g\)-<em>structured</em> if for any edge
+\(x \overset{i}\to y\) in \(L\), \(\omega(y) - \omega(x)\) gives the \(i\)th row
+of \(M\).</p></div><div class=theorem><p>[Donnelly]
+Let \(L\) be a \(\mathfrak g\)-structured DCDL. If for any edge \(x \to y\) there exist \(c_{yx}, d_{xy} \in \mathbb{C}\) such that</p><ol><li>if \(w, x, y, z \in L\) form a diamond with \(w \to x \to z\), \(w \to y \to z\), we have the <em>diamond relations</em> \(c_{yw}d_{wx} = d_{xz}c_{zy}, c_{xw}d_{wy} = d_{yz}c_{zx},\)</li><li>and for any \(x \in L\) and any \(i \in [n]\), we have the <em>crossing relation</em>
+\[\sum_{\substack{w \in L \\ w \xrightarrow{i} x}} c_{xw}d_{wx} - \sum_{\substack{z \in L \\ x \xrightarrow{i} z}} c_{zx}d_{xz} = \omega_i(x),\]</li></ol><p>then \(\mathfrak g\) is homomorphic to the Lie algebra \(\mathfrak l\) generated by the \(3n\) \(|L|\)-dimensional matrices \({E_i, F_i, H_i}_{i=1}^n\) (whose rows and columns are indexed by the elements of \(L\)) defined as follows:</p><ol><li>\([E_i]_{yx} \coloneqq c_{yx}\) if \(x \xrightarrow{i} y\), or \(0\) otherwise;</li><li>\([F_i]_{xy} \coloneqq d_{xy}\) if \(x \xrightarrow{i} y\), or \(0\) otherwise;</li><li>\(H_i \coloneqq [E_iF_i].\)</li></ol><p>We say that</p><ol><li>the coefficients \({c_{yx}, d_{xy}}_{x,y \in L}\) are <em>DCS-satisfactory</em> for \(\mathfrak g\), and that</li><li>\(L\) <em>realizes a representation of</em> \(\mathfrak g\).
+Additionally, if \(\mathfrak g\) is simple, the representation so realized is faithful.</li></ol></div><div class=proof><p>See Appendix B.</p></div><div class=definition><p>If a DCDL \(L\) realizes a representation of
+\(\mathfrak g\), and the associated DCS-satisfactory coefficients
+\({c_{yx}, d_{xy}}\) are uniquely determined, we say that the lattice
+\(L\) is <em>solitary</em>.</p><p>If instead the <em>edge products</em> \(\pi_{xy} \coloneqq c_{yx}d_{xy}\) are
+uniquely determined, then \(L\) is said to be <em>product solitary.</em></p><p>If we work with edge products rather than edge coefficients, the DCS
+relations become the following. (The structure relations, which deal
+with vertex weights, remain unchanged.)</p><ol><li>If \(w, x, y, z \in L\) form a diamond with \(w \to x \to z\),
+\(w \to y \to z\), we have the <em>diamond relation</em>
+\(\pi_{xz}\pi_{yz} = \pi_{wx}\pi _{wy}.\)</li><li>For any \(x \in L\) and any \(i \in [n]\), we have the <em>crossing
+relation</em></li></ol><p>\[\sum_{\substack{w \in L \\ w \xrightarrow{i} x}} \pi_{wx} - \sum_{\substack{z \in L \\ x \xrightarrow{i} z}} \pi_{xz} = \omega_i(x).\]</p></div><div class=proposition><p>Suppose a lattice \(L\) is chain-factorizable, and
+suppose there exist a set of positive rational DCS-satisfactory edge
+products. If the edge products on one face of \(L\) are uniquely
+determined, then \(L\) is product solitary.</p></div><div class=proof><p>Let \(L_{k,j}\) be a face of \(L\), and suppose the edge coefficients on
+\(L_{k,j}\) are uniquely determined.</p><ol><li>Let \(x \in L_{k,j}.\) Since \(j\) is extremal, there is exactly one
+edge incident to \(x\) that does not belong to the face \(L_{k,j}.\)
+Call it \(x \to x&rsquo;.\) Its edge product is uniquely determined by a
+crossing relation at \(x.\)</li><li>Suppose without loss of generality that \(j\) is minimal. Consider an
+edge \(x&rsquo; \to y&rsquo;\) in \(L_{k,j+1}.\) Since \(L\) is chain-factorizable,
+\(x&rsquo; \to y&rsquo;\) is part of a diamond \(x \to x&rsquo; \to y&rsquo;\),
+\(x \to y \to y&rsquo;\). The edges \(x \to x&rsquo;\), \(y \to y&rsquo;\) are determined
+uniquely by (1), and the edge \(x \to y\) is determined uniquely by
+assumption. Thus the edge \(x&rsquo; \to y&rsquo;\) is determined uniquely by the
+diamond relation.</li></ol><p>If \(j + 1\) is nonmaximal, this argument can be repeated to show that the
+edge products in \(L_{k,j+2}\) and the edge products of the edges
+connecting \(L_{k,j+1}\) and \(L_{k, j + 2}\) are uniquely determined, and
+similarly for successive slices. Since \(L\) is chain-factorizable, this
+process determines every edge product in \(L\).</p></div><h2 id=example-chains>Example: chains</h2><div class=definition><p>The <em>\(n\)-edge chain</em> is the lattice with vertex
+set \({v_0, v_1, \dots, v_n}\) and a total ordering. Every edge is
+assigned the same color, so that the Hasse diagram of the lattice is
+\[v_0 \overset{1}\to v_1 \overset{1}\to \dots \overset{1}\to v_n.\]</p></div><div class=proposition><p>The \(n\)-edge chain realizes a
+representation of the Lie algebra \(A_1\), whose Cartan matrix is
+\(\operatorname{diag}(2).\)</p></div><div class=proof><p>That the
+\(n\)-edge chain is \(A_1\)-structured is immediate from
+\(\omega_1(v_i) = 2i - n.\) The reader may verify that choosing
+\(c_{v_i,v_{i-1}} = n - i + 1\) and \(d_{v_{i-1}, v_i} = i\) gives a
+DCS-satisfactory set of coefficients.</p></div><div class=example><p>Let's verify the DCS theorem for a 2-edge chain:
+\(v_0 \overset{1}\to v_1 \overset{1}\to v_2.\) We have the following
+information. \[\begin{array}{rr|crr}
+\mathbf i & \mathbf{\omega_1(v_i)} & \mathbf{x \overset{i}\to y} & \mathbf{c_{yx}} & \mathbf{d_{xy}}\newline
+\hline
+0 & -2 & v_0 \overset{1}\to v_1 & 2 & 1 \newline
+1 & 0 & v_1 \overset{1}\to v_2 & 1 & 2 \newline
+2 & 2 \newline
+\end{array}\]</p><p>We can then fill out the matrices \[\begin{aligned}
+E=
+\begin{bmatrix}
+0 & 0 & 0 \newline 2 & 0 & 0 \newline 0 & 1 & 0
+\end{bmatrix},
+F=
+\begin{bmatrix}
+0 & 1 & 0 \newline 0 & 0 & 2 \newline 0 & 0 & 0
+\end{bmatrix},
+H = [EF] =
+\begin{bmatrix}
+-2 & 0 & 0 \newline 0 & 0 & 0 \newline 0 & 0 & 2
+\end{bmatrix}.
+\end{aligned}\]</p><p>To show that a representation of \(A_1\) is actually realized, we verify
+the Serre relations \([HE] = 2E\), \([HF] = -2F.\) This step is left to the
+reader.</p></div><h2 id=example-boolean-lattices>Example: Boolean lattices</h2><div class=definition><p>The <em>Boolean lattice</em> \(\mathscr B_n\) is defined as
+follows.</p><ol><li>Vertices of \(\mathscr B_n\) are subsets \(x \subseteq [n].\)</li><li>\(\mathscr B_n\) is ordered by containment; if
+\(x, y \in \mathscr B_n,\) \(x \leq y\) if \(x \subseteq y.\)</li><li>If \(x, y \in \mathscr B_n,\) \(\rho(x) = |x|\), and consequently
+\(x \to y\) if and only if \(|y \setminus x| = 1.\)</li><li>Edges in \(\mathscr B_n\) are colored by \([n]\); the edge \(x \to y\) has
+color given by the element of the singleton set \(y \setminus x.\)</li><li>\(\mathscr B_n\) embeds into \(\mathbb Z^n\) as follows: if
+\(x \in \mathscr B_n\), let \(\phi(x)\) be the \(n\)-vector whose \(i\)th
+element is \(1\) if \(i \in x\) and \(0\) otherwise.</li></ol></div><div class=proposition><p>The join-irreducible elements of \(\mathscr B_n\)
+are the singleton sets \({i}\) for each \(i \in [n].\)</p></div><div class=proof><p>Left to reader.</p></div><div class=corollary><p>\(j(\mathscr B_n)\) is a poset of \(n\) mutually incomparable elements.<label for=sidenote-14-0 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-14-0 class=margin-toggle><span class=sidenote>Called an <em>antichain</em> of length \(n\).</span></p><p>The Hasse diagram of the lattice \(\mathscr B_n\) is an \(n\)-hypercube.</p></div><div class=proposition><p>The Boolean lattice \(\mathscr B_n\) realizes a
+representation of the Lie algebra \(A_1^n = \bigoplus_{i=1}^n A_1\), whose
+Cartan matrix is \(\operatorname{diag}(2, 2, \dots, 2).\)</p></div><div class=proof><p>First we show that \(\mathscr B_n\) is
+\(A_n^1\)-structured. Take \(i, j \in [n]\) with \(i \not = j\); it suffices
+to show that \(M_{ij} = 0.\)</p><p>Observe that every \(i\)-component of \(\mathscr B_n\) is a one-edge chain.
+Thus consider an edge \(x \overset{i}\to y.\) Evidently \(\omega_i(x) = -1\)
+and \(\omega_i(y) = 1.\) We need to show that
+\(M_{ij} = \omega_j(y) - \omega_j(x) = 0.\) This is apparent since
+\(j \in x\) if and only if \(j \in y.\)</p><p>Since every \(i\)-component of \(\mathscr B_n\) is a one-edge chain, taking
+\(c_{yx} = d_{xy} = 1\) for every \(x \to y\) gives a DCS-satisfactory set
+of coefficients.</p></div><div class=flex><figure><img src=/images/bool3.png alt="The Boolean lattice \(\mathscr B_3\)."><figcaption><p>The Boolean lattice \(\mathscr B_3\).</p></figcaption></figure><figure><img src=/images/antichain3.png alt="The antichain \(j(\mathscr B_3)\)."><figcaption><p>The antichain \(j(\mathscr B_3)\).</p></figcaption></figure></div><div class=flex><figure><img src=/images/zps4.png alt="The zero-padded subset lattice \(\mathscr Z_4\)."><figcaption><p>The zero-padded subset lattice \(\mathscr Z_4\).</p></figcaption></figure><figure><img src=/images/angelfish4.png alt="The &amp;lsquo;angelfish&amp;rsquo; poset \(j(\mathscr Z_4)\)."><figcaption><p>The &lsquo;angelfish&rsquo; poset \(j(\mathscr Z_4)\).</p></figcaption></figure></div><h2 id=example-zero-padded-subset-lattices>Example: zero-padded subset lattices</h2><div class=definition><p>The <em>zero-padded subset lattice</em> \(\mathscr Z_n\)
+(hereinafter <em>ZPS lattice</em>) is defined as follows.</p><ol><li>Vertices of \(\mathscr Z_n\) are subsets \(x \subseteq [n].\)</li><li>If \(x, y \in \mathscr Z_n\), enumerate the elements of (for instance)
+\(x\) by \(x_1 \geq \dots \geq x_n\), letting \(x_j = 0\) if
+\(j > \vert x \vert\). Then \(x \leq y\) if \(x_i \leq y_i\) for all
+\(i \in [n]\).</li><li>If \(x, y \in \mathscr Z_n\), \(\rho(x) = \sum_{i=1}^n x_i\); we have
+\(x \to y\) if and only if \(x\), \(y\) differ in exactly one index
+\(i \in [n]\), with \(x_i + 1 = y_i.\)</li><li>Edges in \(\mathscr Z_n\) are colored by \([n].\) Keeping the above
+setup, the edge \(x \to y\) has color \(n - x_i.\)</li><li>\(\mathscr Z_n\) embeds directly into \(\mathbb Z^n\) using the
+enumeration in (2) above.</li></ol></div><p>The ZPS lattices were used in [Proctor 1982],<label for=sidenote-20 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-20 class=margin-toggle><span class=sidenote>Robert A. Proctor. Solution of two diﬀicult combinatorial problems with
+linear algebra. <em>American Mathematical Monthly,</em> 89(10), 1982.</span>
+in which \(\mathscr Z_n\) is
+called \(M(n)\), to prove a conjecture of Erdős concerning subset sums.</p><div class=proposition><p>The join-irreducible elements of \(\mathscr Z_n\)
+are those whose nonzero elements are consecutive.</p></div><div class=proof><p>Follows from Corollary 2.1; left to reader.</p></div><p>Thus \(\mathscr Z_n\) is the lattice of order ideals of the
+"angelfish'' poset given by ordering the set
+\({(i, j) : 1 \leq i \leq j \leq n}\) componentwise.</p><div class=proposition><p>The ZPS lattice \(\mathscr Z_n\) realizes a
+representation of the Lie algebra \(B_n\), whose Cartan matrix is
+\[M \coloneqq \begin{bmatrix}
+2 & -1 & & & & \newline
+-1 & 2 & -1 & & &\newline
+& -1 & 2 & \ddots & & \newline
+& & \ddots & \ddots & -1 & & \newline
+& & & -1 & 2 & -2 \newline
+& & & & -1 & 2
+\end{bmatrix}.\]</p></div><div class=proof><p>We first show that
+\(\mathscr Z_n\) is \(B_n\)-structured.</p><ol><li><p>As before, it is clear that if \(x \overset{i}\to y\), then
+\(\omega_i(y) - \omega_i(x) = 2 = M_{ii}.\)</p></li><li><p>If \(x \overset{n-1}\to y\), then \(x\) and \(y\) differ in exactly one
+coordinate, which increments from \(1\) (in \(x\)) to \(2\) (in \(y\).)
+Consider the preceding coordinate as well; write
+\(\square 1 \overset{n-1}\to \square 2.\) (If there is no preceding
+coordinate, then \(x\) is maximal and there is no edge
+\(x \overset{n - 1}\to y.\))</p><p>It is apparent that the square must be a \(0\). Thus, there must be a
+pattern of edges
+\(00 \overset{n}\to 01 \overset{n-1}\to 02 \overset{n}\to 12.\) Since
+every component of \(\mathscr Z_n\) is a length-one chain, this implies
+that \(\omega_n(x) = 1\), \(\omega_n(y) = -1\), so
+\(\omega_n(y) - \omega_n(x) = -2 = M_{n-1, n}.\)</p></li><li><p>If \(x \overset{n - 2} \to y\), then we have
+\(\square2 \overset{n-2}\to \square3\). (Note that there must be a
+preceding coordinate in this case.) The square is either 0 or 1.</p><ol><li>If the square is a 0, there is a pattern of edges
+\(01 \overset{n - 1}\to 02 \overset{n-2}\to 03.\) Observe that there
+can be no color-\((n-1)\) edge incident to \(03.\) So in this case
+\(\omega_{n-1}(y) - \omega_{n-1}(x) = 0 - 1 = M_{n-2,n-1}.\)</li><li>If the square is a 1, there is a pattern of edges
+\(12 \overset{n-2} \to 13 \overset{n-3}\to 23\). Observe that there
+can be no color-\((n-1)\) edge incident to \(12.\) So in this case
+\(\omega_{n-1}(y) - \omega_{n-1}(x) = -1 - 0 = M_{n-2,n-1}.\)</li></ol></li></ol><p>This argument goes through for any entry \(M_{n-k-1,n-k}\),
+\(k = 1, \dots, n - 2.\) A dual argument, considering succeeding
+coordinates, goes through for \(M_{n-k+1,n-k},\) \(k = 1, \dots, n - 1.\) We
+leave this to the reader.</p><p>Since every \(k\)-component of \(\mathscr Z_n\) is a length-one chain,
+taking \(c_{yx} = d_{xy} = 1\) for every edge \(x \to y\) satisfies the DCS
+relations.</p></div><h2 id=example-fibonaccian-lattices>Example: Fibonaccian lattices</h2><div class=definition><p>The <em>Fibonaccian lattice</em>
+\(L_A^{Fib}(n, k) = \mathscr F(n, k)\) is defined as follows.</p><ol><li><p>Vertices of \(\mathscr F(n, k)\) are \(k\)-tuples \(x \in \mathbb Z^k\)
+such that</p><ol><li>\(x_i \in {n(i - 1) + 1, \dots, ni}\) for each \(i \in [k]\);</li><li>if \(x_i = ni\), then \(x_{i + 1} \not = ni + 1.\)<label for=sidenote-25-0 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-25-0 class=margin-toggle><span class=sidenote>That is, \(x\) contains no consecutive integers.</span></li></ol></li><li><p>\(\mathscr F(n, k)\) is ordered componentwise: \(x \leq y\) if
+\(x_i \leq y_i\) for each \(i \in [k].\)</p></li><li><p>If \(x, y \in \mathscr F(n, k)\), \(x \to y\) if and only if \(x\) and \(y\)
+differ in exactly one component \(i \in [k],\) with \(x_i + 1 = y_i.\)</p></li><li><p>Edges in \(\mathscr F(n, k)\) are colored by \([n - 1]\) depending on
+the value of \(x_i\), using the <em>snake rule</em> diagrammed in Figure 3.2.</p></li><li><p>\(\mathscr F(n, k)\) embeds directly into \(\mathbb Z^k.\)</p></li></ol></div><figure><img src=/images/snakerule.png alt="The snake rule for \(\mathscr F(n, k)\)."><figcaption><p>The snake rule for \(\mathscr F(n, k)\).</p></figcaption></figure><p>We now reproduce some results in [@donnelly-fibonaccian].</p><div class=proposition><p>The vertex cardinality of \(\mathscr F(n, k)\) is
+\((r_1^{n+1} - r_2^{n + 1})/(r_1 - r_2)\), where \(r_{1,2}\) are
+respectively the positive and negative roots of \(x^2 - nx - 1\).</p></div><div class=proof><p>The elements of \(\mathscr F(n, k + 1)\)
+come about by appending an extra "space'' at the end of an element of
+\(\mathscr F(n, k)\). Clearly there are \(n\) possible choices for this
+space. However, appending \(nk + 1\) to those elements of \(F(n, k)\) whose
+last element is \(nk\), of which there are \(|\mathscr F(n,k-1)|\), violates
+the consecutive-integer rule. Clearly every other choice is valid. Thus
+\[|\mathscr F(n, k + 1)| = n|\mathscr F(n, k)| - |\mathscr F(n, k - 1)|.\]</p><p>The explicit formula then follows from a standard inductive
+argument,<label for=sidenote-28-0 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-28-0 class=margin-toggle><span class=sidenote>It can also be derived using generating functions.</span>
+which we leave to the reader.</p></div><div class=corollary><p>\(|\mathscr F(n, 3)|\) is the Fibonacci number
+\(F_{2n + 2}.\)</p></div><div class=theorem><p>[Donnelly-Dunkum]
+For \(n > 1\), \(\mathscr F(n, k)\) realizes a representation of the Lie algebra \(A_{n - 1}\), whose Cartan matrix is
+\[
+M \coloneqq \begin{bmatrix}
+2 & -1 & & & & \newline
+-1 & 2 & -1 & & &\newline
+& -1 & 2 & \ddots & & \newline
+& & \ddots & \ddots & -1 & & \newline
+& & & -1 & 2 & -1 \newline
+& & & & -1 & 2
+\end{bmatrix}.
+\]</p></div><div class=proof><p>See [@donnelly-fibonaccian].</p></div><h3 id=product-solitarity-of-mathscr-fn-3>Product solitarity of \(\mathscr F(n, 3)\)</h3><p>In this subsection, we consider the lattices \(\mathscr F(n, 3),\)
+depicted in Figure 3.3.</p><div class="fullwidth flex"><figure><img src=/images/fib33.png alt="\(\mathscr F(3, 3).\) Solid edges are color 1. Dashed edges are color 2."><figcaption><p>\(\mathscr F(3, 3).\) Solid edges are color 1. Dashed edges are color 2.</p></figcaption></figure><figure><img src=/images/ribbon.png alt="\(j(\mathscr F(3, 3)).\)"><figcaption><p>\(j(\mathscr F(3, 3)).\)</p></figcaption></figure></div><div class=proposition><p>\(\mathscr F(3,3)\) is product solitary.</p></div><div class=proof><p>Let \(\pi_{147,157} = \alpha.\) Then we can
+deduce the contents of Table 3.2.</p><div class=fullwidth><table><thead><tr><th>\(\mathbf{x \to y}\)</th><th>\(\mathbf{\pi_{x,y}}\)</th><th>Justification</th></tr></thead><tbody><tr><td>\(247 \overset{1}\to 248\)</td><td>\(\alpha\)</td><td>Color-1 crossing relation at \(247\)</td></tr><tr><td>\(147 \overset{1}\to 148\)</td><td>\(2 - \alpha\)</td><td>Color-1 crossing relation at \(147\)</td></tr><tr><td>\(148 \overset{1}\to 248\)</td><td>\(2 - \alpha\)</td><td>Color-1 crossing relation at \(148\)</td></tr><tr><td>\(147 \overset{2}\to 157\)</td><td>\(1\)</td><td>Length-1 chain</td></tr><tr><td>\(247 \overset{2}\to 257\)</td><td>\(2\)</td><td>Length-2 chain</td></tr><tr><td>\(157 \overset{1}\to 257\)</td><td>\(\alpha/2\)</td><td>Diamond relation between \(157, 257, 147, 247\)</td></tr><tr><td>\(157 \overset{1}\to 158\)</td><td>\(3 - \alpha/2\)</td><td>Color-1 crossing relation at \(157\)</td></tr><tr><td>\(257 \overset{1}\to 258\)</td><td>\(1 + \alpha/2\)</td><td>Color-1 crossing relation at \(257\)</td></tr><tr><td>\(158 \overset{1} \to 258\)</td><td>\(\displaystyle \frac{\alpha(6-\alpha)}{4 + 2\alpha}\)</td><td>Diamond relation between \(157, 257, 158, 258\)</td></tr><tr><td>\(148 \overset{2}\to 158\)</td><td>\(\displaystyle \frac{4 - 2\alpha}{6-\alpha}\)</td><td>Diamond relation between \(147, 148, 157, 158\)</td></tr><tr><td>\(148 \overset{2}\to 149\)</td><td>\(\displaystyle \frac8{6-\alpha}\)</td><td>Color-2 crossing relation at \(148\)</td></tr><tr><td>\(158 \overset{1}\to 168\)</td><td>\(\displaystyle \frac8{2 + \alpha}\)</td><td>Color-1 crossing relation at \(158\)</td></tr><tr><td>\(258 \overset{1}\to 268\)</td><td>\(\displaystyle \frac{4\alpha}{2 + \alpha}\)</td><td>Color-1 crossing relation at \(258\)</td></tr><tr><td>\(168 \overset{1}\to 268\)</td><td>\(\displaystyle \frac{6 -\alpha}{2 + \alpha}\)</td><td>Color-1 crossing relation at \(268\)</td></tr><tr><td>\(149 \overset{1}\to 249\)</td><td>\(1\)</td><td>Length-1 chain</td></tr><tr><td>\(248 \overset{2} \to 249\)</td><td>\(\displaystyle \frac{6 - \alpha}{2 + \alpha}\)</td><td>Left to reader</td></tr></tbody></table></div><p>Having done this, the diamond relation
+\(\pi_{148,149}\pi_{148,248} = \pi_{248,249}\pi_{149,249}\) becomes
+\[\begin{aligned}
+\frac8{6-\alpha}\cdot(2 - \alpha) &= \frac{6-\alpha}{2 + \alpha}\cdot 1 \newline
+\iff 8(2 - \alpha)(2 + \alpha) &= (6 - \alpha)^2 \newline
+\iff 8(4 - \alpha^2) &= \alpha^2 - 12\alpha + 36 \newline
+\iff 0 &= 9\alpha^2 - 12\alpha + 4 = (3\alpha- 2 )^2.
+\end{aligned}\] Thus \(\alpha = 2/3.\) The remaining coefficients are now
+uniquely determined as positive rational numbers, as the reader may
+verify.</p></div><div class=theorem><p>\(\mathscr F(4,3)\) and \(\mathscr F(5,3)\) are product solitary.</p></div><div class=proof><p>[Proof by computer]
+Figures 3.4 and 3.5 were generated by the author by using the software library SAGE to generate a Groebner basis for the nonlinear system of equations given by the diamond and crossing relations for each lattice. No other solutions exist.</p></div><div class=conjecture><p>\(\mathscr F(n, 3)\) is product solitary for any \(n > 1.\)</p></div><div class=figure><p>\includegraphics[max width=5.4in,max height=8.1in]{old-documents/4_3_crop.pdf}
+\caption{Edge coefficients for \(\mathscr F(4, 3)\).}</p></div><div class=figure><p>\includegraphics[max width=5.4in,max height=8.1in]{old-documents/5_3_crop.pdf}
+\caption{Edge coefficients for \(\mathscr F(5, 3)\).}</p></div></article><hr></main><footer>Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a></footer></body></html>

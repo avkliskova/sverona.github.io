@@ -1,407 +1,229 @@
-<!doctype html><html lang=en-us>
-<head>
-<meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>Neural networks in time scale calculus | S. Verona Malone</title>
-<meta name=title content="Neural networks in time scale calculus">
-<meta name=description content="A term paper for a course in discrete linear operators.">
-<meta name=keywords content="grad-school,term-paper,time-scales-calculus,neural-networks,machine-learning,2019,">
-<meta property="og:title" content="Neural networks in time scale calculus">
-<meta property="og:description" content="A term paper for a course in discrete linear operators.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://sverona.dev/blog/nabla/"><meta property="article:section" content="blog">
-<meta property="article:published_time" content="2019-05-07T00:00:00+00:00">
-<meta property="article:modified_time" content="2019-05-07T00:00:00+00:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="Neural networks in time scale calculus">
-<meta name=twitter:description content="A term paper for a course in discrete linear operators.">
-<meta itemprop=name content="Neural networks in time scale calculus">
-<meta itemprop=description content="A term paper for a course in discrete linear operators."><meta itemprop=datePublished content="2019-05-07T00:00:00+00:00">
-<meta itemprop=dateModified content="2019-05-07T00:00:00+00:00">
-<meta itemprop=wordCount content="3893">
-<meta itemprop=keywords content="grad-school,term-paper,time-scales-calculus,neural-networks,machine-learning,2019,">
-<meta name=referrer content="no-referrer-when-downgrade">
-<link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
-<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
-<link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
-<script defer src=https://sverona.dev/katex/katex.js></script>
+<!doctype html><html lang=en-us><head><meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>The backpropagation algorithm for nabla derivatives | S. Verona Malone</title><meta name=title content="The backpropagation algorithm for nabla derivatives"><meta name=description content="A term paper for a course in discrete linear operators."><meta name=keywords content="grad-school,term-paper,time-scales-calculus,neural-networks,machine-learning,2019,"><meta property="og:title" content="The backpropagation algorithm for nabla derivatives"><meta property="og:description" content="A term paper for a course in discrete linear operators."><meta property="og:type" content="article"><meta property="og:url" content="https://sverona.dev/blog/nabla/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2019-05-07T00:00:00+00:00"><meta property="article:modified_time" content="2019-05-07T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="The backpropagation algorithm for nabla derivatives"><meta name=twitter:description content="A term paper for a course in discrete linear operators."><meta itemprop=name content="The backpropagation algorithm for nabla derivatives"><meta itemprop=description content="A term paper for a course in discrete linear operators."><meta itemprop=datePublished content="2019-05-07T00:00:00+00:00"><meta itemprop=dateModified content="2019-05-07T00:00:00+00:00"><meta itemprop=wordCount content="3888"><meta itemprop=keywords content="grad-school,term-paper,time-scales-calculus,neural-networks,machine-learning,2019,"><meta name=referrer content="no-referrer-when-downgrade"><link href=https://sverona.dev/sass/style.css type=text/css rel=stylesheet><link href=https://sverona.dev/sass/sidenotes.css type=text/css rel=stylesheet><link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'"><script defer src=https://sverona.dev/katex/katex.js></script>
 <script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
-<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}]})})</script>
-</head>
-<body>
-<header id=header><a href=/ class=title id=brand>
-<span id=accent></span>S. Verona Malone
-</a>
-<nav><ul>
-<li><a href=/blog>blog</a></li>
-<li><a href=https://github.com/sverona>github</a></li>
-<li><a href=/trig>MATH 117</a></li>
-</ul>
-</nav>
-</header>
-<main>
-<header id=front-matter>
-<nav>
-<div id=current-section>
-<a href=https://sverona.dev/blog/>Blogs</a>
-</div>
-<div id=next-prev>
-<span>
-&lt;-- <a href=https://sverona.dev/blog/dual-simplex/>The dual simplex method, an introduction</a>
-</span>
-<span>
-<a href=https://sverona.dev/blog/project-euler/>Project Euler 1-100 in 49 hours</a> -->
-</span>
-</div>
-</nav>
-<div>
-<time datetime=2019-05-07 pubdate>
-May 7, 2019
-</time>
-<h1>Neural networks in time scale calculus</h1>
-<em id=page-description>A term paper for a course in discrete linear operators.</em>
-<br>
-</div>
-</div>
-</header>
-<article>
-<div id=toc class=margin-toggle>
-<h2>Contents</h2>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#introduction>Introduction</a>
-<ul>
-<li><a href=#example-digit-recognition>Example: digit recognition</a></li>
-<li><a href=#how-neural-networks-work>How neural networks work</a></li>
-<li><a href=#how-neural-networks-learn>How neural networks &ldquo;learn&rdquo;</a></li>
-</ul>
-</li>
-<li><a href=#preliminaries>Preliminaries</a>
-<ul>
-<li><a href=#backpropagation-on-mathbbr>Backpropagation on \(\mathbb{R}\)</a></li>
-<li><a href=#ordered-derivatives>Ordered derivatives</a></li>
-<li><a href=#univariate-time-scales-calculus>Univariate time scales calculus</a></li>
-<li><a href=#multivariate-time-scales-calculus>Multivariate time scales calculus</a></li>
-</ul>
-</li>
-<li><a href=#main-results>Main results</a>
-<ul>
-<li><a href=#linear-regression-on-time-scales>Linear regression on time scales</a></li>
-</ul>
-</li>
-<li><a href=#directions-for-future-research>Directions for future research</a>
-<ul>
-<li><a href=#clearer-exposition>Clearer exposition</a></li>
-<li><a href=#universal-approximation>Universal approximation</a></li>
-<li><a href=#recurrent-neural-networks>Recurrent neural networks</a></li>
-</ul>
-</li>
-<li><a href=#references>References</a></li>
-</ul>
-</nav>
-</div>
-<p><em>Neural networks</em> are a popular technique for machine learning problems such as automated handwriting recognition, automated speech recognition, and time-series forecasting. On these tasks, so-called <em>deep neural networks</em> [Schmidhuber 2015] and <em>convolutional neural networks</em> [Ciresan et al. 2011] have performed at least as well as the best known non-neural-network statistical learning techniques. A typical neural network numerically solves an extremization problem using gradient descent in a high-dimensional Euclidean space using an algorithm known as <em>backpropagation</em>.</p>
-<p>We provide an exposition of (feedforward) neural networks and backpropagation on \(\mathbb{R}^n\), analogous to that found in [Nielsen 2015]. We further generalize these concepts from \(\mathbb{R}^n\) to a product of <em>time scales</em>, or closed subsets of \(\mathbb{R}\) which may be partially discrete and partially continuous.</p>
-<p>Most of the main results were already derived in [Seiffert & Wunsch
-2010] for delta derivatives; we present what are mostly the dual cases
-for nabla derivatives.</p>
-<h2 id=introduction>Introduction</h2>
-<p>Neural networks perform <em>supervised learning tasks</em>, meaning that they
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}]})})</script></head><body><header id=header><a href=/ class=title id=brand><span id=accent></span>S. Verona Malone</a><nav><ul><li><a href=/blog>blog</a></li><li><a href=https://github.com/sverona>github</a></li><li><a href=/about>about</a></li></ul></nav></header><main><header id=front-matter><nav><div id=current-section><a href=https://sverona.dev/blog/>Blogs</a></div><div id=next-prev><span>&Larr; <a href=https://sverona.dev/blog/dual-simplex/>The dual simplex method, an introduction</a></span>
+<span><a href=https://sverona.dev/blog/project-euler/>Project Euler 1-100 in 49 hours</a> &Rarr;</span></div></nav><div><time datetime=2019-05-07 pubdate>May 7, 2019</time><h1>The backpropagation algorithm for nabla derivatives</h1><em id=page-description>A term paper for a course in discrete linear operators.</em><br></div></div></header><article><div id=toc class=margin-toggle><h2>Table of Contents</h2><nav id=TableOfContents><ul><li><a href=#introduction>Introduction</a><ul><li><a href=#example-digit-recognition>Example: digit recognition</a></li><li><a href=#how-neural-networks-work>How neural networks work</a></li><li><a href=#how-neural-networks-learn>How neural networks &ldquo;learn&rdquo;</a></li></ul></li><li><a href=#preliminaries>Preliminaries</a><ul><li><a href=#backpropagation-on-mathbbr>Backpropagation on \(\mathbb{R}\)</a></li><li><a href=#ordered-derivatives>Ordered derivatives</a></li><li><a href=#univariate-time-scales-calculus>Univariate time scales calculus</a></li><li><a href=#multivariate-time-scales-calculus>Multivariate time scales calculus</a></li></ul></li><li><a href=#main-results>Main results</a><ul><li><a href=#linear-regression-on-time-scales>Linear regression on time scales</a></li></ul></li><li><a href=#directions-for-future-research>Directions for future research</a><ul><li><a href=#clearer-exposition>Clearer exposition</a></li><li><a href=#universal-approximation>Universal approximation</a></li><li><a href=#recurrent-neural-networks>Recurrent neural networks</a></li></ul></li></ul></nav></div><p><em>Neural networks</em> are a popular technique for machine learning problems such as automated handwriting recognition, automated speech recognition, and time-series forecasting. On these tasks, so-called <em>deep neural networks</em> [Schmidhuber 2015]<label for=sidenote-0 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-0 class=margin-toggle><span class=sidenote> Schmidhuber, Jürgen. &ldquo;Deep learning in neural networks: An overview.&rdquo; <em>Neural networks</em> 61 (2015): 85-117.</span>
+and <em>convolutional neural networks</em> [Ciresan et al. 2011]
+<label for=sidenote-1 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-1 class=margin-toggle><span class=sidenote>
+Ciresan, Dan Claudiu, Ueli Meier, Jonathan Masci, Luca Maria Gambardella, and Jürgen Schmidhuber. &ldquo;Flexible, high performance convolutional neural networks for image classification.&rdquo; In <em>Twenty-Second International Joint Conference on Artificial
+Intelligence</em>. 2011.</span>
+have performed at least as well as the best known non-neural-network statistical learning techniques. A typical neural network numerically solves an extremization problem using gradient descent in a high-dimensional Euclidean space using an algorithm known as <em>backpropagation</em>.</p><p>We provide an exposition of (feedforward) neural networks and backpropagation on \(\mathbb{R}^n\), analogous to that found in [Nielsen 2015].<label for=sidenote-2 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-2 class=margin-toggle><span class=sidenote> Nielsen, Michael A. <em>Neural networks and deep learning.</em> Determination Press, 2015.</span>
+We further generalize these concepts from \(\mathbb{R}^n\) to a product of <em>time scales</em>, or closed subsets of \(\mathbb{R}\) which may be partially discrete and partially continuous.</p><p>Most of the main results were already derived in [Seiffert & Wunsch
+2010]<label for=sidenote-3 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-3 class=margin-toggle><span class=sidenote>
+Seiffertt, John, and Donald C. Wunsch. &ldquo;Backpropagation and ordered
+derivatives in the time scales calculus.&rdquo; <em>IEEE transactions on neural networks</em> 21, no. 8 (2010): 1262-1269.</span>
+for delta derivatives; we present what are mostly the dual cases
+for nabla derivatives.</p><h2 id=introduction>Introduction</h2><p>Neural networks perform <em>supervised learning tasks</em>, meaning that they
 &ldquo;learn&rdquo; to emulate a desired set of outputs from a given set of
-already-classified <em>training examples</em>.</p>
-<p>If we think of this &ldquo;desired set of outputs&rdquo; as a function
+already-classified <em>training examples</em>.</p><p>If we think of this &ldquo;desired set of outputs&rdquo; as a function
 \(f : \mathbb{R}^M \to \mathbb{R}^N\), then a good neural network
 approximates \(f\) accurately by a function \(\hat{f} : \mathbb{R}^M \to
-\mathbb{R}^N\).</p>
-<p>We measure the network&rsquo;s performance by a positive <em>loss function</em> \(L :
+\mathbb{R}^N\).</p><p>We measure the network&rsquo;s performance by a positive <em>loss function</em> \(L :
 \mathbb{R}^N \to [0, \infty)\), which we want the network to minimize.
-Typically \(L\) is the sum of squared errors</p>
-<p>\[ \begin{aligned} L(\hat{f}(I)) = \frac{1}{2} \sum_{k=1}^N (f(I)_k -
-\hat{f}(I)_k)^2, \end{aligned} \]</p>
-<p>where \(f(I)\) is the &ldquo;expected&rdquo; response and \(\hat{f}(I)\) is the
-network&rsquo;s actual response.</p>
-<h3 id=example-digit-recognition>Example: digit recognition</h3>
-<p>One of the canonical problems for neural network learning is <em>digit
+Typically \(L\) is the sum of squared errors</p><p>\[ \begin{aligned} L(\hat{f}(I)) = \frac{1}{2} \sum_{k=1}^N (f(I)_k -
+\hat{f}(I)_k)^2, \end{aligned} \]</p><p>where \(f(I)\) is the &ldquo;expected&rdquo; response and \(\hat{f}(I)\) is the
+network&rsquo;s actual response.</p><h3 id=example-digit-recognition>Example: digit recognition</h3><p>One of the canonical problems for neural network learning is <em>digit
 recognition</em>: given an image that represents a (handwritten) numeral
 from 0 to 9, we wish to classify it appropriately. This section gives a
-brief rigorous specification of the problem as it is usually stated.</p>
-<p>The MNIST dataset, which consists of 60,000 greyscale images that are
+brief rigorous specification of the problem as it is usually stated.</p><p>The MNIST dataset, which consists of 60,000 greyscale images that are
 each 28 pixels square, is traditionally used for training. Such an image
 has a total of \(28^2 = 784\) pixels, each of which has an intensity
 between 0 (black) and 1 (white.) Thus it can be represented as an
 element of \([0, 1]^{784}\), and we expect the network to output its
 relative confidence that the image represents a 0, 1, &mldr;, 9 as a
-probability.<label for=sidenote-0 class="margin-toggle sidenote-number"></label>
-<input type=checkbox id=sidenote-0 class=margin-toggle><span class=sidenote>That is, an element of ([0, 1]^{10}) whose sum is 1.</span></p>
-<p>Thus the network&rsquo;s job is to approximate an unknown function \(f :
+probability.<label for=sidenote-4 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-4 class=margin-toggle><span class=sidenote>That is, an element of ([0, 1]^{10}) whose sum is 1.</span></p><p>Thus the network&rsquo;s job is to approximate an unknown function \(f :
 \mathbb{R}^{784} \to \mathbb{R}^{10}\) whose value at each image in the
-training set is known.</p>
-<p>For instance, we expect that an image \(I \in \mathbb{R}^{784}\) which
+training set is known.</p><p>For instance, we expect that an image \(I \in \mathbb{R}^{784}\) which
 represents a numeral 0 should have \(f(I) = [1, 0, 0, \dots, 0]^T\). If
 the network instead responded with \(\hat{f}(I) = [0.9, 0.05, 0.05, 0,
 \dots, 0]^T\), and \(L\) was defined as above, we would penalize the
 network \[L(\hat{f}(I)) = \frac{1}{2}\left((0.9 - 1)^2 + (0.05 - 0)^2 +
-(0.05 - 0)^2\right) = .000525\] points.</p>
-<h3 id=how-neural-networks-work>How neural networks work</h3>
-<p>The structure of a neural network is more or less universally depicted
+(0.05 - 0)^2\right) = .000525\] points.</p><h3 id=how-neural-networks-work>How neural networks work</h3><p>The structure of a neural network is more or less universally depicted
 using a directed graph in which circular
 nodes are arranged into parallel &ldquo;layers&rdquo; (columns) and connected by
-edges.</p>
-<p>Computation in neural networks proceeds layer-by-layer from left to
+edges.</p><p>Computation in neural networks proceeds layer-by-layer from left to
 right. The leftmost (first) layer is called the <em>input</em> layer, the
 rightmost is called the <em>output</em> layer, and all other layers are said to
-be <em>hidden</em>.</p>
-<p>At each node \(k\), the network computes a value \( \displaystyle x_k =
-\psi_k\left(b_k + \sum_{i \to k} w_ix_i\right),\) where</p>
-<ul>
-<li>the sum runs over all nodes \(i\) that &ldquo;feed into&rdquo; (are direct
-predecessors of) \(k\);</li>
-<li>\(b_k\) and \(w_k\) are real-valued parameters of node \(k\), called
-respectively the <em>bias</em> and <em>weight</em>;</li>
-<li>and \(\psi_k : \mathbb{R} \to \mathbb{R}\) is a so-called <em>activation
+be <em>hidden</em>.</p><p>At each node \(k\), the network computes a value \( \displaystyle x_k =
+\psi_k\left(b_k + \sum_{i \to k} w_ix_i\right),\) where</p><ul><li>the sum runs over all nodes \(i\) that &ldquo;feed into&rdquo; (are direct
+predecessors of) \(k\);</li><li>\(b_k\) and \(w_k\) are real-valued parameters of node \(k\), called
+respectively the <em>bias</em> and <em>weight</em>;</li><li>and \(\psi_k : \mathbb{R} \to \mathbb{R}\) is a so-called <em>activation
 function</em>. Typically \(\psi\) will be a bounded nonlinear function for
 nodes in hidden layers and the identity for the output layer. Common
 choices of \(\psi\) include the hyperbolic tangent and the logistic
-function \(e^x/(1 + e^x)\).</li>
-</ul>
-<p>In this paper, we will consider only <em>feedforward</em> neural networks,
+function \(e^x/(1 + e^x)\).</li></ul><p>In this paper, we will consider only <em>feedforward</em> neural networks,
 which require the directed graph to be acyclic. (This assumption is
 relaxed in so-called <em>recurrent</em> neural networks; see Section \(6.2\)
 for more.) Also, we will assume for simplicity that every node in the
-\(n\)th layer feeds into every node in the \(n + 1\)st layer.</p>
-<p>We will use the label \(\alpha\) for the input layer; that is, we denote
+\(n\)th layer feeds into every node in the \(n + 1\)st layer.</p><p>We will use the label \(\alpha\) for the input layer; that is, we denote
 the values of the nodes in the input layer \(x_{\alpha{}1}, \dots,
 x_{\alpha{}M}\). Similarly, we label the hidden layers \(1\), \(2\),
 &mldr;, \(H\), and we label the output layer \(o\). When a sum is
 understood to run over all nodes in a given layer, we will be lax with
-the limits of summation, e.g., \(\sum_l w_{Hl}x_{Hl}.\)</p>
-<p>Under these assumptions, we can rewrite equation (network) as</p>
-<p>\[\begin{aligned} x_{ij} = \psi_{ij}\left(b_{ij} + \sum_k w_{(i -
-1),k}x_{(i - 1),k}\right) \end{aligned}\]</p>
-<p>where for instance \(x_{ij}\) denotes the value computed at the \(j\)th
-node (top-to-bottom) in the \(i\)th layer (left-to-right.)</p>
-<p>Using the foregoing notation, we may also write the expression for the
+the limits of summation, e.g., \(\sum_l w_{Hl}x_{Hl}.\)</p><p>Under these assumptions, we can rewrite equation (network) as</p><p>\[\begin{aligned} x_{ij} = \psi_{ij}\left(b_{ij} + \sum_k w_{(i -
+1),k}x_{(i - 1),k}\right) \end{aligned}\]</p><p>where for instance \(x_{ij}\) denotes the value computed at the \(j\)th
+node (top-to-bottom) in the \(i\)th layer (left-to-right.)</p><p>Using the foregoing notation, we may also write the expression for the
 loss function, equation (loss), as \[\begin{aligned} L(\hat{f}(I)) =
 L(x_{o1}, \dots, x_{oN}) = \frac{1}{2} \sum_{k = 1}^N (y_k - x_{ok})^2
 \end{aligned}\] where we have written \(f(I) = [y_1, \dots, y_N]^T\) and
 \(\hat{f}(I) = [x_{o1}, \dots, x_{oN}]^T\). This notation will be more
-convenient in the sequel.</p>
-<h3 id=how-neural-networks-learn>How neural networks &ldquo;learn&rdquo;</h3>
-<p>In principle, neural networks learn by a process similar to humans: they
+convenient in the sequel.</p><h3 id=how-neural-networks-learn>How neural networks &ldquo;learn&rdquo;</h3><p>In principle, neural networks learn by a process similar to humans: they
 attempt the task they are intended to perform many times, making
 appropriate adaptations when they make a mistake. When we decide to use
 neural network learning for some problem, we usually specify only the
 network topology; feed it many, many examples; and allow backpropagation
 to find the right weights and biases for us. This process is known as
-<em>training</em>.</p>
-<h2 id=preliminaries>Preliminaries</h2>
-<p>In this section we present the necessary prerequisites for appreciating
+<em>training</em>.</p><h2 id=preliminaries>Preliminaries</h2><p>In this section we present the necessary prerequisites for appreciating
 the main results: the backpropagation algorithm on Euclidean domains
 (\(\mathbb{R}^n\)), following chapter 2 of [Nielsen 2015], and the
 generalization to time scales calculus of the necessary concepts from
-multivariable differential calculus, following [Bohner & Guseinov 2004].</p>
-<h3 id=backpropagation-on-mathbbr>Backpropagation on \(\mathbb{R}\)</h3>
-<p>As already said, the backpropagation algorithm is responsible for
+multivariable differential calculus, following [Bohner & Guseinov 2004].<label for=sidenote-5 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-5 class=margin-toggle><span class=sidenote>
+Bohner, Martin, and Gusein Sh. Guseinov. &ldquo;Partial differentiation on
+time scales.&rdquo; <em>Dynamic systems and applications</em> 13, no. 3-4 (2004):
+351-379.</span></p><h3 id=backpropagation-on-mathbbr>Backpropagation on \(\mathbb{R}\)</h3><p>As already said, the backpropagation algorithm is responsible for
 finding the weights and biases that minimize the loss function. This is
 done iteratively by <em>gradient descent</em>. Suppose we have already computed
 the network&rsquo;s output \(\hat{f}(I)\) for some training example \(I\).
-Then for each node \(x_k\), we compute the partials</p>
-<p>\[L_{w_k} = \frac{\partial L}{\partial w_k}, L_{b_k} = \frac{\partial
-L}{\partial b_k}\]</p>
-<p>and update the parameters according to the <em>delta rule</em></p>
-<p>\[\begin{aligned} \Delta w_k &= -\beta L_{w_k}, \ \Delta b_k &= -\beta
-L_{b_k}, \end{aligned}\]</p>
-<p>where \(\beta > 0\) is a constant (referred to as the <em>learning rate</em>.)</p>
-<p>Backpropagation computes all the partials simultaneously by recursive
+Then for each node \(x_k\), we compute the partials</p><p>\[L_{w_k} = \frac{\partial L}{\partial w_k}, L_{b_k} = \frac{\partial
+L}{\partial b_k}\]</p><p>and update the parameters according to the <em>delta rule</em></p><p>\[\begin{aligned} \Delta w_k &= -\beta L_{w_k}, \ \Delta b_k &= -\beta
+L_{b_k}, \end{aligned}\]</p><p>where \(\beta > 0\) is a constant (referred to as the <em>learning rate</em>.)</p><p>Backpropagation computes all the partials simultaneously by recursive
 total differentiation of []. For simplicity we focus on the partial with
 respect to a single parameter. Suppose we want to compute \(L_{w_k} =
 L_{w_{ij}}\) for some node \(k\) (the computation of \(L_{b_k}\) will
 proceed in an entirely similar way.) Recall that \(L\) takes the values
-of nodes in the output layer as its inputs; so by the chain rule,</p>
-<p>\[\begin{aligned} \frac{\partial L}{\partial w_{ij}} &= \sum_k
+of nodes in the output layer as its inputs; so by the chain rule,</p><p>\[\begin{aligned} \frac{\partial L}{\partial w_{ij}} &= \sum_k
 \frac{\partial L}{\partial x_{ok}} \frac{\partial x_{ok}}{\partial
 w_{ij}} = \sum_k (y_k - x_{ok}) \cdot \frac{\partial x_{ok}}{\partial
-w_{ij}}. \end{aligned}\]</p>
-<p>In turn, since \(x_{ok}\) depends on every node in the last hidden
-layer, as well as those nodes' weights and its own bias, we have</p>
-<p>\[\begin{aligned} \frac{\partial x_{ok}}{\partial w_{ij}} &=
+w_{ij}}. \end{aligned}\]</p><p>In turn, since \(x_{ok}\) depends on every node in the last hidden
+layer, as well as those nodes&rsquo; weights and its own bias, we have</p><p>\[\begin{aligned} \frac{\partial x_{ok}}{\partial w_{ij}} &=
 \frac{\partial x_{ok}}{\partial b_{ok}} \frac{\partial b_{ok}}{\partial
 w_{ij}} + \sum_l \left(\frac{\partial x_{ok}}{\partial x_{Hl}}
 \frac{\partial x_{Hl}}{\partial w_{ij}} + \frac{\partial
 x_{ok}}{\partial w_{Hl}} \frac{\partial w_{Hl}}{\partial w_{ij}}\right).
-\end{aligned}\]</p>
-<p>For the moment, we assume that \(w_{ij}\) is independent of all the
-other weights and all the biases. Thus this equation becomes</p>
-<p>\[\begin{aligned} \frac{\partial x_{ok}}{\partial w_{ij}} &= \sum_l
+\end{aligned}\]</p><p>For the moment, we assume that \(w_{ij}\) is independent of all the
+other weights and all the biases. Thus this equation becomes</p><p>\[\begin{aligned} \frac{\partial x_{ok}}{\partial w_{ij}} &= \sum_l
 \frac{\partial x_{ok}}{\partial x_{Hl}} \frac{\partial x_{Hl}}{\partial
-w_{ij}}. \end{aligned}\]</p>
-<p>Similarly, we have</p>
-<p>\[\begin{aligned} \frac{\partial x_{Hk}}{\partial w_{ij}} &= \sum_l
+w_{ij}}. \end{aligned}\]</p><p>Similarly, we have</p><p>\[\begin{aligned} \frac{\partial x_{Hk}}{\partial w_{ij}} &= \sum_l
 \frac{\partial x_{Hk}}{\partial x_{(H - 1),l}} \frac{\partial x_{(H -
-1),l}}{\partial w_{ij}}. \end{aligned}\]</p>
-<p>In this way, we work our way back (or <em>backpropagate</em>) through the
+1),l}}{\partial w_{ij}}. \end{aligned}\]</p><p>In this way, we work our way back (or <em>backpropagate</em>) through the
 network until we reach the layer that directly depends on \(w_{ij}\), at
 which point the terms corresponding to weight partials are no longer all
-zero, and we can compute directly</p>
-<p>\[\begin{aligned}
+zero, and we can compute directly</p><p>\[\begin{aligned}
 \frac{\partial x_{(i + 1),k}}{\partial w_{ij}} &= \frac{\partial}{\partial w_{ij}} \left[\psi_{(i+1),k}\left(b_{(i + 1),k} + \sum_l w_{il}x_{il}\right)\right] \\\
-&= \psi'_{(i+1),k}\left(b_{(i + 1),k} + \sum_l w_{il}x_{il}\right) \cdot x_{ij}.
-\end{aligned}\]</p>
-<p>The weight can now be adjusted according to</p>
-<h3 id=ordered-derivatives>Ordered derivatives</h3>
-<p>In the previous section we assumed that \(w_{ij}\) was independent of
-all the other \(w_{i&rsquo;j'}\) and also of the biases \(b_{i&rsquo;j'}\). This is
+&= \psi&rsquo;_{(i+1),k}\left(b_{(i + 1),k} + \sum_l w_{il}x_{il}\right) \cdot x_{ij}.
+\end{aligned}\]</p><p>The weight can now be adjusted according to</p><h3 id=ordered-derivatives>Ordered derivatives</h3><p>In the previous section we assumed that \(w_{ij}\) was independent of
+all the other \(w_{i&rsquo;j&rsquo;}\) and also of the biases \(b_{i&rsquo;j&rsquo;}\). This is
 okay for the foregoing derivation, in which we assumed all the other
 parameters were being held constant. However, actual implementations of
 backpropagation update all the parameters simultaneously. Hence this
 assumption is no longer valid; in particular, the change in the weight
-(and bias) of a given node affects all of its successors.</p>
-<p>To remedy this, [Werbos 1990] introduced an &ldquo;ordered chain rule&rdquo; that
+(and bias) of a given node affects all of its successors.</p><p>To remedy this, [Werbos 1990]<label for=sidenote-6 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-6 class=margin-toggle><span class=sidenote>
+Werbos, Paul J. &ldquo;Backpropagation through time: what it does and how to
+do it.&rdquo; <em>Proceedings of the IEEE</em> 78, no. 10 (1990): 1550-1560.</span>
+introduced an &ldquo;ordered chain rule&rdquo; that
 accounts for these indirect effects. We present it below without proof.
 A time scales version (for delta derivatives) is proven and rigorously
-exposited in [Seifertt & Wunsch 2010] as Theorem 2.</p>
-<p>Define the variables \(x_i = f(x_1, \dots, x_{i - 1})\) recursively.
+exposited in [Seifertt & Wunsch 2010] as Theorem 2.</p><div class=theorem><p>Define the variables \(x_i = f(x_1, \dots, x_{i - 1})\) recursively.
 Then the &ldquo;ordered derivative&rdquo; of \(x_j\) with respect to \(x_i\) is
-given by</p>
-<p>\[\begin{aligned} \frac{\partial^+ x_j}{\partial x_i} = \frac{\partial
+given by</p><p>\[\begin{aligned} \frac{\partial^+ x_j}{\partial x_i} = \frac{\partial
 x_j}{\partial x_i} + \sum_{k = i, \dots, j} \frac{\partial^+
-x_j}{\partial x_k} \frac{\partial x_k}{x_i}. \end{aligned}\]</p>
-<p>The sum in the definition of the ordered derivative accounts for the
+x_j}{\partial x_k} \frac{\partial x_k}{x_i}. \end{aligned}\]</p></div><p>The sum in the definition of the ordered derivative accounts for the
 indirect effects incurred by updates in the variables computed &ldquo;after&rdquo;
 \(x_i\) but &ldquo;before&rdquo; \(x_j\); that is, the variables through which
-\(x_j\) depends transitively on \(x_i\).</p>
-<h3 id=univariate-time-scales-calculus>Univariate time scales calculus</h3>
-<p>This section consists of a number of standard definitions which will be
+\(x_j\) depends transitively on \(x_i\).</p><h3 id=univariate-time-scales-calculus>Univariate time scales calculus</h3><p>This section consists of a number of standard definitions which will be
 immediately generalized. For a more complete treatment of
 single-variable time scales calculus in which these results appear, see
-[Bohner & Peterson 2012].</p>
-<p>A <em>time scale</em> is a nonempty closed subset of \(\mathbb{R}\).</p>
-<p>In the sequel, we use \(\mathbb{T}\) to refer to an arbitrary time
-scale.</p>
-<p>We define the <em>backward jump function</em> \(\rho : \mathbb{T} \to
-\mathbb{T}\) by</p>
-<p>\[\rho(t) \coloneqq \sup{ \mathbb{T} \cap (\infty, t) }\]</p>
-<p>and the <em>backward graininess function</em> \(\nu : \mathbb{T} \to [0,
-\infty)\) by</p>
-<p>\[\nu(t) \coloneqq t - \rho(t).\]</p>
-<p>Let \(t \in \mathbb{T}\). If \(\nu(t) > 0\), we say \(t\) is <em>(left)
-scattered</em>. Otherwise we say \(t\) is <em>(left) dense</em>.</p>
-<p>Let \(t \in \mathbb{T}\) and let \(f : \mathbb{T} \to \mathbb{R}\). If
+[Bohner & Peterson 2012].<label for=sidenote-8 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-8 class=margin-toggle><span class=sidenote>
+Bohner, Martin, and Allan Peterson. <em>Dynamic equations on time scales:
+an introduction with applications.</em> Springer Science & Business Media, 2012.</span></p><div class=definition><p>A <em>time scale</em> is a nonempty closed subset of \(\mathbb{R}\).</p></div><p>In the sequel, we use \(\mathbb{T}\) to refer to an arbitrary time
+scale.</p><div class=definition><p>We define the <em>backward jump function</em> \(\rho : \mathbb{T} \to
+\mathbb{T}\) by</p><p>\[\rho(t) \coloneqq \sup{ \mathbb{T} \cap (\infty, t) }\]</p><p>and the <em>backward graininess function</em> \(\nu : \mathbb{T} \to [0,
+\infty)\) by</p><p>\[\nu(t) \coloneqq t - \rho(t).\]</p></div><div class=definition><p>Let \(t \in \mathbb{T}\). If \(\nu(t) > 0\), we say \(t\) is <em>(left)
+scattered</em>. Otherwise we say \(t\) is <em>(left) dense</em>.</p></div><div class=definition><p>Let \(t \in \mathbb{T}\) and let \(f : \mathbb{T} \to \mathbb{R}\). If
 the limit \[\begin{aligned} \lim_{s \to t, s \not = \rho(t)}
 \frac{f(\rho(t)) - f(s)}{\rho(t) - s} = f^\nabla(t) \end{aligned}\]
 exists as a finite number, we say that \(f\) is <em>nabla differentiable at
 \(t\)</em> and call \(f^\nabla(t)\) the <em>nabla derivative of \(f\) at
-\(t\)</em>.</p>
-<p>The following generalization of the univariate chain rule will be
+\(t\)</em>.</p></div><p>The following generalization of the univariate chain rule will be
 necessary later. It appears for delta derivatives in [Bohner & Peterson
-2012] as Theorem 1.90.</p>
-<p>Suppose \(f : \mathbb{R} \to \mathbb{R}\) is \(C^1\). Suppose \(g :
+2012] as Theorem 1.90.</p><div class=theorem><p>Suppose \(f : \mathbb{R} \to \mathbb{R}\) is \(C^1\). Suppose \(g :
 \mathbb{T} \to \mathbb{R}\) is nabla differentiable. Then \(f \circ g :
-\mathbb{T} \to \mathbb{R}\) is nabla differentiable and</p>
-<p>\[\begin{aligned} (f \circ g)^\nabla(t) = \int_0^1 f'(g(t) +
-h\nu(t)g^\nabla(t)) ~dh. \end{aligned}\]</p>
-<p>The definitions of the dual concepts (<em>e.g.</em>, forward jump function,
+\mathbb{T} \to \mathbb{R}\) is nabla differentiable and</p><p>\[\begin{aligned} (f \circ g)^\nabla(t) = \int_0^1 f&rsquo;(g(t) +
+h\nu(t)g^\nabla(t)) ~dh. \end{aligned}\]</p></div><p>The definitions of the dual concepts (<em>e.g.</em>, forward jump function,
 right scattered point, delta derivative) may be easily inferred. We will
-not need them in the remainder of this paper.</p>
-<h3 id=multivariate-time-scales-calculus>Multivariate time scales calculus</h3>
-<p>We now consider products of time scales \(\Lambda^n = \prod_{i=1}^n
+not need them in the remainder of this paper.</p><h3 id=multivariate-time-scales-calculus>Multivariate time scales calculus</h3><p>We now consider products of time scales \(\Lambda^n = \prod_{i=1}^n
 \mathbb{T}_i\). We regard these as time scales in their own right. Note
 that each component time scale has its own (possibly distinct) backward
-jump \(\rho_i\) and backward graininess \(\nu_i\).</p>
-<p>Suppose \(f\) is defined on \(\Lambda^n\) and \(\mathbf{t} = [t_1,
+jump \(\rho_i\) and backward graininess \(\nu_i\).</p><p>Suppose \(f\) is defined on \(\Lambda^n\) and \(\mathbf{t} = [t_1,
 \dots, t_n]^T \in \Lambda^n\). We define the backward jump on
-\(\Lambda^n\) as follows.</p>
-<p>\[\begin{aligned} \rho(\mathbf{t}) &= [\rho_1(t_1), \dots, \rho_i(t_i),
-\dots, \rho_n(t_n)]^T, \ f^{\rho}(\mathbf{t}) &= f(\rho_1(t_1), \dots,
-\rho_i(t_i), \dots, \rho_n(t_n)). \end{aligned}\]</p>
-<p>For compactness, we also make use of the following abuse of notation:</p>
-<p>\[\begin{aligned} \rho_i(\mathbf{t}) &= [t_1, \dots, \rho_i(t_i), \dots,
-t_n]^T, \ f^{\rho_i}(\mathbf{t}) &= f(t_1, \dots, \rho_i(t_i), \dots,
-t_n). \end{aligned}\]</p>
-<p>The following definitions are given (for delta derivatives) in [Bohner &
-Guseinov 2004].</p>
-<p>Let \(f : \Lambda^n \to \mathbb{R}\). Let \(\mathbf{t} = [t_1, \dots,
-t_n]^T \in \Lambda^n\). If the limit</p>
-<p>\[\begin{aligned} \lim_{s_i \to t_i, s_i \not = \rho_i(t_i)}
+\(\Lambda^n\) as follows.</p><p>\[\begin{aligned} \rho(\mathbf{t}) &= [\rho_1(t_1), \dots, \rho_i(t_i),
+\dots, \rho_n(t_n)]^T, \newline f^{\rho}(\mathbf{t}) &= f(\rho_1(t_1), \dots,
+\rho_i(t_i), \dots, \rho_n(t_n)). \end{aligned}\]</p><p>For compactness, we also make use of the following abuse of notation:</p><p>\[\begin{aligned} \rho_i(\mathbf{t}) &= [t_1, \dots, \rho_i(t_i), \dots,
+t_n]^T, \newline f^{\rho_i}(\mathbf{t}) &= f(t_1, \dots, \rho_i(t_i), \dots,
+t_n). \end{aligned}\]</p><p>The following definitions are given (for delta derivatives) in [Bohner &
+Guseinov 2004].</p><div class=definition><p>Let \(f : \Lambda^n \to \mathbb{R}\). Let \(\mathbf{t} = [t_1, \dots,
+t_n]^T \in \Lambda^n\). If the limit</p><p>\[\begin{aligned} \lim_{s_i \to t_i, s_i \not = \rho_i(t_i)}
 \frac{f^{\rho_i}(\mathbf{t}) - f(t_1, \dots, s_i, \dots,
 t_n)}{\rho_i(t_i) - s_i} = \frac{\partial f}{\nabla_i t_i}(\mathbf{t})
-\end{aligned}\]</p>
-<p>exists as a finite number, we say that \(f\) is <em>nabla differentiable in
+\end{aligned}\]</p><p>exists as a finite number, we say that \(f\) is <em>nabla differentiable in
 the \(i\)th variable at \(\mathbf{t}\)</em> and call
 \(\displaystyle\frac{\partial f}{\nabla_i t_i}(\mathbf{t})\) the <em>nabla
-derivative of \(f\) with respect to \(t_i\) at \(\mathbf{t}\)</em>.</p>
-<p>To generalize the backpropagation algorithm, we will require the total
+derivative of \(f\) with respect to \(t_i\) at \(\mathbf{t}\)</em>.</p></div><p>To generalize the backpropagation algorithm, we will require the total
 derivative of some functions to be well-defined. The following two
 definitions provide an appropriate sufficient condition; a more explicit
 (and lengthier) version that does not rely on vectors appears as
-Definitions 2.1 and 2.3 in [Bohner & Guseinov 2004].</p>
-<p>Let \(f : \Lambda^n \to \mathbb{R}\). Let \(\mathbf{t} \in \Lambda^n\).
+Definitions 2.1 and 2.3 in [Bohner & Guseinov 2004].</p><div class=definition><p>Let \(f : \Lambda^n \to \mathbb{R}\). Let \(\mathbf{t} \in \Lambda^n\).
 Fix a positive \(\varepsilon\). If there exists a vector
 \(\mathbf{A}(\mathbf{t}) = \mathbf{A} \in \mathbb{R}^n\) such that for
 any \(\mathbf{s} \in \Lambda^n\) with \(\Vert\mathbf{t} -
 \mathbf{s}\Vert\) less than \(\varepsilon\) there are vectors
-\(\mathbf{a}\), \(\mathbf{b}_{1,\dots,n} \in \mathbb{R}^n\) such that</p>
-<p>\[\begin{aligned}
+\(\mathbf{a}\), \(\mathbf{b}_{1,\dots,n} \in \mathbb{R}^n\) such that</p><p>\[\begin{aligned}
 f(\mathbf{t}) - f(\mathbf{s}) &= (\mathbf{A} + \mathbf{a})\cdot(\mathbf{t} - \mathbf{s})
-\end{aligned}\]</p>
-<p>and for \(j = 1, \dots, n\)</p>
-<p>\[\begin{aligned} f^{\rho_j}(\mathbf{t}) - f(\mathbf{s}) &= (\mathbf{A} + \mathbf{b}_j) \cdot (\rho_j(\mathbf{t}) - \mathbf{s}), \end{aligned}\]</p>
-<p>and further \(\lim_{\mathbf{s} \to \mathbf{t}} \mathbf{a} =
+\end{aligned}\]</p><p>and for \(j = 1, \dots, n\)</p><p>\[\begin{aligned} f^{\rho_j}(\mathbf{t}) - f(\mathbf{s}) &= (\mathbf{A} + \mathbf{b}_j) \cdot (\rho_j(\mathbf{t}) - \mathbf{s}), \end{aligned}\]</p><p>and further \(\lim_{\mathbf{s} \to \mathbf{t}} \mathbf{a} =
 \lim_{\mathbf{s} \to \mathbf{t}} \mathbf{b}_j = \mathbf{0}\), we say
-\(f\) is <em>completely nabla differentiable at \(\mathbf{t}\)</em>.</p>
-<p>In this definition the vector \(\mathbf{A}\) plays the role of the
+\(f\) is <em>completely nabla differentiable at \(\mathbf{t}\)</em>.</p></div><p>In this definition the vector \(\mathbf{A}\) plays the role of the
 gradient of \(f\); that is, if it exists, its \(i\)th component is equal
-to \(\frac{\partial f}{\nabla_i t_i}(\mathbf{t})\).</p>
-<p>Suppose \(f : \Lambda^n \to \mathbb{R}\) is completely nabla
+to \(\frac{\partial f}{\nabla_i t_i}(\mathbf{t})\).</p><div class=definition><p>Suppose \(f : \Lambda^n \to \mathbb{R}\) is completely nabla
 differentiable at \(\mathbf{t} \in \Lambda^n\). Fix a positive
 \(\varepsilon\). If there exists a vector \(\mathbf{B}(\mathbf{t}) =
 \mathbf{B} \in \mathbb{R}^n\) which agrees with \(\mathbf{A}\) (as
-defined above) in the \(i\)th component, viz.</p>
-<p>\[\begin{aligned} \mathbf{B}_i &= \mathbf{A}_i = \frac{\partial
+defined above) in the \(i\)th component, viz.</p><p>\[\begin{aligned} \mathbf{B}_i &= \mathbf{A}_i = \frac{\partial
 f}{\nabla_i t_i}(\mathbf{t}), \end{aligned}\] and for any \(\mathbf{s}
 \in \Lambda^n\) with \(\Vert\mathbf{t} - \mathbf{s}\Vert\) less than
 \(\varepsilon\) there exists \(\mathbf{v} \in \mathbb{R}^n\) such that
 \(\displaystyle\lim_{\mathbf{s} \to \mathbf{t}} \mathbf{v} =
-\mathbf{0}\) and</p>
-<p>\[\begin{aligned} f^\rho(\mathbf{t}) - f(\mathbf{s}) &= (\mathbf{B} +
-\mathbf{v}) \cdot (\rho(\mathbf{t}) - \mathbf{s}), \end{aligned}\]</p>
-<p>then we say \(f\) is <em>\(\rho_i\)-completely nabla differentiable at
-\(\mathbf{t}\)</em>.</p>
-<p>If this condition holds, the components of \(\mathbf{B}\) other than the
-\(i\)th are given by</p>
-<p>\[\begin{aligned} \mathbf{B}_j = \frac{\partial f}{\nabla_j
-t_j}(\rho_i(\mathbf{t})).\end{aligned}\]</p>
-<p>The final definition we need will be used in the proof of the main
-theorem.</p>
-<p>Let \(f : \Lambda^n \to \mathbb{T}\). If
+\mathbf{0}\) and</p><p>\[\begin{aligned} f^\rho(\mathbf{t}) - f(\mathbf{s}) &= (\mathbf{B} +
+\mathbf{v}) \cdot (\rho(\mathbf{t}) - \mathbf{s}), \end{aligned}\]</p><p>then we say \(f\) is <em>\(\rho_i\)-completely nabla differentiable at
+\(\mathbf{t}\)</em>.</p></div><p>If this condition holds, the components of \(\mathbf{B}\) other than the
+\(i\)th are given by</p><p>\[\begin{aligned} \mathbf{B}_j = \frac{\partial f}{\nabla_j
+t_j}(\rho_i(\mathbf{t})).\end{aligned}\]</p><p>The final definition we need will be used in the proof of the main
+theorem.</p><div class=definition><p>Let \(f : \Lambda^n \to \mathbb{T}\). If
 \(f^{\rho_{\Lambda^n}}(\mathbf{t}) = \rho_{\mathbb{T}}(f(\mathbf{t}))\),
-we say that \(f\) is <em>backward jump commutative</em> or <em>\(ρ\)-commutative</em>.</p>
-<h2 id=main-results>Main results</h2>
-<p>We have now established the necessary scaffolding to generalize the main
+we say that \(f\) is <em>backward jump commutative</em> or <em>\(ρ\)-commutative</em>.</p></div><h2 id=main-results>Main results</h2><p>We have now established the necessary scaffolding to generalize the main
 theorem: the standard multivariate chain rule, the delta derivative
 analog of which is proven in [Bohner & Guseinov 2004], Theorem 7.1 (in
 two dimensions) and [Seifertt & Wunsch 2010], Theorem 1 (in \(n\)
-dimensions.) We closely follow the latter proof here.</p>
-<p>The definition of the functions \(u_i\) in the theorem statement
+dimensions.) We closely follow the latter proof here.</p><p>The definition of the functions \(u_i\) in the theorem statement
 requires a little care, since previously we defined nabla
 differentiability only for functions whose image is \(\mathbb{R}\). We
 assume throughout this discussion that the image of \(u_i\),
 \(u_i(\Lambda^n) = \mathbb{T}_i \subseteq \mathbb{R}\), is a time scale,
 and is more specifically (a subset of) the \(i\)th component of
-\(\Lambda^n\), so that the composite function \(F\) is well-defined.</p>
-<p>Suppose \(f : \Lambda^n \to \mathbb{R}\) is \(\rho_1\)-completely nabla
+\(\Lambda^n\), so that the composite function \(F\) is well-defined.</p><div class=theorem><p>Suppose \(f : \Lambda^n \to \mathbb{R}\) is \(\rho_1\)-completely nabla
 differentiable. Suppose \(u_i : \Lambda^n \to \mathbb{R}\) is nabla
-differentiable and \(\rho_i\)-commutative for \(i = 1, \dots, n\).</p>
-<p>Define \(F : \Lambda^n \to \mathbb{R}\) by \[F(\mathbf{t}) =
+differentiable and \(\rho_i\)-commutative for \(i = 1, \dots, n\).</p><p>Define \(F : \Lambda^n \to \mathbb{R}\) by \[F(\mathbf{t}) =
 f(\mathbf{u}(\mathbf{t})) = f(u_1(\mathbf{t}), \dots,
-u_n(\mathbf{t})).\] The nabla derivative of \(F\) exists and is given by</p>
-<p>\[\begin{aligned} F^\nabla(\mathbf{t}) &= \frac{\partial F}{\nabla_1
+u_n(\mathbf{t})).\] The nabla derivative of \(F\) exists and is given by</p><p>\[\begin{aligned} F^\nabla(\mathbf{t}) &= \frac{\partial F}{\nabla_1
 u_1}(\mathbf{t}) \cdot u_1^\nabla(\mathbf{t}) + \sum_{k = 2}^n
 \frac{\partial F}{\nabla_k u_k}(\rho_1(\mathbf{t})) \cdot
-u_k^\nabla(\mathbf{t}). \end{aligned}\]</p>
-<p>Let \(\varepsilon > 0\). Let \(\mathbf{t} \in \Lambda^n\) be given. A bit
+u_k^\nabla(\mathbf{t}). \end{aligned}\]</p></div><div class=proof><p>Let \(\varepsilon > 0\). Let \(\mathbf{t} \in \Lambda^n\) be given. A bit
 loosely, we write \[\begin{aligned} F^\nabla(\mathbf{t}) &=
 \lim_{\Vert\mathbf{s} - \mathbf{t}\Vert \to 0, \mathbf{s} \not =
 \rho(\mathbf{t})} \frac{F(\rho(\mathbf{t})) -
@@ -411,181 +233,117 @@ F(\rho(\mathbf{t})) - F(\mathbf{s}) &= f(u_1(\rho(\mathbf{t})), \dots,
 u_n(\rho(\mathbf{t}))) - f(u_1(\mathbf{s}), \dots, u_n(\mathbf{s}))
 \end{aligned}\] and pass to the limit at the end. Therefore let
 \(\mathbf{s}\) be fixed with \(\Vert\mathbf{s} - \mathbf{t}\Vert\) less
-than \(\varepsilon\). Since the \(u_i\) are \(ρ\)-commutative, we have</p>
-<p>\[\begin{aligned} F(\rho(\mathbf{t})) - F(\mathbf{s}) &=
+than \(\varepsilon\). Since the \(u_i\) are \(ρ\)-commutative, we have</p><p>\[\begin{aligned} F(\rho(\mathbf{t})) - F(\mathbf{s}) &=
 f(\rho_1(u_1(\mathbf{t})), \dots, \rho_n(u_n(\mathbf{t}))) -
-f(u_1(\mathbf{s}), \dots, u_n(\mathbf{s})) \ &= F^\rho(\mathbf{t}) -
-F(\mathbf{s}). \end{aligned}\]</p>
-<p>Since \(F\) is \(\rho_1\)-completely nabla differentiable, there exist \(\mathbf{B}, \mathbf{v} \in \mathbb{R}^n\)
+f(u_1(\mathbf{s}), \dots, u_n(\mathbf{s})) \newline &= F^\rho(\mathbf{t}) -
+F(\mathbf{s}). \end{aligned}\]</p><p>Since \(F\) is \(\rho_1\)-completely nabla differentiable, there exist \(\mathbf{B}, \mathbf{v} \in \mathbb{R}^n\)
 such that \(\lim_{\mathbf{s} \to \mathbf{t}} \mathbf{v} = \mathbf{0}\)
-and</p>
-<p>\[\begin{aligned} F^\rho(\mathbf{t}) - F(\mathbf{s}) &= (\mathbf{B} +
+and</p><p>\[\begin{aligned} F^\rho(\mathbf{t}) - F(\mathbf{s}) &= (\mathbf{B} +
 \mathbf{v}) \cdot (\rho(\mathbf{u}(\mathbf{t})) -
-\mathbf{u}(\mathbf{s})) \ &= \sum_{k = 1}^n
-B_k(\rho_k(u_k(\mathbf{t})) - u_k(\mathbf{s})) \ &\qquad+ \mathbf{v}
+\mathbf{u}(\mathbf{s})) \newline &= \sum_{k = 1}^n
+B_k(\rho_k(u_k(\mathbf{t})) - u_k(\mathbf{s})) + \mathbf{v}
 \cdot (\rho(\mathbf{u}(\mathbf{t})) - \mathbf{u}(\mathbf{s})).
-\end{aligned}\]</p>
-<p>By (\ref{bi}) and (\ref{bj}), this is</p>
-<p>\[\begin{aligned} &= \left(\frac{\partial F}{\nabla_1 u_1}(\mathbf{t})
-\right) (\rho_1(u_1(\mathbf{t})) - \mathbf{s}) \ &\qquad+ \sum_{k=2}^n
+\end{aligned}\]</p><p>By (\ref{bi}) and (\ref{bj}), this is</p><p>\[\begin{aligned} &= \left(\frac{\partial F}{\nabla_1 u_1}(\mathbf{t})
+\right) (\rho_1(u_1(\mathbf{t})) - \mathbf{s}) \newline &\qquad+ \sum_{k=2}^n
 \left(\frac{\partial F}{\nabla_k
 u_k}(\rho_1(\mathbf{t}))\right)(\rho_k(u_k(\mathbf{t})) -
-u_k(\mathbf{s})) \ &\qquad+ \mathbf{v} \cdot
-(\rho(\mathbf{u}(\mathbf{t})) - \mathbf{u}(\mathbf{s})). \end{aligned}\]</p>
-<p>Now applying the \(ρ\)-commutativity condition in the other direction
-gives</p>
-<p>\[\begin{aligned} &= \left(\frac{\partial F}{\nabla_1 u_1}(\mathbf{t})
-\right) (u_1(\rho(\mathbf{t})) - \mathbf{s}) \ &\qquad+ \sum_{k=2}^n
+u_k(\mathbf{s})) + \mathbf{v} \cdot
+(\rho(\mathbf{u}(\mathbf{t})) - \mathbf{u}(\mathbf{s})). \end{aligned}\]</p><p>Now applying the \(ρ\)-commutativity condition in the other direction
+gives</p><p>\[\begin{aligned} &= \left(\frac{\partial F}{\nabla_1 u_1}(\mathbf{t})
+\right) (u_1(\rho(\mathbf{t})) - \mathbf{s}) \newline &\qquad+ \sum_{k=2}^n
 \left(\frac{\partial F}{\nabla_k
 u_k}(\rho_1(\mathbf{t}))\right)(u_k(\rho(\mathbf{t})) - u_k(\mathbf{s}))
-\ &\qquad+ \mathbf{v} \cdot (\mathbf{u}(\rho(\mathbf{t})) -
-\mathbf{u}(\mathbf{s})). \end{aligned}\]</p>
-<p>As earlier discussed, we divide throughout by \(\Vert\rho(\mathbf{t}) -
+\newline &\qquad \qquad+ \mathbf{v} \cdot (\mathbf{u}(\rho(\mathbf{t})) -
+\mathbf{u}(\mathbf{s})). \end{aligned}\]</p><p>As earlier discussed, we divide throughout by \(\Vert\rho(\mathbf{t}) -
 \mathbf{s}\Vert\) and take the limit as \(\Vert\mathbf{t} -
 \mathbf{s}\Vert\) approaches \(0\), which gives \[\begin{aligned}
 F^\nabla(\mathbf{t}) &= \frac{\partial F}{\nabla_1 u_1}(\mathbf{t})
 \cdot u_1^\nabla(\mathbf{t}) + \sum_{k = 2}^n \frac{\partial F}{\nabla_k
 u_k}(\rho_1(\mathbf{t})) \cdot u_k^\nabla(\mathbf{t}), \end{aligned}\]
-which was to be shown.</p>
-<p>Now we generalize the earlier exposition of the backpropagation
-algorithm, viz. -</p>
-<p>Suppose we have a neural network governed by equations and j with the
+which was to be shown.</p></div><p>Now we generalize the earlier exposition of the backpropagation
+algorithm, viz. -</p><p>Suppose we have a neural network governed by equations and j with the
 single difference that the domain of \(x_{ij}\) (and range of the
 activation function \(\psi_{ij}\)) is a time scale \(\mathbb{T}\).
 Throughout we will assume that this time scale is the same for all
 nodes, so independent of \(i\) and \(j\). We therefore write \(\Lambda^n
-= \mathbb{T}^n\).</p>
-<p>The following discussion follows [Seifertt & Wunsch 2010], section 4. We
+= \mathbb{T}^n\).</p><p>The following discussion follows [Seifertt & Wunsch 2010], section 4. We
 would like to compute the partial nabla derivative
 \(\displaystyle\frac{\partial L}{\nabla w_{ij}}\) for some node \(ij\).
-By the chain rule for \(n\) variables, we have</p>
-<p>\[\begin{aligned} \frac{\partial L}{\nabla w_{ij}}(\mathbf{t}) &=
+By the chain rule for \(n\) variables, we have</p><p>\[\begin{aligned} \frac{\partial L}{\nabla w_{ij}}(\mathbf{t}) &=
 \frac{\partial L}{\nabla x_{o1}}(\mathbf{t}) \cdot \frac{\partial
 x_{o1}}{\nabla w_{ij}}(\mathbf{t}) + \sum_{k > 1} \frac{\partial
 L}{\nabla x_{ok}}(\rho_1(\mathbf{t})) \frac{\partial x_{ok}}{\nabla
-w_{ij}}(\mathbf{t}). \end{aligned}\]</p>
-<p>Similarly,</p>
-<p>\[\begin{aligned} \frac{\partial x_{ok}}{\nabla w_{ij}}(\mathbf{t}) &=
+w_{ij}}(\mathbf{t}). \end{aligned}\]</p><p>Similarly,</p><p>\[\begin{aligned} \frac{\partial x_{ok}}{\nabla w_{ij}}(\mathbf{t}) &=
 \frac{\partial x_{ok}}{\nabla x_{H1}}(\mathbf{t}) \cdot \frac{\partial
 x_{H1}}{\nabla w_{ij}}(\mathbf{t}) + \sum_{l > 1} \frac{\partial
 x_{ok}}{\nabla x_{Hl}}(\rho_1(\mathbf{t})) \frac{\partial x_{Hl}}{\nabla
-w_{ij}}(\mathbf{t}). \end{aligned}\]</p>
-<p>When we reach the layer that directly depends on \(w_{ij}\), we have to
-compute</p>
-<p>\[\begin{aligned} \frac{\partial x_{(i + 1),k}}{\nabla w_{ij}} &=
-\left(\int_0^1 \psi_{(i+1),k}'\left(b_{(i+1), k} + \sum_l w_{il} x_{il} + h\nu(t)x_{ij} \right)~dh \right) \cdot x_{ij}. \end{aligned}\]</p>
-<h3 id=linear-regression-on-time-scales>Linear regression on time scales</h3>
-<p>Several other statistical learning techniques admit representations as
+w_{ij}}(\mathbf{t}). \end{aligned}\]</p><p>When we reach the layer that directly depends on \(w_{ij}\), we have to
+compute</p><p>\[\begin{aligned} \frac{\partial x_{(i + 1),k}}{\nabla w_{ij}} &=
+\left(\int_0^1 \psi_{(i+1),k}&rsquo;\left(b_{(i+1), k} + \sum_l w_{il} x_{il} + h\nu(t)x_{ij} \right)~dh \right) \cdot x_{ij}. \end{aligned}\]</p><h3 id=linear-regression-on-time-scales>Linear regression on time scales</h3><p>Several other statistical learning techniques admit representations as
 neural networks. As a simple application of the results just derived, we
 recast multiple linear regression, one of the simplest possible models,
 as a neural network, and work through the backpropagation algorithm on
-time scales.</p>
-<p>Suppose we have a neural network with no hidden layers, a single output
+time scales.</p><p>Suppose we have a neural network with no hidden layers, a single output
 node, and \(M\) input nodes. Further, suppose all the activation
 functions are the identity. (On \(\mathbb{R}\), by taking the activation
 function at the output to be, e.g., the hyperbolic tangent, we obtain
-<em>logit regression</em>.)</p>
-<p>The network equation becomes</p>
-<p>\[\begin{aligned} x_{o1} = y &= b_y + \sum_{k = 1}^M w_{\alpha
-k}x_{\alpha k} \ &= b_y + \sum_{k = 1}^M w_kx_k. \end{aligned}\]</p>
-<p>Suppose we use the loss function and observe an error \(L(\hat{f}(I)) =
-L = (y - \hat{y})^2/2\). To update the parameters, we need to compute</p>
-<p>\[\begin{aligned} \frac{\partial L}{\nabla w_k}(I) &= \frac{\partial
-L}{\nabla y}(I) \frac{\partial y}{\nabla w_k}(I) \ &= -\frac{y -
+<em>logit regression</em>.)</p><p>The network equation becomes</p><p>\[\begin{aligned} x_{o1} = y &= b_y + \sum_{k = 1}^M w_{\alpha
+k}x_{\alpha k} \newline &= b_y + \sum_{k = 1}^M w_kx_k. \end{aligned}\]</p><p>Suppose we use the loss function and observe an error \(L(\hat{f}(I)) =
+L = (y - \hat{y})^2/2\). To update the parameters, we need to compute</p><p>\[\begin{aligned} \frac{\partial L}{\nabla w_k}(I) &= \frac{\partial
+L}{\nabla y}(I) \frac{\partial y}{\nabla w_k}(I) \newline &= -\frac{y -
 \hat{y} + \nu(y - \hat{y})}{2} \cdot \frac{\partial y}{\nabla w_k}(I)
-\end{aligned}\] Since \(\psi_k' = 1\), we have</p>
-<p>\[\begin{aligned} \frac{\partial y}{\nabla w_k} &= x_k, \frac{\partial
+\end{aligned}\] Since \(\psi_k&rsquo; = 1\), we have</p><p>\[\begin{aligned} \frac{\partial y}{\nabla w_k} &= x_k, \newline \frac{\partial
 L}{\nabla w_k} &= \frac{y - \hat{y} + \nu(y - \hat{y})}{2}
-x_k.\end{aligned}\]</p>
-<p>The weight is now updated as \(Δ w_k = -β \dfrac{\partial
+x_k.\end{aligned}\]</p><p>The weight is now updated as \(Δ w_k = -β \dfrac{\partial
 L}{\nabla w_k}.\) If \(\beta = 1\) and \(\mathbb{T} = \mathbb{R}\), then
-this becomes \(Δ w_k = (y - \hat{y})x_k.\)</p>
-<h2 id=directions-for-future-research>Directions for future research</h2>
-<h3 id=clearer-exposition>Clearer exposition</h3>
-<p>When discussing the mathematics of neural networks, it is easy to get
+this becomes \(Δ w_k = (y - \hat{y})x_k.\)</p><h2 id=directions-for-future-research>Directions for future research</h2><h3 id=clearer-exposition>Clearer exposition</h3><p>When discussing the mathematics of neural networks, it is easy to get
 lost while keeping track of the various indices under study. The paper
 [Seifertt & Wunsch 2010] compounds this problem by stating the
 \(n\)-variable chain rule in full generality, which almost by necessity
 skims over some delicate considerations regarding, <em>e.g.</em>, the
 well-definedness of the composite function \(F\). In this paper, I have
-tried to clean up their exposition in hopes of greater readability</p>
-<p>The standard treatment of the total derivative in \(\mathbb{R}^n\) is as
-a certain linear mapping (see for instance [Spivak 1965].) This allows
-full &ldquo;vectorization&rdquo; of the appropriate definitions, which eliminates
+tried to clean up their exposition in hopes of greater readability</p><p>The standard treatment of the total derivative in \(\mathbb{R}^n\) is as
+a certain linear mapping.<label for=sidenote-20 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-20 class=margin-toggle><span class=sidenote> See for instance:
+Spivak, Michael. <em>Calculus on manifolds: a modern approach to classical
+theorems of advanced calculus.</em> W. A. Benjamin, Inc., 1965.</span>
+This allows full &ldquo;vectorization&rdquo; of the appropriate definitions, which eliminates
 complex indicial notation. An equivalent treatment for products of time
 scales \(\Lambda^n\) would be highly desirable, but is outside the scope
-of this paper.</p>
-<h3 id=universal-approximation>Universal approximation</h3>
-<p>On continuous domains, the power of feedforward neural networks is
+of this paper.</p><h3 id=universal-approximation>Universal approximation</h3><p>On continuous domains, the power of feedforward neural networks is
 demonstrated by the following result, which implies that neural networks
 can (theoretically) be used to model any continuous function in
 Euclidean space. This result was presented in various slightly different
 forms by several papers in the late 1980s and early 1990s; we follow the
-exposition in [Hornik 1991] here.</p>
-<p>Suppose \(\psi : \mathbb{R} \to \mathbb{R}\) is continuous, bounded, and
+exposition in [Hornik 1991]<label for=sidenote-21 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-21 class=margin-toggle><span class=sidenote>
+Hornik, Kurt. &ldquo;Approximation capabilities of multilayer feedforward
+networks.&rdquo; <em>Neural networks</em> 4, no. 2 (1991): 251-257.</span>
+here.</p><div class=theorem><p>Suppose \(\psi : \mathbb{R} \to \mathbb{R}\) is continuous, bounded, and
 nonconstant. Let \(X \subset \mathbb{R}^N\) be compact. Then a
 feedforward neural network with a single hidden layer, all of whose
 nodes have activation function \(\psi\), can represent a dense subset of
-\(C(X)\).</p>
-<p>Note the conditions on \(\psi\) force it to be nonlinear. Additionally,
+\(C(X)\).</p></div><p>Note the conditions on \(\psi\) force it to be nonlinear. Additionally,
 the number of nodes in the hidden layer increases rapidly as the
 function to be approximated becomes more complex. For the latter reason,
 this result&rsquo;s direct applicability is extremely limited; it is useful
 mainly as a demonstration that there are no broad classes of
-well-behaved functions at which neural network modeling breaks down.</p>
-<p>The proof of this theorem requires tools from functional analysis such
+well-behaved functions at which neural network modeling breaks down.</p><p>The proof of this theorem requires tools from functional analysis such
 as the Riesz representation theorem and the Hahn-Banach theorem. While
-analogs of these results have been shown for time scales (see [Huseynov
-2012],) generalizing the Universal Approximation Theorem to time scales
-is beyond the scope of this paper.</p>
-<h3 id=recurrent-neural-networks>Recurrent neural networks</h3>
-<p>This paper&rsquo;s abstract mentioned time-series forecasting among the
+analogs of these results have been shown<label for=sidenote-23 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-23 class=margin-toggle><span class=sidenote>
+Huseynov, Adil. &ldquo;The Riesz representation theorem on time scales.&rdquo;
+<em>Mathematical and Computer Modelling</em> 55, no. 3-4 (2012): 1570-1579.</span>
+for time scales, generalizing the Universal Approximation Theorem to time scales
+is beyond the scope of this paper.</p><h3 id=recurrent-neural-networks>Recurrent neural networks</h3><p>This paper&rsquo;s abstract mentioned time-series forecasting among the
 applications of neural networks. For computational reasons, the
 feedforward architectures we relied on in this paper are generally
-insufficient for most applications involving a time domain.</p>
-<p><em>Recurrent neural networks</em> were introduced to address these
+insufficient for most applications involving a time domain.</p><p><em>Recurrent neural networks</em> were introduced to address these
 applications in the late 1980s. They relax the acyclicity of feedforward
 neural networks, allowing nodes to feed into themselves or into prior
 layers. As a result, applying the total derivative rule to such a node
 produces a dynamic equation specialized to the approriate time scale
 (differential equations on \(\mathbb{R}\) and difference equations on
-\(\mathbb{Z}\).)</p>
-<p>The present paper applies backpropagation to non-uniform <em>spatial</em>
+\(\mathbb{Z}\).)</p><p>The present paper applies backpropagation to non-uniform <em>spatial</em>
 domains; an interesting application of time scales calculus would be to
-generalize backpropagation through time to non-uniform time domains.</p>
-<h2 id=references>References</h2>
-<p>Bohner, Martin, and Gusein Sh. Guseinov. &ldquo;Partial differentiation on
-time scales.&rdquo; <em>Dynamic systems and applications</em> 13, no. 3-4 (2004):
-351-379.</p>
-<p>Bohner, Martin, and Allan Peterson. <em>Dynamic equations on time scales:
-an introduction with applications.</em> Springer Science & Business Media,</p>
-<ol>
-<li></li>
-</ol>
-<p>Ciresan, Dan Claudiu, Ueli Meier, Jonathan Masci, Luca Maria
-Gambardella, and Jürgen Schmidhuber. &ldquo;Flexible, high performance
-convolutional neural networks for image classification.&rdquo; In
-<em>Twenty-Second International Joint Conference on Artificial
-Intelligence</em>. 2011.</p>
-<p>Hornik, Kurt. &ldquo;Approximation capabilities of multilayer feedforward
-networks.&rdquo; <em>Neural networks</em> 4, no. 2 (1991): 251-257.</p>
-<p>Huseynov, Adil. &ldquo;The Riesz representation theorem on time scales.&rdquo;
-<em>Mathematical and Computer Modelling</em> 55, no. 3-4 (2012): 1570-1579.</p>
-<p>Nielsen, Michael A. <em>Neural networks and deep learning.</em> Determination
-Press, 2015.</p>
-<p>Schmidhuber, Jürgen. &ldquo;Deep learning in neural networks: An overview.&rdquo;
-<em>Neural networks</em> 61 (2015): 85-117.</p>
-<p>Seiffertt, John, and Donald C. Wunsch. &ldquo;Backpropagation and ordered
-derivatives in the time scales calculus.&rdquo; <em>IEEE transactions on neural
-networks</em> 21, no. 8 (2010): 1262-1269.</p>
-<p>Spivak, Michael. <em>Calculus on manifolds: a modern approach to classical
-theorems of advanced calculus.</em> W. A. Benjamin, Inc., 1965.</p>
-<p>Werbos, Paul J. &ldquo;Backpropagation through time: what it does and how to
-do it.&rdquo; <em>Proceedings of the IEEE</em> 78, no. 10 (1990): 1550-1560.</p>
-</article>
-<hr>
-</main>
-<footer> Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a>
-</footer>
-</body>
-</html>
+generalize backpropagation through time to non-uniform time domains.</p></article><hr></main><footer>Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a></footer></body></html>

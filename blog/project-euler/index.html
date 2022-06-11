@@ -1,204 +1,90 @@
-<!doctype html><html lang=en-us>
-<head>
-<meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>Project Euler 1-100 in 49 hours | S. Verona Malone</title>
-<meta name=title content="Project Euler 1-100 in 49 hours">
-<meta name=description content="The things I do for my inner child.">
-<meta name=keywords content="code,fun,challenge,project-euler,2021,">
-<meta property="og:title" content="Project Euler 1-100 in 49 hours">
-<meta property="og:description" content="The things I do for my inner child.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://sverona.dev/blog/project-euler/"><meta property="article:section" content="blog">
-<meta property="article:published_time" content="2021-01-20T00:00:00+00:00">
-<meta property="article:modified_time" content="2021-01-20T00:00:00+00:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="Project Euler 1-100 in 49 hours">
-<meta name=twitter:description content="The things I do for my inner child.">
-<meta itemprop=name content="Project Euler 1-100 in 49 hours">
-<meta itemprop=description content="The things I do for my inner child."><meta itemprop=datePublished content="2021-01-20T00:00:00+00:00">
-<meta itemprop=dateModified content="2021-01-20T00:00:00+00:00">
-<meta itemprop=wordCount content="778">
-<meta itemprop=keywords content="code,fun,challenge,project-euler,2021,">
-<meta name=referrer content="no-referrer-when-downgrade">
-<link href=https://sverona.dev/css/base.css type=text/css rel=stylesheet>
-<link href=https://sverona.dev/css/sidenotes.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
-<link href=https://sverona.dev/css/latex-theorem.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
-<link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'">
-<script defer src=https://sverona.dev/katex/katex.js></script>
+<!doctype html><html lang=en-us><head><meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Project Euler 1-100 in 49 hours | S. Verona Malone</title><meta name=title content="Project Euler 1-100 in 49 hours"><meta name=description content="The things I do for my inner child."><meta name=keywords content="code,fun,challenge,project-euler,2021,"><meta property="og:title" content="Project Euler 1-100 in 49 hours"><meta property="og:description" content="The things I do for my inner child."><meta property="og:type" content="article"><meta property="og:url" content="https://sverona.dev/blog/project-euler/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2021-01-20T00:00:00+00:00"><meta property="article:modified_time" content="2021-01-20T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Project Euler 1-100 in 49 hours"><meta name=twitter:description content="The things I do for my inner child."><meta itemprop=name content="Project Euler 1-100 in 49 hours"><meta itemprop=description content="The things I do for my inner child."><meta itemprop=datePublished content="2021-01-20T00:00:00+00:00"><meta itemprop=dateModified content="2021-01-20T00:00:00+00:00"><meta itemprop=wordCount content="778"><meta itemprop=keywords content="code,fun,challenge,project-euler,2021,"><meta name=referrer content="no-referrer-when-downgrade"><link href=https://sverona.dev/sass/style.css type=text/css rel=stylesheet><link href=https://sverona.dev/sass/sidenotes.css type=text/css rel=stylesheet><link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload="this.onload=null,this.rel='stylesheet'"><script defer src=https://sverona.dev/katex/katex.js></script>
 <script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
-<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}]})})</script>
-</head>
-<body>
-<header id=header><a href=/ class=title id=brand>
-<span id=accent></span>S. Verona Malone
-</a>
-<nav><ul>
-<li><a href=/blog>blog</a></li>
-<li><a href=https://github.com/sverona>github</a></li>
-<li><a href=/trig>MATH 117</a></li>
-</ul>
-</nav>
-</header>
-<main>
-<header id=front-matter>
-<nav>
-<div id=current-section>
-<a href=https://sverona.dev/blog/>Blogs</a>
-</div>
-<div id=next-prev>
-<span>
-&lt;-- <a href=https://sverona.dev/blog/nabla/>Neural networks in time scale calculus</a>
-</span>
-<span>
-<a href=https://sverona.dev/blog/gcd-ln/>\(\pi\) and \(e\) and the GCD</a> -->
-</span>
-</div>
-</nav>
-<div>
-<time datetime=2021-01-20 pubdate>
-January 20, 2021
-</time>
-<h1>Project Euler 1-100 in 49 hours</h1>
-<em id=page-description>The things I do for my inner child.</em>
-<br>
-</div>
-</div>
-</header>
-<article>
-<div id=toc class=margin-toggle>
-<h2>Contents</h2>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#how-this-was-possible-in-the-first-place>How this was possible in the first place</a></li>
-<li><a href=#useful-things-from-my-graduate-algorithms-class>Useful things from my graduate algorithms class</a></li>
-<li><a href=#utility-algorithms>Utility algorithms</a>
-<ul>
-<li><a href=#converting-between-a-number-and-its-digits>Converting between a number and its digits</a></li>
-<li><a href=#euclid-s-gcd-algorithm>Euclid&rsquo;s GCD algorithm</a></li>
-<li><a href=#primality-testing>Primality testing</a></li>
-<li><a href=#sieve-of-eratosthenes>Sieve of Eratosthenes</a></li>
-<li><a href=#factorization>Factorization</a></li>
-<li><a href=#generating-pythagorean-triples>Generating Pythagorean triples</a></li>
-<li><a href=#others>Others</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-<p><a href=https://projecteuler.net>Project Euler</a> is how I taught myself Python in high school, and so I find it incredibly nostalgic. It took 13-year-old me a lot of Googling and a few months to get through the first 100 problems.</p>
-<p>10-odd years and a graduate degree later, I decided to come back and solve them as fast as I could. I&rsquo;m no competitive programmer, but 24 hours seemed reasonable. Fortunately, I lack the stamina to code for that long, so I did it over a few days instead. I started on 19 January a little after 1400 and finished two days later at 1500, and probably spent less than half of that time coding, but who knows.</p>
-<p>(Why 100 specifically? Because I wanted to write this post honestly and those are the ones I&rsquo;m allowed to talk about without them locking my account or something.)</p>
-<h2 id=how-this-was-possible-in-the-first-place>How this was possible in the first place</h2>
-<p>Having solved them all before helped a lot &mdash; otherwise I wouldn&rsquo;t be sure this was possible to do quickly at all. Problems after 100 tend to very quickly become about number theory; I&rsquo;ve solved more than one by appeal to my copy of Hardy and Wright.</p>
-<p>I wrote my solutions in Python, as before. Having just done <a href=https://adventofco.de>Advent of Code</a> in plain C, I came to miss my dictionaries, lists, and not having to write <code>unsigned long long</code> everywhere.</p>
-<h2 id=useful-things-from-my-graduate-algorithms-class>Useful things from my graduate algorithms class</h2>
-<p><a href="https://projecteuler.net/problem=67">Problem 67</a> was how I learned about dynamic programming in high school.</p>
-<h2 id=utility-algorithms>Utility algorithms</h2>
-<p>If you&rsquo;re trying this in another language, these are the things I would implement first.</p>
-<h3 id=converting-between-a-number-and-its-digits>Converting between a number and its digits</h3>
-<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#cdcd00>def</span> digits(n):
-    <span style=color:#cdcd00>return</span> [<span style=color:#cd00cd>int</span>(d) <span style=color:#cdcd00>for</span> d <span style=color:#cdcd00>in</span> <span style=color:#cd00cd>str</span>(n)]
-
-<span style=color:#cdcd00>def</span> from_digits(digits):
-    <span style=color:#cdcd00>return</span> <span style=color:#cd00cd>int</span>(<span style=color:#cd0000>&#39;&#39;</span><span style=color:#39c>.</span>join(<span style=color:#cd00cd>str</span>(d) <span style=color:#cdcd00>for</span> d <span style=color:#cdcd00>in</span> digits))
-</code></pre></div><h3 id=euclid-s-gcd-algorithm>Euclid&rsquo;s GCD algorithm</h3>
-<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#cdcd00>def</span> gcd(a, b):
-    <span style=color:#cdcd00>return</span> a <span style=color:#cdcd00>if</span> b <span style=color:#39c>==</span> <span style=color:#cd00cd>0</span> <span style=color:#cdcd00>else</span> gcd(b, a <span style=color:#39c>%</span> b)
-</code></pre></div><h3 id=primality-testing>Primality testing</h3>
-<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#cdcd00>def</span> is_prime(n):
-    <span style=color:#cdcd00>if</span> n <span style=color:#39c>&lt;</span> <span style=color:#cd00cd>2</span>:
-        <span style=color:#cdcd00>return</span> <span style=color:#cdcd00>False</span>
-    max_d <span style=color:#39c>=</span> <span style=color:#cd00cd>int</span>(n <span style=color:#39c>**</span> <span style=color:#cd00cd>0.5</span>)
-    <span style=color:#cdcd00>for</span> d <span style=color:#cdcd00>in</span> <span style=color:#cd00cd>range</span>(<span style=color:#cd00cd>2</span>, max_d <span style=color:#39c>+</span> <span style=color:#cd00cd>1</span>):
-        <span style=color:#cdcd00>if</span> n <span style=color:#39c>%</span> d <span style=color:#39c>==</span> <span style=color:#cd00cd>0</span>:
-            <span style=color:#cdcd00>return</span> <span style=color:#cdcd00>False</span>
-    <span style=color:#cdcd00>return</span> <span style=color:#cdcd00>True</span>
-</code></pre></div><h3 id=sieve-of-eratosthenes>Sieve of Eratosthenes</h3>
-<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#cdcd00>def</span> sieve(max_n):
-    sv <span style=color:#39c>=</span> [<span style=color:#cdcd00>None</span> <span style=color:#cdcd00>for</span> n <span style=color:#cdcd00>in</span> <span style=color:#cd00cd>range</span>(max_n <span style=color:#39c>+</span> <span style=color:#cd00cd>1</span>)]
-    sv[<span style=color:#cd00cd>0</span>] <span style=color:#39c>=</span> <span style=color:#cdcd00>False</span>
-    sv[<span style=color:#cd00cd>1</span>] <span style=color:#39c>=</span> <span style=color:#cdcd00>False</span>
-
-    max_p <span style=color:#39c>=</span> <span style=color:#cd00cd>int</span>(max_n <span style=color:#39c>**</span> <span style=color:#cd00cd>0.5</span>)
-    <span style=color:#cdcd00>for</span> p <span style=color:#cdcd00>in</span> <span style=color:#cd00cd>range</span>(<span style=color:#cd00cd>2</span>, max_p <span style=color:#39c>+</span> <span style=color:#cd00cd>1</span>):
-        <span style=color:#cdcd00>if</span> sv[p] <span style=color:#cdcd00>is</span> <span style=color:#cdcd00>None</span>:
-            sv[p] <span style=color:#39c>=</span> <span style=color:#cdcd00>True</span>
-        <span style=color:#cdcd00>for</span> c <span style=color:#cdcd00>in</span> <span style=color:#cd00cd>range</span>(p <span style=color:#39c>*</span> p, max_n <span style=color:#39c>+</span> <span style=color:#cd00cd>1</span>, p):
-            sv[c] <span style=color:#39c>=</span> <span style=color:#cdcd00>False</span>
-    <span style=color:#cdcd00>for</span> p <span style=color:#cdcd00>in</span> <span style=color:#cd00cd>range</span>(max_p <span style=color:#39c>+</span> <span style=color:#cd00cd>1</span>, max_n <span style=color:#39c>+</span> <span style=color:#cd00cd>1</span>):
-        <span style=color:#cdcd00>if</span> sv[p] <span style=color:#cdcd00>is</span> <span style=color:#cdcd00>None</span>:
-            sv[p] <span style=color:#39c>=</span> <span style=color:#cdcd00>True</span>
-
-    <span style=color:#cdcd00>return</span> sv
-</code></pre></div><p>Sieving other things was also appropriate; for instance, Euler&rsquo;s totient function, in view of the identity
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}]})})</script></head><body><header id=header><a href=/ class=title id=brand><span id=accent></span>S. Verona Malone</a><nav><ul><li><a href=/blog>blog</a></li><li><a href=https://github.com/sverona>github</a></li><li><a href=/about>about</a></li></ul></nav></header><main><header id=front-matter><nav><div id=current-section><a href=https://sverona.dev/blog/>Blogs</a></div><div id=next-prev><span>&Larr; <a href=https://sverona.dev/blog/nabla/>The backpropagation algorithm for nabla derivatives</a></span>
+<span><a href=https://sverona.dev/blog/gcd-ln/>\(\pi\) and \(e\) and the GCD</a> &Rarr;</span></div></nav><div><time datetime=2021-01-20 pubdate>January 20, 2021</time><h1>Project Euler 1-100 in 49 hours</h1><em id=page-description>The things I do for my inner child.</em><br></div></div></header><article><div id=toc class=margin-toggle><h2>Table of Contents</h2><nav id=TableOfContents><ul><li><a href=#how-this-was-possible-in-the-first-place>How this was possible in the first place</a></li><li><a href=#useful-things-from-my-graduate-algorithms-class>Useful things from my graduate algorithms class</a></li><li><a href=#utility-algorithms>Utility algorithms</a><ul><li><a href=#converting-between-a-number-and-its-digits>Converting between a number and its digits</a></li><li><a href=#euclid-s-gcd-algorithm>Euclid&rsquo;s GCD algorithm</a></li><li><a href=#primality-testing>Primality testing</a></li><li><a href=#sieve-of-eratosthenes>Sieve of Eratosthenes</a></li><li><a href=#factorization>Factorization</a></li><li><a href=#generating-pythagorean-triples>Generating Pythagorean triples</a></li><li><a href=#others>Others</a></li></ul></li></ul></nav></div><p><a href=https://projecteuler.net>Project Euler</a> is how I taught myself Python in high school, and so I find it incredibly nostalgic. It took 13-year-old me a lot of Googling and a few months to get through the first 100 problems.<label for=sidenote-0 class="margin-toggle sidenote-number"></label>
+<input type=checkbox id=sidenote-0 class=margin-toggle><span class=sidenote> Why 100 specifically? Because I wanted to write this post honestly and those are the ones I&rsquo;m allowed to talk about without them locking my account or something.</span></p><p>10-odd years and a graduate degree later, I decided to come back and solve them as fast as I could. I&rsquo;m no competitive programmer, but 24 hours seemed reasonable. Fortunately, I lack the stamina to code for that long, so I did it over a few days instead. I started on 19 January a little after 1400 and finished two days later at 1500, and probably spent less than half of that time coding, but who knows.</p><h2 id=how-this-was-possible-in-the-first-place>How this was possible in the first place</h2><p>Having solved them all before helped a lot &mdash; otherwise I wouldn&rsquo;t be sure this was possible to do quickly at all. Problems after 100 tend to very quickly become about number theory; I&rsquo;ve solved more than one by appeal to my copy of Hardy and Wright.</p><p>I wrote my solutions in Python, as before. Having just done <a href=https://adventofco.de>Advent of Code</a> in plain C, I came to miss my dictionaries, lists, and not having to write <code>unsigned long long</code> everywhere.</p><h2 id=useful-things-from-my-graduate-algorithms-class>Useful things from my graduate algorithms class</h2><p><a href="https://projecteuler.net/problem=67">Problem 67</a> was how I learned about dynamic programming in high school.</p><h2 id=utility-algorithms>Utility algorithms</h2><p>If you&rsquo;re trying this in another language, these are the things I would implement first.</p><h3 id=converting-between-a-number-and-its-digits>Converting between a number and its digits</h3><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=font-weight:700>def</span> <span style=color:#900;font-weight:700>digits</span>(n):
+</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> [<span style=color:#999>int</span>(d) <span style=font-weight:700>for</span> d <span style=font-weight:700>in</span> <span style=color:#999>str</span>(n)]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700>def</span> <span style=color:#900;font-weight:700>from_digits</span>(digits):
+</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> <span style=color:#999>int</span>(<span style=color:#b84>&#39;&#39;</span><span style=font-weight:700>.</span>join(<span style=color:#999>str</span>(d) <span style=font-weight:700>for</span> d <span style=font-weight:700>in</span> digits))
+</span></span></code></pre></div><h3 id=euclid-s-gcd-algorithm>Euclid&rsquo;s GCD algorithm</h3><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=font-weight:700>def</span> <span style=color:#900;font-weight:700>gcd</span>(a, b):
+</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> a <span style=font-weight:700>if</span> b <span style=font-weight:700>==</span> <span style=color:#099>0</span> <span style=font-weight:700>else</span> gcd(b, a <span style=font-weight:700>%</span> b)
+</span></span></code></pre></div><h3 id=primality-testing>Primality testing</h3><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=font-weight:700>def</span> <span style=color:#900;font-weight:700>is_prime</span>(n):
+</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> n <span style=font-weight:700>&lt;</span> <span style=color:#099>2</span>:
+</span></span><span style=display:flex><span>        <span style=font-weight:700>return</span> <span style=font-weight:700>False</span>
+</span></span><span style=display:flex><span>    max_d <span style=font-weight:700>=</span> <span style=color:#999>int</span>(n <span style=font-weight:700>**</span> <span style=color:#099>0.5</span>)
+</span></span><span style=display:flex><span>    <span style=font-weight:700>for</span> d <span style=font-weight:700>in</span> <span style=color:#999>range</span>(<span style=color:#099>2</span>, max_d <span style=font-weight:700>+</span> <span style=color:#099>1</span>):
+</span></span><span style=display:flex><span>        <span style=font-weight:700>if</span> n <span style=font-weight:700>%</span> d <span style=font-weight:700>==</span> <span style=color:#099>0</span>:
+</span></span><span style=display:flex><span>            <span style=font-weight:700>return</span> <span style=font-weight:700>False</span>
+</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> <span style=font-weight:700>True</span>
+</span></span></code></pre></div><h3 id=sieve-of-eratosthenes>Sieve of Eratosthenes</h3><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=font-weight:700>def</span> <span style=color:#900;font-weight:700>sieve</span>(max_n):
+</span></span><span style=display:flex><span>    sv <span style=font-weight:700>=</span> [<span style=font-weight:700>None</span> <span style=font-weight:700>for</span> n <span style=font-weight:700>in</span> <span style=color:#999>range</span>(max_n <span style=font-weight:700>+</span> <span style=color:#099>1</span>)]
+</span></span><span style=display:flex><span>    sv[<span style=color:#099>0</span>] <span style=font-weight:700>=</span> <span style=font-weight:700>False</span>
+</span></span><span style=display:flex><span>    sv[<span style=color:#099>1</span>] <span style=font-weight:700>=</span> <span style=font-weight:700>False</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    max_p <span style=font-weight:700>=</span> <span style=color:#999>int</span>(max_n <span style=font-weight:700>**</span> <span style=color:#099>0.5</span>)
+</span></span><span style=display:flex><span>    <span style=font-weight:700>for</span> p <span style=font-weight:700>in</span> <span style=color:#999>range</span>(<span style=color:#099>2</span>, max_p <span style=font-weight:700>+</span> <span style=color:#099>1</span>):
+</span></span><span style=display:flex><span>        <span style=font-weight:700>if</span> sv[p] <span style=font-weight:700>is</span> <span style=font-weight:700>None</span>:
+</span></span><span style=display:flex><span>            sv[p] <span style=font-weight:700>=</span> <span style=font-weight:700>True</span>
+</span></span><span style=display:flex><span>        <span style=font-weight:700>for</span> c <span style=font-weight:700>in</span> <span style=color:#999>range</span>(p <span style=font-weight:700>*</span> p, max_n <span style=font-weight:700>+</span> <span style=color:#099>1</span>, p):
+</span></span><span style=display:flex><span>            sv[c] <span style=font-weight:700>=</span> <span style=font-weight:700>False</span>
+</span></span><span style=display:flex><span>    <span style=font-weight:700>for</span> p <span style=font-weight:700>in</span> <span style=color:#999>range</span>(max_p <span style=font-weight:700>+</span> <span style=color:#099>1</span>, max_n <span style=font-weight:700>+</span> <span style=color:#099>1</span>):
+</span></span><span style=display:flex><span>        <span style=font-weight:700>if</span> sv[p] <span style=font-weight:700>is</span> <span style=font-weight:700>None</span>:
+</span></span><span style=display:flex><span>            sv[p] <span style=font-weight:700>=</span> <span style=font-weight:700>True</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> sv
+</span></span></code></pre></div><p>Sieving other things was also appropriate; for instance, Euler&rsquo;s totient function, in view of the identity
 \[
 \varphi(n) = n \cdot \prod_{\substack{p \mid n}} \frac{p-1}p.
-\]</p>
-<h3 id=factorization>Factorization</h3>
-<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#cdcd00>def</span> factors(n):
-    n_ <span style=color:#39c>=</span> n
-    max_d <span style=color:#39c>=</span> <span style=color:#cd00cd>int</span>(n <span style=color:#39c>**</span> <span style=color:#cd00cd>0.5</span>)
-    <span style=color:#cdcd00>for</span> d <span style=color:#cdcd00>in</span> <span style=color:#cd00cd>range</span>(<span style=color:#cd00cd>2</span>, max_d <span style=color:#39c>+</span> <span style=color:#cd00cd>1</span>):
-        <span style=color:#cdcd00>if</span> n_ <span style=color:#39c>&lt;</span> d:
-            <span style=color:#cdcd00>break</span>
-        <span style=color:#cdcd00>if</span> is_prime(d) <span style=color:#cdcd00>and</span> n_ <span style=color:#39c>%</span> d <span style=color:#39c>==</span> <span style=color:#cd00cd>0</span>:
-            mult <span style=color:#39c>=</span> <span style=color:#cd00cd>0</span>
-            <span style=color:#cdcd00>while</span> n_ <span style=color:#39c>%</span> d <span style=color:#39c>==</span> <span style=color:#cd00cd>0</span>:
-                n_ <span style=color:#39c>//=</span> d
-                mult <span style=color:#39c>+=</span> <span style=color:#cd00cd>1</span>
-            <span style=color:#cdcd00>yield</span> (d, mult)
-    <span style=color:#cdcd00>if</span> n_ <span style=color:#39c>&gt;</span> <span style=color:#cd00cd>1</span>:
-        <span style=color:#cdcd00>yield</span> (n_, <span style=color:#cd00cd>1</span>)
-</code></pre></div><h3 id=generating-pythagorean-triples>Generating Pythagorean triples</h3>
-<p>They really like their Pythagorean triples at Project Euler. The code below generates all the primitive triples \((a, b, c)\) with \(c\) less than a provided bound, then their multiples.</p>
-<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#cdcd00>def</span> pyth(max_c):
-    max_m <span style=color:#39c>=</span> <span style=color:#cd00cd>int</span>((max_c <span style=color:#39c>/</span> <span style=color:#cd00cd>2</span>) <span style=color:#39c>**</span> <span style=color:#cd00cd>0.5</span>)
-
-    <span style=color:#cdcd00>for</span> m <span style=color:#cdcd00>in</span> <span style=color:#cd00cd>range</span>(<span style=color:#cd00cd>1</span>, max_m <span style=color:#39c>+</span> <span style=color:#cd00cd>1</span>):
-        <span style=color:#cdcd00>for</span> n <span style=color:#cdcd00>in</span> <span style=color:#cd00cd>range</span>(<span style=color:#cd00cd>1</span>, m):
-            a <span style=color:#39c>=</span> m <span style=color:#39c>*</span> m <span style=color:#39c>-</span> n <span style=color:#39c>*</span> n
-            b <span style=color:#39c>=</span> <span style=color:#cd00cd>2</span> <span style=color:#39c>*</span> m <span style=color:#39c>*</span> n
-            c <span style=color:#39c>=</span> m <span style=color:#39c>*</span> m <span style=color:#39c>+</span> n <span style=color:#39c>*</span> n
-            max_k <span style=color:#39c>=</span> max_c <span style=color:#39c>//</span> c
-            <span style=color:#cdcd00>for</span> k <span style=color:#cdcd00>in</span> <span style=color:#cd00cd>range</span>(<span style=color:#cd00cd>1</span>, max_k <span style=color:#39c>+</span> <span style=color:#cd00cd>1</span>):
-                <span style=color:#cdcd00>yield</span> (k <span style=color:#39c>*</span> a, k <span style=color:#39c>*</span> b, k <span style=color:#39c>*</span> c)
-</code></pre></div><h3 id=others>Others</h3>
-<p>The <strong>extended Euclidean algorithm</strong>, which is convenient for generating modular inverses for something like the Chinese Remainder Theorem (which wasn&rsquo;t necessary here, but definitely is later on.)</p>
-<p><strong>Generating continued fractions</strong>, particularly of quadratic surds.</p>
-<p>For later problems, <strong>a fast primality test</strong> is a good idea. Here&rsquo;s the Miller-Rabin test:</p>
-<div class=highlight><pre tabindex=0 style=color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#cdcd00>def</span> is_probably_prime(n, witnesses<span style=color:#39c>=</span><span style=color:#cdcd00>None</span>):
-    <span style=color:#cdcd00>if</span> n <span style=color:#39c>&lt;</span> <span style=color:#cd00cd>2</span>:
-        <span style=color:#cdcd00>return</span> <span style=color:#cdcd00>False</span>
-
-    <span style=color:#cdcd00>if</span> <span style=color:#cdcd00>not</span> witnesses:
-        witnesses <span style=color:#39c>=</span> [<span style=color:#cd00cd>2</span>, <span style=color:#cd00cd>3</span>, <span style=color:#cd00cd>5</span>, <span style=color:#cd00cd>7</span>, <span style=color:#cd00cd>11</span>, <span style=color:#cd00cd>13</span>, <span style=color:#cd00cd>17</span>]
-
-    <span style=color:#cdcd00>if</span> n <span style=color:#cdcd00>in</span> witnesses:
-        <span style=color:#cdcd00>return</span> <span style=color:#cdcd00>True</span>
-
-    odd_divisor <span style=color:#39c>=</span> n <span style=color:#39c>-</span> <span style=color:#cd00cd>1</span>
-    power_of_two <span style=color:#39c>=</span> <span style=color:#cd00cd>0</span>
-    <span style=color:#cdcd00>while</span> odd_divisor <span style=color:#39c>&amp;</span> <span style=color:#cd00cd>1</span> <span style=color:#39c>==</span> <span style=color:#cd00cd>0</span>:
-        power_of_two <span style=color:#39c>+=</span> <span style=color:#cd00cd>1</span>
-        odd_divisor <span style=color:#39c>//=</span> <span style=color:#cd00cd>2</span>
-
-    <span style=color:#cdcd00>for</span> witness <span style=color:#cdcd00>in</span> witnesses:
-        x <span style=color:#39c>=</span> <span style=color:#cd00cd>pow</span>(witness, odd_divisor, n)
-        <span style=color:#cdcd00>if</span> x <span style=color:#cdcd00>not</span> <span style=color:#cdcd00>in</span> [<span style=color:#cd00cd>1</span>, n <span style=color:#39c>-</span> <span style=color:#cd00cd>1</span>]:
-            <span style=color:#cdcd00>for</span> _ <span style=color:#cdcd00>in</span> <span style=color:#cd00cd>range</span>(power_of_two <span style=color:#39c>-</span> <span style=color:#cd00cd>1</span>):
-                x <span style=color:#39c>=</span> (x <span style=color:#39c>*</span> x) <span style=color:#39c>%</span> n
-                <span style=color:#cdcd00>if</span> x <span style=color:#39c>==</span> n <span style=color:#39c>-</span> <span style=color:#cd00cd>1</span>:
-                    <span style=color:#cdcd00>break</span>
-            <span style=color:#cdcd00>else</span>:
-                <span style=color:#cdcd00>return</span> <span style=color:#cdcd00>False</span>
-    <span style=color:#cdcd00>return</span> <span style=color:#cdcd00>True</span>
-</code></pre></div><p>This is valid up to about \(n = 3.4 \times 10^{14},\) which exceeds most of the answer bounds in early problems. Using the witness set \(\{2, 7, 61\}\) may provide a slight speed boost, but if you&rsquo;re hyperoptimizing your solutions like that this post probably isn&rsquo;t for you.</p>
-</article>
-<hr>
-</main>
-<footer> Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a>
-</footer>
-</body>
-</html>
+\]</p><h3 id=factorization>Factorization</h3><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=font-weight:700>def</span> <span style=color:#900;font-weight:700>factors</span>(n):
+</span></span><span style=display:flex><span>    n_ <span style=font-weight:700>=</span> n
+</span></span><span style=display:flex><span>    max_d <span style=font-weight:700>=</span> <span style=color:#999>int</span>(n <span style=font-weight:700>**</span> <span style=color:#099>0.5</span>)
+</span></span><span style=display:flex><span>    <span style=font-weight:700>for</span> d <span style=font-weight:700>in</span> <span style=color:#999>range</span>(<span style=color:#099>2</span>, max_d <span style=font-weight:700>+</span> <span style=color:#099>1</span>):
+</span></span><span style=display:flex><span>        <span style=font-weight:700>if</span> n_ <span style=font-weight:700>&lt;</span> d:
+</span></span><span style=display:flex><span>            <span style=font-weight:700>break</span>
+</span></span><span style=display:flex><span>        <span style=font-weight:700>if</span> is_prime(d) <span style=font-weight:700>and</span> n_ <span style=font-weight:700>%</span> d <span style=font-weight:700>==</span> <span style=color:#099>0</span>:
+</span></span><span style=display:flex><span>            mult <span style=font-weight:700>=</span> <span style=color:#099>0</span>
+</span></span><span style=display:flex><span>            <span style=font-weight:700>while</span> n_ <span style=font-weight:700>%</span> d <span style=font-weight:700>==</span> <span style=color:#099>0</span>:
+</span></span><span style=display:flex><span>                n_ <span style=font-weight:700>//=</span> d
+</span></span><span style=display:flex><span>                mult <span style=font-weight:700>+=</span> <span style=color:#099>1</span>
+</span></span><span style=display:flex><span>            <span style=font-weight:700>yield</span> (d, mult)
+</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> n_ <span style=font-weight:700>&gt;</span> <span style=color:#099>1</span>:
+</span></span><span style=display:flex><span>        <span style=font-weight:700>yield</span> (n_, <span style=color:#099>1</span>)
+</span></span></code></pre></div><h3 id=generating-pythagorean-triples>Generating Pythagorean triples</h3><p>They really like their Pythagorean triples at Project Euler. The code below generates all the primitive triples \((a, b, c)\) with \(c\) less than a provided bound, then their multiples.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=font-weight:700>def</span> <span style=color:#900;font-weight:700>pyth</span>(max_c):
+</span></span><span style=display:flex><span>    max_m <span style=font-weight:700>=</span> <span style=color:#999>int</span>((max_c <span style=font-weight:700>/</span> <span style=color:#099>2</span>) <span style=font-weight:700>**</span> <span style=color:#099>0.5</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=font-weight:700>for</span> m <span style=font-weight:700>in</span> <span style=color:#999>range</span>(<span style=color:#099>1</span>, max_m <span style=font-weight:700>+</span> <span style=color:#099>1</span>):
+</span></span><span style=display:flex><span>        <span style=font-weight:700>for</span> n <span style=font-weight:700>in</span> <span style=color:#999>range</span>(<span style=color:#099>1</span>, m):
+</span></span><span style=display:flex><span>            a <span style=font-weight:700>=</span> m <span style=font-weight:700>*</span> m <span style=font-weight:700>-</span> n <span style=font-weight:700>*</span> n
+</span></span><span style=display:flex><span>            b <span style=font-weight:700>=</span> <span style=color:#099>2</span> <span style=font-weight:700>*</span> m <span style=font-weight:700>*</span> n
+</span></span><span style=display:flex><span>            c <span style=font-weight:700>=</span> m <span style=font-weight:700>*</span> m <span style=font-weight:700>+</span> n <span style=font-weight:700>*</span> n
+</span></span><span style=display:flex><span>            max_k <span style=font-weight:700>=</span> max_c <span style=font-weight:700>//</span> c
+</span></span><span style=display:flex><span>            <span style=font-weight:700>for</span> k <span style=font-weight:700>in</span> <span style=color:#999>range</span>(<span style=color:#099>1</span>, max_k <span style=font-weight:700>+</span> <span style=color:#099>1</span>):
+</span></span><span style=display:flex><span>                <span style=font-weight:700>yield</span> (k <span style=font-weight:700>*</span> a, k <span style=font-weight:700>*</span> b, k <span style=font-weight:700>*</span> c)
+</span></span></code></pre></div><h3 id=others>Others</h3><p>The <strong>extended Euclidean algorithm</strong>, which is convenient for generating modular inverses for something like the Chinese Remainder Theorem (which wasn&rsquo;t necessary here, but definitely is later on.)</p><p><strong>Generating continued fractions</strong>, particularly of quadratic surds.</p><p>For later problems, <strong>a fast primality test</strong> is a good idea. Here&rsquo;s the Miller-Rabin test:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=font-weight:700>def</span> <span style=color:#900;font-weight:700>is_probably_prime</span>(n, witnesses<span style=font-weight:700>=</span><span style=font-weight:700>None</span>):
+</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> n <span style=font-weight:700>&lt;</span> <span style=color:#099>2</span>:
+</span></span><span style=display:flex><span>        <span style=font-weight:700>return</span> <span style=font-weight:700>False</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> <span style=font-weight:700>not</span> witnesses:
+</span></span><span style=display:flex><span>        witnesses <span style=font-weight:700>=</span> [<span style=color:#099>2</span>, <span style=color:#099>3</span>, <span style=color:#099>5</span>, <span style=color:#099>7</span>, <span style=color:#099>11</span>, <span style=color:#099>13</span>, <span style=color:#099>17</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> n <span style=font-weight:700>in</span> witnesses:
+</span></span><span style=display:flex><span>        <span style=font-weight:700>return</span> <span style=font-weight:700>True</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    odd_divisor <span style=font-weight:700>=</span> n <span style=font-weight:700>-</span> <span style=color:#099>1</span>
+</span></span><span style=display:flex><span>    power_of_two <span style=font-weight:700>=</span> <span style=color:#099>0</span>
+</span></span><span style=display:flex><span>    <span style=font-weight:700>while</span> odd_divisor <span style=font-weight:700>&amp;</span> <span style=color:#099>1</span> <span style=font-weight:700>==</span> <span style=color:#099>0</span>:
+</span></span><span style=display:flex><span>        power_of_two <span style=font-weight:700>+=</span> <span style=color:#099>1</span>
+</span></span><span style=display:flex><span>        odd_divisor <span style=font-weight:700>//=</span> <span style=color:#099>2</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=font-weight:700>for</span> witness <span style=font-weight:700>in</span> witnesses:
+</span></span><span style=display:flex><span>        x <span style=font-weight:700>=</span> <span style=color:#999>pow</span>(witness, odd_divisor, n)
+</span></span><span style=display:flex><span>        <span style=font-weight:700>if</span> x <span style=font-weight:700>not</span> <span style=font-weight:700>in</span> [<span style=color:#099>1</span>, n <span style=font-weight:700>-</span> <span style=color:#099>1</span>]:
+</span></span><span style=display:flex><span>            <span style=font-weight:700>for</span> _ <span style=font-weight:700>in</span> <span style=color:#999>range</span>(power_of_two <span style=font-weight:700>-</span> <span style=color:#099>1</span>):
+</span></span><span style=display:flex><span>                x <span style=font-weight:700>=</span> (x <span style=font-weight:700>*</span> x) <span style=font-weight:700>%</span> n
+</span></span><span style=display:flex><span>                <span style=font-weight:700>if</span> x <span style=font-weight:700>==</span> n <span style=font-weight:700>-</span> <span style=color:#099>1</span>:
+</span></span><span style=display:flex><span>                    <span style=font-weight:700>break</span>
+</span></span><span style=display:flex><span>            <span style=font-weight:700>else</span>:
+</span></span><span style=display:flex><span>                <span style=font-weight:700>return</span> <span style=font-weight:700>False</span>
+</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> <span style=font-weight:700>True</span>
+</span></span></code></pre></div><p>This is valid up to about \(n = 3.4 \times 10^{14},\) which exceeds most of the answer bounds in early problems. Using the witness set \(\{2, 7, 61\}\) may provide a slight speed boost, but if you&rsquo;re hyperoptimizing your solutions like that this post probably isn&rsquo;t for you.</p></article><hr></main><footer>Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a></footer></body></html>

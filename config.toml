@@ -7,8 +7,10 @@ theme = "semiotic"
 math = false
 
 [markup]
+  [markup.tableOfContents]
+    ordered = false
   [markup.highlight]
-    style = "vim"
+    style = "trac"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
@@ -23,6 +25,6 @@ math = false
         url = "https://github.com/sverona"
         weight = 3
     [[menu.main]]
-        name = "MATH 117"
-        url = "/trig"
+        name = "about"
+        url = "/about"
         weight = 4

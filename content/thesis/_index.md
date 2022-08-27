@@ -1,5 +1,7 @@
 ---
 title: Some Generalizations of Classical Integer Sequences Arising in Combinatorial Representation Theory
+description: My Master's thesis, supervised by Drs. Molly Dunkum and Rob Donnelly.
+tags: [mathematics, 2020]
 ---
 
 ## Abstract

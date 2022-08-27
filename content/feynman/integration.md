@@ -1,7 +1,7 @@
 ---
 title: Integration
-date: 1945-01-01
-weight: 3
+date: 1946-10-18
+description: Complex Variable in Substitution. Differentation of a Parameter. Multiplication by a Factor. Differentiation under an Integral Sign. The Dirac Delta Function. Investigation of the Existence of Integrals. Special Method of Evaluating a Direct Integral. Series Evaluation of Definite Integrals. Exercises.
 ---
 
 ## Methods 
@@ -424,10 +424,7 @@ re^{-r^2} ~\mathrm dr \newline &= 2\pi \lim_{c \to \infty} \left. -\frac12 e^{-r
 
 
 
-## Series Evaluation of Definite Integrals 
-
-(NB: This section was originally titled \"Series Solution of
-Differential Equations,\" but that doesn\'t fit.)
+## Series Evaluation of Definite Integrals{{% sidenote %}} NB: This section was originally titled \"Series Solution of Differential Equations,\" but that doesn\'t fit.{{% /sidenote %}}
 
 Let\'s compute
 \\(\displaystyle \int_0^\infty \frac{dx}{e^{nx} +

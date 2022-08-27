@@ -1,7 +1,7 @@
 ---
 title: Series
-date: 1946-10-07
-weight: 2
+date: 1946-10-16
+description: Abel Summability. Summation of Series by Integration and Differentiation. Summation of Series by Adding Terms. Magnitude of Quantities. De L'Hospital's Rule. Exercises.
 ---
 
 

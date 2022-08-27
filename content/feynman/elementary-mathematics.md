@@ -1,7 +1,7 @@
 ---
 title: Elementary Mathematics
-date: 1945-01-01
-weight: 1
+date: 1946-10-14 
+description: Equations. Power Series. Exercises.
 ---
 
 ## Equations {#org7dae15c}

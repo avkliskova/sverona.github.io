@@ -4,7 +4,7 @@ description: An attempt at professionally typeset math, with mixed success.
 date: 2021-08-08
 epistemic_status: my best guess
 completion_status: in progress
-tags: [css, code, latex, in-progress]
+tags: [css, code, latex, in-progress, 2021]
 ---
 
 LaTeX supports "theorem environments," like this:

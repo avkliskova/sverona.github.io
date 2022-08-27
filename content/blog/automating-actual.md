@@ -2,6 +2,7 @@
 title: Automating transaction imports with Actual
 date: 2022-08-16
 description: Setting up a YNAB, sans subscription fees.
+tags: [finance, python, javascript, bash, "project-writeup", 2022]
 ---
 
 My fianc&eacute;, who is a CFP, recently encouraged me to finally set up a budget. I found [Actual](https://actualbudget.com/) to be the most appropriate client for me; I love the nice design and the very responsive devteam. So far it's a wonderful open-source project that I want to contribute to in the future.

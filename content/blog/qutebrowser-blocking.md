@@ -2,6 +2,7 @@
 title: LeechBlock in qutebrowser
 date: 2022-07-07
 description: My anti-doomscrolling apparatus.
+tags: [mental-health, python, qutebrowser, 2022]
 ---
 
 I use [qutebrowser](https://github.com/qutebrowser/qutebrowser) as my daily driver. With the exception of the errant ad that Firefox or Chrome would catch,{{% sidenote %}}An [active area of research.](https://github.com/qutebrowser/qutebrowser/issues/6480){{% /sidenote %}} there is nothing to complain about.

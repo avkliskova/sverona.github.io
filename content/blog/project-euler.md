@@ -4,7 +4,7 @@ description: The things I do for my inner child.
 date: 2021-01-20
 completion_status: complete
 epistemic_status: confident
-tags: [code, fun, challenge, project-euler, 2021]
+tags: [mathematics, code, fun, challenge, project-euler, 2021]
 ---
 
 [Project Euler](https://projecteuler.net) is how I taught myself Python in high school, and so I find it incredibly nostalgic. It took 13-year-old me a lot of Googling and a few months to get through the first 100 problems.{{% sidenote %}} Why 100 specifically? Because I wanted to write this post honestly and those are the ones I'm allowed to talk about without them locking my account or something.{{% /sidenote %}}

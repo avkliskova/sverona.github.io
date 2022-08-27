@@ -2,6 +2,7 @@
 title: Refurbishing an old Twitter bot
 description: Cheap bots done at my own pace. 
 date: 2022-05-18
+tags: [python, deployment, mathematics, web-scraping, project-writeup, 2022]
 ---
 
 Some time ago Numberphile released a [series](https://www.youtube.com/watch?v=pAMgUB51XZA) [of](https://www.youtube.com/watch?v=o8c4uYnnNnc) [videos](https://www.youtube.com/watch?v=j0o-pMIR8uk) concerning [sequences in the OEIS with pretty plots.](http://oeis.org/search?q=keyword%3Alook&language=english&go=Search) Inspired, I wrote a [little Twitter bot](https://twitter.com/amazing_graphs) that tweets out two such plots each day. I even got a follow from [3Blue1Brown](https://www.3blue1brown.com/). It was a wonderful source of dopamine for a while.

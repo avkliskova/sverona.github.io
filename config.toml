@@ -1,6 +1,6 @@
 baseURL = "https://sverona.dev"
 languageCode = "en-us"
-title = "S. Verona Malone"
+title = "S. Verona Lišková"
 
 theme = "semiotic"
 
@@ -10,7 +10,7 @@ math = false
   [markup.tableOfContents]
     ordered = false
   [markup.highlight]
-    style = "trac"
+    style = "algol_nu"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true

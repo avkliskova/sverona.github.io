@@ -5,6 +5,7 @@ date: 2019-04-01
 completion_status: complete
 epistemic_status: confident
 tags: [mathematics, grad-school, term-paper, 2019, operations-research, linear-operators]
+math: true
 ---
 
 The primal _simplex method_ provides an algorithmic means for solving

@@ -5,6 +5,7 @@ date: 2021-01-24
 epistemic_status: confident
 completion_status: complete
 tags: [mathematics, probability, combinatorics, asymptotics, fun, 2021]
+math: true
 ---
 
 While doing some research for my Project Euler post, I found myself drawn to something else that blew my mind in high school --- the connection between the greatest common divisor and the Riemann zeta function.

@@ -6,6 +6,7 @@ date: 2020-11-01
 completion_status: complete
 epistemic_status: confident
 weight: 8
+math: true
 ---
 
 This chapter outlines the Python code provided in Appendix A.

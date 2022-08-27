@@ -2,6 +2,7 @@
 title: Integration
 date: 1946-10-18
 description: Complex Variable in Substitution. Differentation of a Parameter. Multiplication by a Factor. Differentiation under an Integral Sign. The Dirac Delta Function. Investigation of the Existence of Integrals. Special Method of Evaluating a Direct Integral. Series Evaluation of Definite Integrals. Exercises.
+math: true
 ---
 
 ## Methods 

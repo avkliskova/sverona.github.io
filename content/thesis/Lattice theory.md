@@ -5,6 +5,7 @@ date: 2020-11-01
 completion_status: complete
 epistemic_status: confident
 weight: 3
+math: true
 ---
 
 This section and the next introduce the mathematics necessary to read [Chapter 3](../supporting-graphs). The

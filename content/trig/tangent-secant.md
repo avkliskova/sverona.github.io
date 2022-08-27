@@ -2,6 +2,7 @@
 title: The tangent and secant curves
 description: Content from section 8.2 in OpenSTAX.
 date: 2021-10-05
+math: true
 ---
 
 <style type="text/css">

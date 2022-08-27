@@ -2,6 +2,7 @@
 title: Complex Variables
 description: General Review. Conformal Mapping. Branch Points. Branch Lines. Exercises.
 date: 1946-10-28
+math: true
 ---
 
 ## General Review

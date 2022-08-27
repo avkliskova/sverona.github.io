@@ -5,6 +5,7 @@ date: 2021-08-08
 epistemic_status: my best guess
 completion_status: in progress
 tags: [css, code, latex, in-progress, 2021]
+math: true
 ---
 
 LaTeX supports "theorem environments," like this:

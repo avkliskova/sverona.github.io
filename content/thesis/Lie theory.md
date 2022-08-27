@@ -6,6 +6,7 @@ date: 2020-11-01
 completion_status: complete
 epistemic_status: confident
 weight: 4
+math: true
 ---
 
 A full exposition of the theory of Lie algebras and their representations is well beyond the scope of this paper. We provide here only the necessary definitions and theorems to read [Chapter 3](../supporting-graphs).

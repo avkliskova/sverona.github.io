@@ -2,6 +2,7 @@
 title: Catalanian lattices
 description: Main results. 
 date: 2020-11-01
+math: true
 ---
 
 This section introduces and proves the author\'s main results.

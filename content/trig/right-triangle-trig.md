@@ -2,6 +2,7 @@
 title: Right triangle trigonometry
 description: Content from section 7.2 in OpenSTAX.
 date: 2021-09-01
+math: true
 ---
 
 [Here's textbook section 7.2, which these notes cover.](https://openstax.org/books/algebra-and-trigonometry/pages/7-2-right-triangle-trigonometry)

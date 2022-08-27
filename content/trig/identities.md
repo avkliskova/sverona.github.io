@@ -2,6 +2,7 @@
 title: Trigonometric identities
 description: Content from OpenSTAX 9.1 and 9.2.
 date: 2021-10-22
+math: true
 ---
 
 A *identity* is an equation that is always true. A *trigonometric* identity involves trig functions.

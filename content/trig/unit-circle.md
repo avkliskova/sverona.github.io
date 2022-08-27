@@ -2,6 +2,7 @@
 title: The unit circle
 description: Content from section 7.3 in OpenSTAX.
 date: 2021-09-08
+math: true
 ---
 
 [Here's a link to section 7.3, which these notes cover.](#)

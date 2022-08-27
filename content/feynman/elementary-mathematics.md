@@ -2,6 +2,7 @@
 title: Elementary Mathematics
 date: 1946-10-14 
 description: Equations. Power Series. Exercises.
+math: true
 ---
 
 ## Equations {#org7dae15c}

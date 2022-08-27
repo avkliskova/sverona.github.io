@@ -6,6 +6,7 @@ date: 2020-11-01
 completion_status: complete
 epistemic_status: confident
 weight: 5
+math: true
 ---
 
 We now present the centerpiece of the work. Throughout, write

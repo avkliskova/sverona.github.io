@@ -1,6 +1,7 @@
 ---
 title: "MATH 117: Trigonometry syllabus"
 date: 2021-08-21
+math: true
 ---
 
 

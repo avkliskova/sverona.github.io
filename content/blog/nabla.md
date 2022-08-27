@@ -5,6 +5,7 @@ date: 2019-05-07
 completion_status: complete
 epistemic_status: confident
 tags: [grad-school, term-paper, time-scales-calculus, neural-networks, machine-learning, 2019]
+math: true
 ---
 
 _Neural networks_ are a popular technique for machine learning problems such as automated handwriting recognition, automated speech recognition, and time-series forecasting. On these tasks, so-called _deep neural networks_ [Schmidhuber 2015]{{% sidenote %}} Schmidhuber, Jürgen. "Deep learning in neural networks: An overview." _Neural networks_ 61 (2015): 85-117. {{% /sidenote %}} and _convolutional neural networks_ [Ciresan et al. 2011]

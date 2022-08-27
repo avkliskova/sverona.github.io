@@ -2,6 +2,7 @@
 title: Angles
 description: Content from section 7.1 in OpenSTAX.
 date: 2021-08-27
+math: true
 ---
 
 [Here's textbook section 7.1, which these notes cover.](https://openstax.org/books/algebra-and-trigonometry/pages/7-1-angles)

@@ -2,6 +2,7 @@
 title: The sine and cosine curves
 description: Content from section 8.1 in OpenSTAX.
 date: 2021-09-15
+math: true
 ---
 
 Let's graph sine and cosine using the special values we know. (See diagram on board.)

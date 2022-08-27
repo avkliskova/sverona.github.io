@@ -6,6 +6,7 @@ date: 2020-11-01
 completion_status: complete
 epistemic_status: confident
 weight: 7
+math: true
 ---
 
 ## Motzkin paths {#motzkin-paths-1}

@@ -2,6 +2,7 @@
 title: Trigonometric equations
 description: Content from OpenSTAX 9.5.
 date: 2021-11-05
+math: true
 ---
 
 *Trigonometric equations* are equations in which the "variable" is a trig function, like \\(\sin x\\) or \\(\cos x.\\)

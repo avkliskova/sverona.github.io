@@ -1,18 +1,18 @@
-<!doctype html><html lang=en-us><head><meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Building RNSSNC II: Basic frontend | S. Verona Malone</title><meta name=title content="Building RNSSNC II: Basic frontend"><meta name=description content="From Hello World to MVP"><meta name=keywords content><meta property="og:title" content="Building RNSSNC II: Basic frontend"><meta property="og:description" content="From Hello World to MVP"><meta property="og:type" content="article"><meta property="og:url" content="https://sverona.dev/blog/rnssnc/frontend/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2022-03-23T00:00:00+00:00"><meta property="article:modified_time" content="2022-03-23T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Building RNSSNC II: Basic frontend"><meta name=twitter:description content="From Hello World to MVP"><meta itemprop=name content="Building RNSSNC II: Basic frontend"><meta itemprop=description content="From Hello World to MVP"><meta itemprop=datePublished content="2022-03-23T00:00:00+00:00"><meta itemprop=dateModified content="2022-03-23T00:00:00+00:00"><meta itemprop=wordCount content="1075"><meta itemprop=keywords content><meta name=referrer content="no-referrer-when-downgrade"><link href=https://sverona.dev/sass/style.css type=text/css rel=stylesheet><link href=https://sverona.dev/sass/sidenotes.css type=text/css rel=stylesheet><link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload='this.onload=null,this.rel="stylesheet"'><script defer src=https://sverona.dev/katex/katex.js></script>
+<!doctype html><html lang=en-us><head><meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Building RNSSNC II: Basic frontend | S. Verona Lišková</title><meta name=title content="Building RNSSNC II: Basic frontend"><meta name=description content="From Hello World to MVP"><meta name=keywords content><meta property="og:title" content="Building RNSSNC II: Basic frontend"><meta property="og:description" content="From Hello World to MVP"><meta property="og:type" content="article"><meta property="og:url" content="https://sverona.dev/blog/rnssnc/frontend/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2022-03-23T00:00:00+00:00"><meta property="article:modified_time" content="2022-03-23T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Building RNSSNC II: Basic frontend"><meta name=twitter:description content="From Hello World to MVP"><meta itemprop=name content="Building RNSSNC II: Basic frontend"><meta itemprop=description content="From Hello World to MVP"><meta itemprop=datePublished content="2022-03-23T00:00:00+00:00"><meta itemprop=dateModified content="2022-03-23T00:00:00+00:00"><meta itemprop=wordCount content="1074"><meta itemprop=keywords content><meta name=referrer content="no-referrer-when-downgrade"><link href=https://sverona.dev/fonts/fonts.css type=text/css rel=preload as=style onload='this.onload=null,this.rel="stylesheet"'><link href=https://sverona.dev/sass/style.css type=text/css rel=stylesheet><link href=https://sverona.dev/sass/sidenotes.css type=text/css rel=stylesheet><link href=https://sverona.dev/katex/katex.css type=text/css rel=preload as=style onload='this.onload=null,this.rel="stylesheet"'><script defer src=https://sverona.dev/katex/katex.js></script>
 <script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
-<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}]})})</script></head><body><header id=header><a href=/ class=title id=brand><span id=accent></span>S. Verona Malone</a><nav><ul><li><a href=/blog>blog</a></li><li><a href=https://github.com/sverona>github</a></li><li><a href=/about>about</a></li></ul></nav></header><main><header id=front-matter><nav><div id=current-section><a href=https://sverona.dev/blog/rnssnc/>Building RNSSNC</a></div><div id=next-prev><span>&Larr; <a href=https://sverona.dev/blog/rnssnc/boilerplate/>Building RNSSNC I: Boilerplate in 2022</a></span>
-<span></span></div></nav><div><time datetime=2022-03-23 pubdate>March 23, 2022</time><h1>Building RNSSNC II: Basic frontend</h1><em id=page-description>From Hello World to MVP</em><br></div></div></header><article><div id=toc class=margin-toggle><h2>Table of Contents</h2><nav id=TableOfContents><ul><li><a href=#setting-up-the-html-skeleton>Setting up the HTML skeleton</a></li><li><a href=#writing-the-components>Writing the components</a><ul><li><a href=#root>Root</a></li><li><a href=#feed>Feed</a></li></ul></li></ul></nav></div><p>This is supposed to be an RSS reader, so let&rsquo;s add an RSS package.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ npm i rss-parser
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\begin{align}",right:"\\begin{align}",display:!0},{left:"\\[",right:"\\]",display:!0}],trust:e=>["\\htmlId","\\href"].includes(e.command),macros:{"\\eqref":"\\href{###1}{(\\text{#1})}","\\ref":"\\href{###1}{\\text{#1}}","\\label":"\\htmlId{#1}{}"}})})</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{for(var n,s,o,t=document.getElementsByClassName("highlight"),e=0;e<t.length;e++)t[e].title.length&&(n=document.createElement("code"),s=document.createTextNode(t[e].title),n.appendChild(s),n.classList.add("highlight-title"),o=t[e].querySelector("pre"),o.appendChild(n))})</script></head><body><header id=header><a href=/ class=title id=brand><span id=accent></span>S. Verona Lišková</a><nav><ul><li><a href=/blog>blog</a></li><li><a href=https://github.com/sverona>github</a></li><li><a href=/about>about</a></li></ul></nav></header><main><header id=front-matter class="margin-right margin-left"><nav><div id=current-section><a href=https://sverona.dev/blog/rnssnc/>Building RNSSNC</a></div><div id=next-prev><span>&Larr; <a href=https://sverona.dev/blog/rnssnc/boilerplate/>Building RNSSNC I: Boilerplate in 2022</a></span>
+<span></span></div></nav><div style=text-align:center><time datetime=2022-03-23 pubdate>March 23, 2022</time><h1>Building RNSSNC II: Basic frontend</h1><em id=page-description>From Hello World to MVP</em></div></div></header><article><div id=toc class="margin-toggle margin-left"><h2>Table of Contents</h2><nav id=TableOfContents><ul><li><a href=#setting-up-the-html-skeleton>Setting up the HTML skeleton</a></li><li><a href=#writing-the-components>Writing the components</a><ul><li><a href=#root>Root</a></li><li><a href=#feed>Feed</a></li></ul></li></ul></nav></div><p>This is supposed to be an RSS reader, so let&rsquo;s add an RSS package.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ npm i rss-parser
 </span></span></code></pre></div><p>Upon requiring this in <code>app.js</code>, we get hit with a bunch of errors like this:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>ERROR in ./node_modules/xml2js/lib/parser.js 17:17-47
-</span></span><span style=display:flex><span>Module not found: Error: Can<span style=color:#b84>&#39;t resolve &#39;</span>timers<span style=color:#b84>&#39; in &#39;</span>/home/sm/src/rnssnc/node_modules/xml2js/lib<span style=color:#b84>&#39;
-</span></span></span><span style=display:flex><span><span style=color:#b84>
-</span></span></span><span style=display:flex><span><span style=color:#b84>BREAKING CHANGE: webpack &lt; 5 used to include polyfills for node.js core modules by default.
-</span></span></span><span style=display:flex><span><span style=color:#b84>This is no longer the case. Verify if you need this module and configure a polyfill for it.
-</span></span></span><span style=display:flex><span><span style=color:#b84>
-</span></span></span><span style=display:flex><span><span style=color:#b84>If you want to include a polyfill, you need to:
-</span></span></span><span style=display:flex><span><span style=color:#b84>	- add a fallback &#39;</span>resolve.fallback: <span style=font-weight:700>{</span> <span style=color:#b84>&#34;timers&#34;</span>: require.resolve<span style=font-weight:700>(</span><span style=color:#b84>&#34;timers-browserify&#34;</span><span style=font-weight:700>)</span> <span style=font-weight:700>}</span><span style=color:#b84>&#39;
-</span></span></span><span style=display:flex><span><span style=color:#b84>	- install &#39;</span>timers-browserify<span style=color:#b84>&#39;
-</span></span></span><span style=display:flex><span><span style=color:#b84>If you don&#39;</span>t want to include a polyfill, you can use an empty module like this:
-</span></span><span style=display:flex><span>	resolve.fallback: <span style=font-weight:700>{</span> <span style=color:#b84>&#34;timers&#34;</span>: <span style=color:#999>false</span> <span style=font-weight:700>}</span>
+</span></span><span style=display:flex><span>Module not found: Error: Can<span style=color:#666;font-style:italic>&#39;t resolve &#39;</span>timers<span style=color:#666;font-style:italic>&#39; in &#39;</span>/home/sm/src/rnssnc/node_modules/xml2js/lib<span style=color:#666;font-style:italic>&#39;
+</span></span></span><span style=display:flex><span><span style=color:#666;font-style:italic>
+</span></span></span><span style=display:flex><span><span style=color:#666;font-style:italic>BREAKING CHANGE: webpack &lt; 5 used to include polyfills for node.js core modules by default.
+</span></span></span><span style=display:flex><span><span style=color:#666;font-style:italic>This is no longer the case. Verify if you need this module and configure a polyfill for it.
+</span></span></span><span style=display:flex><span><span style=color:#666;font-style:italic>
+</span></span></span><span style=display:flex><span><span style=color:#666;font-style:italic>If you want to include a polyfill, you need to:
+</span></span></span><span style=display:flex><span><span style=color:#666;font-style:italic>	- add a fallback &#39;</span>resolve.fallback: { <span style=color:#666;font-style:italic>&#34;timers&#34;</span>: require.resolve(<span style=color:#666;font-style:italic>&#34;timers-browserify&#34;</span>) }<span style=color:#666;font-style:italic>&#39;
+</span></span></span><span style=display:flex><span><span style=color:#666;font-style:italic>	- install &#39;</span>timers-browserify<span style=color:#666;font-style:italic>&#39;
+</span></span></span><span style=display:flex><span><span style=color:#666;font-style:italic>If you don&#39;</span>t want to include a polyfill, you can use an empty module like this:
+</span></span><span style=display:flex><span>	resolve.fallback: { <span style=color:#666;font-style:italic>&#34;timers&#34;</span>: <span style=font-weight:700;font-style:italic>false</span> }
 </span></span><span style=display:flex><span> @ ./node_modules/xml2js/lib/xml2js.js 12:11-30
 </span></span><span style=display:flex><span> @ ./node_modules/rss-parser/lib/parser.js 4:15-32
 </span></span><span style=display:flex><span> @ ./node_modules/rss-parser/index.js 3:0-40
@@ -21,171 +21,170 @@
 </span></span><span style=display:flex><span> @ ./src/index.js 3:0-24 4:50-53
 </span></span></code></pre></div><p>So Webpack 5 is kind of a big deal. As far as I understand, this is an attempt to ensure that
 noobs like me don&rsquo;t accidentally use node packages that aren&rsquo;t intended for the browser. Okay, fine.
-Let&rsquo;s give them what they want.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#a61717;background-color:#e3d2d2>resolve:</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a61717;background-color:#e3d2d2>extensions:</span> <span style=color:#a61717;background-color:#e3d2d2>[</span><span style=color:navy>&#34;*&#34;</span>, <span style=color:navy>&#34;.js&#34;</span>, <span style=color:navy>&#34;.jsx&#34;</span><span style=color:#a61717;background-color:#e3d2d2>]</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a61717;background-color:#e3d2d2>fallback:</span> <span style=color:#a61717;background-color:#e3d2d2>{</span>
-</span></span><span style=display:flex><span>    <span style=color:navy>&#34;stream&#34;</span>: <span style=color:#a61717;background-color:#e3d2d2>require.resolve(</span><span style=color:#b84>&#34;stream-browserify&#34;</span><span style=color:#a61717;background-color:#e3d2d2>)</span>,
-</span></span><span style=display:flex><span>    <span style=color:navy>&#34;http&#34;</span>: <span style=color:#a61717;background-color:#e3d2d2>require.resolve(</span><span style=color:#b84>&#34;stream-http&#34;</span><span style=color:#a61717;background-color:#e3d2d2>)</span>,
-</span></span><span style=display:flex><span>    <span style=color:navy>&#34;https&#34;</span>: <span style=color:#a61717;background-color:#e3d2d2>require.resolve(</span><span style=color:#b84>&#34;https-browserify&#34;</span><span style=color:#a61717;background-color:#e3d2d2>)</span>,
-</span></span><span style=display:flex><span>    <span style=color:navy>&#34;url&#34;</span>: <span style=color:#a61717;background-color:#e3d2d2>require.resolve(</span><span style=color:#b84>&#34;url/&#34;</span><span style=color:#a61717;background-color:#e3d2d2>)</span>,
-</span></span><span style=display:flex><span>    <span style=color:navy>&#34;buffer&#34;</span>: <span style=color:#a61717;background-color:#e3d2d2>require.resolve(</span><span style=color:#b84>&#34;buffer/&#34;</span><span style=color:#a61717;background-color:#e3d2d2>)</span>,
-</span></span><span style=display:flex><span>    <span style=color:navy>&#34;timers&#34;</span>: <span style=color:#a61717;background-color:#e3d2d2>require.resolve(</span><span style=color:#b84>&#34;timers-browserify&#34;</span><span style=color:#a61717;background-color:#e3d2d2>)</span>
+Let&rsquo;s give them what they want.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span>resolve:</span> {
+</span></span><span style=display:flex><span>  <span>extensions:</span> <span>[</span>&#34;*&#34;, &#34;.js&#34;, &#34;.jsx&#34;<span>]</span>,
+</span></span><span style=display:flex><span>  <span>fallback:</span> <span>{</span>
+</span></span><span style=display:flex><span>    &#34;stream&#34;: <span>require.resolve(</span><span style=color:#666;font-style:italic>&#34;stream-browserify&#34;</span><span>)</span>,
+</span></span><span style=display:flex><span>    &#34;http&#34;: <span>require.resolve(</span><span style=color:#666;font-style:italic>&#34;stream-http&#34;</span><span>)</span>,
+</span></span><span style=display:flex><span>    &#34;https&#34;: <span>require.resolve(</span><span style=color:#666;font-style:italic>&#34;https-browserify&#34;</span><span>)</span>,
+</span></span><span style=display:flex><span>    &#34;url&#34;: <span>require.resolve(</span><span style=color:#666;font-style:italic>&#34;url/&#34;</span><span>)</span>,
+</span></span><span style=display:flex><span>    &#34;buffer&#34;: <span>require.resolve(</span><span style=color:#666;font-style:italic>&#34;buffer/&#34;</span><span>)</span>,
+</span></span><span style=display:flex><span>    &#34;timers&#34;: <span>require.resolve(</span><span style=color:#666;font-style:italic>&#34;timers-browserify&#34;</span><span>)</span>
 </span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span><span style=color:#a61717;background-color:#e3d2d2>}</span>
-</span></span></code></pre></div><p>This appeases the Webpack god.</p><h2 id=setting-up-the-html-skeleton>Setting up the HTML skeleton</h2><p>Here&rsquo;s <code>public.html</code>, in other words the app&rsquo;s exoskeleton:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span><span style=color:#999;font-weight:700>&lt;!DOCTYPE html&gt;</span>
-</span></span><span style=display:flex><span>&lt;<span style=color:navy>html</span>&gt;
+</span></span><span style=display:flex><span><span>}</span>
+</span></span></code></pre></div><p>This appeases the Webpack god.</p><h2 id=setting-up-the-html-skeleton>Setting up the HTML skeleton</h2><p>Here&rsquo;s <code>public.html</code>, in other words the app&rsquo;s exoskeleton:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span><span style=color:#888;font-weight:700>&lt;!DOCTYPE html&gt;</span>
+</span></span><span style=display:flex><span>&lt;html&gt;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>&lt;<span style=color:navy>head</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=color:navy>meta</span> <span style=color:teal>charset</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;UTF-8&#34;</span> /&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=color:navy>meta</span> <span style=color:teal>name</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;viewport&#34;</span> <span style=color:teal>content</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=color:navy>title</span>&gt;RNSSNC&lt;/<span style=color:navy>title</span>&gt;
-</span></span><span style=display:flex><span>&lt;/<span style=color:navy>head</span>&gt;
+</span></span><span style=display:flex><span>&lt;head&gt;
+</span></span><span style=display:flex><span>  &lt;meta charset=<span style=color:#666;font-style:italic>&#34;UTF-8&#34;</span> /&gt;
+</span></span><span style=display:flex><span>  &lt;meta name=<span style=color:#666;font-style:italic>&#34;viewport&#34;</span> content=<span style=color:#666;font-style:italic>&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+</span></span><span style=display:flex><span>  &lt;title&gt;RNSSNC&lt;/title&gt;
+</span></span><span style=display:flex><span>&lt;/head&gt;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>&lt;<span style=color:navy>body</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=color:navy>header</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=color:navy>span</span> <span style=color:teal>id</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;brand&#34;</span>&gt;&lt;<span style=color:navy>span</span> <span style=color:teal>class</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;highlight&#34;</span>&gt;r&lt;/<span style=color:navy>span</span>&gt;n&lt;<span style=color:navy>span</span> <span style=color:teal>class</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;highlight&#34;</span>&gt;ss&lt;/<span style=color:navy>span</span>&gt;nc&lt;/<span style=color:navy>span</span>&gt;
+</span></span><span style=display:flex><span>&lt;body&gt;
+</span></span><span style=display:flex><span>  &lt;header&gt;
+</span></span><span style=display:flex><span>    &lt;span id=<span style=color:#666;font-style:italic>&#34;brand&#34;</span>&gt;&lt;span class=<span style=color:#666;font-style:italic>&#34;highlight&#34;</span>&gt;r&lt;/span&gt;n&lt;span class=<span style=color:#666;font-style:italic>&#34;highlight&#34;</span>&gt;ss&lt;/span&gt;nc&lt;/span&gt;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    &lt;<span style=color:navy>nav</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=color:navy>input</span> <span style=color:teal>placeholder</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;Search...&#34;</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;nav&gt;
+</span></span><span style=display:flex><span>      &lt;input placeholder=<span style=color:#666;font-style:italic>&#34;Search...&#34;</span> /&gt;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>      &lt;<span style=color:navy>button</span>&gt;Settings&lt;/<span style=color:navy>button</span>&gt;
-</span></span><span style=display:flex><span>    &lt;/<span style=color:navy>nav</span>&gt;
-</span></span><span style=display:flex><span>  &lt;/<span style=color:navy>header</span>&gt;
+</span></span><span style=display:flex><span>      &lt;button&gt;Settings&lt;/button&gt;
+</span></span><span style=display:flex><span>    &lt;/nav&gt;
+</span></span><span style=display:flex><span>  &lt;/header&gt;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  &lt;<span style=color:navy>main</span> <span style=color:teal>id</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;root&#34;</span>&gt;&lt;/<span style=color:navy>main</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=color:navy>noscript</span>&gt;
+</span></span><span style=display:flex><span>  &lt;main id=<span style=color:#666;font-style:italic>&#34;root&#34;</span>&gt;&lt;/main&gt;
+</span></span><span style=display:flex><span>  &lt;noscript&gt;
 </span></span><span style=display:flex><span>    You need to enable JavaScript to run this app.
-</span></span><span style=display:flex><span>  &lt;/<span style=color:navy>noscript</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=color:navy>script</span> <span style=color:teal>src</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;../dist/bundle.js&#34;</span>&gt;&lt;/<span style=color:navy>script</span>&gt;
-</span></span><span style=display:flex><span>&lt;/<span style=color:navy>body</span>&gt;
+</span></span><span style=display:flex><span>  &lt;/noscript&gt;
+</span></span><span style=display:flex><span>  &lt;script src=<span style=color:#666;font-style:italic>&#34;../dist/bundle.js&#34;</span>&gt;&lt;/script&gt;
+</span></span><span style=display:flex><span>&lt;/body&gt;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>&lt;/<span style=color:navy>html</span>&gt;
-</span></span></code></pre></div><p>Compare the <code>public.html</code> in the previous post.</p><p>Here&rsquo;s <code>src/App.css</code>:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span><span style=color:navy>html</span> {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>background-color</span>: <span style=color:#099>#fffff7</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>color</span>: <span style=color:#099>#111</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font</span>: <span style=color:#099>18</span><span style=color:#458;font-weight:700>px</span><span style=font-weight:700>/</span><span style=color:#099>1.6</span> <span style=font-weight:700>sans-serif</span>;
+</span></span><span style=display:flex><span>&lt;/html&gt;
+</span></span></code></pre></div><p>Compare the <code>public.html</code> in the previous post.</p><p>Here&rsquo;s <code>src/App.css</code>:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span>html {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>background-color</span>: #fffff7;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>color</span>: #111;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>font</span>: 18<span style=font-weight:700>px</span>/1.6 <span style=font-weight:700>sans-serif</span>;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:navy>body</span> {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>max-width</span>: <span style=color:#099>1200</span><span style=color:#458;font-weight:700>px</span>;
+</span></span><span style=display:flex><span>body {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>max-width</span>: 1200<span style=font-weight:700>px</span>;
 </span></span><span style=display:flex><span>  <span style=font-weight:700>margin</span>: <span style=font-weight:700>auto</span>;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:navy>body</span> <span style=font-weight:700>&gt;</span> <span style=color:navy>header</span> {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>margin</span>: <span style=color:#099>1.6</span><span style=color:#458;font-weight:700>em</span> <span style=color:#099>0</span>;
+</span></span><span style=display:flex><span>body &gt; header {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>margin</span>: 1.6<span style=font-weight:700>em</span> 0;
 </span></span><span style=display:flex><span>  <span style=font-weight:700>display</span>: <span style=font-weight:700>flex</span>;
 </span></span><span style=display:flex><span>  <span style=font-weight:700>justify-content</span>: <span style=font-weight:700>space-between</span>;
 </span></span><span style=display:flex><span>  <span style=font-weight:700>align-items</span>: <span style=font-weight:700>center</span>;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:navy>body</span> <span style=font-weight:700>&gt;</span> <span style=color:navy>main</span> {
+</span></span><span style=display:flex><span>body &gt; main {
 </span></span><span style=display:flex><span>  <span style=font-weight:700>display</span>: <span style=font-weight:700>flex</span>;
 </span></span><span style=display:flex><span>  <span style=font-weight:700>flex-wrap</span>: <span style=font-weight:700>wrap</span>;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>#<span style=color:#555>brand</span> {
+</span></span><span style=display:flex><span>#<span style=color:#666;font-weight:700;font-style:italic>brand</span> {
 </span></span><span style=display:flex><span>  <span style=font-weight:700>text-transform</span>: <span style=font-weight:700>uppercase</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>letter-spacing</span>: <span style=color:#099>2</span><span style=color:#458;font-weight:700>px</span>;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>letter-spacing</span>: 2<span style=font-weight:700>px</span>;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>#<span style=color:#555>brand</span> .<span style=color:#458;font-weight:700>highlight</span> {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>color</span>: <span style=color:#099>#e80840</span>;
+</span></span><span style=display:flex><span>#<span style=color:#666;font-weight:700;font-style:italic>brand</span> .<span style=color:#666;font-weight:700;font-style:italic>highlight</span> {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>color</span>: #e80840;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#458;font-weight:700>app</span> {
+</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>app</span> {
 </span></span><span style=display:flex><span>  <span style=font-weight:700>display</span>: <span style=font-weight:700>grid</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>grid-template-columns</span>: <span style=color:#099>1</span>fr <span style=color:#099>1</span>fr <span style=color:#099>1</span>fr;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>grid-gap</span>: <span style=color:#099>1</span><span style=color:#458;font-weight:700>rem</span>;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>grid-template-columns</span>: 1fr 1fr 1fr;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>grid-gap</span>: 1<span style=font-weight:700>rem</span>;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#458;font-weight:700>feed</span> {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>height</span>: <span style=color:#999>calc</span>(<span style=color:#099>12</span> <span style=font-weight:700>*</span> <span style=color:#099>1.6</span><span style=color:#458;font-weight:700>em</span>);
+</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>feed</span> {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>height</span>: <span style=font-weight:700;font-style:italic>calc</span>(12 * 1.6<span style=font-weight:700>em</span>);
 </span></span><span style=display:flex><span>  <span style=font-weight:700>overflow-y</span>: <span style=font-weight:700>scroll</span>;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#458;font-weight:700>feed</span> <span style=font-weight:700>&gt;</span> <span style=color:navy>header</span> {
+</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>feed</span> &gt; header {
 </span></span><span style=display:flex><span>  <span style=font-weight:700>position</span>: <span style=font-weight:700>sticky</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>top</span>: <span style=color:#099>0</span><span style=color:#458;font-weight:700>px</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>padding</span>: <span style=color:#099>3</span><span style=color:#458;font-weight:700>px</span> <span style=color:#099>10</span><span style=color:#458;font-weight:700>px</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>background</span>: <span style=color:#999>linear-gradient</span>(<span style=font-weight:700>to</span> <span style=font-weight:700>bottom</span>, <span style=font-weight:700>white</span>, <span style=color:#099>#ddd</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>border-radius</span>: <span style=color:#099>10</span><span style=color:#458;font-weight:700>px</span>;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>top</span>: 0<span style=font-weight:700>px</span>;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>padding</span>: 3<span style=font-weight:700>px</span> 10<span style=font-weight:700>px</span>;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>background</span>: <span style=font-weight:700;font-style:italic>linear-gradient</span>(<span style=font-weight:700>to</span> <span style=font-weight:700>bottom</span>, <span style=font-weight:700>white</span>, #ddd);
+</span></span><span style=display:flex><span>  <span style=font-weight:700>border-radius</span>: 10<span style=font-weight:700>px</span>;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#458;font-weight:700>feed-title</span> {
+</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>feed-title</span> {
 </span></span><span style=display:flex><span>  <span style=font-weight:700>font-weight</span>: <span style=font-weight:700>bold</span>;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#458;font-weight:700>feed-subtitle</span> {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-size</span>: <span style=color:#099>0.75</span><span style=color:#458;font-weight:700>rem</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>color</span>: <span style=color:#099>#777</span>;
+</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>feed-subtitle</span> {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>font-size</span>: 0.75<span style=font-weight:700>rem</span>;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>color</span>: #777;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#458;font-weight:700>link</span> {
+</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>link</span> {
 </span></span><span style=display:flex><span>  <span style=font-weight:700>display</span>: <span style=font-weight:700>grid</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>grid-template-columns</span>: <span style=color:#099>4</span><span style=color:#458;font-weight:700>ch</span> <span style=font-weight:700>auto</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>grid-gap</span>: <span style=color:#099>1</span><span style=color:#458;font-weight:700>ch</span>;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>grid-template-columns</span>: 4<span style=font-weight:700>ch</span> <span style=font-weight:700>auto</span>;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>grid-gap</span>: 1<span style=font-weight:700>ch</span>;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#458;font-weight:700>link</span> <span style=color:navy>time</span> {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>color</span>: <span style=color:#099>#777</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-size</span>: <span style=color:#099>0.875</span><span style=color:#458;font-weight:700>rem</span>;
+</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>link</span> time {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>color</span>: #777;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>font-size</span>: 0.875<span style=font-weight:700>rem</span>;
 </span></span><span style=display:flex><span>  <span style=font-weight:700>text-align</span>: <span style=font-weight:700>right</span>;
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h2 id=writing-the-components>Writing the components</h2><p>All we should need for an MVP are a root component and a component for a single feed.</p><h3 id=root>Root</h3><p>There isn&rsquo;t much to see here.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=font-weight:700>import</span> React from <span style=color:#b84>&#39;react&#39;</span>;
-</span></span><span style=display:flex><span><span style=font-weight:700>import</span> { hot } from <span style=color:#b84>&#39;react-hot-loader&#39;</span>;
+</span></span></code></pre></div><h2 id=writing-the-components>Writing the components</h2><p>All we should need for an MVP are a root component and a component for a single feed.</p><h3 id=root>Root</h3><p>There isn&rsquo;t much to see here.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=font-weight:700>import</span> React from <span style=color:#666;font-style:italic>&#39;react&#39;</span>;
+</span></span><span style=display:flex><span><span style=font-weight:700>import</span> { hot } from <span style=color:#666;font-style:italic>&#39;react-hot-loader&#39;</span>;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>import</span> <span style=color:#b84>&#39;./App.css&#39;</span>;
-</span></span><span style=display:flex><span><span style=font-weight:700>import</span> Feed from <span style=color:#b84>&#39;./components/Feed&#39;</span>;
+</span></span><span style=display:flex><span><span style=font-weight:700>import</span> <span style=color:#666;font-style:italic>&#39;./App.css&#39;</span>;
+</span></span><span style=display:flex><span><span style=font-weight:700>import</span> Feed from <span style=color:#666;font-style:italic>&#39;./components/Feed&#39;</span>;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> App <span style=font-weight:700>=</span> () =&gt; {
+</span></span><span style=display:flex><span><span style=font-weight:700>const</span> App = () =&gt; {
 </span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>    &lt;<span style=color:navy>div</span> <span style=color:teal>className</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;app&#34;</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=color:navy>Feed</span> <span style=color:teal>url</span><span style=font-weight:700>=</span><span style=color:#b84>&#39;https://www.questionablecontent.net/QCRSS.xml&#39;</span> /&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=color:navy>Feed</span> <span style=color:teal>url</span><span style=font-weight:700>=</span><span style=color:#b84>&#39;https://www.sophiescuppatea.com/blogs/news.atom&#39;</span> /&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=color:navy>Feed</span> <span style=color:teal>url</span><span style=font-weight:700>=</span><span style=color:#b84>&#39;https://permapeople.org/blog/feed.xml&#39;</span> /&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=color:navy>Feed</span> <span style=color:teal>url</span><span style=font-weight:700>=</span><span style=color:#b84>&#39;https://stackexchange.com/feeds/questions&#39;</span> /&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=color:navy>Feed</span> <span style=color:teal>url</span><span style=font-weight:700>=</span><span style=color:#b84>&#39;https://www.atlasobscura.com/feeds/latest&#39;</span> /&gt;
-</span></span><span style=display:flex><span>    &lt;/<span style=color:navy>div</span>&gt;
+</span></span><span style=display:flex><span>    &lt;div className=<span style=color:#666;font-style:italic>&#34;app&#34;</span>&gt;
+</span></span><span style=display:flex><span>      &lt;Feed url=<span style=color:#666;font-style:italic>&#39;https://www.questionablecontent.net/QCRSS.xml&#39;</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;Feed url=<span style=color:#666;font-style:italic>&#39;https://www.sophiescuppatea.com/blogs/news.atom&#39;</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;Feed url=<span style=color:#666;font-style:italic>&#39;https://permapeople.org/blog/feed.xml&#39;</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;Feed url=<span style=color:#666;font-style:italic>&#39;https://stackexchange.com/feeds/questions&#39;</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;Feed url=<span style=color:#666;font-style:italic>&#39;https://www.atlasobscura.com/feeds/latest&#39;</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;/div&gt;
 </span></span><span style=display:flex><span>  );
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=font-weight:700>export</span> <span style=font-weight:700>default</span> hot(module)(App);
 </span></span></code></pre></div><p>This is basically all boilerplate. The only thing that may warrant some explanation is
-the hot-loader stuff, but a modicum of thought should tell you what it&rsquo;s doing.</p><h3 id=feed>Feed</h3><p>Now we encounter the interesting stuff!</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=font-weight:700>import</span> React, { useState, useEffect, useCallback } from <span style=color:#b84>&#39;react&#39;</span>;
-</span></span><span style=display:flex><span><span style=font-weight:700>import</span> Parser from <span style=color:#b84>&#39;rss-parser&#39;</span>;
+the hot-loader stuff, but a modicum of thought should tell you what it&rsquo;s doing.</p><h3 id=feed>Feed</h3><p>Now we encounter the interesting stuff!</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=font-weight:700>import</span> React, { useState, useEffect, useCallback } from <span style=color:#666;font-style:italic>&#39;react&#39;</span>;
+</span></span><span style=display:flex><span><span style=font-weight:700>import</span> Parser from <span style=color:#666;font-style:italic>&#39;rss-parser&#39;</span>;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>function</span> timeToCode(date) {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>let</span> millis <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> <span style=color:#999>Date</span>() <span style=font-weight:700>-</span> <span style=font-weight:700>new</span> <span style=color:#999>Date</span>(date);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>let</span> seconds <span style=font-weight:700>=</span> <span style=color:#999>Math</span>.floor(millis <span style=font-weight:700>/</span> <span style=color:#099>1000</span>);
+</span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic>function</span> timeToCode(date) {
+</span></span><span style=display:flex><span>  <span style=font-weight:700;font-style:italic>let</span> millis = <span style=font-weight:700>new</span> <span style=font-weight:700;font-style:italic>Date</span>() - <span style=font-weight:700>new</span> <span style=font-weight:700;font-style:italic>Date</span>(date);
+</span></span><span style=display:flex><span>  <span style=font-weight:700;font-style:italic>let</span> seconds = <span style=font-weight:700;font-style:italic>Math</span>.floor(millis / 1000);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> units <span style=font-weight:700>=</span> [[<span style=color:#b84>&#34;y&#34;</span>, <span style=color:#099>60</span> <span style=font-weight:700>*</span> <span style=color:#099>60</span> <span style=font-weight:700>*</span> <span style=color:#099>24</span> <span style=font-weight:700>*</span> <span style=color:#099>7</span> <span style=font-weight:700>*</span> <span style=color:#099>52</span>],
-</span></span><span style=display:flex><span>                 [<span style=color:#b84>&#34;w&#34;</span>, <span style=color:#099>60</span> <span style=font-weight:700>*</span> <span style=color:#099>60</span> <span style=font-weight:700>*</span> <span style=color:#099>24</span> <span style=font-weight:700>*</span> <span style=color:#099>7</span>],
-</span></span><span style=display:flex><span>                 [<span style=color:#b84>&#34;d&#34;</span>, <span style=color:#099>60</span> <span style=font-weight:700>*</span> <span style=color:#099>60</span> <span style=font-weight:700>*</span> <span style=color:#099>24</span>],
-</span></span><span style=display:flex><span>                 [<span style=color:#b84>&#34;h&#34;</span>, <span style=color:#099>60</span> <span style=font-weight:700>*</span> <span style=color:#099>60</span>],
-</span></span><span style=display:flex><span>                 [<span style=color:#b84>&#34;m&#34;</span>, <span style=color:#099>60</span>],
-</span></span><span style=display:flex><span>                 [<span style=color:#b84>&#34;s&#34;</span>, <span style=color:#099>0</span>]];
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> units = [[<span style=color:#666;font-style:italic>&#34;y&#34;</span>, 60 * 60 * 24 * 7 * 52],
+</span></span><span style=display:flex><span>                 [<span style=color:#666;font-style:italic>&#34;w&#34;</span>, 60 * 60 * 24 * 7],
+</span></span><span style=display:flex><span>                 [<span style=color:#666;font-style:italic>&#34;d&#34;</span>, 60 * 60 * 24],
+</span></span><span style=display:flex><span>                 [<span style=color:#666;font-style:italic>&#34;h&#34;</span>, 60 * 60],
+</span></span><span style=display:flex><span>                 [<span style=color:#666;font-style:italic>&#34;m&#34;</span>, 60],
+</span></span><span style=display:flex><span>                 [<span style=color:#666;font-style:italic>&#34;s&#34;</span>, 0]];
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>let</span> smallerUnits <span style=font-weight:700>=</span> units.filter(([name, length]) =&gt; (seconds <span style=font-weight:700>&gt;=</span> length));
+</span></span><span style=display:flex><span>  <span style=font-weight:700;font-style:italic>let</span> smallerUnits = units.filter(([name, length]) =&gt; (seconds &gt;= length));
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>let</span> [name, length] <span style=font-weight:700>=</span> smallerUnits[<span style=color:#099>0</span>];
+</span></span><span style=display:flex><span>  <span style=font-weight:700;font-style:italic>let</span> [name, length] = smallerUnits[0];
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> <span style=color:#b84>`</span><span style=color:#b84>${</span><span style=color:#999>Math</span>.floor(seconds <span style=font-weight:700>/</span> length)<span style=color:#b84>}${</span>name<span style=color:#b84>}</span><span style=color:#b84>`</span>;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> <span style=color:#666;font-style:italic>`</span><span style=color:#666;font-style:italic>${</span><span style=font-weight:700;font-style:italic>Math</span>.floor(seconds / length)<span style=color:#666;font-style:italic>}${</span>name<span style=color:#666;font-style:italic>}</span><span style=color:#666;font-style:italic>`</span>;
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>The imports are what you&rsquo;d expect. The <code>timeToCode()</code> function is a five-minute hack that works fine for right now.<label for=sidenote-0 class="margin-toggle sidenote-number"></label>
-<input type=checkbox id=sidenote-0 class=margin-toggle><span class=sidenote>Yes, it&rsquo;s not exactly precise across things like week boundaries, and it breaks on dates in the future, but right now I don&rsquo;t care. This can be factored out to <a href=https://www.npmjs.com/package/javascript-time-ago>a tested library</a> later. No point reinventing the wheel.</span></p><p>The body of this component uses each of the <a href=https://reactjs.org/docs/hooks-reference.html#basic-hooks>two main hooks</a> in the usual order they come in, so it makes a great basic example:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#998;font-style:italic>// The `Feed` component depends on the `url` property.
-</span></span></span><span style=display:flex><span><span style=color:#998;font-style:italic></span><span style=font-weight:700>const</span> Feed <span style=font-weight:700>=</span> ({ url }) =&gt; { 
+</span></span></code></pre></div><p>The imports are what you&rsquo;d expect. The <code>timeToCode()</code> function is a five-minute hack that works fine for right now.<label for=sidenote-0 class="margin-toggle sidenote-number"></label><input type=checkbox id=sidenote-0 class=margin-toggle><span class=sidenote>Yes, it&rsquo;s not exactly precise across things like week boundaries, and it breaks on dates in the future, but right now I don&rsquo;t care. This can be factored out to <a href=https://www.npmjs.com/package/javascript-time-ago>a tested library</a> later. No point reinventing the wheel.</span></p><p>The body of this component uses each of the <a href=https://reactjs.org/docs/hooks-reference.html#basic-hooks>two main hooks</a> in the usual order they come in, so it makes a great basic example:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#888;font-style:italic>// The `Feed` component depends on the `url` property.
+</span></span></span><span style=display:flex><span><span style=color:#888;font-style:italic></span><span style=font-weight:700>const</span> Feed = ({ url }) =&gt; { 
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#998;font-style:italic>// We have one state field, which represents an object returned from `rss-parser`, so we initialize it to the empty object.
-</span></span></span><span style=display:flex><span><span style=color:#998;font-style:italic></span>  <span style=color:#998;font-style:italic>// The `useState()` hook returns the field and its setter.
-</span></span></span><span style=display:flex><span><span style=color:#998;font-style:italic></span>  <span style=font-weight:700>let</span> [feed, setFeed] <span style=font-weight:700>=</span> useState({});
+</span></span><span style=display:flex><span>  <span style=color:#888;font-style:italic>// We have one state field, which represents an object returned from `rss-parser`, so we initialize it to the empty object.
+</span></span></span><span style=display:flex><span><span style=color:#888;font-style:italic></span>  <span style=color:#888;font-style:italic>// The `useState()` hook returns the field and its setter.
+</span></span></span><span style=display:flex><span><span style=color:#888;font-style:italic></span>  <span style=font-weight:700;font-style:italic>let</span> [feed, setFeed] = useState({});
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#998;font-style:italic>// The `useEffect()` hook defines something that will run in the background --- a side effect.
-</span></span></span><span style=display:flex><span><span style=color:#998;font-style:italic></span>  <span style=color:#998;font-style:italic>// This code uses someone else&#39;s proxy to circumvent CORS, which you obviously shouldn&#39;t do in prod. We&#39;ll set up our own proxy later.
-</span></span></span><span style=display:flex><span><span style=color:#998;font-style:italic></span>  <span style=font-weight:700>const</span> getFeed <span style=font-weight:700>=</span> () =&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>let</span> parser <span style=font-weight:700>=</span> <span style=font-weight:700>new</span> Parser();
-</span></span><span style=display:flex><span>    <span style=font-weight:700>const</span> CORS_PROXY <span style=font-weight:700>=</span> <span style=color:#b84>&#34;https://cors-anywhere.herokuapp.com/&#34;</span>;
+</span></span><span style=display:flex><span>  <span style=color:#888;font-style:italic>// The `useEffect()` hook defines something that will run in the background --- a side effect.
+</span></span></span><span style=display:flex><span><span style=color:#888;font-style:italic></span>  <span style=color:#888;font-style:italic>// This code uses someone else&#39;s proxy to circumvent CORS, which you obviously shouldn&#39;t do in prod. We&#39;ll set up our own proxy later.
+</span></span></span><span style=display:flex><span><span style=color:#888;font-style:italic></span>  <span style=font-weight:700>const</span> getFeed = () =&gt; {
+</span></span><span style=display:flex><span>    <span style=font-weight:700;font-style:italic>let</span> parser = <span style=font-weight:700>new</span> Parser();
+</span></span><span style=display:flex><span>    <span style=font-weight:700>const</span> CORS_PROXY = <span style=color:#666;font-style:italic>&#34;https://cors-anywhere.herokuapp.com/&#34;</span>;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    parser.parseURL(CORS_PROXY <span style=font-weight:700>+</span> url, (err, feed) =&gt; {
+</span></span><span style=display:flex><span>    parser.parseURL(CORS_PROXY + url, (err, feed) =&gt; {
 </span></span><span style=display:flex><span>      <span style=font-weight:700>if</span> (err) {
 </span></span><span style=display:flex><span>        <span style=font-weight:700>throw</span> err;
 </span></span><span style=display:flex><span>      }
@@ -194,50 +193,50 @@ the hot-loader stuff, but a modicum of thought should tell you what it&rsquo;s d
 </span></span><span style=display:flex><span>    });
 </span></span><span style=display:flex><span>  };
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#998;font-style:italic>// The second argument to `useEffect` is a list of dependencies --- that is, the effect will rerun when any dependency changes.
-</span></span></span><span style=display:flex><span><span style=color:#998;font-style:italic></span>  <span style=color:#998;font-style:italic>// Anything from component-level scope used inside the effect needs to be declared as a dependency.
-</span></span></span><span style=display:flex><span><span style=color:#998;font-style:italic></span>  useEffect(getFeed, [url, setFeed]);
+</span></span><span style=display:flex><span>  <span style=color:#888;font-style:italic>// The second argument to `useEffect` is a list of dependencies --- that is, the effect will rerun when any dependency changes.
+</span></span></span><span style=display:flex><span><span style=color:#888;font-style:italic></span>  <span style=color:#888;font-style:italic>// Anything from component-level scope used inside the effect needs to be declared as a dependency.
+</span></span></span><span style=display:flex><span><span style=color:#888;font-style:italic></span>  useEffect(getFeed, [url, setFeed]);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (&lt;<span style=color:navy>section</span> <span style=color:teal>className</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;feed&#34;</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=color:navy>header</span>&gt;
-</span></span><span style=display:flex><span>      <span style=color:#998;font-style:italic>// We use placeholder values here in case of `undefined`.
-</span></span></span><span style=display:flex><span><span style=color:#998;font-style:italic></span>      &lt;<span style=color:navy>span</span> <span style=color:teal>className</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;feed-title&#34;</span>&gt;{feed.title <span style=font-weight:700>||</span> <span style=color:#b84>&#34;Feed title&#34;</span>}&lt;/<span style=color:navy>span</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=color:navy>br</span> /&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=color:navy>span</span> <span style=color:teal>className</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;feed-subtitle&#34;</span>&gt;{feed.description <span style=font-weight:700>||</span> <span style=color:#b84>&#34;&#34;</span>}&lt;/<span style=color:navy>span</span>&gt;
-</span></span><span style=display:flex><span>    &lt;/<span style=color:navy>header</span>&gt;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (&lt;section className=<span style=color:#666;font-style:italic>&#34;feed&#34;</span>&gt;
+</span></span><span style=display:flex><span>    &lt;header&gt;
+</span></span><span style=display:flex><span>      <span style=color:#888;font-style:italic>// We use placeholder values here in case of `undefined`.
+</span></span></span><span style=display:flex><span><span style=color:#888;font-style:italic></span>      &lt;span className=<span style=color:#666;font-style:italic>&#34;feed-title&#34;</span>&gt;{feed.title || <span style=color:#666;font-style:italic>&#34;Feed title&#34;</span>}&lt;/span&gt;
+</span></span><span style=display:flex><span>      &lt;br /&gt;
+</span></span><span style=display:flex><span>      &lt;span className=<span style=color:#666;font-style:italic>&#34;feed-subtitle&#34;</span>&gt;{feed.description || <span style=color:#666;font-style:italic>&#34;&#34;</span>}&lt;/span&gt;
+</span></span><span style=display:flex><span>    &lt;/header&gt;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    &lt;<span style=color:navy>main</span>&gt;
-</span></span><span style=display:flex><span>      <span style=color:#998;font-style:italic>// We need a ternary here because we&#39;re calling a method on the value.
-</span></span></span><span style=display:flex><span><span style=color:#998;font-style:italic></span>      { feed.items <span style=font-weight:700>?</span> feed.items.map( item =&gt;
-</span></span><span style=display:flex><span>        &lt;<span style=color:navy>div</span> <span style=color:teal>className</span><span style=font-weight:700>=</span><span style=color:#b84>&#34;link&#34;</span>&gt;
-</span></span><span style=display:flex><span>          &lt;<span style=color:navy>time</span> <span style=color:teal>datetime</span><span style=font-weight:700>=</span>{item.pubDate}&gt;{timeToCode(item.pubDate)}&lt;/<span style=color:navy>time</span>&gt;
-</span></span><span style=display:flex><span>          &lt;<span style=color:navy>a</span> <span style=color:teal>href</span><span style=font-weight:700>=</span>{item.link}&gt;
+</span></span><span style=display:flex><span>    &lt;main&gt;
+</span></span><span style=display:flex><span>      <span style=color:#888;font-style:italic>// We need a ternary here because we&#39;re calling a method on the value.
+</span></span></span><span style=display:flex><span><span style=color:#888;font-style:italic></span>      { feed.items ? feed.items.map( item =&gt;
+</span></span><span style=display:flex><span>        &lt;div className=<span style=color:#666;font-style:italic>&#34;link&#34;</span>&gt;
+</span></span><span style=display:flex><span>          &lt;time datetime={item.pubDate}&gt;{timeToCode(item.pubDate)}&lt;/time&gt;
+</span></span><span style=display:flex><span>          &lt;a href={item.link}&gt;
 </span></span><span style=display:flex><span>            {item.title}
-</span></span><span style=display:flex><span>          &lt;/<span style=color:navy>a</span>&gt;
-</span></span><span style=display:flex><span>        &lt;/<span style=color:navy>div</span>&gt;
-</span></span><span style=display:flex><span>        ) <span style=font-weight:700>:</span> <span style=color:#b84>&#34;Feed items&#34;</span>
+</span></span><span style=display:flex><span>          &lt;/a&gt;
+</span></span><span style=display:flex><span>        &lt;/div&gt;
+</span></span><span style=display:flex><span>        ) : <span style=color:#666;font-style:italic>&#34;Feed items&#34;</span>
 </span></span><span style=display:flex><span>      }
-</span></span><span style=display:flex><span>    &lt;/<span style=color:navy>main</span>&gt;
-</span></span><span style=display:flex><span>  &lt;/<span style=color:navy>section</span>&gt;);
+</span></span><span style=display:flex><span>    &lt;/main&gt;
+</span></span><span style=display:flex><span>  &lt;/section&gt;);
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=font-weight:700>export</span> <span style=font-weight:700>default</span> Feed;
-</span></span></code></pre></div><p>When we try to run this, we&rsquo;re hit with &mdash; what do you know &mdash; <a href=https://stackoverflow.com/questions/65018431/webpack-5-uncaught-referenceerror-process-is-not-defined>another Webpack error</a>:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#a61717;background-color:#e3d2d2>_stream_readable.js:</span><span style=color:#099>905</span> <span style=color:#a61717;background-color:#e3d2d2>Uncaught</span> <span style=color:#a61717;background-color:#e3d2d2>(in</span> <span style=color:#a61717;background-color:#e3d2d2>promise)</span> <span style=color:#a61717;background-color:#e3d2d2>ReferenceError:</span> <span style=color:#a61717;background-color:#e3d2d2>process</span> <span style=color:#a61717;background-color:#e3d2d2>is</span> <span style=color:#a61717;background-color:#e3d2d2>not</span> <span style=color:#a61717;background-color:#e3d2d2>defined</span>
-</span></span><span style=display:flex><span>    <span style=color:#a61717;background-color:#e3d2d2>at</span> <span style=color:#a61717;background-color:#e3d2d2>resume</span> <span style=color:#a61717;background-color:#e3d2d2>(_stream_readable.js:</span><span style=color:#099>905</span><span style=color:#a61717;background-color:#e3d2d2>)</span>
-</span></span><span style=display:flex><span>    <span style=color:#a61717;background-color:#e3d2d2>at</span> <span style=color:#a61717;background-color:#e3d2d2>exports.IncomingMessage.Readable.resume</span> <span style=color:#a61717;background-color:#e3d2d2>(_stream_readable.js:</span><span style=color:#099>895</span><span style=color:#a61717;background-color:#e3d2d2>)</span>
-</span></span><span style=display:flex><span>    <span style=color:#a61717;background-color:#e3d2d2>at</span> <span style=color:#a61717;background-color:#e3d2d2>exports.IncomingMessage.Readable.on</span> <span style=color:#a61717;background-color:#e3d2d2>(_stream_readable.js:</span><span style=color:#099>813</span><span style=color:#a61717;background-color:#e3d2d2>)</span>
-</span></span><span style=display:flex><span>    <span style=color:#a61717;background-color:#e3d2d2>at</span> <span style=color:#a61717;background-color:#e3d2d2>module.exports.eval</span> <span style=color:#a61717;background-color:#e3d2d2>(parser.js:</span><span style=color:#099>92</span><span style=color:#a61717;background-color:#e3d2d2>)</span>
-</span></span><span style=display:flex><span>    <span style=color:#a61717;background-color:#e3d2d2>at</span> <span style=color:#a61717;background-color:#e3d2d2>module.exports.emit</span> <span style=color:#a61717;background-color:#e3d2d2>(events.js:</span><span style=color:#099>153</span><span style=color:#a61717;background-color:#e3d2d2>)</span>
-</span></span><span style=display:flex><span>    <span style=color:#a61717;background-color:#e3d2d2>at</span> <span style=color:#a61717;background-color:#e3d2d2>module.exports.ClientRequest._connect</span> <span style=color:#a61717;background-color:#e3d2d2>(request.js:</span><span style=color:#099>265</span><span style=color:#a61717;background-color:#e3d2d2>)</span>
-</span></span><span style=display:flex><span>    <span style=color:#a61717;background-color:#e3d2d2>at</span> <span style=color:#a61717;background-color:#e3d2d2>eval</span> <span style=color:#a61717;background-color:#e3d2d2>(request.js:</span><span style=color:#099>153</span><span style=color:#a61717;background-color:#e3d2d2>)</span>
+</span></span></code></pre></div><p>When we try to run this, we&rsquo;re hit with &mdash; what do you know &mdash; <a href=https://stackoverflow.com/questions/65018431/webpack-5-uncaught-referenceerror-process-is-not-defined>another Webpack error</a>:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span>_stream_readable.js:</span>905 <span>Uncaught</span> <span>(in</span> <span>promise)</span> <span>ReferenceError:</span> <span>process</span> <span>is</span> <span>not</span> <span>defined</span>
+</span></span><span style=display:flex><span>    <span>at</span> <span>resume</span> <span>(_stream_readable.js:</span>905<span>)</span>
+</span></span><span style=display:flex><span>    <span>at</span> <span>exports.IncomingMessage.Readable.resume</span> <span>(_stream_readable.js:</span>895<span>)</span>
+</span></span><span style=display:flex><span>    <span>at</span> <span>exports.IncomingMessage.Readable.on</span> <span>(_stream_readable.js:</span>813<span>)</span>
+</span></span><span style=display:flex><span>    <span>at</span> <span>module.exports.eval</span> <span>(parser.js:</span>92<span>)</span>
+</span></span><span style=display:flex><span>    <span>at</span> <span>module.exports.emit</span> <span>(events.js:</span>153<span>)</span>
+</span></span><span style=display:flex><span>    <span>at</span> <span>module.exports.ClientRequest._connect</span> <span>(request.js:</span>265<span>)</span>
+</span></span><span style=display:flex><span>    <span>at</span> <span>eval</span> <span>(request.js:</span>153<span>)</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a61717;background-color:#e3d2d2>Feed.js:</span><span style=color:#099>56</span> <span style=color:#a61717;background-color:#e3d2d2>Uncaught</span> <span style=color:#a61717;background-color:#e3d2d2>ReferenceError:</span> <span style=color:#a61717;background-color:#e3d2d2>Buffer</span> <span style=color:#a61717;background-color:#e3d2d2>is</span> <span style=color:#a61717;background-color:#e3d2d2>not</span> <span style=color:#a61717;background-color:#e3d2d2>defined</span>
-</span></span><span style=display:flex><span>    <span style=color:#a61717;background-color:#e3d2d2>at</span> <span style=color:#a61717;background-color:#e3d2d2>eval</span> <span style=color:#a61717;background-color:#e3d2d2>(response.js:</span><span style=color:#099>50</span><span style=color:#a61717;background-color:#e3d2d2>)</span>
-</span></span><span style=display:flex><span>    <span style=color:#a61717;background-color:#e3d2d2>at</span> <span style=color:#a61717;background-color:#e3d2d2>new</span> <span style=color:#a61717;background-color:#e3d2d2>Promise</span> <span style=color:#a61717;background-color:#e3d2d2>(&lt;anonymous&gt;)</span>
-</span></span><span style=display:flex><span>    <span style=color:#a61717;background-color:#e3d2d2>at</span> <span style=color:#a61717;background-color:#e3d2d2>Object.write</span> <span style=color:#a61717;background-color:#e3d2d2>(response.js:</span><span style=color:#099>47</span><span style=color:#a61717;background-color:#e3d2d2>)</span>
-</span></span></code></pre></div><p>It should be noted that this error, as well as the one before it, is trying to tell us something. <code>process</code> is <a href=https://nodejs.org/api/process.html#process>an event emitter for the running Node <em>process</em></a>. In other words, it&rsquo;s a backend thing, and using it in the frontend is bad form. Once we have a backend, we&rsquo;ll move the <code>rss-parser</code> stuff there.</p><p>Fortunately for now, the necessary shims are easy to add to <code>webpack.config.js</code>:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#a61717;background-color:#e3d2d2>plugins:</span> [
-</span></span><span style=display:flex><span>  <span style=color:#a61717;background-color:#e3d2d2>new</span> <span style=color:#a61717;background-color:#e3d2d2>webpack.HotModuleReplacementPlugin()</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a61717;background-color:#e3d2d2>new</span> <span style=color:#a61717;background-color:#e3d2d2>webpack.ProvidePlugin(</span>{ <span style=color:#a61717;background-color:#e3d2d2>process:</span> <span style=color:#a61717;background-color:#e3d2d2>&#39;process/browser&#39;</span> }<span style=color:#a61717;background-color:#e3d2d2>)</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a61717;background-color:#e3d2d2>new</span> <span style=color:#a61717;background-color:#e3d2d2>webpack.ProvidePlugin(</span>{ <span style=color:#a61717;background-color:#e3d2d2>Buffer:</span> <span style=color:#a61717;background-color:#e3d2d2>[&#39;buffer&#39;,</span> <span style=color:#a61717;background-color:#e3d2d2>&#39;Buffer&#39;]</span> }<span style=color:#a61717;background-color:#e3d2d2>)</span>
+</span></span><span style=display:flex><span><span>Feed.js:</span>56 <span>Uncaught</span> <span>ReferenceError:</span> <span>Buffer</span> <span>is</span> <span>not</span> <span>defined</span>
+</span></span><span style=display:flex><span>    <span>at</span> <span>eval</span> <span>(response.js:</span>50<span>)</span>
+</span></span><span style=display:flex><span>    <span>at</span> <span>new</span> <span>Promise</span> <span>(&lt;anonymous&gt;)</span>
+</span></span><span style=display:flex><span>    <span>at</span> <span>Object.write</span> <span>(response.js:</span>47<span>)</span>
+</span></span></code></pre></div><p>It should be noted that this error, as well as the one before it, is trying to tell us something. <code>process</code> is <a href=https://nodejs.org/api/process.html#process>an event emitter for the running Node <em>process</em></a>. In other words, it&rsquo;s a backend thing, and using it in the frontend is bad form. Once we have a backend, we&rsquo;ll move the <code>rss-parser</code> stuff there.</p><p>Fortunately for now, the necessary shims are easy to add to <code>webpack.config.js</code>:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span>plugins:</span> [
+</span></span><span style=display:flex><span>  <span>new</span> <span>webpack.HotModuleReplacementPlugin()</span>,
+</span></span><span style=display:flex><span>  <span>new</span> <span>webpack.ProvidePlugin(</span>{ <span>process:</span> <span>&#39;process/browser&#39;</span> }<span>)</span>,
+</span></span><span style=display:flex><span>  <span>new</span> <span>webpack.ProvidePlugin(</span>{ <span>Buffer:</span> <span>[&#39;buffer&#39;,</span> <span>&#39;Buffer&#39;]</span> }<span>)</span>
 </span></span><span style=display:flex><span>]
-</span></span></code></pre></div><p>And this brings us to a barely-working app!</p></article><hr></main><footer>Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a></footer></body></html>
+</span></span></code></pre></div><p>And this brings us to a barely-working app!</p></article></main><footer>Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a></footer></body></html>

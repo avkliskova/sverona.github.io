@@ -1,13 +1,18 @@
 @charset "UTF-8";
-/* $sidebar-width: $side-width * $side-size/100%; */
-/* $mobile-breakpoint: calc(min($body-width, 100vw)); */
+/*
+$line-width: 600px;
+$gutter-width: 60px;
+$sidebar-width: 280px;
+$body-margin: 32px;
+*/
 article {
   counter-reset: sidenote; }
 
 .sidenote, .marginnote {
+  font-size: 0.83rem;
   font-weight: initial;
   font-style: initial;
-  font-size: 83.3333%;
+  line-height: initial;
   position: relative;
   display: none; }
 
@@ -18,9 +23,8 @@ input[type="checkbox"].margin-toggle {
   counter-increment: sidenote;
   content: counter(sidenote); }
 
-#toc .sidenote-number::before, #toc .sidenote-label::before {
-  counter-increment: none;
-  content: ""; }
+#toc .sidenote, #toc .sidenote-number {
+  display: none; }
 
 .margin-toggle:checked + .sidenote, .margin-toggle:checked + .marginnote, .note-toggle:checked + .sidenote, .note-toggle:checked + .marginnote {
   display: block;
@@ -46,6 +50,10 @@ input[type="checkbox"].margin-toggle {
 .marginnote-number:nth-of-type(3)::before, .marginnote:nth-of-type(3)::before {
   content: "‡"; }
 
+.marginnote-number.nonum::before,
+.marginnote.nonum::before {
+  content: ''; }
+
 .sidenote-number {
   font-feature-settings: "sups";
   font-variant-numeric: proportional-nums; }
@@ -56,12 +64,27 @@ input[type="checkbox"].margin-toggle {
   font-size: smaller;
   line-height: 1; }
 
-@media (min-width: 1494px) {
+@media (min-width: 82rem) {
+  .margin-right, .margin-left {
+    display: block; }
+  .sidebar-width {
+    width: 15rem; }
+  .margin-right {
+    float: right;
+    clear: right;
+    margin-right: -19rem; }
+  .margin-left {
+    margin-left: -19rem;
+    float: left;
+    clear: left; }
+  .margin-right.margin-left {
+    float: none;
+    clear: both; }
   .sidenote, .margin-toggle:checked + .sidenote, .marginnote, .margin-toggle:checked + .marginnote, .marginfigure, .margin-toggle:checked + .marginfigure {
     display: block;
     float: right;
     clear: right;
-    width: 280px;
-    margin-right: -340px;
+    width: 15rem;
+    margin-right: -19rem;
     margin-block-start: 0;
     margin-block-end: 0.3rem; } }

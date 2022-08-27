@@ -1,0 +1,35 @@
+@font-face{
+    font-family: 'Source Serif';
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('./source-serif/SourceSerif4-Regular.otf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'Source Serif';
+    font-weight: 400;
+    font-display: swap;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('./source-serif/SourceSerif4-It.otf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'Source Serif';
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('./source-serif/SourceSerif4-Semibold.otf.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'Source Serif';
+    font-weight: 700;
+    font-display: swap;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('./source-serif/SourceSerif4-SemiboldIt.otf.woff2') format('woff2');
+}

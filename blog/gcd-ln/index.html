@@ -1,56 +1,275 @@
-<!doctype html><html lang=en-us><head><meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>\(\pi\) and \(e\) and the GCD | S. Verona Lišková</title><meta name=title content="\(\pi\) and \(e\) and the GCD"><meta name=description content="A quick exercise in probability."><meta name=keywords content="mathematics,probability,combinatorics,asymptotics,fun,2021,"><meta property="og:title" content="\(\pi\) and \(e\) and the GCD"><meta property="og:description" content="A quick exercise in probability."><meta property="og:type" content="article"><meta property="og:url" content="https://sverona.dev/blog/gcd-ln/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2021-01-24T00:00:00+00:00"><meta property="article:modified_time" content="2021-01-24T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="\(\pi\) and \(e\) and the GCD"><meta name=twitter:description content="A quick exercise in probability."><meta itemprop=name content="\(\pi\) and \(e\) and the GCD"><meta itemprop=description content="A quick exercise in probability."><meta itemprop=datePublished content="2021-01-24T00:00:00+00:00"><meta itemprop=dateModified content="2021-01-24T00:00:00+00:00"><meta itemprop=wordCount content="931"><meta itemprop=keywords content="mathematics,probability,combinatorics,asymptotics,fun,2021,"><meta name=referrer content="no-referrer-when-downgrade"><link href=https://sverona.dev/fonts/fonts.css type=text/css rel=stylesheet><link href=https://sverona.dev/sass/style.css type=text/css rel=stylesheet><link href=https://sverona.dev/sass/sidenotes.css type=text/css rel=stylesheet><link href=https://sverona.dev/katex/katex.min.css type=text/css rel=stylesheet><script defer src=https://sverona.dev/katex/katex.js></script>
-<script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
-<script>document.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],trust:e=>["\\htmlId","\\href"].includes(e.command),macros:{"\\eqref":"\\href{###1}{(\\text{#1})}","\\ref":"\\href{###1}{\\text{#1}}","\\label":"\\htmlId{#1}{}"}})}),document.addEventListener("DOMContentLoaded",()=>{for(var n,s,o,t=document.getElementsByClassName("highlight"),e=0;e<t.length;e++)t[e].title.length&&(n=document.createElement("code"),s=document.createTextNode(t[e].title),n.appendChild(s),n.classList.add("highlight-title"),o=t[e].querySelector("pre"),o.appendChild(n))})</script></head><body><header id=header><a href=/ class=title id=brand><span id=accent></span>S. Verona Lišková</a><nav><ul><li><a href=/blog>blog</a></li><li><a href=https://github.com/sverona>github</a></li><li><a href=/about>about</a></li></ul></nav></header><main><noscript><section style="background-color:#e6e8fa;margin-block:1rem;padding:1px 1rem;box-shadow:2px 2px #000"><p>Hello, sentient being who has disabled JavaScript/is using <a href=https://www.gnu.org/software/librejs/index.html>LibreJS</a>!</p><p>This site uses as little JavaScript as I can get away with, but it does require JS to:</p><ol><li>render mathematics; for this purpose I use <a href=https://katex.org>KaTeX</a>, which is freely licensed (and partially trans-made! 🏳️‍🌈)</li><li>slightly extend Hugo's <a href=https://gohugo.io/content-management/syntax-highlighting/#highlight-shortcode>highlight shortcode</a> to show filenames in code listings. (The actual syntax highlighting is done server-side.)</li></ol><p>This site validates under LibreJS as of 6 September 2022. If you find otherwise, please contact me.</p></section></noscript><header id=front-matter class="margin-right margin-left"><nav><div id=current-section></div><div id=next-prev><span>&Larr; <a href=https://sverona.dev/blog/project-euler/>Project Euler 1-100 in 49 hours</a></span>
-<span><a href=https://sverona.dev/blog/mimicking-latex-theorem-environments-with-css/>Mimicking LaTeX theorem environments with CSS</a> &Rarr;</span></div></nav><div style=text-align:center><time datetime=2021-01-24 pubdate>January 24, 2021</time><h1>\(\pi\) and \(e\) and the GCD</h1><em id=page-description>A quick exercise in probability.</em><div class=page-tags><a href=https://sverona.dev/tags/mathematics/>mathematics</a>
-<a href=https://sverona.dev/tags/probability/>probability</a>
-<a href=https://sverona.dev/tags/combinatorics/>combinatorics</a>
-<a href=https://sverona.dev/tags/asymptotics/>asymptotics</a>
-<a href=https://sverona.dev/tags/fun/>fun</a>
-<a href=https://sverona.dev/tags/2021/>2021</a></div></div></div></header><article><div id=toc class="margin-toggle margin-left"><h2>Table of Contents</h2><nav id=TableOfContents><ul><li><a href=#the-gcd-and-pi>The GCD and \(\pi\)</a></li><li><a href=#the-gcd-and-e>The GCD and \(e\)</a></li><li><a href=#another-problem>Another problem</a></li></ul></nav></div><p>While doing some research for my Project Euler post, I found myself drawn to something else that blew my mind in high school &mdash; the connection between the greatest common divisor and the Riemann zeta function.</p><p>For those of you just joining us:</p><ol><li>The <em>greatest common divisor</em> of two nonzero integers is the largest <em>positive</em> number that divides them both.</li><li>The <em>Riemann zeta function</em> is the series \[\zeta(s) = \sum_{n = 1}^\infty \frac1{n^s} = \frac1{1^s} + \frac1{2^s} + \frac1{3^s} + \cdots.\]</li></ol><p>How are these things related? Well, someone started wondering about the <em>probability distribution</em> of the GCD. More rigorously, they asked: <em>With what probability is the GCD of two randomly chosen positive integers equal to 1</em>?</p><h2 id=the-gcd-and-pi>The GCD and \(\pi\)</h2><p>I&rsquo;ve given away the plot already, \(\zeta(s)\) shows up in the answer, but what&rsquo;s really going on here?
-Well, the probability that two given positive integers are both divisible by \(n\) is exactly \(1/n^2\)! And for the GCD to be equal to 1, we have to eliminate the possibility of any integer <em>bigger than</em> 1 dividing both. You might try just subtracting stuff, and write</p><p>\[
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>\(\pi\) and \(e\) and the GCD | S. Verona Lišková</title>
+<meta name="title" content="\(\pi\) and \(e\) and the GCD" />
+<meta name="description" content="A quick exercise in probability." />
+<meta name="keywords" content="mathematics,probability,combinatorics,asymptotics,fun,2021," />
+
+
+<meta property="og:title" content="\(\pi\) and \(e\) and the GCD" />
+<meta property="og:description" content="A quick exercise in probability." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sverona.dev/blog/gcd-ln/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2021-01-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-24T00:00:00+00:00" />
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="\(\pi\) and \(e\) and the GCD"/>
+<meta name="twitter:description" content="A quick exercise in probability."/>
+
+
+
+<meta itemprop="name" content="\(\pi\) and \(e\) and the GCD">
+<meta itemprop="description" content="A quick exercise in probability."><meta itemprop="datePublished" content="2021-01-24T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-24T00:00:00+00:00" />
+<meta itemprop="wordCount" content="931">
+<meta itemprop="keywords" content="mathematics,probability,combinatorics,asymptotics,fun,2021," />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  
+  <link href="https://sverona.dev/fonts/fonts.css" type="text/css" rel="stylesheet" />
+  
+  
+  <link href="https://sverona.dev/sass/style.css" type="text/css" rel="stylesheet" />
+  <link href="https://sverona.dev/sass/sidenotes.css" type="text/css" rel="stylesheet" />
+  
+    <link href="https://sverona.dev/katex/katex.min.css" type="text/css" rel="stylesheet" />
+    <script defer src="https://sverona.dev/katex/katex.js"></script>
+    <script defer src="https://sverona.dev/katex/contrib/auto-render.js"></script>
+  
+
+  <script>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-3.0
+
+    
+    document.addEventListener("DOMContentLoaded", () => {
+          renderMathInElement(document.body, {
+            delimiters: [
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true}
+            ],
+            
+            
+            trust: (context) => ['\\htmlId', '\\href'].includes(context.command),
+            macros: {
+              "\\eqref": "\\href{###1}{(\\text{#1})}",
+              "\\ref": "\\href{###1}{\\text{#1}}",
+              "\\label": "\\htmlId{#1}{}"
+            }
+        })
+      });
+    
+
+    document.addEventListener("DOMContentLoaded", () => {
+      var els = document.getElementsByClassName("highlight");
+      for (var i = 0; i < els.length; i++) {
+        if (els[i].title.length) {
+          var newNode = document.createElement("code");
+          var textNode = document.createTextNode(els[i].title);
+          newNode.appendChild(textNode);
+          newNode.classList.add("highlight-title");
+          var pre = els[i].querySelector('pre');
+          pre.appendChild(newNode);
+        }
+      }
+    });
+    // @license-end
+  </script>
+
+</head>
+
+<body>
+  <header id="header"><a href="/" class="title" id="brand">
+  <span id="accent"></span>S. Verona Lišková
+</a>
+<nav><ul>
+
+<li><a href="/blog">blog</a></li>
+
+<li><a href="https://github.com/sverona">github</a></li>
+
+<li><a href="/about">about</a></li>
+
+</ul>
+</nav>
+</header>
+  <main><noscript>
+  <section style="background-color: #e6e8fa; margin-block: 1rem; padding: 1px 1rem; box-shadow: 2px 2px #000">
+    <p>Hello, sentient being who has disabled JavaScript/is using <a href="https://www.gnu.org/software/librejs/index.html">LibreJS</a>!</p>
+    <p>This site uses as little JavaScript as I can get away with, but it does require JS to:</p>
+<ol>
+  <li>render mathematics; for this purpose I use <a href="https://katex.org">KaTeX</a>, which is freely licensed (and partially trans-made! 🏳️‍🌈)</li>
+  <li>slightly extend Hugo's <a href="https://gohugo.io/content-management/syntax-highlighting/#highlight-shortcode">highlight shortcode</a> to show filenames in code listings. (The actual syntax highlighting is done server-side.)</li>
+</ol>
+    <p>This site validates under LibreJS as of 6 September 2022. If you find otherwise, please contact me.</p>
+  </section>
+</noscript>
+
+<header id="front-matter" class="margin-right margin-left">
+  <nav>
+    <div id="current-section">
+      
+    </div>
+    
+    <div id="next-prev">
+      
+      <span>
+       
+      &twoheadleftarrow; <a href="https://sverona.dev/blog/project-euler/">Project Euler 1-100 in 49 hours</a>
+       
+      </span>
+      <span>
+       
+      <a href="https://sverona.dev/blog/mimicking-latex-theorem-environments-with-css/">Mimicking LaTeX theorem environments with CSS</a> &twoheadrightarrow;
+       
+      </span>
+    </div>
+    
+  </nav>
+  <div style="text-align: center">
+    
+    <time datetime='2021-01-24' pubdate>
+      January 24, 2021
+    </time>
+    
+    <h1>\(\pi\) and \(e\) and the GCD</h1>
+    
+    <em id="page-description">A quick exercise in probability.</em>
+    
+    
+    <div class="page-tags">
+        
+          <a href="https://sverona.dev/tags/mathematics/">mathematics</a>
+        
+          <a href="https://sverona.dev/tags/probability/">probability</a>
+        
+          <a href="https://sverona.dev/tags/combinatorics/">combinatorics</a>
+        
+          <a href="https://sverona.dev/tags/asymptotics/">asymptotics</a>
+        
+          <a href="https://sverona.dev/tags/fun/">fun</a>
+        
+          <a href="https://sverona.dev/tags/2021/">2021</a>
+        
+    </div> 
+    
+  </div>
+</div>
+</header>
+
+<article>
+  
+  <div id="toc" class="margin-toggle margin-left">
+    <h2>Table of Contents</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-gcd-and-pi">The GCD and \(\pi\)</a></li>
+    <li><a href="#the-gcd-and-e">The GCD and \(e\)</a></li>
+    <li><a href="#another-problem">Another problem</a></li>
+  </ul>
+</nav>
+  </div>
+  
+  <p>While doing some research for my Project Euler post, I found myself drawn to something else that blew my mind in high school &mdash; the connection between the greatest common divisor and the Riemann zeta function.</p>
+<p>For those of you just joining us:</p>
+<ol>
+<li>The <em>greatest common divisor</em> of two nonzero integers is the largest <em>positive</em> number that divides them both.</li>
+<li>The <em>Riemann zeta function</em> is the series \[\zeta(s) = \sum_{n = 1}^\infty \frac1{n^s} = \frac1{1^s} + \frac1{2^s} + \frac1{3^s} + \cdots.\]</li>
+</ol>
+<p>How are these things related? Well, someone started wondering about the <em>probability distribution</em> of the GCD. More rigorously, they asked: <em>With what probability is the GCD of two randomly chosen positive integers equal to 1</em>?</p>
+<h2 id="the-gcd-and-pi">The GCD and \(\pi\)</h2>
+<p>I&rsquo;ve given away the plot already, \(\zeta(s)\) shows up in the answer, but what&rsquo;s really going on here?
+Well, the probability that two given positive integers are both divisible by \(n\) is exactly \(1/n^2\)! And for the GCD to be equal to 1, we have to eliminate the possibility of any integer <em>bigger than</em> 1 dividing both. You might try just subtracting stuff, and write</p>
+<p>\[
 \begin{aligned}
-P(\gcd(a, b) = 1) &= 1 - \frac{1}{2^2} - \frac{1}{3^2} - \cdots \newline
-&= 1 - (\zeta(2) - 1).
+P(\gcd(a, b) = 1) &amp;= 1 - \frac{1}{2^2} - \frac{1}{3^2} - \cdots \newline
+&amp;= 1 - (\zeta(2) - 1).
 \end{aligned}
-\]</p><p>Unfortunately this doesn&rsquo;t work, because we&rsquo;ve double-counted some probabilities. Actually, it&rsquo;s worse, because we&rsquo;ve infinite-counted infinitely many probabilities. Consider again the probability</p><p>\[\begin{aligned}
-\frac1{n^2} &= P(n \mid a \land n \mid b) \newline
-&= P(n \mid \gcd(a, b)).
-\end{aligned}\]</p><p>This is in fact the probability that the GCD is \(kn\) for some natural number \(k.\) Our initial idea works with some modification, though:</p><p>\[\begin{aligned}
+\]</p>
+<p>Unfortunately this doesn&rsquo;t work, because we&rsquo;ve double-counted some probabilities. Actually, it&rsquo;s worse, because we&rsquo;ve infinite-counted infinitely many probabilities. Consider again the probability</p>
+<p>\[\begin{aligned}
+\frac1{n^2} &amp;= P(n \mid a \land n \mid b) \newline
+&amp;= P(n \mid \gcd(a, b)).
+\end{aligned}\]</p>
+<p>This is in fact the probability that the GCD is \(kn\) for some natural number \(k.\) Our initial idea works with some modification, though:</p>
+<p>\[\begin{aligned}
 P(\gcd(a, b) = 1) = 1 - \sum_{n = 2}^\infty P(\gcd(a, b) = n).
-\end{aligned}\]</p><p>And because \(\gcd(a, b) = n\) if and only if \(n \mid \gcd(a, b)\) and \(\gcd(a/n, b/n) = 1,\) we have</p><p>\[\begin{aligned}
-P(\gcd(a, b) = n) &= \frac{P(\gcd(a/n, b/n) = 1)}{n^2} \newline
-&= \frac{P(\gcd(a&rsquo;, b&rsquo;) = 1)}{n^2}.
-\end{aligned}\]</p><p>Substituting this back, we get</p><p>\[\begin{aligned}
+\end{aligned}\]</p>
+<p>And because \(\gcd(a, b) = n\) if and only if \(n \mid \gcd(a, b)\) and \(\gcd(a/n, b/n) = 1,\) we have</p>
+<p>\[\begin{aligned}
+P(\gcd(a, b) = n) &amp;= \frac{P(\gcd(a/n, b/n) = 1)}{n^2} \newline
+&amp;= \frac{P(\gcd(a&rsquo;, b&rsquo;) = 1)}{n^2}.
+\end{aligned}\]</p>
+<p>Substituting this back, we get</p>
+<p>\[\begin{aligned}
 P(\gcd(a, b) = 1) = 1 - \sum_{n = 2}^\infty \frac{P(\gcd(a&rsquo;, b&rsquo;) = 1)}{n^2}.
-\end{aligned}\]</p><p>The probability doesn&rsquo;t care about what we&rsquo;re calling the variables inside the GCD, so we can write</p><p>\[\begin{aligned}
-1 &= P(\gcd(a, b) = 1) + \sum_{n = 2}^\infty \frac{P(\gcd(a&rsquo;, b&rsquo;) = 1)}{n^2} \newline
-&= \sum_{n = 1}^\infty \frac{P(\gcd(a, b) = 1)}{n^2} \newline
-&= \zeta(2) \cdot P(\gcd(a, b) = 1) \newline
-\implies& \boxed{P(\gcd(a, b) = 1) = \zeta(2)^{-1} = \frac{6}{\pi^2}.}
-\end{aligned}\]</p><p>(You may say &ldquo;you cheater, you&rsquo;re skipping over the fact that \(\zeta(2) = \pi^2/6.\)&rdquo; You&rsquo;d be right, but it&rsquo;s practically mathematical apocrypha at this point; if you want to see a really cool perspective, check out 3Blue1Brown&rsquo;s <a href="https://www.youtube.com/watch?v=d-o3eB9sfls">video</a> on the subject.)</p><h2 id=the-gcd-and-e>The GCD and \(e\)</h2><p>Now, if you&rsquo;ve had a probability course, you might ask: <em>what&rsquo;s the expected GCD of two numbers?</em> It should be
+\end{aligned}\]</p>
+<p>The probability doesn&rsquo;t care about what we&rsquo;re calling the variables inside the GCD, so we can write</p>
+<p>\[\begin{aligned}
+1 &amp;= P(\gcd(a, b) = 1) + \sum_{n = 2}^\infty \frac{P(\gcd(a&rsquo;, b&rsquo;) = 1)}{n^2} \newline
+&amp;= \sum_{n = 1}^\infty \frac{P(\gcd(a, b) = 1)}{n^2} \newline
+&amp;= \zeta(2) \cdot P(\gcd(a, b) = 1) \newline
+\implies&amp; \boxed{P(\gcd(a, b) = 1) = \zeta(2)^{-1} = \frac{6}{\pi^2}.}
+\end{aligned}\]</p>
+<p>(You may say &ldquo;you cheater, you&rsquo;re skipping over the fact that \(\zeta(2) = \pi^2/6.\)&rdquo; You&rsquo;d be right, but it&rsquo;s practically mathematical apocrypha at this point; if you want to see a really cool perspective, check out 3Blue1Brown&rsquo;s <a href="https://www.youtube.com/watch?v=d-o3eB9sfls">video</a> on the subject.)</p>
+<h2 id="the-gcd-and-e">The GCD and \(e\)</h2>
+<p>Now, if you&rsquo;ve had a probability course, you might ask: <em>what&rsquo;s the expected GCD of two numbers?</em> It should be
 \[\begin{aligned}
-E[\gcd(a, b)] &= \sum_{n = 1}^\infty P(\gcd(a, b) = n) \cdot n \newline
-&= \frac{6}{\pi^2} \cdot 1 + \sum_{n = 2}^\infty \frac{1}{n^2} \cdot n \newline
-&= \frac{6}{\pi^2} + \sum_{n = 2}^\infty \frac1n,
-\end{aligned}\]</p><p>which diverges. So let&rsquo;s compromise and take an upper limit \(N \in \mathbb N\):</p><p>\[\begin{aligned}
-E[\gcd(a, b) \mid \gcd(a, b) \leq N] &= \sum_{n=1}^\infty P(\gcd(a, b) = n \mid \gcd(a, b) \leq N) \cdot n \newline
-&= \sum_{n = 1}^N P(\gcd(a, b) = n \mid \gcd(a, b) \leq N) \cdot n \newline
-&= \sum_{n=1}^N \frac{P(\gcd(a, b) = n)}{P(\gcd(a, b) \leq N)} \cdot n\newline
-&= \frac{\sum_{n=1}^N P(\gcd(a, b) = n) \cdot n}{P(\gcd(a, b) \leq N)} \newline
-&= \frac{\sum_{n=1}^N P(\gcd(a, b) = n) \cdot n}{\sum_{n=1}^N P(\gcd(a, b) = n)}.
-\end{aligned}\]</p><p>From before, we know that \(P(\gcd(a, b) = n) = 6/(\pi^2 n^2)\), so this becomes
+E[\gcd(a, b)] &amp;= \sum_{n = 1}^\infty P(\gcd(a, b) = n) \cdot n \newline
+&amp;= \frac{6}{\pi^2} \cdot 1 + \sum_{n = 2}^\infty \frac{1}{n^2} \cdot n \newline
+&amp;= \frac{6}{\pi^2} + \sum_{n = 2}^\infty \frac1n,
+\end{aligned}\]</p>
+<p>which diverges. So let&rsquo;s compromise and take an upper limit \(N \in \mathbb N\):</p>
+<p>\[\begin{aligned}
+E[\gcd(a, b) \mid \gcd(a, b) \leq N] &amp;= \sum_{n=1}^\infty P(\gcd(a, b) = n \mid \gcd(a, b) \leq N) \cdot n \newline
+&amp;= \sum_{n = 1}^N P(\gcd(a, b) = n \mid \gcd(a, b) \leq N) \cdot n \newline
+&amp;= \sum_{n=1}^N \frac{P(\gcd(a, b) = n)}{P(\gcd(a, b) \leq N)} \cdot n\newline
+&amp;= \frac{\sum_{n=1}^N P(\gcd(a, b) = n) \cdot n}{P(\gcd(a, b) \leq N)} \newline
+&amp;= \frac{\sum_{n=1}^N P(\gcd(a, b) = n) \cdot n}{\sum_{n=1}^N P(\gcd(a, b) = n)}.
+\end{aligned}\]</p>
+<p>From before, we know that \(P(\gcd(a, b) = n) = 6/(\pi^2 n^2)\), so this becomes
 \[\begin{aligned}
-E[\gcd(a, b) \mid \gcd(a, b) \leq N] &= \frac{\sum_{n=1}^N 6/\pi^2 \cdot 1/n}{\sum_{n=1}^n 6/\pi^2 \cdot 1/n^2} \newline
-&= \frac{\sum_{n=1}^N 1/n}{\sum_{n=1}^N 1/n^2}.
-\end{aligned}\]</p><p>As \(N\) becomes large, we then have the approximation</p><p>\[ \boxed{E[\gcd(a, b) \mid \gcd(a, b) \leq N] \approx \frac{\ln N + \gamma}{\pi^2/6},} \]
-where \(\gamma\) is the Euler-Mascheroni constant.<label for=sidenote-0 class="margin-toggle sidenote-number"></label><input type=checkbox id=sidenote-0 class=margin-toggle><span class=sidenote>I can hear you say that this is a false attempt at beauty constructed by someone who should write better blog posts. You may be right, but I will point out that should you actually want to compute this, the definition is computable only in linear time, whereas the approximation is constant-time.</span></p><h2 id=another-problem>Another problem</h2><p>While I was explaining this to my boyfriend, I realized that I should try to compute the expected GCD of two numbers given that <em>the numbers</em>, rather than their GCD, are below a specific limit.</p><p>For a given upper limit \(N\) and required GCD \(n\), there are \(2 \Phi(\lfloor N / n \rfloor) - 1\) satisfactory pairs, so we have
+E[\gcd(a, b) \mid \gcd(a, b) \leq N] &amp;= \frac{\sum_{n=1}^N 6/\pi^2 \cdot 1/n}{\sum_{n=1}^n 6/\pi^2 \cdot 1/n^2} \newline
+&amp;= \frac{\sum_{n=1}^N 1/n}{\sum_{n=1}^N 1/n^2}.
+\end{aligned}\]</p>
+<p>As \(N\) becomes large, we then have the approximation</p>
+<p>\[ \boxed{E[\gcd(a, b) \mid \gcd(a, b) \leq N] \approx \frac{\ln N + \gamma}{\pi^2/6},} \]
+where \(\gamma\) is the Euler-Mascheroni constant.<label for="sidenote-0" class="margin-toggle sidenote-number "></label><input type="checkbox" id="sidenote-0" class="margin-toggle"/><span class="sidenote ">I can hear you say that this is a false attempt at beauty constructed by someone who should write better blog posts. You may be right, but I will point out that should you actually want to compute this, the definition is computable only in linear time, whereas the approximation is constant-time.</span></p>
+<h2 id="another-problem">Another problem</h2>
+<p>While I was explaining this to my boyfriend, I realized that I should try to compute the expected GCD of two numbers given that <em>the numbers</em>, rather than their GCD, are below a specific limit.</p>
+<p>For a given upper limit \(N\) and required GCD \(n\), there are \(2 \Phi(\lfloor N / n \rfloor) - 1\) satisfactory pairs, so we have
 \[\begin{aligned}
-P(\gcd(a, b) = n | a, b \leq N) &= \frac{2 \Phi(\lfloor N/n \rfloor) - 1}{n^2},
-\end{aligned}\]</p><p>and hence</p><p>\[\begin{aligned}
-E[\gcd(a, b) \mid a, b \leq N] &= \sum_{n=1}^\infty P(\gcd(a, b) = n \mid a, b \leq N) \cdot n \newline
-&= \sum_{n=1}^N P(\gcd(a, b) = n \mid a, b \leq N) \cdot n \newline
-&= \sum_{n=1}^N \frac{2\Phi(\lfloor N / n \rfloor) - 1}{n},
-\end{aligned}\]</p><p>which is nearly intractable. Passing to the asymptotic \(\Phi(n) \approx 3n^2/\pi^2\), we get</p><p>\[\begin{aligned}
-E[\gcd(a, b) \mid a, b \leq N] &\approx \sum_{n=1}^N \frac{6\lfloor N / n \rfloor^2 - 1}{n\pi^2} \newline
-&\approx \frac{6}{\pi^2} \sum_{n=1}^N \frac1n \left\lfloor \frac{N}{n} \right\rfloor^2 - \frac{\ln N + \gamma}{\pi^2}.
-\end{aligned}\]</p><p>I don&rsquo;t think this can be further simplified.<label for=sidenote-1 class="margin-toggle sidenote-number"></label><input type=checkbox id=sidenote-1 class=margin-toggle><span class=sidenote>It looks kind of like Mobius inversion, but the summation is wrong. Maybe there&rsquo;s a fun trick to be found, but I don&rsquo;t see it.</span></p><p>It&rsquo;s really fascinating how deeply the GCD and \(\pi\) are linked. I have absolutely no idea why.</p></article></main><footer>Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a></footer></body></html>
+P(\gcd(a, b) = n | a, b \leq N) &amp;= \frac{2 \Phi(\lfloor N/n \rfloor) - 1}{n^2},
+\end{aligned}\]</p>
+<p>and hence</p>
+<p>\[\begin{aligned}
+E[\gcd(a, b) \mid a, b \leq N] &amp;= \sum_{n=1}^\infty P(\gcd(a, b) = n \mid a, b \leq N) \cdot n \newline
+&amp;= \sum_{n=1}^N P(\gcd(a, b) = n \mid a, b \leq N) \cdot n \newline
+&amp;= \sum_{n=1}^N \frac{2\Phi(\lfloor N / n \rfloor) - 1}{n},
+\end{aligned}\]</p>
+<p>which is nearly intractable. Passing to the asymptotic \(\Phi(n) \approx 3n^2/\pi^2\), we get</p>
+<p>\[\begin{aligned}
+E[\gcd(a, b) \mid a, b \leq N] &amp;\approx \sum_{n=1}^N \frac{6\lfloor N / n \rfloor^2 - 1}{n\pi^2} \newline
+&amp;\approx \frac{6}{\pi^2} \sum_{n=1}^N \frac1n \left\lfloor \frac{N}{n} \right\rfloor^2 - \frac{\ln N + \gamma}{\pi^2}.
+\end{aligned}\]</p>
+<p>I don&rsquo;t think this can be further simplified.<label for="sidenote-1" class="margin-toggle sidenote-number "></label><input type="checkbox" id="sidenote-1" class="margin-toggle"/><span class="sidenote ">It looks kind of like Mobius inversion, but the summation is wrong. Maybe there&rsquo;s a fun trick to be found, but I don&rsquo;t see it.</span></p>
+<p>It&rsquo;s really fascinating how deeply the GCD and \(\pi\) are linked. I have absolutely no idea why.</p>
+
+</article>
+
+  </main>
+  <footer> Made with <a href="https://github.com/sverona/hugo-semiotic">Hugo Semiotic</a> 
+</footer>
+
+    
+</body>
+
+</html>

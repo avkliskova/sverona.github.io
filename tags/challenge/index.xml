@@ -1,2 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>challenge on S. Verona Lišková</title><link>https://sverona.dev/tags/challenge/</link><description>Recent content in challenge on S. Verona Lišková</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 20 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sverona.dev/tags/challenge/index.xml" rel="self" type="application/rss+xml"/><item><title>Project Euler 1-100 in 49 hours</title><link>https://sverona.dev/blog/project-euler/</link><pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate><guid>https://sverona.dev/blog/project-euler/</guid><description>Project Euler is how I taught myself Python in high school, and so I find it incredibly nostalgic. It took 13-year-old me a lot of Googling and a few months to get through the first 100 problems. Why 100 specifically? Because I wanted to write this post honestly and those are the ones I&amp;rsquo;m allowed to talk about without them locking my account or something.
-10-odd years and a graduate degree later, I decided to come back and solve them as fast as I could.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>challenge on S. Verona Lišková</title>
+    <link>https://sverona.dev/tags/challenge/</link>
+    <description>Recent content in challenge on S. Verona Lišková</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sverona.dev/tags/challenge/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Project Euler 1-100 in 49 hours</title>
+      <link>https://sverona.dev/blog/project-euler/</link>
+      <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sverona.dev/blog/project-euler/</guid>
+      <description>Project Euler is how I taught myself Python in high school, and so I find it incredibly nostalgic. It took 13-year-old me a lot of Googling and a few months to get through the first 100 problems. Why 100 specifically? Because I wanted to write this post honestly and those are the ones I&amp;rsquo;m allowed to talk about without them locking my account or something.
+10-odd years and a graduate degree later, I decided to come back and solve them as fast as I could.</description>
+    </item>
+    
+  </channel>
+</rss>

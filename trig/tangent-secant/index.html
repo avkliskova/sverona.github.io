@@ -1,4 +1,351 @@
-<!doctype html><html lang=en-us><head><meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>The tangent and secant curves | S. Verona Lišková</title><meta name=title content="The tangent and secant curves"><meta name=description content="Content from section 8.2 in OpenSTAX."><meta name=keywords content><meta property="og:title" content="The tangent and secant curves"><meta property="og:description" content="Content from section 8.2 in OpenSTAX."><meta property="og:type" content="article"><meta property="og:url" content="https://sverona.dev/trig/tangent-secant/"><meta property="article:section" content="trig"><meta property="article:published_time" content="2021-10-05T00:00:00+00:00"><meta property="article:modified_time" content="2021-10-05T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="The tangent and secant curves"><meta name=twitter:description content="Content from section 8.2 in OpenSTAX."><meta itemprop=name content="The tangent and secant curves"><meta itemprop=description content="Content from section 8.2 in OpenSTAX."><meta itemprop=datePublished content="2021-10-05T00:00:00+00:00"><meta itemprop=dateModified content="2021-10-05T00:00:00+00:00"><meta itemprop=wordCount content="591"><meta itemprop=keywords content><meta name=referrer content="no-referrer-when-downgrade"><link href=https://sverona.dev/fonts/fonts.css type=text/css rel=stylesheet><link href=https://sverona.dev/sass/style.css type=text/css rel=stylesheet><link href=https://sverona.dev/sass/sidenotes.css type=text/css rel=stylesheet><link href=https://sverona.dev/katex/katex.min.css type=text/css rel=stylesheet><script defer src=https://sverona.dev/katex/katex.js></script>
-<script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
-<script>document.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],trust:e=>["\\htmlId","\\href"].includes(e.command),macros:{"\\eqref":"\\href{###1}{(\\text{#1})}","\\ref":"\\href{###1}{\\text{#1}}","\\label":"\\htmlId{#1}{}"}})}),document.addEventListener("DOMContentLoaded",()=>{for(var n,s,o,t=document.getElementsByClassName("highlight"),e=0;e<t.length;e++)t[e].title.length&&(n=document.createElement("code"),s=document.createTextNode(t[e].title),n.appendChild(s),n.classList.add("highlight-title"),o=t[e].querySelector("pre"),o.appendChild(n))})</script></head><body><header id=header><a href=/ class=title id=brand><span id=accent></span>S. Verona Lišková</a><nav><ul><li><a href=/blog>blog</a></li><li><a href=https://github.com/sverona>github</a></li><li><a href=/about>about</a></li></ul></nav></header><main><noscript><section style="background-color:#e6e8fa;margin-block:1rem;padding:1px 1rem;box-shadow:2px 2px #000"><p>Hello, sentient being who has disabled JavaScript/is using <a href=https://www.gnu.org/software/librejs/index.html>LibreJS</a>!</p><p>This site uses as little JavaScript as I can get away with, but it does require JS to:</p><ol><li>render mathematics; for this purpose I use <a href=https://katex.org>KaTeX</a>, which is freely licensed (and partially trans-made! 🏳️‍🌈)</li><li>slightly extend Hugo's <a href=https://gohugo.io/content-management/syntax-highlighting/#highlight-shortcode>highlight shortcode</a> to show filenames in code listings. (The actual syntax highlighting is done server-side.)</li></ol><p>This site validates under LibreJS as of 6 September 2022. If you find otherwise, please contact me.</p></section></noscript><header id=front-matter class="margin-right margin-left"><nav><div id=current-section><a href=https://sverona.dev/trig/>MATH 117: Trigonometry</a></div><div id=next-prev><span>&Larr; <a href=https://sverona.dev/trig/graphs/>The sine and cosine curves</a></span>
-<span><a href=https://sverona.dev/trig/inverse-functions/>Inverse trigonometric functions</a> &Rarr;</span></div></nav><div style=text-align:center><time datetime=2021-10-05 pubdate>October 5, 2021</time><h1>The tangent and secant curves</h1><em id=page-description>Content from section 8.2 in OpenSTAX.</em></div></div></header><article><div id=toc class="margin-toggle margin-left"><h2>Table of Contents</h2><nav id=TableOfContents><ul><li><a href=#what-we-know-already>What we know already</a></li><li><a href=#values-of-tangent-and-secant>Values of tangent and secant</a></li><li><a href=#tangent-curves>Tangent curves</a></li><li><a href=#secant-curves>Secant curves</a></li><li><a href=#examples>Examples</a></li><li><a href=#summary>Summary</a></li></ul></nav></div><style type=text/css>.small{font-size:smaller}</style><h2 id=what-we-know-already>What we know already</h2><p>The graphs of sine or cosine make <em>waves</em>, like this:</p><p>[Desmos]</p><p>These graphs can have horizontal and vertical <em>shifts</em>, <em>squishes</em>, <em>stretches</em>, and/or <em>flips.</em></p><p>Some of these have special names. We call horizontal shifts <em>phase shifts.</em> A horizontal squish or stretch is a change in the <em>period.</em> A vertical stretch or squish is a change in the <em>amplitude.</em></p><p>Given a generic sine or cosine function \(f(x) = A \sin(Bx + C) + D\), we can determine the period as \(\dfrac{2\pi}{|B|},\) the phase shift as \(\dfrac{-C}{B}\), and the amplitude as \(|A|.\)</p><h2 id=values-of-tangent-and-secant>Values of tangent and secant</h2><p>Let&rsquo;s plot these.</p><p>Where is tangent undefined? Where is tangent zero? What about cotangent?</p><p>Where is secant undefined? Does it ever reach zero? What about cosecant?</p><p>Let&rsquo;s look at a graph. Where do tangent and secant and cotangent and cosecant have <em>asymptotes</em>?</p><p>What do you notice about the values of sine, tangent, and secant in the first quadrant versus the values of cosine, cotangent, and cosecant in the second quadrant?</p><h2 id=tangent-curves>Tangent curves</h2><p>What period does the tangent have?</p><p>Tangents and cotangents don&rsquo;t have amplitudes. We call the relevant bit the <em>stretch factor.</em> Other than that, all the rules are exactly the same.</p><p>To wit, if I have \(f(x) = A \tan(Bx + C) + D\), I can determine the period as \(\dfrac{\pi}{|B|},\) the phase shift as \(\dfrac{-C}{B}\), and the <em>vertical stretch factor</em> as \(|A|\).</p><p>Where does this transformed function have asymptotes?</p><h2 id=secant-curves>Secant curves</h2><p>What period does the secant have?</p><p>Secants don&rsquo;t have amplitudes either.</p><p>To wit, if I have \(f(x) = A \sec(Bx + C) + D\), I can determine the period as \(\dfrac{2\pi}{|B|},\) the phase shift as \(\dfrac{-C}{B}\), and the <em>vertical stretch factor</em> as \(|A|\).</p><p>Where does this transformed function have asymptotes?</p><h2 id=examples>Examples</h2><p>Find the period, stretch factor, the phase shift, the midline, the range, and the asymptotes over one period.</p><ol><li>\(2 \tan(3x + \pi) - 2\)</li><li>\(2 \sec(x/4 - \pi/4) + 1\)</li></ol><h2 id=summary>Summary</h2><p>Here is everything you&rsquo;ll need to know about the six trig functions.</p><p>Untransformed:</p><div class=fullwidth><table><thead><tr><th>Function</th><th>Period</th><th>Phase shift</th><th>Amplitude or<br>stretch factor</th><th>Midline</th><th>Range</th><th>Asymptotes<br>(over one period)</th></tr></thead><tbody><tr><td>\(\sin x\)</td><td>\(2\pi\)</td><td>\(0\)</td><td>\(1\)</td><td>\(y = 0\)</td><td>\(-1 \leq y \leq 1\)</td><td>none</td></tr><tr><td>\(\cos x\)</td><td>\(2\pi\)</td><td>\(0\)</td><td>\(1\)</td><td>\(y = 0\)</td><td>\(-1 \leq y \leq 1\)</td><td>none</td></tr><tr><td>\(\tan x\)</td><td>\(\pi\)</td><td>\(0\)</td><td>\(1\)</td><td>\(y = 0\)</td><td>all real numbers</td><td>\(x = \pi/2\)</td></tr><tr><td>\(\cot x\)</td><td>\(\pi\)</td><td>\(0\)</td><td>\(1\)</td><td>\(y = 0\)</td><td>all real numbers</td><td>\(x = 0\)</td></tr><tr><td>\(\sec x\)</td><td>\(2\pi\)</td><td>\(0\)</td><td>\(1\)</td><td>\(y = 0\)</td><td>\(y \leq -1, y \geq 1\)</td><td>\(x = \pi/2\newline x = 3\pi/2\)</td></tr><tr><td>\(\csc x\)</td><td>\(2\pi\)</td><td>\(0\)</td><td>\(1\)</td><td>\(y = 0\)</td><td>\(y \leq -1, y \geq 1\)</td><td>\(x = 0\newline x = \pi\)</td></tr></tbody></table></div><p>Transformed:</p><div class="fullwidth small"><table><thead><tr><th>Function</th><th>Period</th><th>Phase shift</th><th>Amplitude or<br>stretch factor</th><th>Midline</th><th>Range</th><th>Asymptotes<br>(over one period)</th></tr></thead><tbody><tr><td>\(A \sin(Bx + C) + D,\newline A\cos(Bx + C) + D\)</td><td>\(\dfrac{2\pi}{|B|}\)</td><td>\(\dfrac{-C}{B}\)</td><td>\(|A|\)</td><td>\(y = D\)</td><td>\(D - |A| \leq y \leq D + |A|\)</td><td>none</td></tr><tr><td>\(A \tan(Bx + C) + D\)</td><td>\(\dfrac{\pi}{|B|}\)</td><td>\(\dfrac{-C}{B}\)</td><td>\(|A|\)</td><td>\(y = D\)</td><td>all real numbers</td><td>\(x = \dfrac{\pi/2 - C}{B}\)</td></tr><tr><td>\(A \cot(Bx + C) + D\)</td><td>\(\dfrac{\pi}{|B|}\)</td><td>\(\dfrac{-C}{B}\)</td><td>\(|A|\)</td><td>\(y = D\)</td><td>all real numbers</td><td>\(x = \dfrac{-C}{B}\)</td></tr><tr><td>\(A \sec(Bx + C) + D\)</td><td>\(\dfrac{2\pi}{|B|}\)</td><td>\(\dfrac{-C}{B}\)</td><td>\(|A|\)</td><td>\(y = D\)</td><td>\(y \leq D - |A|,\newline y\geq D + |A|\)</td><td>\(x = \dfrac{\pi/2-C}{B},\newline x=\dfrac{3\pi/2 - C}{B}\)</td></tr><tr><td>\(A \csc(Bx + C) + D\)</td><td>\(\dfrac{2\pi}{|B|}\)</td><td>\(\dfrac{-C}{B}\)</td><td>\(|A|\)</td><td>\(y = D\)</td><td>\(y \leq D - |A|,\newline y\geq D + |A|\)</td><td>\(x = \dfrac{-C}{B},\newline x=\dfrac{\pi - C}{B}\)</td></tr></tbody></table></div><p>How can we get to the other asymptotes from these two?</p></article></main><footer>Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a></footer></body></html>
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The tangent and secant curves | S. Verona Lišková</title>
+<meta name="title" content="The tangent and secant curves" />
+<meta name="description" content="Content from section 8.2 in OpenSTAX." />
+<meta name="keywords" content="" />
+
+
+<meta property="og:title" content="The tangent and secant curves" />
+<meta property="og:description" content="Content from section 8.2 in OpenSTAX." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sverona.dev/trig/tangent-secant/" /><meta property="article:section" content="trig" />
+<meta property="article:published_time" content="2021-10-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-05T00:00:00+00:00" />
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The tangent and secant curves"/>
+<meta name="twitter:description" content="Content from section 8.2 in OpenSTAX."/>
+
+
+
+<meta itemprop="name" content="The tangent and secant curves">
+<meta itemprop="description" content="Content from section 8.2 in OpenSTAX."><meta itemprop="datePublished" content="2021-10-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="591">
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  
+  <link href="https://sverona.dev/fonts/fonts.css" type="text/css" rel="stylesheet" />
+  
+  
+  <link href="https://sverona.dev/sass/style.css" type="text/css" rel="stylesheet" />
+  <link href="https://sverona.dev/sass/sidenotes.css" type="text/css" rel="stylesheet" />
+  
+    <link href="https://sverona.dev/katex/katex.min.css" type="text/css" rel="stylesheet" />
+    <script defer src="https://sverona.dev/katex/katex.js"></script>
+    <script defer src="https://sverona.dev/katex/contrib/auto-render.js"></script>
+  
+
+  <script>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-3.0
+
+    
+    document.addEventListener("DOMContentLoaded", () => {
+          renderMathInElement(document.body, {
+            delimiters: [
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true}
+            ],
+            
+            
+            trust: (context) => ['\\htmlId', '\\href'].includes(context.command),
+            macros: {
+              "\\eqref": "\\href{###1}{(\\text{#1})}",
+              "\\ref": "\\href{###1}{\\text{#1}}",
+              "\\label": "\\htmlId{#1}{}"
+            }
+        })
+      });
+    
+
+    document.addEventListener("DOMContentLoaded", () => {
+      var els = document.getElementsByClassName("highlight");
+      for (var i = 0; i < els.length; i++) {
+        if (els[i].title.length) {
+          var newNode = document.createElement("code");
+          var textNode = document.createTextNode(els[i].title);
+          newNode.appendChild(textNode);
+          newNode.classList.add("highlight-title");
+          var pre = els[i].querySelector('pre');
+          pre.appendChild(newNode);
+        }
+      }
+    });
+    // @license-end
+  </script>
+
+</head>
+
+<body>
+  <header id="header"><a href="/" class="title" id="brand">
+  <span id="accent"></span>S. Verona Lišková
+</a>
+<nav><ul>
+
+<li><a href="/blog">blog</a></li>
+
+<li><a href="https://github.com/sverona">github</a></li>
+
+<li><a href="/about">about</a></li>
+
+</ul>
+</nav>
+</header>
+  <main><noscript>
+  <section style="background-color: #e6e8fa; margin-block: 1rem; padding: 1px 1rem; box-shadow: 2px 2px #000">
+    <p>Hello, sentient being who has disabled JavaScript/is using <a href="https://www.gnu.org/software/librejs/index.html">LibreJS</a>!</p>
+    <p>This site uses as little JavaScript as I can get away with, but it does require JS to:</p>
+<ol>
+  <li>render mathematics; for this purpose I use <a href="https://katex.org">KaTeX</a>, which is freely licensed (and partially trans-made! 🏳️‍🌈)</li>
+  <li>slightly extend Hugo's <a href="https://gohugo.io/content-management/syntax-highlighting/#highlight-shortcode">highlight shortcode</a> to show filenames in code listings. (The actual syntax highlighting is done server-side.)</li>
+</ol>
+    <p>This site validates under LibreJS as of 6 September 2022. If you find otherwise, please contact me.</p>
+  </section>
+</noscript>
+
+<header id="front-matter" class="margin-right margin-left">
+  <nav>
+    <div id="current-section">
+      
+        <a href="https://sverona.dev/trig/">MATH 117: Trigonometry</a>
+      
+    </div>
+    
+    <div id="next-prev">
+      
+      <span>
+       
+      &twoheadleftarrow; <a href="https://sverona.dev/trig/graphs/">The sine and cosine curves</a>
+       
+      </span>
+      <span>
+       
+      <a href="https://sverona.dev/trig/inverse-functions/">Inverse trigonometric functions</a> &twoheadrightarrow;
+       
+      </span>
+    </div>
+    
+  </nav>
+  <div style="text-align: center">
+    
+    <time datetime='2021-10-05' pubdate>
+      October 5, 2021
+    </time>
+    
+    <h1>The tangent and secant curves</h1>
+    
+    <em id="page-description">Content from section 8.2 in OpenSTAX.</em>
+    
+    
+  </div>
+</div>
+</header>
+
+<article>
+  
+  <div id="toc" class="margin-toggle margin-left">
+    <h2>Table of Contents</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-we-know-already">What we know already</a></li>
+    <li><a href="#values-of-tangent-and-secant">Values of tangent and secant</a></li>
+    <li><a href="#tangent-curves">Tangent curves</a></li>
+    <li><a href="#secant-curves">Secant curves</a></li>
+    <li><a href="#examples">Examples</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
+  </div>
+  
+  <style type="text/css">
+.small {
+  font-size: smaller;
+}
+</style>
+<h2 id="what-we-know-already">What we know already</h2>
+<p>The graphs of sine or cosine make <em>waves</em>, like this:</p>
+<p>[Desmos]</p>
+<p>These graphs can have horizontal and vertical <em>shifts</em>, <em>squishes</em>, <em>stretches</em>, and/or <em>flips.</em></p>
+<p>Some of these have special names. We call horizontal shifts <em>phase shifts.</em> A horizontal squish or stretch is a change in the <em>period.</em> A vertical stretch or squish is a change in the <em>amplitude.</em></p>
+<p>Given a generic sine or cosine function \(f(x) = A \sin(Bx + C) + D\), we can determine the period as \(\dfrac{2\pi}{|B|},\) the phase shift as \(\dfrac{-C}{B}\), and the amplitude as \(|A|.\)</p>
+<h2 id="values-of-tangent-and-secant">Values of tangent and secant</h2>
+<p>Let&rsquo;s plot these.</p>
+<p>Where is tangent undefined? Where is tangent zero? What about cotangent?</p>
+<p>Where is secant undefined? Does it ever reach zero? What about cosecant?</p>
+<p>Let&rsquo;s look at a graph. Where do tangent and secant and cotangent and cosecant have <em>asymptotes</em>?</p>
+<p>What do you notice about the values of sine, tangent, and secant in the first quadrant versus the values of cosine, cotangent, and cosecant in the second quadrant?</p>
+<h2 id="tangent-curves">Tangent curves</h2>
+<p>What period does the tangent have?</p>
+<p>Tangents and cotangents don&rsquo;t have amplitudes. We call the relevant bit the <em>stretch factor.</em> Other than that, all the rules are exactly the same.</p>
+<p>To wit, if I have \(f(x) = A \tan(Bx + C) + D\), I can determine the period as \(\dfrac{\pi}{|B|},\) the phase shift as \(\dfrac{-C}{B}\), and the <em>vertical stretch factor</em> as \(|A|\).</p>
+<p>Where does this transformed function have asymptotes?</p>
+<h2 id="secant-curves">Secant curves</h2>
+<p>What period does the secant have?</p>
+<p>Secants don&rsquo;t have amplitudes either.</p>
+<p>To wit, if I have \(f(x) = A \sec(Bx + C) + D\), I can determine the period as \(\dfrac{2\pi}{|B|},\) the phase shift as \(\dfrac{-C}{B}\), and the <em>vertical stretch factor</em> as \(|A|\).</p>
+<p>Where does this transformed function have asymptotes?</p>
+<h2 id="examples">Examples</h2>
+<p>Find the period, stretch factor, the phase shift, the midline, the range, and the asymptotes over one period.</p>
+<ol>
+<li>\(2 \tan(3x + \pi) - 2\)</li>
+<li>\(2 \sec(x/4 - \pi/4) + 1\)</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p>Here is everything you&rsquo;ll need to know about the six trig functions.</p>
+<p>Untransformed:</p>
+  <div  class="fullwidth">
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Period</th>
+<th>Phase shift</th>
+<th>Amplitude or<br />stretch factor</th>
+<th>Midline</th>
+<th>Range</th>
+<th>Asymptotes<br />(over one period)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\(\sin x\)</td>
+<td>\(2\pi\)</td>
+<td>\(0\)</td>
+<td>\(1\)</td>
+<td>\(y = 0\)</td>
+<td>\(-1 \leq y \leq 1\)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>\(\cos x\)</td>
+<td>\(2\pi\)</td>
+<td>\(0\)</td>
+<td>\(1\)</td>
+<td>\(y = 0\)</td>
+<td>\(-1 \leq y \leq 1\)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>\(\tan x\)</td>
+<td>\(\pi\)</td>
+<td>\(0\)</td>
+<td>\(1\)</td>
+<td>\(y = 0\)</td>
+<td>all real numbers</td>
+<td>\(x = \pi/2\)</td>
+</tr>
+<tr>
+<td>\(\cot x\)</td>
+<td>\(\pi\)</td>
+<td>\(0\)</td>
+<td>\(1\)</td>
+<td>\(y = 0\)</td>
+<td>all real numbers</td>
+<td>\(x = 0\)</td>
+</tr>
+<tr>
+<td>\(\sec x\)</td>
+<td>\(2\pi\)</td>
+<td>\(0\)</td>
+<td>\(1\)</td>
+<td>\(y = 0\)</td>
+<td>\(y \leq -1, y \geq 1\)</td>
+<td>\(x = \pi/2\newline x = 3\pi/2\)</td>
+</tr>
+<tr>
+<td>\(\csc x\)</td>
+<td>\(2\pi\)</td>
+<td>\(0\)</td>
+<td>\(1\)</td>
+<td>\(y = 0\)</td>
+<td>\(y \leq -1, y \geq 1\)</td>
+<td>\(x = 0\newline x = \pi\)</td>
+</tr>
+</tbody>
+</table>
+  </div>
+<p>Transformed:</p>
+  <div  class="fullwidth small">
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Period</th>
+<th>Phase shift</th>
+<th>Amplitude or<br />stretch factor</th>
+<th>Midline</th>
+<th>Range</th>
+<th>Asymptotes<br />(over one period)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\(A \sin(Bx + C) + D,\newline A\cos(Bx + C) + D\)</td>
+<td>\(\dfrac{2\pi}{|B|}\)</td>
+<td>\(\dfrac{-C}{B}\)</td>
+<td>\(|A|\)</td>
+<td>\(y = D\)</td>
+<td>\(D - |A| \leq y \leq D + |A|\)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>\(A \tan(Bx + C) + D\)</td>
+<td>\(\dfrac{\pi}{|B|}\)</td>
+<td>\(\dfrac{-C}{B}\)</td>
+<td>\(|A|\)</td>
+<td>\(y = D\)</td>
+<td>all real numbers</td>
+<td>\(x = \dfrac{\pi/2 - C}{B}\)</td>
+</tr>
+<tr>
+<td>\(A \cot(Bx + C) + D\)</td>
+<td>\(\dfrac{\pi}{|B|}\)</td>
+<td>\(\dfrac{-C}{B}\)</td>
+<td>\(|A|\)</td>
+<td>\(y = D\)</td>
+<td>all real numbers</td>
+<td>\(x = \dfrac{-C}{B}\)</td>
+</tr>
+<tr>
+<td>\(A \sec(Bx + C) + D\)</td>
+<td>\(\dfrac{2\pi}{|B|}\)</td>
+<td>\(\dfrac{-C}{B}\)</td>
+<td>\(|A|\)</td>
+<td>\(y = D\)</td>
+<td>\(y \leq D - |A|,\newline y\geq D + |A|\)</td>
+<td>\(x = \dfrac{\pi/2-C}{B},\newline x=\dfrac{3\pi/2 - C}{B}\)</td>
+</tr>
+<tr>
+<td>\(A \csc(Bx + C) + D\)</td>
+<td>\(\dfrac{2\pi}{|B|}\)</td>
+<td>\(\dfrac{-C}{B}\)</td>
+<td>\(|A|\)</td>
+<td>\(y = D\)</td>
+<td>\(y \leq D - |A|,\newline y\geq D + |A|\)</td>
+<td>\(x = \dfrac{-C}{B},\newline x=\dfrac{\pi - C}{B}\)</td>
+</tr>
+</tbody>
+</table>
+  </div>
+<p>How can we get to the other asymptotes from these two?</p>
+
+</article>
+
+  </main>
+  <footer> Made with <a href="https://github.com/sverona/hugo-semiotic">Hugo Semiotic</a> 
+</footer>
+
+    
+</body>
+
+</html>

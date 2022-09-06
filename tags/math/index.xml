@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>math on S. Verona Lišková</title><link>https://sverona.dev/tags/math/</link><description>Recent content in math on S. Verona Lišková</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 20 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://sverona.dev/tags/math/index.xml" rel="self" type="application/rss+xml"/><item><title>Hypertrigonometric functions</title><link>https://sverona.dev/blog/dixon/</link><pubDate>Sat, 20 Aug 2022 00:00:00 +0000</pubDate><guid>https://sverona.dev/blog/dixon/</guid><description>So, I fell down a Wiki-hole today and figured I could get a blog post out of it.For the curious: AuthaGraph projection → Lee conformal world in a tetrahedron → Dixon elliptic functions. Specifically, I encountered the Dixon elliptic functions \(\mathrm{sm}\) and \(\mathrm{cm}.\) These satisfy a generalization of the Pythagorean identity \[\sin^2 z + \cos^2 z = 1 \longrightarrow \operatorname{sm}^3 z + \operatorname{cm}^3 z = 1 \] with \(\operatorname{sm} 0 = 0, \operatorname{cm} 0 = 1.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>math on S. Verona Lišková</title>
+    <link>https://sverona.dev/tags/math/</link>
+    <description>Recent content in math on S. Verona Lišková</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://sverona.dev/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hypertrigonometric functions</title>
+      <link>https://sverona.dev/blog/dixon/</link>
+      <pubDate>Sat, 20 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://sverona.dev/blog/dixon/</guid>
+      <description>So, I fell down a Wiki-hole today and figured I could get a blog post out of it.For the curious: AuthaGraph projection → Lee conformal world in a tetrahedron → Dixon elliptic functions. Specifically, I encountered the Dixon elliptic functions \(\mathrm{sm}\) and \(\mathrm{cm}.\) These satisfy a generalization of the Pythagorean identity \[\sin^2 z + \cos^2 z = 1 \longrightarrow \operatorname{sm}^3 z + \operatorname{cm}^3 z = 1 \] with \(\operatorname{sm} 0 = 0, \operatorname{cm} 0 = 1.</description>
+    </item>
+    
+  </channel>
+</rss>

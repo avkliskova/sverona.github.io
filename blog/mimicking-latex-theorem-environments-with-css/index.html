@@ -1,55 +1,231 @@
-<!doctype html><html lang=en-us><head><meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Mimicking LaTeX theorem environments with CSS | S. Verona Lišková</title><meta name=title content="Mimicking LaTeX theorem environments with CSS"><meta name=description content="An attempt at professionally typeset math, with mixed success."><meta name=keywords content="css,code,latex,in-progress,2021,"><meta property="og:title" content="Mimicking LaTeX theorem environments with CSS"><meta property="og:description" content="An attempt at professionally typeset math, with mixed success."><meta property="og:type" content="article"><meta property="og:url" content="https://sverona.dev/blog/mimicking-latex-theorem-environments-with-css/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2021-08-08T00:00:00+00:00"><meta property="article:modified_time" content="2021-08-08T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Mimicking LaTeX theorem environments with CSS"><meta name=twitter:description content="An attempt at professionally typeset math, with mixed success."><meta itemprop=name content="Mimicking LaTeX theorem environments with CSS"><meta itemprop=description content="An attempt at professionally typeset math, with mixed success."><meta itemprop=datePublished content="2021-08-08T00:00:00+00:00"><meta itemprop=dateModified content="2021-08-08T00:00:00+00:00"><meta itemprop=wordCount content="732"><meta itemprop=keywords content="css,code,latex,in-progress,2021,"><meta name=referrer content="no-referrer-when-downgrade"><link href=https://sverona.dev/fonts/fonts.css type=text/css rel=stylesheet><link href=https://sverona.dev/sass/style.css type=text/css rel=stylesheet><link href=https://sverona.dev/sass/sidenotes.css type=text/css rel=stylesheet><link href=https://sverona.dev/katex/katex.min.css type=text/css rel=stylesheet><script defer src=https://sverona.dev/katex/katex.js></script>
-<script defer src=https://sverona.dev/katex/contrib/auto-render.js></script>
-<script>document.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],trust:e=>["\\htmlId","\\href"].includes(e.command),macros:{"\\eqref":"\\href{###1}{(\\text{#1})}","\\ref":"\\href{###1}{\\text{#1}}","\\label":"\\htmlId{#1}{}"}})}),document.addEventListener("DOMContentLoaded",()=>{for(var n,s,o,t=document.getElementsByClassName("highlight"),e=0;e<t.length;e++)t[e].title.length&&(n=document.createElement("code"),s=document.createTextNode(t[e].title),n.appendChild(s),n.classList.add("highlight-title"),o=t[e].querySelector("pre"),o.appendChild(n))})</script></head><body><header id=header><a href=/ class=title id=brand><span id=accent></span>S. Verona Lišková</a><nav><ul><li><a href=/blog>blog</a></li><li><a href=https://github.com/sverona>github</a></li><li><a href=/about>about</a></li></ul></nav></header><main><noscript><section style="background-color:#e6e8fa;margin-block:1rem;padding:1px 1rem;box-shadow:2px 2px #000"><p>Hello, sentient being who has disabled JavaScript/is using <a href=https://www.gnu.org/software/librejs/index.html>LibreJS</a>!</p><p>This site uses as little JavaScript as I can get away with, but it does require JS to:</p><ol><li>render mathematics; for this purpose I use <a href=https://katex.org>KaTeX</a>, which is freely licensed (and partially trans-made! 🏳️‍🌈)</li><li>slightly extend Hugo's <a href=https://gohugo.io/content-management/syntax-highlighting/#highlight-shortcode>highlight shortcode</a> to show filenames in code listings. (The actual syntax highlighting is done server-side.)</li></ol><p>This site validates under LibreJS as of 6 September 2022. If you find otherwise, please contact me.</p></section></noscript><header id=front-matter class="margin-right margin-left"><nav><div id=current-section></div><div id=next-prev><span>&Larr; <a href=https://sverona.dev/blog/gcd-ln/>\(\pi\) and \(e\) and the GCD</a></span>
-<span><a href=https://sverona.dev/blog/mern/>Annotations for a minimal MERN repo</a> &Rarr;</span></div></nav><div style=text-align:center><time datetime=2021-08-08 pubdate>August 8, 2021</time><h1>Mimicking LaTeX theorem environments with CSS</h1><em id=page-description>An attempt at professionally typeset math, with mixed success.</em><div class=page-tags><a href=https://sverona.dev/tags/css/>css</a>
-<a href=https://sverona.dev/tags/code/>code</a>
-<a href=https://sverona.dev/tags/latex/>latex</a>
-<a href=https://sverona.dev/tags/in-progress/>in-progress</a>
-<a href=https://sverona.dev/tags/2021/>2021</a></div></div></div></header><article><div id=toc class="margin-toggle margin-left"><h2>Table of Contents</h2><nav id=TableOfContents><ul><li><a href=#proofs-the-easy-way>Proofs, the easy way</a></li><li><a href=#handling-katex>Handling KaTeX</a></li></ul></nav></div><p>LaTeX supports &ldquo;theorem environments,&rdquo; like this:</p><p>(Image)</p><p>These aren&rsquo;t hard to mimic with <code>:before</code> and <code>:after</code>:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span>article {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>counter-reset</span>: definition theorem lemma example proposition corollary;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>definition</span>:before {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>counter-increment</span>: definition;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Definition &#34;</span> <span style=font-weight:700;font-style:italic>counter</span>(definition) <span style=color:#666;font-style:italic>&#34;.&#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-weight</span>: <span style=font-weight:700>bold</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>theorem</span>:before {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>counter-increment</span>: theorem;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Theorem &#34;</span> <span style=font-weight:700;font-style:italic>counter</span>(theorem) <span style=color:#666;font-style:italic>&#34;.&#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-weight</span>: <span style=font-weight:700>bold</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>lemma</span>:before {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>counter-increment</span>: lemma;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Lemma &#34;</span> <span style=font-weight:700;font-style:italic>counter</span>(lemma) <span style=color:#666;font-style:italic>&#34;.&#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-weight</span>: <span style=font-weight:700>bold</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>example</span>:before {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>counter-increment</span>: example;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Example &#34;</span> <span style=font-weight:700;font-style:italic>counter</span>(example) <span style=color:#666;font-style:italic>&#34;.&#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-weight</span>: <span style=font-weight:700>bold</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proposition</span>:before {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>counter-increment</span>: proposition;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Proposition &#34;</span> <span style=font-weight:700;font-style:italic>counter</span>(proposition) <span style=color:#666;font-style:italic>&#34;.&#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-weight</span>: <span style=font-weight:700>bold</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>corollary</span>:before {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>counter-increment</span>: corollary;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Corollary &#34;</span> <span style=font-weight:700;font-style:italic>counter</span>(corollary) <span style=color:#666;font-style:italic>&#34;.&#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-weight</span>: <span style=font-weight:700>bold</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>p:first-child {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>display</span>: <span style=font-weight:700>inline</span>;
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>One small problem:</p><p>(Why inlining is necessary)</p><p>So we just inline the first paragraph.</p><pre tabindex=0><code>.definition p:first-child,
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mimicking LaTeX theorem environments with CSS | S. Verona Lišková</title>
+<meta name="title" content="Mimicking LaTeX theorem environments with CSS" />
+<meta name="description" content="An attempt at professionally typeset math, with mixed success." />
+<meta name="keywords" content="css,code,latex,in-progress,2021," />
+
+
+<meta property="og:title" content="Mimicking LaTeX theorem environments with CSS" />
+<meta property="og:description" content="An attempt at professionally typeset math, with mixed success." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sverona.dev/blog/mimicking-latex-theorem-environments-with-css/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2021-08-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-08T00:00:00+00:00" />
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mimicking LaTeX theorem environments with CSS"/>
+<meta name="twitter:description" content="An attempt at professionally typeset math, with mixed success."/>
+
+
+
+<meta itemprop="name" content="Mimicking LaTeX theorem environments with CSS">
+<meta itemprop="description" content="An attempt at professionally typeset math, with mixed success."><meta itemprop="datePublished" content="2021-08-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="732">
+<meta itemprop="keywords" content="css,code,latex,in-progress,2021," />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  
+  <link href="https://sverona.dev/fonts/fonts.css" type="text/css" rel="stylesheet" />
+  
+  
+  <link href="https://sverona.dev/sass/style.css" type="text/css" rel="stylesheet" />
+  <link href="https://sverona.dev/sass/sidenotes.css" type="text/css" rel="stylesheet" />
+  
+    <link href="https://sverona.dev/katex/katex.min.css" type="text/css" rel="stylesheet" />
+    <script defer src="https://sverona.dev/katex/katex.js"></script>
+    <script defer src="https://sverona.dev/katex/contrib/auto-render.js"></script>
+  
+
+  <script>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-3.0
+
+    
+    document.addEventListener("DOMContentLoaded", () => {
+          renderMathInElement(document.body, {
+            delimiters: [
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true}
+            ],
+            
+            
+            trust: (context) => ['\\htmlId', '\\href'].includes(context.command),
+            macros: {
+              "\\eqref": "\\href{###1}{(\\text{#1})}",
+              "\\ref": "\\href{###1}{\\text{#1}}",
+              "\\label": "\\htmlId{#1}{}"
+            }
+        })
+      });
+    
+
+    document.addEventListener("DOMContentLoaded", () => {
+      var els = document.getElementsByClassName("highlight");
+      for (var i = 0; i < els.length; i++) {
+        if (els[i].title.length) {
+          var newNode = document.createElement("code");
+          var textNode = document.createTextNode(els[i].title);
+          newNode.appendChild(textNode);
+          newNode.classList.add("highlight-title");
+          var pre = els[i].querySelector('pre');
+          pre.appendChild(newNode);
+        }
+      }
+    });
+    // @license-end
+  </script>
+
+</head>
+
+<body>
+  <header id="header"><a href="/" class="title" id="brand">
+  <span id="accent"></span>S. Verona Lišková
+</a>
+<nav><ul>
+
+<li><a href="/blog">blog</a></li>
+
+<li><a href="https://github.com/sverona">github</a></li>
+
+<li><a href="/about">about</a></li>
+
+</ul>
+</nav>
+</header>
+  <main><noscript>
+  <section style="background-color: #e6e8fa; margin-block: 1rem; padding: 1px 1rem; box-shadow: 2px 2px #000">
+    <p>Hello, sentient being who has disabled JavaScript/is using <a href="https://www.gnu.org/software/librejs/index.html">LibreJS</a>!</p>
+    <p>This site uses as little JavaScript as I can get away with, but it does require JS to:</p>
+<ol>
+  <li>render mathematics; for this purpose I use <a href="https://katex.org">KaTeX</a>, which is freely licensed (and partially trans-made! 🏳️‍🌈)</li>
+  <li>slightly extend Hugo's <a href="https://gohugo.io/content-management/syntax-highlighting/#highlight-shortcode">highlight shortcode</a> to show filenames in code listings. (The actual syntax highlighting is done server-side.)</li>
+</ol>
+    <p>This site validates under LibreJS as of 6 September 2022. If you find otherwise, please contact me.</p>
+  </section>
+</noscript>
+
+<header id="front-matter" class="margin-right margin-left">
+  <nav>
+    <div id="current-section">
+      
+    </div>
+    
+    <div id="next-prev">
+      
+      <span>
+       
+      &twoheadleftarrow; <a href="https://sverona.dev/blog/gcd-ln/">\(\pi\) and \(e\) and the GCD</a>
+       
+      </span>
+      <span>
+       
+      <a href="https://sverona.dev/blog/mern/">Annotations for a minimal MERN repo</a> &twoheadrightarrow;
+       
+      </span>
+    </div>
+    
+  </nav>
+  <div style="text-align: center">
+    
+    <time datetime='2021-08-08' pubdate>
+      August 8, 2021
+    </time>
+    
+    <h1>Mimicking LaTeX theorem environments with CSS</h1>
+    
+    <em id="page-description">An attempt at professionally typeset math, with mixed success.</em>
+    
+    
+    <div class="page-tags">
+        
+          <a href="https://sverona.dev/tags/css/">css</a>
+        
+          <a href="https://sverona.dev/tags/code/">code</a>
+        
+          <a href="https://sverona.dev/tags/latex/">latex</a>
+        
+          <a href="https://sverona.dev/tags/in-progress/">in-progress</a>
+        
+          <a href="https://sverona.dev/tags/2021/">2021</a>
+        
+    </div> 
+    
+  </div>
+</div>
+</header>
+
+<article>
+  
+  <div id="toc" class="margin-toggle margin-left">
+    <h2>Table of Contents</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#proofs-the-easy-way">Proofs, the easy way</a></li>
+    <li><a href="#handling-katex">Handling KaTeX</a></li>
+  </ul>
+</nav>
+  </div>
+  
+  <p>LaTeX supports &ldquo;theorem environments,&rdquo; like this:</p>
+<p>(Image)</p>
+<p>These aren&rsquo;t hard to mimic with <code>:before</code> and <code>:after</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>article {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">counter-reset</span>: definition theorem lemma example proposition corollary;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">definition</span>:before {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">counter-increment</span>: definition;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Definition &#34;</span> <span style="font-weight:bold;font-style:italic">counter</span>(definition) <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">font-weight</span>: <span style="font-weight:bold">bold</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">theorem</span>:before {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">counter-increment</span>: theorem;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Theorem &#34;</span> <span style="font-weight:bold;font-style:italic">counter</span>(theorem) <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">font-weight</span>: <span style="font-weight:bold">bold</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">lemma</span>:before {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">counter-increment</span>: lemma;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Lemma &#34;</span> <span style="font-weight:bold;font-style:italic">counter</span>(lemma) <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">font-weight</span>: <span style="font-weight:bold">bold</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">example</span>:before {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">counter-increment</span>: example;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Example &#34;</span> <span style="font-weight:bold;font-style:italic">counter</span>(example) <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">font-weight</span>: <span style="font-weight:bold">bold</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proposition</span>:before {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">counter-increment</span>: proposition;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Proposition &#34;</span> <span style="font-weight:bold;font-style:italic">counter</span>(proposition) <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">font-weight</span>: <span style="font-weight:bold">bold</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">corollary</span>:before {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">counter-increment</span>: corollary;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Corollary &#34;</span> <span style="font-weight:bold;font-style:italic">counter</span>(corollary) <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">font-weight</span>: <span style="font-weight:bold">bold</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p:first-child {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">display</span>: <span style="font-weight:bold">inline</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>One small problem:</p>
+<p>(Why inlining is necessary)</p>
+<p>So we just inline the first paragraph.</p>
+<pre tabindex="0"><code>.definition p:first-child,
 .theorem p:first-child,
 .lemma p:first-child,
 .example p:first-child,
@@ -57,128 +233,154 @@
 .corollary p:first-child {
 	display: inline;
 }
-</code></pre><p>This is almost perfect. You may notice the proof environment is missing.</p><h2 id=proofs-the-easy-way>Proofs, the easy way</h2><p>Proofs are just like any other theorem environment, except they have an end-of-proof sign <code>U+25FB</code> on the far right of the last line. So you can just do:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span> {
-</span></span><span style=display:flex><span>	<span style=font-weight:700>overflow</span>: <span style=font-weight:700>auto</span>; <span style=color:#888;font-style:italic>/* Encompass floated children. */</span>
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span>:before {
-</span></span><span style=display:flex><span>	<span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Proof. &#34;</span>
-</span></span><span style=display:flex><span>	<span style=font-weight:700>font-style</span>: <span style=font-weight:700>italic</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span>:after {
-</span></span><span style=display:flex><span>	<span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;\25FB&#34;</span>;
-</span></span><span style=display:flex><span>	<span style=font-weight:700>float</span>: <span style=font-weight:700>right</span>;
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>Except this doesn&rsquo;t quite work:</p><p>(Image)</p><p>Inlining fixes this, sort of:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span> &gt; p:last-child:not(:nth-child(2)) {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>display</span>: <span style=font-weight:700>inline</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span> &gt; p:last-child:nth-child(2) {
-</span></span><span style=display:flex><span>  margin-block-end: 0;
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>The only corner case is when a proof contains exactly two paragraphs; they can&rsquo;t both be inlined, or they&rsquo;ll run together. I chose to sacrifice the end-of-proof symbol&rsquo;s placement, rather than the <code>:before</code>. CSS cannot style an element by its children yet, so this is as far as the logic can go.</p><h2 id=handling-katex>Handling KaTeX</h2><p>Of course, a LaTeX renderer makes things more complicated, but not by much. The first problem we have is that under <code>overflow: auto</code>, proofs that contain display math will overflow their containers slightly. This is really annoying, especially on mobile. There are a few ways of fixing it, none of which I fully understand. I went with <code>display: table</code>, which I&rsquo;m sure is bad practice, but it was the best out of what I tried.</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span> {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>display</span>: <span style=font-weight:700>table</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>table-layout</span>: <span style=font-weight:700>fixed</span>; <span style=color:#888;font-style:italic>/* Prevent container from stretching */</span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>width</span>: 100<span style=font-weight:700>%</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>@<span style=font-weight:700>media</span> screen and (min-width: 900px) {
-</span></span><span style=display:flex><span>  .<span style=color:#666;font-weight:700;font-style:italic>proof</span> {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>width</span>: <span style=font-weight:700;font-style:italic>calc</span>(<span style=color:#666;font-weight:700;font-style:italic>var</span>(--content-proportion) * 100<span style=font-weight:700>%</span>);
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>Another problem we have is rendering the end-of-proof symbol properly in proofs that end with display math. The usual LaTeX fix is <code>\qedhere</code>, but we obviously don&rsquo;t have that available to us.</p><p><em>Or do we?</em></p><p>The definition of <code>\qedhere</code> in the <code>amsthm</code> package is as follows:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tex data-lang=tex><span style=display:flex><span><span style=color:#888;font-style:italic>%    Prints the current QED symbol and replaces the top entry on the
-</span></span></span><span style=display:flex><span><span style=color:#888;font-style:italic>%    stack with a null entry.
-</span></span></span><span style=display:flex><span><span style=color:#888;font-style:italic>%    \begin{macrocode}
-</span></span></span><span style=display:flex><span><span style=color:#888;font-style:italic></span><span style=font-weight:700>\newcommand</span><span style=font-weight:700;font-style:italic>{</span><span style=font-weight:700>\qedhere</span><span style=font-weight:700;font-style:italic>}{</span><span style=color:#888;font-style:italic>%
-</span></span></span><span style=display:flex><span><span style=color:#888;font-style:italic></span>  <span style=font-weight:700>\begingroup</span> <span style=font-weight:700>\let\mathqed\math</span>@qedhere
-</span></span><span style=display:flex><span>    <span style=font-weight:700>\let\qed</span>@elt<span style=font-weight:700>\setQED</span>@elt <span style=font-weight:700>\QED</span>@stack<span style=font-weight:700>\relax\relax</span> <span style=font-weight:700>\endgroup</span>
-</span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic>}</span>
-</span></span><span style=display:flex><span><span style=color:#888;font-style:italic>%    \end{macrocode}
-</span></span></span></code></pre></div><p>There&rsquo;s a stack involved. And the code goes on for pages after this. So no, the LaTeX way of placing the end-of-proof is not going to be emulated with KaTeX macros. We could possibly fake it with a macro for <code>\hfill \qedsymbol</code>, but <a href=https://github.com/KaTeX/KaTeX/issues/164><code>\hfill</code> isn&rsquo;t implemented yet.</a>.</p><p>A satisfying solution to this requires either JavaScript or a deeper understanding of the structure KaTeX generates than I possess. I chose laziness rather than satisfaction:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span> &gt; p:last-child &gt; span:last-child .<span style=color:#666;font-weight:700;font-style:italic>katex-display</span> {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>margin</span>: 1<span style=font-weight:700>em</span> 0 <span style=font-weight:700;font-style:italic>calc</span>(1.6<span style=font-weight:700>em</span> * -1.1); <span style=color:#888;font-style:italic>/* Line-height times -1.1 */</span>
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>It&rsquo;s not perfect &mdash; especially when the last line of display math contains something like a <code>\sum</code> &mdash; but it&rsquo;s good enough for me.</p><p>The complete code is here:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>definition</span>:before {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>counter-increment</span>: definition;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Definition &#34;</span> <span style=font-weight:700;font-style:italic>counter</span>(definition) <span style=color:#666;font-style:italic>&#34;.&#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-weight</span>: <span style=font-weight:700>bold</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>theorem</span>:before {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>counter-increment</span>: theorem;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Theorem &#34;</span> <span style=font-weight:700;font-style:italic>counter</span>(theorem) <span style=color:#666;font-style:italic>&#34;.&#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-weight</span>: <span style=font-weight:700>bold</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>lemma</span>:before {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>counter-increment</span>: lemma;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Lemma &#34;</span> <span style=font-weight:700;font-style:italic>counter</span>(lemma) <span style=color:#666;font-style:italic>&#34;.&#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-weight</span>: <span style=font-weight:700>bold</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>example</span>:before {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>counter-increment</span>: example;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Example &#34;</span> <span style=font-weight:700;font-style:italic>counter</span>(example) <span style=color:#666;font-style:italic>&#34;.&#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-weight</span>: <span style=font-weight:700>bold</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proposition</span>:before {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>counter-increment</span>: proposition;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Proposition &#34;</span> <span style=font-weight:700;font-style:italic>counter</span>(proposition) <span style=color:#666;font-style:italic>&#34;.&#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-weight</span>: <span style=font-weight:700>bold</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>corollary</span>:before {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>counter-increment</span>: corollary;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Corollary &#34;</span> <span style=font-weight:700;font-style:italic>counter</span>(corollary) <span style=color:#666;font-style:italic>&#34;.&#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-weight</span>: <span style=font-weight:700>bold</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span> {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>display</span>: <span style=font-weight:700>table</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>width</span>: 100<span style=font-weight:700>%</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>corollary</span> p:first-child,
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>theorem</span> p:first-child,
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>definition</span> p:first-child,
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span> p:first-child,
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>lemma</span> p:first-child,
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>example</span> p:first-child {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>display</span>: <span style=font-weight:700>inline</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>corollary</span>,
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>theorem</span>,
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>definition</span>,
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span>,
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>lemma</span>,
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>example</span> {
-</span></span><span style=display:flex><span>  margin-block: 1<span style=font-weight:700>rem</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span>:before {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;Proof. &#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>font-style</span>: <span style=font-weight:700>italic</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span>:after {
-</span></span><span style=display:flex><span> 	<span style=font-weight:700>content</span>: <span style=color:#666;font-style:italic>&#34;\25FB&#34;</span>;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>float</span>: <span style=font-weight:700>right</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span> &gt; p:last-child:not(:nth-child(2)) {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>display</span>: <span style=font-weight:700>inline</span>;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span> &gt; p:last-child:nth-child(2) {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>display</span>: <span style=font-weight:700>inline-block</span>;
-</span></span><span style=display:flex><span>  margin-block-end: 0;
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.<span style=color:#666;font-weight:700;font-style:italic>proof</span> &gt; p:last-child &gt; span:last-child .<span style=color:#666;font-weight:700;font-style:italic>katex-display</span> {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>margin</span>: 1<span style=font-weight:700>em</span> 0 <span style=font-weight:700;font-style:italic>calc</span>(-1.6<span style=font-weight:700>em</span> * 1.1);
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div></article></main><footer>Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a></footer></body></html>
+</code></pre><p>This is almost perfect. You may notice the proof environment is missing.</p>
+<h2 id="proofs-the-easy-way">Proofs, the easy way</h2>
+<p>Proofs are just like any other theorem environment, except they have an end-of-proof sign <code>U+25FB</code> on the far right of the last line. So you can just do:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span> {
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">overflow</span>: <span style="font-weight:bold">auto</span>; <span style="color:#888;font-style:italic">/* Encompass floated children. */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span>:before {
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Proof. &#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">font-style</span>: <span style="font-weight:bold">italic</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span>:after {
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;\25FB&#34;</span>;
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">float</span>: <span style="font-weight:bold">right</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Except this doesn&rsquo;t quite work:</p>
+<p>(Image)</p>
+<p>Inlining fixes this, sort of:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span> &gt; p:last-child:not(:nth-child(2)) {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">display</span>: <span style="font-weight:bold">inline</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span> &gt; p:last-child:nth-child(2) {
+</span></span><span style="display:flex;"><span>  margin-block-end: 0;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The only corner case is when a proof contains exactly two paragraphs; they can&rsquo;t both be inlined, or they&rsquo;ll run together. I chose to sacrifice the end-of-proof symbol&rsquo;s placement, rather than the <code>:before</code>. CSS cannot style an element by its children yet, so this is as far as the logic can go.</p>
+<h2 id="handling-katex">Handling KaTeX</h2>
+<p>Of course, a LaTeX renderer makes things more complicated, but not by much. The first problem we have is that under <code>overflow: auto</code>, proofs that contain display math will overflow their containers slightly. This is really annoying, especially on mobile. There are a few ways of fixing it, none of which I fully understand. I went with <code>display: table</code>, which I&rsquo;m sure is bad practice, but it was the best out of what I tried.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span> {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">display</span>: <span style="font-weight:bold">table</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">table-layout</span>: <span style="font-weight:bold">fixed</span>; <span style="color:#888;font-style:italic">/* Prevent container from stretching */</span>
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">width</span>: 100<span style="font-weight:bold">%</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>@<span style="font-weight:bold">media</span> screen and (min-width: 900px) {
+</span></span><span style="display:flex;"><span>  .<span style="color:#666;font-weight:bold;font-style:italic">proof</span> {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">width</span>: <span style="font-weight:bold;font-style:italic">calc</span>(<span style="color:#666;font-weight:bold;font-style:italic">var</span>(--content-proportion) * 100<span style="font-weight:bold">%</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Another problem we have is rendering the end-of-proof symbol properly in proofs that end with display math. The usual LaTeX fix is <code>\qedhere</code>, but we obviously don&rsquo;t have that available to us.</p>
+<p><em>Or do we?</em></p>
+<p>The definition of <code>\qedhere</code> in the <code>amsthm</code> package is as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span><span style="color:#888;font-style:italic">%    Prints the current QED symbol and replaces the top entry on the
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic">%    stack with a null entry.
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic">%    \begin{macrocode}
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span><span style="font-weight:bold">\newcommand</span><span style="font-weight:bold;font-style:italic">{</span><span style="font-weight:bold">\qedhere</span><span style="font-weight:bold;font-style:italic">}{</span><span style="color:#888;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span>  <span style="font-weight:bold">\begingroup</span> <span style="font-weight:bold">\let\mathqed\math</span>@qedhere
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">\let\qed</span>@elt<span style="font-weight:bold">\setQED</span>@elt <span style="font-weight:bold">\QED</span>@stack<span style="font-weight:bold">\relax\relax</span> <span style="font-weight:bold">\endgroup</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic">%    \end{macrocode}
+</span></span></span></code></pre></div><p>There&rsquo;s a stack involved. And the code goes on for pages after this. So no, the LaTeX way of placing the end-of-proof is not going to be emulated with KaTeX macros. We could possibly fake it with a macro for <code>\hfill \qedsymbol</code>, but <a href="https://github.com/KaTeX/KaTeX/issues/164"><code>\hfill</code> isn&rsquo;t implemented yet.</a>.</p>
+<p>A satisfying solution to this requires either JavaScript or a deeper understanding of the structure KaTeX generates than I possess. I chose laziness rather than satisfaction:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span> &gt; p:last-child &gt; span:last-child .<span style="color:#666;font-weight:bold;font-style:italic">katex-display</span> {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">margin</span>: 1<span style="font-weight:bold">em</span> 0 <span style="font-weight:bold;font-style:italic">calc</span>(1.6<span style="font-weight:bold">em</span> * -1.1); <span style="color:#888;font-style:italic">/* Line-height times -1.1 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>It&rsquo;s not perfect &mdash; especially when the last line of display math contains something like a <code>\sum</code> &mdash; but it&rsquo;s good enough for me.</p>
+<p>The complete code is here:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">definition</span>:before {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">counter-increment</span>: definition;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Definition &#34;</span> <span style="font-weight:bold;font-style:italic">counter</span>(definition) <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">font-weight</span>: <span style="font-weight:bold">bold</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">theorem</span>:before {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">counter-increment</span>: theorem;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Theorem &#34;</span> <span style="font-weight:bold;font-style:italic">counter</span>(theorem) <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">font-weight</span>: <span style="font-weight:bold">bold</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">lemma</span>:before {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">counter-increment</span>: lemma;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Lemma &#34;</span> <span style="font-weight:bold;font-style:italic">counter</span>(lemma) <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">font-weight</span>: <span style="font-weight:bold">bold</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">example</span>:before {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">counter-increment</span>: example;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Example &#34;</span> <span style="font-weight:bold;font-style:italic">counter</span>(example) <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">font-weight</span>: <span style="font-weight:bold">bold</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proposition</span>:before {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">counter-increment</span>: proposition;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Proposition &#34;</span> <span style="font-weight:bold;font-style:italic">counter</span>(proposition) <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">font-weight</span>: <span style="font-weight:bold">bold</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">corollary</span>:before {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">counter-increment</span>: corollary;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Corollary &#34;</span> <span style="font-weight:bold;font-style:italic">counter</span>(corollary) <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">font-weight</span>: <span style="font-weight:bold">bold</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span> {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">display</span>: <span style="font-weight:bold">table</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">width</span>: 100<span style="font-weight:bold">%</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">corollary</span> p:first-child,
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">theorem</span> p:first-child,
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">definition</span> p:first-child,
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span> p:first-child,
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">lemma</span> p:first-child,
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">example</span> p:first-child {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">display</span>: <span style="font-weight:bold">inline</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">corollary</span>,
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">theorem</span>,
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">definition</span>,
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span>,
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">lemma</span>,
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">example</span> {
+</span></span><span style="display:flex;"><span>  margin-block: 1<span style="font-weight:bold">rem</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span>:before {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;Proof. &#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">font-style</span>: <span style="font-weight:bold">italic</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span>:after {
+</span></span><span style="display:flex;"><span> 	<span style="font-weight:bold">content</span>: <span style="color:#666;font-style:italic">&#34;\25FB&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">float</span>: <span style="font-weight:bold">right</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span> &gt; p:last-child:not(:nth-child(2)) {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">display</span>: <span style="font-weight:bold">inline</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span> &gt; p:last-child:nth-child(2) {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">display</span>: <span style="font-weight:bold">inline-block</span>;
+</span></span><span style="display:flex;"><span>  margin-block-end: 0;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#666;font-weight:bold;font-style:italic">proof</span> &gt; p:last-child &gt; span:last-child .<span style="color:#666;font-weight:bold;font-style:italic">katex-display</span> {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">margin</span>: 1<span style="font-weight:bold">em</span> 0 <span style="font-weight:bold;font-style:italic">calc</span>(-1.6<span style="font-weight:bold">em</span> * 1.1);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</article>
+
+  </main>
+  <footer> Made with <a href="https://github.com/sverona/hugo-semiotic">Hugo Semiotic</a> 
+</footer>
+
+    
+</body>
+
+</html>

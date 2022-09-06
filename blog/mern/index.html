@@ -1,2 +1,181 @@
-<!doctype html><html lang=en-us><head><meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Annotations for a minimal MERN repo | S. Verona Lišková</title><meta name=title content="Annotations for a minimal MERN repo"><meta name=description content="Who needs tutorial hell when you can read code?"><meta name=keywords content="2019,2020,2021,2022,asymptotics,bash,challenge,code,combinatorics,css,deployment,finance,fun,grad-school,in-progress,javascript,latex,linear-operators,machine-learning,math,mathematics,mental-health,neural-networks,operations-research,probability,project-euler,project-writeup,python,qutebrowser,term-paper,time-scales-calculus,web-scraping,"><meta property="og:title" content="Annotations for a minimal MERN repo"><meta property="og:description" content="Who needs tutorial hell when you can read code?"><meta property="og:type" content="website"><meta property="og:url" content="https://sverona.dev/blog/mern/"><meta name=twitter:card content="summary"><meta name=twitter:title content="Annotations for a minimal MERN repo"><meta name=twitter:description content="Who needs tutorial hell when you can read code?"><meta itemprop=name content="Annotations for a minimal MERN repo"><meta itemprop=description content="Who needs tutorial hell when you can read code?"><meta name=referrer content="no-referrer-when-downgrade"><link rel=alternate type=application/rss+xml href=https://sverona.dev/blog/mern/index.xml title="S. Verona Lišková"><link href=https://sverona.dev/fonts/fonts.css type=text/css rel=stylesheet><link href=https://sverona.dev/sass/style.css type=text/css rel=stylesheet><link href=https://sverona.dev/sass/sidenotes.css type=text/css rel=stylesheet><script>document.addEventListener("DOMContentLoaded",()=>{for(var n,s,o,t=document.getElementsByClassName("highlight"),e=0;e<t.length;e++)t[e].title.length&&(n=document.createElement("code"),s=document.createTextNode(t[e].title),n.appendChild(s),n.classList.add("highlight-title"),o=t[e].querySelector("pre"),o.appendChild(n))})</script></head><body><header id=header><a href=/ class=title id=brand><span id=accent></span>S. Verona Lišková</a><nav><ul><li><a href=/blog>blog</a></li><li><a href=https://github.com/sverona>github</a></li><li><a href=/about>about</a></li></ul></nav></header><main><noscript><section style="background-color:#e6e8fa;margin-block:1rem;padding:1px 1rem;box-shadow:2px 2px #000"><p>Hello, sentient being who has disabled JavaScript/is using <a href=https://www.gnu.org/software/librejs/index.html>LibreJS</a>!</p><p>This site uses as little JavaScript as I can get away with, but it does require JS to:</p><ol><li>render mathematics; for this purpose I use <a href=https://katex.org>KaTeX</a>, which is freely licensed (and partially trans-made! 🏳️‍🌈)</li><li>slightly extend Hugo's <a href=https://gohugo.io/content-management/syntax-highlighting/#highlight-shortcode>highlight shortcode</a> to show filenames in code listings. (The actual syntax highlighting is done server-side.)</li></ol><p>This site validates under LibreJS as of 6 September 2022. If you find otherwise, please contact me.</p></section></noscript><header id=front-matter class="margin-right margin-left"><nav><div id=current-section></div><div id=next-prev><span>&Larr; <a href=https://sverona.dev/blog/mimicking-latex-theorem-environments-with-css/>Mimicking LaTeX theorem environments with CSS</a></span>
-<span><a href=https://sverona.dev/blog/rnssnc/>Building RNSSNC</a> &Rarr;</span></div></nav><div style=text-align:center><time datetime=2021-10-01 pubdate>October 1, 2021</time><h1>Annotations for a minimal MERN repo</h1><em id=page-description>Who needs tutorial hell when you can read code?</em></div></div></header><article><div id=toc class="margin-toggle margin-left"><h2>Table of Contents</h2><nav id=TableOfContents><ul><li><a href=#architecture-notes>Architecture notes</a></li></ul></nav></div><p>Here is most of the code in <a href=https://github.com/jmsv>James Vickery</a>&rsquo;s <a href=https://github.com/jmsv/simple-mern>simple-mern</a> repo, annotated by myself. I thought this would be quicker than reading a big 500-page book.</p><h2 id=architecture-notes>Architecture notes</h2><p>The application is split into <a href=../frontend>frontend components</a> (under <code>client/</code>) and <a href=../backend>backend components</a> (mostly under <code>src/</code>.) The files under the root directory are discussed in <a href=../node>their own post</a>.</p></article><ul class=blog-posts><li class=blog-post><time datetime=2021-10-01 pubdate>October 1, 2021</time><h2 style=margin:0><a href=https://sverona.dev/blog/mern/node/>Annotated MERN I: Node.js</a></h2><em>Annotations for the repo's Node.js setup.</em></li><li class=blog-post><time datetime=2021-10-02 pubdate>October 2, 2021</time><h2 style=margin:0><a href=https://sverona.dev/blog/mern/backend/>Annotated MERN II: Backend</a></h2><em>Annotations for the Express and Mongo/Mongoose part of the repo.</em></li><li class=blog-post><time datetime=2021-10-03 pubdate>October 3, 2021</time><h2 style=margin:0><a href=https://sverona.dev/blog/mern/frontend/>Annotated MERN III: Frontend</a></h2><em>Annotations for the React part of the repo.</em></li></ul></main><footer>Made with <a href=https://github.com/sverona/hugo-semiotic>Hugo Semiotic</a></footer></body></html>
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Annotations for a minimal MERN repo | S. Verona Lišková</title>
+<meta name="title" content="Annotations for a minimal MERN repo" />
+<meta name="description" content="Who needs tutorial hell when you can read code?" />
+<meta name="keywords" content="2019,2020,2021,2022,asymptotics,bash,challenge,code,combinatorics,css,deployment,finance,fun,grad-school,in-progress,javascript,latex,linear-operators,machine-learning,math,mathematics,mental-health,neural-networks,operations-research,probability,project-euler,project-writeup,python,qutebrowser,term-paper,time-scales-calculus,web-scraping," />
+
+
+<meta property="og:title" content="Annotations for a minimal MERN repo" />
+<meta property="og:description" content="Who needs tutorial hell when you can read code?" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://sverona.dev/blog/mern/" />
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Annotations for a minimal MERN repo"/>
+<meta name="twitter:description" content="Who needs tutorial hell when you can read code?"/>
+
+
+
+<meta itemprop="name" content="Annotations for a minimal MERN repo">
+<meta itemprop="description" content="Who needs tutorial hell when you can read code?">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <link rel="alternate" type="application/rss+xml" href="https://sverona.dev/blog/mern/index.xml" title="S. Verona Lišková" />
+  
+  <link href="https://sverona.dev/fonts/fonts.css" type="text/css" rel="stylesheet" />
+  
+  
+  <link href="https://sverona.dev/sass/style.css" type="text/css" rel="stylesheet" />
+  <link href="https://sverona.dev/sass/sidenotes.css" type="text/css" rel="stylesheet" />
+  
+
+  <script>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-3.0
+
+    
+
+    document.addEventListener("DOMContentLoaded", () => {
+      var els = document.getElementsByClassName("highlight");
+      for (var i = 0; i < els.length; i++) {
+        if (els[i].title.length) {
+          var newNode = document.createElement("code");
+          var textNode = document.createTextNode(els[i].title);
+          newNode.appendChild(textNode);
+          newNode.classList.add("highlight-title");
+          var pre = els[i].querySelector('pre');
+          pre.appendChild(newNode);
+        }
+      }
+    });
+    // @license-end
+  </script>
+
+</head>
+
+<body>
+  <header id="header"><a href="/" class="title" id="brand">
+  <span id="accent"></span>S. Verona Lišková
+</a>
+<nav><ul>
+
+<li><a href="/blog">blog</a></li>
+
+<li><a href="https://github.com/sverona">github</a></li>
+
+<li><a href="/about">about</a></li>
+
+</ul>
+</nav>
+</header>
+  <main>
+  <noscript>
+  <section style="background-color: #e6e8fa; margin-block: 1rem; padding: 1px 1rem; box-shadow: 2px 2px #000">
+    <p>Hello, sentient being who has disabled JavaScript/is using <a href="https://www.gnu.org/software/librejs/index.html">LibreJS</a>!</p>
+    <p>This site uses as little JavaScript as I can get away with, but it does require JS to:</p>
+<ol>
+  <li>render mathematics; for this purpose I use <a href="https://katex.org">KaTeX</a>, which is freely licensed (and partially trans-made! 🏳️‍🌈)</li>
+  <li>slightly extend Hugo's <a href="https://gohugo.io/content-management/syntax-highlighting/#highlight-shortcode">highlight shortcode</a> to show filenames in code listings. (The actual syntax highlighting is done server-side.)</li>
+</ol>
+    <p>This site validates under LibreJS as of 6 September 2022. If you find otherwise, please contact me.</p>
+  </section>
+</noscript>
+
+<header id="front-matter" class="margin-right margin-left">
+  <nav>
+    <div id="current-section">
+      
+    </div>
+    
+    <div id="next-prev">
+      
+      <span>
+       
+      &twoheadleftarrow; <a href="https://sverona.dev/blog/mimicking-latex-theorem-environments-with-css/">Mimicking LaTeX theorem environments with CSS</a>
+       
+      </span>
+      <span>
+       
+      <a href="https://sverona.dev/blog/rnssnc/">Building RNSSNC</a> &twoheadrightarrow;
+       
+      </span>
+    </div>
+    
+  </nav>
+  <div style="text-align: center">
+    
+    <time datetime='2021-10-01' pubdate>
+      October 1, 2021
+    </time>
+    
+    <h1>Annotations for a minimal MERN repo</h1>
+    
+    <em id="page-description">Who needs tutorial hell when you can read code?</em>
+    
+    
+  </div>
+</div>
+</header>
+
+<article>
+  
+  <div id="toc" class="margin-toggle margin-left">
+    <h2>Table of Contents</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#architecture-notes">Architecture notes</a></li>
+  </ul>
+</nav>
+  </div>
+  
+  <p>Here is most of the code in <a href="https://github.com/jmsv">James Vickery</a>&rsquo;s <a href="https://github.com/jmsv/simple-mern">simple-mern</a> repo, annotated by myself. I thought this would be quicker than reading a big 500-page book.</p>
+<h2 id="architecture-notes">Architecture notes</h2>
+<p>The application is split into <a href="../frontend">frontend components</a> (under <code>client/</code>) and <a href="../backend">backend components</a> (mostly under <code>src/</code>.) The files under the root directory are discussed in <a href="../node">their own post</a>.</p>
+
+</article>
+<ul class="blog-posts">
+    
+      
+      <li class="blog-post">
+          <time datetime='2021-10-01' pubdate>
+            October 1, 2021
+          </time>
+          <h2 style="margin: 0"><a href="https://sverona.dev/blog/mern/node/">Annotated MERN I: Node.js</a></h2>
+          <em>Annotations for the repo&#39;s Node.js setup.</em>
+      </li>
+      
+      <li class="blog-post">
+          <time datetime='2021-10-02' pubdate>
+            October 2, 2021
+          </time>
+          <h2 style="margin: 0"><a href="https://sverona.dev/blog/mern/backend/">Annotated MERN II: Backend</a></h2>
+          <em>Annotations for the Express and Mongo/Mongoose part of the repo.</em>
+      </li>
+      
+      <li class="blog-post">
+          <time datetime='2021-10-03' pubdate>
+            October 3, 2021
+          </time>
+          <h2 style="margin: 0"><a href="https://sverona.dev/blog/mern/frontend/">Annotated MERN III: Frontend</a></h2>
+          <em>Annotations for the React part of the repo.</em>
+      </li>
+      
+    
+  </ul>
+
+  </main>
+  <footer> Made with <a href="https://github.com/sverona/hugo-semiotic">Hugo Semiotic</a> 
+</footer>
+
+    
+</body>
+
+</html>

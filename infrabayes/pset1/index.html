@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Solutions to infra-exercises I | S. Verona Lišková</title>
+<meta name="title" content="Solutions to infra-exercises I" />
+<meta name="description" content="These are S&rsquo;s solutions for the first set of infra-Bayesian exercises. Spoilers, of course!
+I decree this a Moore method problem set! That means you&rsquo;re allowed to be as pedantic about definitions as you like, and I commit to addressing your pedantry. Please shoot me an email if there&rsquo;s a way I can improve this document&rsquo;s rigor and/or clarity!
+Notes When the document says monotone, it means what most analysis textbooks call increasing." />
+<meta name="keywords" content="" />
+
+
+<meta property="og:title" content="Solutions to infra-exercises I" />
+<meta property="og:description" content="These are S&rsquo;s solutions for the first set of infra-Bayesian exercises. Spoilers, of course!
+I decree this a Moore method problem set! That means you&rsquo;re allowed to be as pedantic about definitions as you like, and I commit to addressing your pedantry. Please shoot me an email if there&rsquo;s a way I can improve this document&rsquo;s rigor and/or clarity!
+Notes When the document says monotone, it means what most analysis textbooks call increasing." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sverona.dev/infrabayes/pset1/" /><meta property="article:section" content="infrabayes" />
+<meta property="article:published_time" content="2022-09-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-04T00:00:00+00:00" />
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Solutions to infra-exercises I"/>
+<meta name="twitter:description" content="These are S&rsquo;s solutions for the first set of infra-Bayesian exercises. Spoilers, of course!
+I decree this a Moore method problem set! That means you&rsquo;re allowed to be as pedantic about definitions as you like, and I commit to addressing your pedantry. Please shoot me an email if there&rsquo;s a way I can improve this document&rsquo;s rigor and/or clarity!
+Notes When the document says monotone, it means what most analysis textbooks call increasing."/>
+
+
+
+<meta itemprop="name" content="Solutions to infra-exercises I">
+<meta itemprop="description" content="These are S&rsquo;s solutions for the first set of infra-Bayesian exercises. Spoilers, of course!
+I decree this a Moore method problem set! That means you&rsquo;re allowed to be as pedantic about definitions as you like, and I commit to addressing your pedantry. Please shoot me an email if there&rsquo;s a way I can improve this document&rsquo;s rigor and/or clarity!
+Notes When the document says monotone, it means what most analysis textbooks call increasing."><meta itemprop="datePublished" content="2022-09-04T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-09-04T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2977">
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  
+  <link href="https://sverona.dev/fonts/fonts.css" type="text/css" rel="stylesheet" />
+  
+  
+  <link href="https://sverona.dev/sass/style.css" type="text/css" rel="stylesheet" />
+  <link href="https://sverona.dev/sass/sidenotes.css" type="text/css" rel="stylesheet" />
+  
+    <link href="https://sverona.dev/katex/katex.min.css" type="text/css" rel="stylesheet" />
+    <script defer src="https://sverona.dev/katex/katex.js"></script>
+    <script defer src="https://sverona.dev/katex/contrib/auto-render.js"></script>
+  
+
+  <script>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-3.0
+
+    
+    document.addEventListener("DOMContentLoaded", () => {
+          renderMathInElement(document.body, {
+            delimiters: [
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true}
+            ],
+            
+            
+            trust: (context) => ['\\htmlId', '\\href'].includes(context.command),
+            macros: {
+              "\\eqref": "\\href{###1}{(\\text{#1})}",
+              "\\ref": "\\href{###1}{\\text{#1}}",
+              "\\label": "\\htmlId{#1}{}"
+            }
+        })
+      });
+    
+
+    document.addEventListener("DOMContentLoaded", () => {
+      var els = document.getElementsByClassName("highlight");
+      for (var i = 0; i < els.length; i++) {
+        if (els[i].title.length) {
+          var newNode = document.createElement("code");
+          var textNode = document.createTextNode(els[i].title);
+          newNode.appendChild(textNode);
+          newNode.classList.add("highlight-title");
+          var pre = els[i].querySelector('pre');
+          pre.appendChild(newNode);
+        }
+      }
+    });
+    // @license-end
+  </script>
+
+</head>
+
+<body>
+  <header id="header"><a href="/" class="title" id="brand">
+  <span id="accent"></span>S. Verona Lišková
+</a>
+<nav><ul>
+
+<li><a href="/blog">blog</a></li>
+
+<li><a href="https://github.com/sverona">github</a></li>
+
+<li><a href="/about">about</a></li>
+
+</ul>
+</nav>
+</header>
+  <main><noscript>
+  <section style="background-color: #e6e8fa; margin-block: 1rem; padding: 1px 1rem; box-shadow: 2px 2px #000">
+    <p>Hello, sentient being who has disabled JavaScript/is using <a href="https://www.gnu.org/software/librejs/index.html">LibreJS</a>!</p>
+    <p>This site uses as little JavaScript as I can get away with, but it does require JS to:</p>
+<ol>
+  <li>render mathematics; for this purpose I use <a href="https://katex.org">KaTeX</a>, which is freely licensed (and partially trans-made! 🏳️‍🌈)</li>
+  <li>slightly extend Hugo's <a href="https://gohugo.io/content-management/syntax-highlighting/#highlight-shortcode">highlight shortcode</a> to show filenames in code listings. (The actual syntax highlighting is done server-side.)</li>
+</ol>
+    <p>This site validates under LibreJS as of 6 September 2022. If you find otherwise, please contact me.</p>
+  </section>
+</noscript>
+
+<header id="front-matter" class="margin-right margin-left">
+  <nav>
+    <div id="current-section">
+      
+        <a href="https://sverona.dev/infrabayes/">PreDCA made digestible</a>
+      
+    </div>
+    
+    <div id="next-prev">
+      
+      <span>
+      
+      </span>
+      <span>
+      
+      </span>
+    </div>
+    
+  </nav>
+  <div style="text-align: center">
+    
+    <time datetime='2022-09-04' pubdate>
+      September 4, 2022
+    </time>
+    
+    <h1>Solutions to infra-exercises I</h1>
+    
+    
+  </div>
+</div>
+</header>
+
+<article>
+  
+  <div id="toc" class="margin-toggle margin-left">
+    <h2>Table of Contents</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#notes">Notes</a></li>
+    <li><a href="#problem-1">Problem 1</a>
+      <ul>
+        <li><a href="#solution">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#problem-2">Problem 2</a>
+      <ul>
+        <li><a href="#solution-1">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#problem-3a">Problem 3a</a>
+      <ul>
+        <li><a href="#solution-2">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#problem-3b">Problem 3b</a>
+      <ul>
+        <li><a href="#solution-3">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#problem-4a">Problem 4a</a>
+      <ul>
+        <li><a href="#solution-4">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#problem-4b">Problem 4b</a>
+      <ul>
+        <li><a href="#solution-5">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#problem-5b">Problem 5b</a>
+      <ul>
+        <li><a href="#solution-6">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#problem-5c">Problem 5c</a>
+      <ul>
+        <li><a href="#solution-7">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#problem-6">Problem 6</a>
+      <ul>
+        <li><a href="#solution-8">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#fundamental-theorem-of-inframeasures-forward-direction">Fundamental Theorem of Inframeasures, forward direction</a>
+      <ul>
+        <li><a href="#solution-9">Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#fundamental-theorem-of-inframeasures-backward-direction">Fundamental Theorem of Inframeasures, backward direction</a>
+      <ul>
+        <li><a href="#solution-10">Solution</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+  
+  <p>These are S&rsquo;s solutions for the <a href="https://drive.google.com/file/d/1aKvftxhG_NL2kfG3tNmtM8a2y9Q1wFHb/view">first set of infra-Bayesian exercises</a>. Spoilers, of course!</p>
+<p>I decree this a <a href="https://en.wikipedia.org/wiki/Moore_method">Moore method</a> problem set! That means you&rsquo;re allowed to be as pedantic about definitions as you like, and I commit to addressing your pedantry. Please shoot me an email if there&rsquo;s a way I can improve this document&rsquo;s rigor and/or clarity!</p>
+<h2 id="notes">Notes</h2>
+<p>When the document says <em>monotone,</em> it means what most analysis textbooks call <em>increasing.</em> A better term in the context of posets, where the document defines monotonicity, would be <em>order-preserving.</em></p>
+<p>I shall use the terminology <em>0-nonnegative</em> rather than <em>0-increasing</em> for a functional \(f : V \to \mathbb R\) with \(f(\mathbf 0) \geq 0,\) since I find the latter misleading. I also like the terminology <a href="https://en.wikipedia.org/wiki/Contraction_mapping"><em>non-expansive</em></a> for 1-Lipschitzness, since it describes the geometric intuition rather than being named after a dude, but won&rsquo;t use it here for clarity.</p>
+<p>I use the variable \(t\) for mixture coefficients out of habit.<label for="sidenote-0" class="margin-toggle sidenote-number "></label><input type="checkbox" id="sidenote-0" class="margin-toggle"/><span class="sidenote ">It&rsquo;s typically used in topology, for instance when <a href="https://en.wikipedia.org/wiki/Homotopy#Formal_definition">defining homotopy</a>.</span></p>
+<h2 id="problem-1">Problem 1</h2>
+<p>Let \(V\) be a real vector space. Show that a function \(g : V \to \mathbb R\) is affine iff \(g(x) = f(x) + c,\) where \(f(x) : V \to W\) is linear and \(c \in \mathbb R.\)</p>
+<h3 id="solution">Solution</h3>
+<p><em>If:</em> Let \(g(x)\) be as given. For any \(v_1, v_2 \in V\) and \(t \in [0, 1],\) we have
+\[\begin{align*}
+g(tv_1 + (1 - t)v_2) &amp;= f(tv_1 + (1 - t)v_2) + c \newline
+&amp;= tf(v_1) + (1 - t)f(v_2) + c \newline
+&amp;= t(f(v_1) + c) + (1 - t)(f(v_2) + c) \newline
+&amp;= t\cdot g(v_1) + (1 - t)\cdot g(v_2).
+\end{align*}\]</p>
+<p><em>Only if:</em> Let \(g(x)\) be affine. Define \(f(x) = g(x) - g(\mathbf 0).\) We must show that \(f(x)\) is linear; i.e., homogeneous and additive.</p>
+<p>To show homogeneity, we have for any \(c \in [0, 1]\)
+\[\begin{align*}
+f(cx) &amp;= f(cx + (1 - c)\mathbf 0) \newline
+&amp;= g(cx + (1 - c)\mathbf 0) - g(\mathbf 0) \newline
+&amp;= c\cdot g(x) + (1 - c)\cdot g(\mathbf 0) - g(\mathbf 0) \newline
+&amp;= c\cdot g(x) - g(\mathbf 0) = c \cdot f(x).
+\end{align*}\]</p>
+<p>For \(c &gt; 1\) we have \(c^{-1} \in (0, 1).\) Therefore \[
+\begin{align*}
+f(cx) &amp;= f(c^2x/c) = \dfrac1c f(c^2 x).
+\end{align*}\]</p>
+<p>Rewriting, we have \(cf(cx) = f(c^2x).\) Setting \(y = cx,\) we obtain the desired. It remains to show that \(f\) is homogeneous for a negative constant. We have \[\begin{align*}
+f(-x) &amp;= g(-x) - g(\mathbf 0) \newline
+&amp;= g(-x) - g\left(\dfrac12 x + \dfrac12 (-x)\right) \newline
+&amp;= g(-x) - \dfrac12 g(x) - \dfrac12 g(-x) \newline
+&amp;= \dfrac12 g(-x) - \dfrac12g(x) \newline
+&amp;= \dfrac12 f(-x) - \dfrac12f(x),
+\end{align*}\]
+which implies \(f(-x) = -f(x).\)</p>
+<p>To show additivity, we have for any \(v_1, v_2 \in V\)
+\[\begin{align*}
+f(v_1 + v_2) &amp;= 2f\left(\dfrac12 v_1 + \dfrac12 v_2\right) \newline
+&amp;= 2g\left(\dfrac12 v_1 + \dfrac12 v_2 \right) - 2g(\mathbf 0) \newline
+&amp;= g(v_1) + g(v_2) - 2g(\mathbf 0) = f(v_1) + f(v_2).
+\end{align*}\]</p>
+<p>This completes the proof.</p>
+<h2 id="problem-2">Problem 2</h2>
+<p>Let \(f : \mathbb R \to \mathbb R\) be continuous and concave. Let \(T\) be the set of all affine functions \(\phi : \mathbb R \to \mathbb R\) such that \(\phi(x) \geq f(x)\) for all \(x.\) Show that \(f(x) = \inf T(x).\)</p>
+<h3 id="solution-1">Solution</h3>
+<p>Fix an \(a \in \mathbb R.\) Assume \(f(a)\) is defined. \(f(a)\) is a lower bound for \(T(a)\) by construction.</p>
+<p>Suppose \(k &gt; f(a).\) We will show that there is a \(\phi \in T\) with \(k &gt; \phi(a).\)</p>
+<p>We claim the set \(C = \{(x, y) \in \mathbb R^2 \mid y \leq f(x)\}\) is convex and closed:</p>
+<ul>
+<li><em>Convex:</em> Follows directly from concavity of \(f.\)</li>
+<li><em>Closed:</em> We show that the complement of \(C\) \[C' = \{(x, y) \in \mathbb R^2 \mid y &gt; f(x)\}\] is open under the \(\infty\)-norm. Let \(p = (x, y) \in C'.\) Let \(\varepsilon_1 = (y - f(x))/2 &gt; 0.\) By continuity of \(f\) there is a \(\delta &gt; 0\) such that \[|x_1 - x_2| &lt; \delta \implies |f(x_1) - f(x_2)| &lt; \varepsilon_1.\] Let \(\varepsilon = \min \{\varepsilon_1, \delta\}.\) Then whenever \(|x - x_1| &lt; \varepsilon\) and \(|y - y_1| &lt; \varepsilon,\) we have \[
+\begin{align*}
+y_1 - f(x_1) &amp;= (y_1 - y) + \left(y - f(x)\right) + \left(f(x) - f(x_1)\right) \newline
+&amp;&gt; -\varepsilon + 2\varepsilon_1 - \varepsilon_1 = \varepsilon_1 - \varepsilon \geq 0.
+\end{align*}\]</li>
+</ul>
+<p>Since \(v = (a, k) \in \mathbb R^2 \setminus C,\) the Hahn-Banach separation theorem furnishes a linear, continuous \(F : \mathbb R^2 \to \mathbb R\) and \(s \in \mathbb R\) such that \(F(c) \leq s &lt; F(v)\) for any \(c \in C.\) In particular, there are constants \(m, n \in \mathbb R\) such that \(F((x, y)) = mx + ny.\) The Hahn-Banach condition then says \[mx + n \cdot f(x) \leq s &lt; ma + nk.\]</p>
+<p>If \(n = 0,\) we have \(mx &lt; ma\) for all \((x, y) \in C,\) which is absurd, since \((a, f(a)) \in C.\) Thus we may define \(\phi(x) = (s - mx)/n\). Then we have that \(\phi\) is affine, \(\phi(x) \geq f(x),\) and \(\phi(a) &lt; k.\)</p>
+<p>This completes the proof.</p>
+<h2 id="problem-3a">Problem 3a</h2>
+<p>Let \(f: \mathbb R \to \mathbb R\) be concave, monotone, 0-nonnegative, and 1-Lipschitz. Let \(T\) be the set of all affine functions \(\phi : \mathbb R \to \mathbb R\) satisfying the latter three properties and \(\phi(x) \geq f(x).\) Show that \(f(x) = \inf T(x).\)</p>
+<h3 id="solution-2">Solution</h3>
+<p>Construct \(\phi\) as in the previous solution. We must show that \(\phi\) is monotone, 0-nonnegative, and 1-Lipschitz.</p>
+<ul>
+<li><em>Monotonicity:</em> Suppose contrariwise that \(x_1 &lt; x_2\) but \(\phi(x_1) &gt; \phi(x_2).\) Since \(\phi\) is affine, there is some \(x_3 &gt; x_1\) with \(\phi(x_3) &lt; f(x_1) &lt; f(x_3),\) a contradiction.</li>
+<li><em>1-Lipschitz:</em> Suppose contrariwise there are \(x_1, x_2 \in \mathbb R\) and \(\varepsilon &gt; 0\) such that \[\frac{\phi(x_2) - \phi(x_1)}{x_2 - x_1} = 1 + \varepsilon.\] Since \(\phi\) is affine, \(\phi(x) = (1 + \varepsilon)x + \phi(0).\) Let \[c &lt; \frac{f(0) - \phi(0)}{\varepsilon} &lt; 0.\] Then we have \(f(c) \geq f(0) + c &gt; \phi(0) + (1 + \varepsilon)c = \phi(c),\) a contradiction.</li>
+<li><em>0-nonnegativity:</em> \(\phi(0) \geq f(0) \geq 0.\)</li>
+</ul>
+<p>This completes the proof.</p>
+<h2 id="problem-3b">Problem 3b</h2>
+<p>Let \(\Phi = \{\phi_i\}_{i \in I}\) be a collection of affine functions mapping \(\mathbb R \to \mathbb R\) that are each monotone, 1-Lipschitz, and 0-nonnegative. Show that \(f(x) = \inf \Phi(x)\) is continuous, concave, monotone, 1-Lipschitz, and 0-nonnegative.</p>
+<h3 id="solution-3">Solution</h3>
+<ul>
+<li>
+<p><em>0-nonnegativity:</em> \(f(0) = \inf \Phi(0) = C.\)  Suppose \(C &lt; 0.\) Then there would exist \(\phi \in \Phi\) with \(\phi(0) = C/2 &lt; 0,\) a contradiction.</p>
+</li>
+<li>
+<p><em>Monotonicity:</em> Suppose contrariwise that \(x &lt; y\) but \(f(x) &gt; f(y).\) Then, for any \(\varepsilon &gt; 0,\) there is a \(\phi \in \Phi\) with \(f(y) = \phi(y) + \varepsilon.\) We have \[\begin{align*}
+f(x) - \phi(x) &amp;&gt; f(y) - \phi(x) \newline
+&amp;\geq f(y) - [\phi(y) - (y - x)] \newline
+&amp;= \varepsilon + (y - x) &gt; 0,
+\end{align*}\]
+a contradiction.</p>
+</li>
+<li>
+<p><em>1-Lipschitz:</em> Suppose towards a contradiction that \(f\) is not 1-Lipschitz. Then there exist \(x, y \in \mathbb R\) with \[\frac{|f(y) - f(x)|}{|y - x|} = L &gt; 1.\] Suppose without loss of generality that \(x &lt; y.\) Let \(\varepsilon &gt; 0,\) choosing \(\varepsilon &lt; (L - 1)|y - x|.\) Since \(f(x) = \inf \Phi(x),\) there is a \(\phi_i \in \Phi\) such that \(\phi_i(x) = f(x) + \varepsilon.\) Then we have \[
+\begin{align*}
+f(y) - \phi_i(y) &amp;\geq f(y) - \left(\phi_i(x) + |y - x|\right) \newline
+&amp;= f(y) - \left(f(x) + \varepsilon + |y - x|\right) \newline
+&amp;= [f(y) - f(x)] - \varepsilon - |y - x| \newline
+&amp;= L|y - x| - \varepsilon - |y - x| \newline
+&amp;= (L - 1)|y - x| - \varepsilon &gt; 0,
+\end{align*}\]
+a contradiction.</p>
+</li>
+<li>
+<p><em>Continuity:</em> Follows immediately.</p>
+</li>
+<li>
+<p><em>Concavity:</em> Suppose contrariwise that \(f\) is not concave. Then there exist \(x, y \in \mathbb R\) and \(t \in (0, 1)\) such that<label for="sidenote-1" class="margin-toggle sidenote-number "></label><input type="checkbox" id="sidenote-1" class="margin-toggle"/><span class="sidenote ">The variable names here are for &ldquo;line&rdquo; and &ldquo;curve.&quot;</span>
+\[L = t\cdot f(x) + (1 - t)f(y) &gt; f(tx + (1 - t)y) = C.\]</p>
+<p>By assumption, there is a function \(\phi \in \Phi\) such that \(\phi(tx + (1-t)y) = (L + C)/2.\) We must have \(\phi(x) \geq f(x)\) and \(\phi(y) \geq f(y).\) But since \(\phi\) is affine, we must have \(\phi(tx + (1-t)y) \geq L,\) a contradiction.</p>
+</li>
+</ul>
+<h2 id="problem-4a">Problem 4a</h2>
+<p>Let \(\psi : C(X) \to \mathbb R\) be concave, monotone, 1-Lipschitz, and 0-nonnegative. Let \(\Phi\) be the set of all affine, monotone, 1-Lipschitz, and 0-nonnegative functions \(\phi : C(X) \to \mathbb R\) such that \(\phi \geq \psi.\) Show that \(\psi = \inf \Phi.\)</p>
+<h3 id="solution-4">Solution</h3>
+<p>\(\psi\) is a lower bound for \(\Phi\) by construction. Fix \(f \in C(X)\) and suppose that \(k &gt; \psi(f).\) We shall produce a \(\phi \in \Phi\) such that \(\psi(f) \leq \phi(f) &lt; k.\)</p>
+<p>We claim that the set \(S = \bigcup_{g \in C(X)} \left(g \times (-\infty, \psi(g)]\right) \subset C(X) \times \mathbb R\) is closed and convex:</p>
+<ul>
+<li><em>Closed:</em> We show that the complement of \(S\) \[
+S' = \bigcup_{g \in C(X)} \left(g \times (\psi(g), \infty)\right)
+\] is open under the \(\infty\)-norm. Let \((g, c) \in S'.\) Let \(\varepsilon = \left(c - \psi(g)\right)/2.\) Then for any \((h, k) \in C(X) \times \mathbb R\) with \(d_\infty(g, h) &lt; \varepsilon\) and \(|c - k| &lt; \varepsilon,\) we have \[
+\begin{align*}
+k - \psi(h) &amp;= (k - c) + \left(c - \psi(g)\right) + \left((\psi(g) - \psi(h)\right) \newline
+&amp;&gt; -\varepsilon + 2\varepsilon - d_\infty(g, h) \newline
+&amp;&gt; -\varepsilon + 2\varepsilon - \varepsilon = 0.
+\end{align*}
+\]</li>
+<li><em>Convex:</em> Let \((f_1, c_1), (f_2, c_2) \in S.\) Let \(t \in (0, 1).\) Then \(t \cdot f_1 + (1 - t)f_2 \in C(X),\) and since \(\psi\) is concave, \[
+t \cdot \psi(f_1) + (1 - t)\psi(f_2) \leq \psi(t\cdot f_1 + (1-t) f_2).
+\]</li>
+</ul>
+<p>Therefore Hahn-Banach produces a linear functional \(F: C(X) \times \mathbb R \to \mathbb R\) and \(s \in \mathbb R\) such that for any \((g, c) \in S,\) \(F(g, c) \leq s &lt; F(f, k).\) Since \(F\) is (bi)linear, we can write \[F(g, c) = F(g, 0) + F(0, c) = M(g) + nc\] for some linear \(M : C(X) \to \mathbb R\) and \(n \in \mathbb R.\) The Hahn-Banach condition then says</p>
+<p>\[M(g) + nc \leq s &lt; M(f) + nk.\]</p>
+<p>As before, \(M \equiv 0\) and \(n = 0\) are impossible. If \(M \not \equiv 0\) and \(n = 0,\) the Hahn-Banach condition is \(M(g) &lt; M(f)\) for all \(g \in C(X),\) which is absurd. Thus, we may define \[\phi(f) = \frac{s - M(g)}n.\]</p>
+<p>Note that \(\phi\) is affine. Applying the Hahn-Banach condition to \((f, \psi(f))\) gives \(\psi(f) \leq \phi(f) &lt; k,\) as desired.</p>
+<p>It remains to show that \(\phi\) is monotone, 1-Lipschitz, and 0-nonnegative.</p>
+<ul>
+<li><em>0-nonnegativity:</em> \(\phi(0) \geq \psi(0) \geq 0.\)</li>
+<li><em>Monotonicity:</em> Suppose contrariwise that \(f &lt; g\) but \(\phi(f) &gt; \phi(g).\) Since \(\phi\) is affine, there is some \(c \in \mathbb R\) and \(h(x) = f(x) + c\) for which \(\phi(h) &lt; \psi(f) &lt; \psi(h),\) a contradiction.</li>
+<li><em>1-Lipschitz:</em> This is the hard part.<label for="sidenote-2" class="margin-toggle sidenote-number "></label><input type="checkbox" id="sidenote-2" class="margin-toggle"/><span class="sidenote ">It took me multiple days by itself.</span>
+Suppose there are \(f, g \in C(X)\) and \(\varepsilon &gt; 0\) for which \[|\phi(f) - \phi(g)| = (1 + \varepsilon) d_\infty(f,g).\]
+Let \(U = \max\{f,g\}, L = \min\{f,g\}.\) Clearly \(U, L \in C(X).\) Also,\[\begin{align*}
+\phi(U) - \phi(L)
+&amp;= \phi\left(\frac{f + g + |f - g|}2\right) - \phi\left(\frac{f + g -|f - g|}2\right) \newline
+&amp;= M(|f-g|) \newline
+&amp;\geq \left|M(f-g)\right| \newline
+&amp;= \left|\phi(f) - \phi(g)\right| \newline
+&amp;\geq (1 + \varepsilon) d_\infty(f, g) = (1 + \varepsilon) d_\infty(U, L).
+\end{align*}\]
+Since \(U &gt; L,\) \(tU + (1-t)L\) is an increasing function of \(t.\) Take \[t &lt; \dfrac{\psi(L) - \phi(L)}{\varepsilon \cdot d_\infty(U,L)}.\]
+If the right-hand side is positive, \(\phi(L) &lt; \psi(L),\) which is a contradiction. So, \(t &lt; 0,\) and we have \[\begin{align*}
+\phi(tU + (1-t)L) &amp;= t\phi(U) + (1-t)\phi(L) \newline
+&amp;= \phi(L) + t\cdot\left(\phi(U) - \phi(L)\right) \newline
+&amp;\leq \phi(L) + t\cdot (1 + \varepsilon) d_\infty(U, L) \newline
+&amp;&lt; \phi(L) + \left(\frac{\psi(L) - \phi(L)}{\varepsilon \cdot d_\infty(U, L)}\right)\cdot \varepsilon \cdot d_\infty(U, L) + t\cdot  d_\infty(U, L) \newline
+&amp;= \psi(L) + t \cdot d_\infty(U, L) \newline
+&amp;= \psi(L) - |t| \cdot d_\infty(U, L) \newline
+&amp;= \psi(L) - d_\infty(tU, tL) \newline
+&amp;= \psi(L) - d_\infty(tU + (1 - t)L, L) \newline
+&amp;\leq \psi(L) - \left(\psi(L) - \psi(tU + (1 - t)L)\right) \newline
+&amp;= \psi(tU + (1-t)L),
+\end{align*}\] a contradiction.</li>
+</ul>
+<p>This completes the proof.</p>
+<h2 id="problem-4b">Problem 4b</h2>
+<p>Let \(\Phi = \{\phi_i\}_{i\in I}\) be a collection of affine functions mapping \(C(X) \to \mathbb R\) that are monotone, 1-Lipschitz, and 0-nonnegative. Show that \(f = \inf \Phi\) is continuous, concave, monotone, 1-Lipschitz, and 0-nonnegative.</p>
+<h3 id="solution-5">Solution</h3>
+<ul>
+<li><em>0-nonnegativity:</em> Suppose contrariwise that \(f(0) &lt; 0.\) Then there must be \(\phi_i\) with \(\phi_i(0) = f(0)/2 &lt; 0,\) a contradiction.</li>
+<li><em>Monotonicity:</em> Suppose contrariwise that there exist \(m, n \in C(X)\) with \(m &lt; n\) and \(f(m) &gt; f(n).\) By assumption, for any \(\varepsilon &gt; 0,\) there is a \(\phi_i\) with \(f(n) = \phi_i(n) + \varepsilon.\) Then we have \[\begin{align*}
+f(m) - \phi_i(m) &amp;&gt; f(n) - \phi_i(m) \newline
+&amp;= \phi_i(n) - \phi_i(m) + \varepsilon &gt; 0,
+\end{align*}\]
+a contradiction.</li>
+<li><em>1-Lipschitz:</em> Suppose there are functions \(m, n \in C(X)\) and \(\delta &gt; 0\) with \[\frac{|f(n) - f(m)|}{d_\infty(m, n)} = 1 + \delta.\] Without loss of generality, assume \(f(n) \geq f(m).\) Let \(0 &lt; \varepsilon &lt; \delta \cdot d_\infty(m, n).\) There is a \(\phi_i\) with \(\phi_i(m) = f(m) + \varepsilon.\) We have
+\[\begin{align*}
+f(n) - \phi_i(n) &amp;= f(m) + (1 + \delta) d_\infty(m, n) - \phi_i(n) \newline
+&amp;\geq f(m) + \delta \cdot d_\infty(m, n)  + |\phi_i(n) - \phi_i(m)| - \phi_i(n) \newline
+&amp;\geq f(m) + \delta \cdot d_\infty(m, n) - \phi_i(m) \newline
+&amp;= \delta \cdot d_\infty(m, n) - \varepsilon &gt; 0,
+\end{align*}\]
+a contradiction.</li>
+<li><em>Continuity:</em> Follows immediately.</li>
+<li><em>Concavity:</em> Suppose contrariwise that \(f\) is not concave. Then there exist \(g, h \in C(X)\) and \(t \in (0, 1)\) such that \[L = t \cdot f(g) + (1 - t) f(h) &gt; f(t \cdot g + (1 - t) h) = C.\] By assumption, there is a \(\phi \in \Phi\) with \(\phi(t \cdot g + (1 - t)h) = (L + C)/2,\) \(\phi(g) \geq f(g),\) and \(\phi(h) \geq f(h).\) But since \(\phi\) is affine, we must have \(\phi(t \cdot g + (1 - t)h) \geq L,\) a contradiction.</li>
+</ul>
+<p>This completes the proof.</p>
+<h2 id="problem-5b">Problem 5b</h2>
+<p>Let \(m \in \mathcal M^\pm(X).\) Show that \(\phi : C(X) \to \mathbb R\) defined by \(\phi(g) = \int_X g(x) ~\mathrm dm\) is a continuous linear functional.</p>
+<h3 id="solution-6">Solution</h3>
+<p>Lebesgue integrals are always linear. Let \(\varepsilon &gt; 0.\) We must produce \(\delta &gt; 0\) such that whenever \(d_\infty(f, g) &lt; \delta,\) \[\left| \int_X f ~\mathrm dm - \int_X g ~\mathrm dm \right| &lt; \varepsilon.\]
+If \(m \) is the zero measure then there is nothing to prove. Suppose \(m\) is nonzero. Let \[\delta = \frac{\varepsilon}{\int_X \mathrm dm^+ + \int_X \mathrm dm^-}.\] Then we have
+\[\begin{align*}
+\left| \int_X f ~\mathrm dm - \int_X g ~\mathrm dm \right| &amp;= \left| \int_X (f - g) ~\mathrm dm \right| \newline
+&amp;= \left| \int_X (f-g) ~\mathrm dm^+ - \int_X (f - g) ~\mathrm dm^- \right| \newline
+&amp;\leq \left|\int_X (f - g) ~\mathrm dm^+ \right| + \left| \int_X (f - g) ~\mathrm dm^- \right| \newline
+&amp;\leq \int_X |f - g| ~\mathrm dm^+ + \int_X |f - g| ~\mathrm dm^- \newline
+&amp;&lt; \int_X \delta ~\mathrm dm^+ + \int_X \delta ~\mathrm dm^- \newline
+&amp;= \delta \left[\int_X \mathrm dm^+ + \int_X \mathrm dm^- \right] = \varepsilon.
+\end{align*}\]</p>
+<h2 id="problem-5c">Problem 5c</h2>
+<p>What extra conditions on a continuous linear functional \(F : C(X) \to \mathbb R\) are required so that it corresponds to a positive measure? What about a probability measure?</p>
+<h3 id="solution-7">Solution</h3>
+<p>Say \(F\) is <em>positive</em> if whenever \(f \geq 0,\) \(F(f) \geq 0.\) By Riesz-Markov-Kakutani, positive functionals correspond to positive measures. Note that this implies monotonicity by the linearity of \(F.\)</p>
+<p>To have a probability measure, we need \(F(1) = \int_X \mathbf 1_X ~\mathrm dm = m(X) = 1.\) Note that this implies 1-Lipschitzness: if \(d_\infty(f, g) = \varepsilon\) and \(F\) is positive, then
+\[\begin{align*}
+| F(f) - F(g) | = | F(f - g) | \leq F\left( | f-g | \right) \leq F(\varepsilon) = \varepsilon F(1) = \varepsilon.
+\end{align*}\]</p>
+<h2 id="problem-6">Problem 6</h2>
+<p>Let \(\phi : C(X) \to \mathbb R\) be affine, monotone, 1-Lipschitz, and 0-nonnegative. Show that \(\phi\) corresponds to an affine measure \((m, b)\) with \(0 \leq m(X) \leq 1.\)</p>
+<h3 id="solution-8">Solution</h3>
+<p>We have \(\phi(f) = M(f) + \phi(0),\) where \(M\) is linear and monotone, hence corresponds to a positive measure \(m.\) Since \(M\) is 1-Lipschitz, we have \(m(X) = M(1) \in [0, 1].\)</p>
+<h2 id="fundamental-theorem-of-inframeasures-forward-direction">Fundamental Theorem of Inframeasures, forward direction</h2>
+<p>Let \(\psi : C(X) \to \mathbb R\) be concave, monotone, 1-Lipschitz, and 0-increasing. Let \(T\) be the set of (positive) affine measures above \(\psi\):
+\[T = \{(m, b): m(g) + b \geq \psi(g) \text{ for all } g \in C(X)\}.\]</p>
+<p>Prove that \(\psi(g) = \inf_{(m, b) \in T} (m(g) + b).\)</p>
+<h3 id="solution-9">Solution</h3>
+<p>We need to show that each \((m, b) \in T\) corresponds to an affine \(\phi : C(X) \to \mathbb R\) such that \(\phi \geq \psi \) and \(\phi\) is 1-Lipschitz, 0-nonnegative, and monotone. Define \(\phi(g) = m(g) + b.\) Then \(\phi\) is affine and above \(\psi\) by definition.</p>
+<ul>
+<li><em>Monotonicity:</em> Since \(m\) is positive, \(\phi\) is monotone.</li>
+<li><em>0-nonnegativity:</em> \(\phi(\mathbf 0) = m(\mathbf 0) + b \geq \phi(\mathbf 0) &gt; 0.\)</li>
+<li><em>1-Lipschitz</em>: It suffices to show that \(m(\mathbf 1) \leq 1.\) Suppose contrariwise that \(m(\mathbf 1) = 1 + \varepsilon.\) Let \(a &lt; (\psi(\mathbf 0) - b)/\varepsilon \leq 0.\) Then
+\[\begin{align*}
+\phi(a\mathbf 1) &amp;= a \cdot m(\mathbf 1) + b \newline
+&amp;= a(1 + \varepsilon) + b \newline
+&amp;&lt; a + \varepsilon\left(\frac{\psi(\mathbf 0) - b}\varepsilon\right) + b \newline
+&amp;= \psi(\mathbf 0) + a \newline
+&amp;\leq \psi(a\mathbf 1),
+\end{align*}\]
+a contradiction.</li>
+</ul>
+<p>This completes the proof.</p>
+<h2 id="fundamental-theorem-of-inframeasures-backward-direction">Fundamental Theorem of Inframeasures, backward direction</h2>
+<p>For all sets \(\Psi\) of affine measures \(m\) with \(0 \leq m(\mathbf 1) \leq 1,\) show that the functional \(\psi : C(X) \to \mathbb R\) defined by \[\psi(g) = \inf_{(m, b) \in \Psi} (m(g) + b)\] is concave, monotone, 1-Lipschitz, and 0-nonnegative.</p>
+<h3 id="solution-10">Solution</h3>
+<p>\(\Psi\) corresponds to a set \(\Phi\) of affine, monotone, 1-Lipschitz, 0-nonnegative functionals via \((m, b) \mapsto (g \mapsto m(g) + b).\)</p>
+
+</article>
+
+  </main>
+  <footer> Made with <a href="https://github.com/sverona/hugo-semiotic">Hugo Semiotic</a> 
+</footer>
+
+    
+</body>
+
+</html>

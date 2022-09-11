@@ -6,7 +6,7 @@
     <description>Recent content on S. Verona Lišková</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://sverona.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://sverona.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lattice theory</title>
       <link>https://sverona.dev/thesis/lattice-theory/</link>
@@ -58,6 +58,17 @@ Define a weight functionThe quantity \(\rho_i(\top_i(x)) - \rho_i(x))\) is the d
       <description>This chapter outlines the Python code provided in Appendix A.
 Overview of the dc-lattices library In this section we describe the contents of each file listed in Appendix A.
 dc_lattice.py contains the abstract initialization and population routines for generic DCDLs. We model a DCDL as a graph using the networkx library. incremental_lattice.py overrides some methods in dc_lattice.py to handle generic /incremental/ lattices (which, it should be noted, includes every example in this thesis.</description>
+    </item>
+    
+    <item>
+      <title>Solutions to infra-exercises I</title>
+      <link>https://sverona.dev/infrabayes/pset1/</link>
+      <pubDate>Sun, 04 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://sverona.dev/infrabayes/pset1/</guid>
+      <description>These are S&amp;rsquo;s solutions for the first set of infra-Bayesian exercises. Spoilers, of course!
+I decree this a Moore method problem set! That means you&amp;rsquo;re allowed to be as pedantic about definitions as you like, and I commit to addressing your pedantry. Please shoot me an email if there&amp;rsquo;s a way I can improve this document&amp;rsquo;s rigor and/or clarity!
+Notes When the document says monotone, it means what most analysis textbooks call increasing.</description>
     </item>
     
     <item>

@@ -102,7 +102,7 @@ body > footer {
       Blogs <a href="/blog">&Rarr;</a>
     </h1>
     {{ with .Site.GetPage "/blog" }}
-      {{ range first 4 .Pages.ByPublishDate.Reverse }}
+      {{ range first 4 .Site.Pages.ByPublishDate.Reverse }}
       <div class="blog">
         <time>{{ .Date.Format "January 2, 2006" }}</time>
         <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>

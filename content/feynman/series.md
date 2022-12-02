@@ -61,7 +61,7 @@ By taking enough terms we can obtain any desired accuracy. If the series
 is slow to converge it is sometimes possible to replace the higher terms
 by an integral:
 
-{{% figure class="marginfigure" src="/images/baselplot.png" caption="Approximating \\(\pi^2/6\\) by \\( \int 1/x^2 ~\mathrm dx\\)" %}}
+{{% figure class="margin-right sidebar-width" src="/images/baselplot.png" caption="Approximating \\(\pi^2/6\\) by \\( \int 1/x^2 ~\mathrm dx\\)" %}}
 
 Examination of the above diagram shows that
 

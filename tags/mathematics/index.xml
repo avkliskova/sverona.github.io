@@ -38,24 +38,5 @@ The greatest common divisor of two nonzero integers is the largest positive numb
 10-odd years and a graduate degree later, I decided to come back and solve them as fast as I could.</description>
     </item>
     
-    <item>
-      <title>Some Generalizations of Classical Integer Sequences Arising in Combinatorial Representation Theory</title>
-      <link>https://sverona.dev/thesis/</link>
-      <pubDate>Sun, 01 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://sverona.dev/thesis/</guid>
-      <description>Abstract There exists a natural correspondence between the bases for a given finite-dimensional representation of a complex semisimple Lie algebra and a certain collection of finite edge-colored ranked posets, laid out by Donnelly, et al. in, for instance, [Donnelly 2003]. Robert G. Donnelly. Extremal properties of bases for representations of semisimple Lie algebras. Journal of Algebraic Combinatorics, 17, 2003. In this correspondence, the Serre relations on the Chevalley generators of the given Lie algebra are realized as conditions on coefficients assigned to poset edges.</description>
-    </item>
-    
-    <item>
-      <title>The dual simplex method, an introduction</title>
-      <link>https://sverona.dev/blog/dual-simplex/</link>
-      <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://sverona.dev/blog/dual-simplex/</guid>
-      <description>The primal simplex method provides an algorithmic means for solving linear programs (hereinafter LPs.) This document motivates, defines, and applies the so-called dual simplex method, a slight variant which is useful for performing post hoc sensitivity analysis on LPs solved by the simplex method.
-The primal simplex method In this section, we review the three steps of the usual primal method, following [Hillier-Lieberman],Frederick S. Hillier and Gerald J. Lieberman, Introduction to operations research, 10th ed.</description>
-    </item>
-    
   </channel>
 </rss>

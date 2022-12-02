@@ -64,6 +64,12 @@ input[type="checkbox"].margin-toggle {
   font-size: smaller;
   line-height: 1; }
 
+.flex {
+  display: flex; }
+
+figure:not(.fullwidth) figcaption {
+  text-align: center; }
+
 @media (min-width: 82rem) {
   .margin-right, .margin-left {
     display: block; }

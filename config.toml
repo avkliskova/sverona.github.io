@@ -17,14 +17,6 @@ math = false
 
 [menu]
     [[menu.main]]
-        name = "blog"
-        url = "/blog"
-        weight = 1
-    [[menu.main]]
-        name = "github"
-        url = "https://github.com/sverona"
-        weight = 3
-    [[menu.main]]
         name = "about"
         url = "/about"
         weight = 4
